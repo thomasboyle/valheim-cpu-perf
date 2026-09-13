@@ -13,7 +13,7 @@ namespace ValheimCpuPerf
     {
         public const string PluginGuid = "com.thomasboyle.valheimcpuperf";
         public const string PluginName = "ValheimCpuPerf";
-        public const string PluginVersion = "0.3.0";
+        public const string PluginVersion = "0.4.0";
 
         internal static ManualLogSource Log { get; private set; }
 
@@ -24,7 +24,7 @@ namespace ValheimCpuPerf
             Log = Logger;
             _harmony = new Harmony(PluginGuid);
             _harmony.PatchAll();
-            Log.LogInfo($"{PluginName} {PluginVersion} loaded — ZSyncTransform owner/distant gate, WaterVolume floater distance gate. Restart Valheim after replacing the DLL.");
+            Log.LogInfo($"{PluginName} {PluginVersion} loaded - ZSync owner/distant+very-distant gate, WaterVolume floater distance gate, Smoke distant lite, Fish non-owner early-out. Restart Valheim after replacing the DLL.");
         }
 
         private void OnDestroy()
