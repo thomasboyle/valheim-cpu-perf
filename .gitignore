@@ -8,3 +8,9 @@ _reflect.txt
 *.dll
 *.pdb
 *.mdb
+
+# External profile captures (large)
+profile/*.etl
+profile/*.etl.NGENPDB/
+profile/**/*.etl
+_bepinex_dl/

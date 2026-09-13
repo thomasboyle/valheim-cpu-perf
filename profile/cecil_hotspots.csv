@@ -1,0 +1,26 @@
+﻿type,method,il_instructions,locals,has_body,is_public
+ClutterSystem,LateUpdate,92,3,True,False
+ClutterSystem,UpdateGrass,12,0,True,False
+ClutterSystem,Awake,32,0,True,False
+#FIELDS ClutterSystem: m_clutter:List`1, m_grassPatchSize:Single, m_distance:Single, m_amountScale:Single, m_grassRoot:GameObject
+ParticleMist,Update,241,17,True,False
+#FIELDS ParticleMist: m_minDistance:Single, m_maxDistance:Single, m_lastUpdatePos:Vector3
+Smoke,CustomUpdate,86,4,True,True
+#FIELDS Smoke: s_smoke:List`1
+SmokeSpawner,CustomUpdate,18,0,True,True
+#FIELDS SmokeSpawner: m_minPlayerDistance:Single, m_maxGlobalSmoke:Int32, m_smokePrefab:GameObject, m_interval:Single
+BaseAI,UpdateAI,54,0,True,True
+#FIELDS BaseAI: m_lastMoveToWaterUpdate:Single, m_fleeTargetUpdateTime:Single, aroundPointUpdateTime:Single, m_viewRange:Single, m_viewAngle:Single, m_despawnDistance:Single, m_idleSoundInterval:Single, m_jumpInterval:Single, m_randomCircleInterval:Single, m_randomMoveInterval:Single, m_fleeInterval:Single, m_patrolPointUpdateTime:Single, m_nview:ZNetView, m_viewBlockMask:Int32, m_randomMoveUpdateTimer:Single
+ZoneSystem,Update,100,4,True,False
+#FIELDS ZoneSystem: m_updateTimer:Single, m_simulationDistance:SimulationDistance, m_totalErrorCenterDistance:Int32
+ZNetScene,Update,18,1,True,False
+ZNetScene,CreateDestroyObjects,32,1,True,False
+#FIELDS ZNetScene: m_nonNetViewPrefabs:List`1
+Heightmap,LateUpdate,10,0,True,False
+Heightmap,CustomLateUpdate,10,0,True,True
+#FIELDS Heightmap: m_scale:Single, m_isDistantLod:Boolean, m_distantLodEditorHax:Boolean, m_doLateUpdate:Int32, m_terrainLodHideDistanceProperty:MaterialPropertyBlock
+EnvMan,Update,56,1,True,False
+EnvMan,FixedUpdate,260,12,True,False
+#FIELDS EnvMan: m_randomMusicIntervalMin:Single, m_randomMusicIntervalMax:Single, _SnowGlintDensity:Single, _SnowGlintNoiseDensity:Single, _SnowGlintNoiseAmount:Single, _SnowGlintViewAmount:Single, _SnowGlintTimeAmount:Single, s_SnowGlintDensity:Int32, s_SnowGlintNoiseDensity:Int32, s_SnowGlintNoiseAmount:Int32, s_SnowGlintViewAmount:Int32, s_SnowGlintTimeAmount:Int32
+SpawnSystem,UpdateSpawning,95,6,True,False
+#FIELDS SpawnSystem: m_spawnDistanceMin:Single, m_spawnDistanceMax:Single, m_nview:ZNetView

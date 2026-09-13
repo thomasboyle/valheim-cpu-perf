@@ -1,0 +1,81 @@
+Modules by Exclusive Hits
+Modules by UniInclusive Hits
+Functions by UniInclusive Hits
+Functions by Multi-Inclusive Hits with Callers and Callees
+Functions by Exclusive Hits
+Processes and Root functions
+process path
+ Module!Function
+pid
+exclusive
+hits
+hit
+percent
+valheim.exe
+19912
+2554035
+100.00%
+ntdll.dll
+!
+***unknown***
+2519578
+98.65%
+ntkrnlmp.exe
+!
+***unknown***
+15128
+0.59%
+ntkrnlmp.exe
+!
+***unknown***
+11431
+0.45%
+ntkrnlmp.exe
+!
+***unknown***
+5406
+0.21%
+ntkrnlmp.exe
+!
+***unknown***
+1062
+0.04%
+ntkrnlmp.exe
+!
+***unknown***
+820
+0.03%
+ntkrnlmp.exe
+!
+***unknown***
+167
+0.01%
+***unknown***
+!
+***unknown***
+70
+0.00%
+ntkrnlmp.exe
+!
+***unknown***
+46
+0.00%
+ntkrnlmp.exe
+!
+***unknown***
+46
+0.00%
+ntkrnlmp.exe
+!
+***unknown***
+38
+0.00%
+ntkrnlmp.exe
+!
+***unknown***
+29
+0.00%
+***unknown***
+!
+***unknown***
+7

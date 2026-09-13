@@ -1,0 +1,1496 @@
+   Process Name ( PID),     Weight,    Usage %,          Module Name
+           Idle (   0),       5000,       0.00,            "Unknown"
+           Idle (   0),   12147023,       1.62,         ntoskrnl.exe
+           Idle (   0),       1000,       0.00,           volmgr.sys
+           Idle (   0),       2000,       0.00,         intelpep.sys
+           Idle (   0),       8000,       0.00,         storport.sys
+           Idle (   0),       6033,       0.00,             ACPI.sys
+           Idle (   0),       2000,       0.00,         stornvme.sys
+           Idle (   0),       1000,       0.00,      EhStorClass.sys
+           Idle (   0),       2000,       0.00,          partmgr.sys
+           Idle (   0),      35000,       0.00,          dxgkrnl.sys
+           Idle (   0),      98068,       0.01,         Wdf01000.sys
+           Idle (   0),      19824,       0.00,      WppRecorder.sys
+           Idle (   0),       1000,       0.00,           FLTMGR.SYS
+           Idle (   0),       3000,       0.00,         watchdog.sys
+           Idle (   0),      10000,       0.00,         CLASSPNP.SYS
+           Idle (   0),       1000,       0.00,             Ntfs.sys
+           Idle (   0),       1000,       0.00,              Wof.sys
+           Idle (   0),       3967,       0.00,          wfplwfs.sys
+           Idle (   0),      20000,       0.00,             ndis.sys
+           Idle (   0),      23070,       0.00,            NETIO.SYS
+           Idle (   0),      50059,       0.01,            tcpip.sys
+           Idle (   0),       3000,       0.00,          volsnap.sys
+           Idle (   0),       3000,       0.00,              afd.sys
+           Idle (   0),      98110,       0.01,          USBXHCI.SYS
+           Idle (   0),       4000,       0.00,               ks.sys
+           Idle (   0),       8054,       0.00,         ucx01000.sys
+           Idle (   0),       6810,       0.00,         HDAudBus.sys
+           Idle (   0),    1041496,       0.14,         nvlddmkm.sys
+           Idle (   0),       1000,       0.00,         usbaudio.sys
+           Idle (   0),       4000,       0.00,           ibtusb.sys
+           Idle (   0),       4068,       0.00,           BTHUSB.sys
+           Idle (   0),       1000,       0.00,         kbdclass.sys
+           Idle (   0),       7000,       0.00,          UsbHub3.sys
+           Idle (   0),       8069,       0.00,          usbccgp.sys
+           Idle (   0),       6000,       0.00,           mouhid.sys
+           Idle (   0),       5000,       0.00,         mouclass.sys
+           Idle (   0),      14000,       0.00,          BTHport.sys
+           Idle (   0),      22019,       0.00,         HIDCLASS.SYS
+           Idle (   0),       5000,       0.00,           hidusb.sys
+           Idle (   0),      11000,       0.00,         HIDPARSE.SYS
+           Idle (   0),       2992,       0.00,              vhf.sys
+           Idle (   0),      81230,       0.01,              e1d.sys
+           Idle (   0),       7081,       0.00,         intelppm.sys
+           Idle (   0),       4000,       0.00,          BthA2dp.sys
+           Idle (   0),     162481,       0.02,          dxgmms2.sys
+           Idle (   0),      14000,       0.00,              Ndu.sys
+         System (   4),       2000,       0.00,            "Unknown"
+         System (   4),    2093130,       0.28,         ntoskrnl.exe
+         System (   4),       1000,       0.00,              pdc.sys
+         System (   4),       1000,       0.00,           volmgr.sys
+         System (   4),      13125,       0.00,         storport.sys
+         System (   4),       7080,       0.00,             ACPI.sys
+         System (   4),      11000,       0.00,         stornvme.sys
+         System (   4),       3026,       0.00,      EhStorClass.sys
+         System (   4),       1000,       0.00,          partmgr.sys
+         System (   4),      56088,       0.01,          dxgkrnl.sys
+         System (   4),      14054,       0.00,         Wdf01000.sys
+         System (   4),       4000,       0.00,      WppRecorder.sys
+         System (   4),      30011,       0.00,           FLTMGR.SYS
+         System (   4),      19969,       0.00,         watchdog.sys
+         System (   4),       6939,       0.00,        FACEIT_AC.sys
+         System (   4),    1911733,       0.25,              vgk.sys
+         System (   4),       5092,       0.00,         CLASSPNP.SYS
+         System (   4),       7098,       0.00,         WdFilter.sys
+         System (   4),      35111,       0.00,             Ntfs.sys
+         System (   4),       1000,       0.00,            NETIO.SYS
+         System (   4),       1000,       0.00,            tcpip.sys
+         System (   4),      43021,       0.01,          volsnap.sys
+         System (   4),       2000,       0.00,         fileinfo.sys
+         System (   4),       2000,       0.00,           iorate.sys
+         System (   4),      37080,       0.00,               ks.sys
+         System (   4),       2000,       0.00,         ucx01000.sys
+         System (   4),       2993,       0.00,         HDAudBus.sys
+         System (   4),     616369,       0.08,         nvlddmkm.sys
+         System (   4),      10079,       0.00,         usbaudio.sys
+         System (   4),       5015,       0.00,          UsbHub3.sys
+         System (   4),       5000,       0.00,          usbccgp.sys
+         System (   4),       1000,       0.00,         mouclass.sys
+         System (   4),       1000,       0.00,         RTKVHD64.sys
+         System (   4),       1080,       0.00,           hidusb.sys
+         System (   4),       7016,       0.00,              e1d.sys
+         System (   4),       4000,       0.00,         intelppm.sys
+         System (   4),       9000,       0.00,          BthA2dp.sys
+         System (   4),       4000,       0.00,            mmcss.sys
+         System (   4),       4088,       0.00,            luafv.sys
+         System (   4),       1000,       0.00,              bfs.sys
+         System (   4),       1000,       0.00,           cldflt.sys
+         System (   4),     544961,       0.07,          dxgmms2.sys
+         System (   4),       2000,       0.00,          bindflt.sys
+         System (   4),       1000,       0.00,          gameflt.sys
+      csrss.exe (1412),     126658,       0.02,         ntoskrnl.exe
+      csrss.exe (1412),       1000,       0.00,      WppRecorder.sys
+      csrss.exe (1412),       4000,       0.00,           win32k.sys
+      csrss.exe (1412),        992,       0.00,             Ntfs.sys
+      csrss.exe (1412),       1000,       0.00,         nvlddmkm.sys
+      csrss.exe (1412),     108301,       0.01,       win32kfull.sys
+      csrss.exe (1412),      23069,       0.00,       win32kbase.sys
+      csrss.exe (1412),       1000,       0.00,            ntdll.dll
+       Registry ( 280),       2000,       0.00,         ntoskrnl.exe
+       Registry ( 280),       3000,       0.00,             Ntfs.sys
+      csrss.exe (1320),       1000,       0.00,         ntoskrnl.exe
+   services.exe (1532),      56745,       0.01,         ntoskrnl.exe
+   services.exe (1532),       4093,       0.00,              vgk.sys
+   services.exe (1532),       8210,       0.00,           rpcrt4.dll
+   services.exe (1532),      17147,       0.00,            ntdll.dll
+   services.exe (1532),       4011,       0.00,         services.exe
+      lsass.exe (1592),      35236,       0.00,         ntoskrnl.exe
+      lsass.exe (1592),       1000,       0.00,         nvlddmkm.sys
+      lsass.exe (1592),       2060,       0.00, bcryptprimitives.dll
+      lsass.exe (1592),      11037,       0.00,           rpcrt4.dll
+      lsass.exe (1592),      10976,       0.00,            ntdll.dll
+      lsass.exe (1592),        996,       0.00,            lsass.exe
+    svchost.exe (1748),       4066,       0.00,         ntoskrnl.exe
+    svchost.exe (1748),       1000,       0.00,         ucrtbase.dll
+    svchost.exe (1748),       1013,       0.00,          sechost.dll
+    svchost.exe (1748),       6098,       0.00,            ntdll.dll
+    svchost.exe (1396),       7071,       0.00,       KernelBase.dll
+    svchost.exe (1912),      28058,       0.00,         ntoskrnl.exe
+    svchost.exe (1912),       2023,       0.00,        FACEIT_AC.sys
+    svchost.exe (1912),       1000,       0.00,       KernelBase.dll
+    svchost.exe (1912),       7095,       0.00,           rpcrt4.dll
+    svchost.exe (1912),      14985,       0.00,            ntdll.dll
+    svchost.exe (1912),       1007,       0.00,          combase.dll
+    svchost.exe (1912),       2000,       0.00,         RpcEpMap.dll
+    svchost.exe (1912),       4000,       0.00,            rpcss.dll
+        dwm.exe (1236),     200125,       0.03,            "Unknown"
+        dwm.exe (1236),    3347313,       0.45,         ntoskrnl.exe
+        dwm.exe (1236),       1037,       0.00,         storport.sys
+        dwm.exe (1236),     330536,       0.04,          dxgkrnl.sys
+        dwm.exe (1236),       2000,       0.00,         Wdf01000.sys
+        dwm.exe (1236),      28998,       0.00,      WppRecorder.sys
+        dwm.exe (1236),       7000,       0.00,         watchdog.sys
+        dwm.exe (1236),     130284,       0.02,           win32k.sys
+        dwm.exe (1236),       1017,       0.00,           fvevol.sys
+        dwm.exe (1236),       2055,       0.00,            NETIO.SYS
+        dwm.exe (1236),     134939,       0.02,         nvlddmkm.sys
+        dwm.exe (1236),       1000,       0.00,           mouhid.sys
+        dwm.exe (1236),       2000,       0.00,         mouclass.sys
+        dwm.exe (1236),       4913,       0.00,              e1d.sys
+        dwm.exe (1236),       1000,       0.00,         intelppm.sys
+        dwm.exe (1236),       5008,       0.00,           user32.dll
+        dwm.exe (1236),      59836,       0.01,           win32u.dll
+        dwm.exe (1236),      16000,       0.00,         kernel32.dll
+        dwm.exe (1236),      61911,       0.01,         ucrtbase.dll
+        dwm.exe (1236),       2000,       0.00,           msvcrt.dll
+        dwm.exe (1236),      63296,       0.01,       KernelBase.dll
+        dwm.exe (1236),     186543,       0.02,       win32kfull.sys
+        dwm.exe (1236),      34157,       0.00,    win32kbase_rs.sys
+        dwm.exe (1236),      81077,       0.01,          dxgmms2.sys
+        dwm.exe (1236),     719300,       0.10,       win32kbase.sys
+        dwm.exe (1236),       4000,       0.00,              cdd.dll
+        dwm.exe (1236),       1030,       0.00,              Ndu.sys
+        dwm.exe (1236),     665741,       0.09,            ntdll.dll
+        dwm.exe (1236),      11969,       0.00,          combase.dll
+        dwm.exe (1236),       1026,       0.00,       DispBroker.dll
+        dwm.exe (1236),     565911,       0.08,        nvwgf2umx.dll
+        dwm.exe (1236),      86110,       0.01,         ddisplay.dll
+        dwm.exe (1236),       5011,       0.00,        d3d10warp.dll
+        dwm.exe (1236),    2488500,       0.33,          dwmcore.dll
+        dwm.exe (1236),     303485,       0.04,    CoreMessaging.dll
+        dwm.exe (1236),     152394,       0.02,            d3d11.dll
+        dwm.exe (1236),       2000,       0.00,        GameInput.dll
+        dwm.exe (1236),      92133,       0.01,             d2d1.dll
+        dwm.exe (1236),     211555,       0.03,              ISM.dll
+    svchost.exe (2564),       2000,       0.00,         ntoskrnl.exe
+    svchost.exe (2564),       2000,       0.00,            ntdll.dll
+    svchost.exe (2692),       3940,       0.00,         ntoskrnl.exe
+    svchost.exe (2692),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (2692),       2000,       0.00,            ntdll.dll
+    svchost.exe (2692),       1000,       0.00,      netprofmsvc.dll
+    svchost.exe (1964),       1000,       0.00,            "Unknown"
+    svchost.exe (1964),      10917,       0.00,         ntoskrnl.exe
+    svchost.exe (1964),       1000,       0.00,              vgk.sys
+    svchost.exe (1964),       1000,       0.00,         nvlddmkm.sys
+    svchost.exe (1964),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (1964),       3000,       0.00,            ntdll.dll
+    svchost.exe (1964),       6025,       0.00,          combase.dll
+    svchost.exe (2072),       4937,       0.00,         ntoskrnl.exe
+    svchost.exe (2072),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (2072),       6024,       0.00,            ntdll.dll
+    svchost.exe (2072),       4975,       0.00,          combase.dll
+    svchost.exe (2072),       3029,       0.00, StateRepository.Core.dll
+    svchost.exe (2092),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (2116),       5000,       0.00,         ntoskrnl.exe
+    svchost.exe (2116),       1007,       0.00,         ucrtbase.dll
+    svchost.exe (2116),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (2116),       3046,       0.00,            ntdll.dll
+    svchost.exe (2860),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (2860),       1000,       0.00,            ntdll.dll
+    svchost.exe (3744),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (3744),       1014,       0.00,            ntdll.dll
+    svchost.exe (4328),       1000,       0.00,         ntoskrnl.exe
+OverwolfBrowser.exe (8920),      57913,       0.01,         ntoskrnl.exe
+OverwolfBrowser.exe (8920),       3000,       0.00,       KernelBase.dll
+OverwolfBrowser.exe (8920),      14008,       0.00,            ntdll.dll
+OverwolfBrowser.exe (8920),       3000,       0.00,        nvwgf2umx.dll
+OverwolfBrowser.exe (8920),       2011,       0.00,           libcef.dll
+OverwolfBrowser.exe (8920),       8001,       0.00,              clr.dll
+    svchost.exe (4904),       2000,       0.00,         ntoskrnl.exe
+    svchost.exe (4904),       1000,       0.00,              afd.sys
+    svchost.exe (4904),       1000,       0.00,            ntdll.dll
+    dasHost.exe (3868),       5000,       0.00,         ntoskrnl.exe
+    dasHost.exe (3868),       1000,       0.00,         Wdf01000.sys
+    dasHost.exe (3868),       1000,       0.00,               CI.dll
+    dasHost.exe (3868),       1000,       0.00,            NETIO.SYS
+    dasHost.exe (3868),       1000,       0.00,           ws2_32.dll
+    svchost.exe (3984),      26266,       0.00,         ntoskrnl.exe
+    svchost.exe (3984),       1019,       0.00,         ucrtbase.dll
+    svchost.exe (3984),       4000,       0.00,           rpcrt4.dll
+    svchost.exe (3984),      14044,       0.00,            ntdll.dll
+    svchost.exe (3984),       3038,       0.00,         audiosrv.dll
+    audiodg.exe (4100),      39138,       0.01,            "Unknown"
+    audiodg.exe (4100),     953938,       0.13,         ntoskrnl.exe
+    audiodg.exe (4100),       3000,       0.00,             ACPI.sys
+    audiodg.exe (4100),       1000,       0.00,         stornvme.sys
+    audiodg.exe (4100),       1000,       0.00,          dxgkrnl.sys
+    audiodg.exe (4100),      46153,       0.01,         Wdf01000.sys
+    audiodg.exe (4100),      15858,       0.00,      WppRecorder.sys
+    audiodg.exe (4100),        901,       0.00,         watchdog.sys
+    audiodg.exe (4100),       1000,       0.00,             ndis.sys
+    audiodg.exe (4100),       1000,       0.00,            NETIO.SYS
+    audiodg.exe (4100),     244840,       0.03,          USBXHCI.SYS
+    audiodg.exe (4100),      51011,       0.01,               ks.sys
+    audiodg.exe (4100),       8000,       0.00,         ucx01000.sys
+    audiodg.exe (4100),       2000,       0.00,         HDAudBus.sys
+    audiodg.exe (4100),      22046,       0.00,         nvlddmkm.sys
+    audiodg.exe (4100),       1000,       0.00, logi_audio_surround.sys
+    audiodg.exe (4100),      18064,       0.00,         usbaudio.sys
+    audiodg.exe (4100),       2014,       0.00,           ibtusb.sys
+    audiodg.exe (4100),       2000,       0.00,           BTHUSB.sys
+    audiodg.exe (4100),       1000,       0.00,          UsbHub3.sys
+    audiodg.exe (4100),      22039,       0.00,          BTHport.sys
+    audiodg.exe (4100),       2000,       0.00,              e1d.sys
+    audiodg.exe (4100),      11956,       0.00,          ksthunk.sys
+    audiodg.exe (4100),      10990,       0.00,         kernel32.dll
+    audiodg.exe (4100),      34005,       0.00,         ucrtbase.dll
+    audiodg.exe (4100),      50045,       0.01,       KernelBase.dll
+    audiodg.exe (4100),     519216,       0.07,          BthA2dp.sys
+    audiodg.exe (4100),      11000,       0.00,            mmcss.sys
+    audiodg.exe (4100),       3000,       0.00,          dxgmms2.sys
+    audiodg.exe (4100),     172292,       0.02,            ntdll.dll
+    audiodg.exe (4100),       3076,       0.00,             avrt.dll
+    audiodg.exe (4100),      26000,       0.00,         AUDIOKSE.dll
+    audiodg.exe (4100),      25077,       0.00,          RTWorkQ.dll
+    audiodg.exe (4100),     166241,       0.02,          audiodg.exe
+    audiodg.exe (4100),     371721,       0.05,         AudioEng.dll
+    audiodg.exe (4100),     835553,       0.11, logi_audio_dts_clearvoice_2_capture_apo.dll
+NVDisplay.Container.exe (3484),       1000,       0.00,         ntoskrnl.exe
+NVDisplay.Container.exe (3484),       4000,       0.00,            ntdll.dll
+NVDisplay.Container.exe (3484),       8961,       0.00,         _nvtopps.dll
+    svchost.exe (4364),       1973,       0.00,         ntoskrnl.exe
+    svchost.exe (4364),       2002,       0.00,            ntdll.dll
+    svchost.exe (4364),       1084,       0.00,          combase.dll
+    svchost.exe (3320),       1000,       0.00,            ntdll.dll
+    svchost.exe (3592),       1000,       0.00,            ntdll.dll
+    svchost.exe (3520),       6050,       0.00,         ntoskrnl.exe
+    svchost.exe (3520),       1000,       0.00,           FLTMGR.SYS
+    svchost.exe (3520),       1000,       0.00,             Ntfs.sys
+    svchost.exe (3520),       1000,       0.00,            ntdll.dll
+    svchost.exe (3520),       2969,       0.00,          wevtsvc.dll
+NVDisplay.Container.exe (4404),       9000,       0.00,         ntoskrnl.exe
+NVDisplay.Container.exe (4404),       1000,       0.00,           user32.dll
+    svchost.exe (2316),      17004,       0.00,         ntoskrnl.exe
+    svchost.exe (2316),       1000,       0.00,      WppRecorder.sys
+    svchost.exe (2316),       1090,       0.00,           FLTMGR.SYS
+    svchost.exe (2316),       1010,       0.00,             UCPD.sys
+    svchost.exe (2316),       1005,       0.00,              vgk.sys
+    svchost.exe (2316),       1000,       0.00,            NETIO.SYS
+    svchost.exe (2316),       1000,       0.00,           msvcrt.dll
+    svchost.exe (2316),       1000,       0.00,          sspicli.dll
+    svchost.exe (2316),       1000,       0.00,       KernelBase.dll
+    svchost.exe (2316),       6016,       0.00,            ntdll.dll
+    svchost.exe (2316),       1063,       0.00,         dnsrslvr.dll
+    svchost.exe (2316),       1000,       0.00,            webio.dll
+    svchost.exe (2316),       1002,       0.00,         dhcpcsvc.dll
+    svchost.exe (3252),       4000,       0.00,         ntoskrnl.exe
+    svchost.exe (3584),       2000,       0.00,         ntoskrnl.exe
+    svchost.exe (3584),       1000,       0.00,         ucrtbase.dll
+   rundll32.exe (7912),       1038,       0.00,         ntoskrnl.exe
+    svchost.exe (6816),       2060,       0.00,            "Unknown"
+    svchost.exe (6816),     176168,       0.02,         ntoskrnl.exe
+    svchost.exe (6816),       3063,       0.00,     FACEIT_IOMMU.sys
+    svchost.exe (6816),       1000,       0.00,           volmgr.sys
+    svchost.exe (6816),       5992,       0.00,           clipsp.sys
+    svchost.exe (6816),       2000,       0.00,           FLTMGR.SYS
+    svchost.exe (6816),       1000,       0.00,             UCPD.sys
+    svchost.exe (6816),       1976,       0.00,        FACEIT_AC.sys
+    svchost.exe (6816),       4054,       0.00,              vgk.sys
+    svchost.exe (6816),       1991,       0.00,         WdFilter.sys
+    svchost.exe (6816),       2000,       0.00,             Ntfs.sys
+    svchost.exe (6816),       1000,       0.00,          USBXHCI.SYS
+    svchost.exe (6816),       1987,       0.00,         nvlddmkm.sys
+    svchost.exe (6816),        994,       0.00,           ibtusb.sys
+    svchost.exe (6816),       7095,       0.00,         ucrtbase.dll
+    svchost.exe (6816),      11065,       0.00, bcryptprimitives.dll
+    svchost.exe (6816),       7199,       0.00,       KernelBase.dll
+    svchost.exe (6816),       6995,       0.00,           rpcrt4.dll
+    svchost.exe (6816),      25942,       0.00,            ntdll.dll
+    svchost.exe (6816),       1000,       0.00,          combase.dll
+    svchost.exe (6816),        959,       0.00,         imagehlp.dll
+    svchost.exe (6816),       4013,       0.00, CapabilityAccessManager.dll
+    svchost.exe (6720),       5000,       0.00,         ntoskrnl.exe
+    svchost.exe (6720),       1018,       0.00,           rpcrt4.dll
+    svchost.exe (6720),       2000,       0.00,            ntdll.dll
+    svchost.exe (5092),       3988,       0.00,            "Unknown"
+    svchost.exe (5092),     204212,       0.03,         ntoskrnl.exe
+    svchost.exe (5092),       2975,       0.00,     FACEIT_IOMMU.sys
+    svchost.exe (5092),       2755,       0.00,             UCPD.sys
+    svchost.exe (5092),       2965,       0.00,        FACEIT_AC.sys
+    svchost.exe (5092),       7955,       0.00,              vgk.sys
+    svchost.exe (5092),        980,       0.00,         WdFilter.sys
+    svchost.exe (5092),       1008,       0.00,         nvlddmkm.sys
+    svchost.exe (5092),       1025,       0.00, bcryptprimitives.dll
+    svchost.exe (5092),       4993,       0.00,       KernelBase.dll
+    svchost.exe (5092),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (5092),        991,       0.00,              bfs.sys
+    svchost.exe (5092),      32138,       0.00,            ntdll.dll
+    svchost.exe (5092),       2000,       0.00,          combase.dll
+    svchost.exe (5092),       1000,       0.00,         oleaut32.dll
+    svchost.exe (5092),       3997,       0.00,         wbemcomn.dll
+    svchost.exe (5092),      12148,       0.00,         fastprox.dll
+    svchost.exe (5092),       5999,       0.00,         wbemcore.dll
+    svchost.exe (5092),       2017,       0.00,          wbemess.dll
+    spoolsv.exe (4912),       1000,       0.00,         ntoskrnl.exe
+GameInputRedistService.exe (5524),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (5348),        909,       0.00,         ntoskrnl.exe
+    svchost.exe (5348),       1000,       0.00,            ntdll.dll
+   WmiPrvSE.exe (5340),       2003,       0.00,            "Unknown"
+   WmiPrvSE.exe (5340),     378556,       0.05,         ntoskrnl.exe
+   WmiPrvSE.exe (5340),       1000,       0.00,         watchdog.sys
+   WmiPrvSE.exe (5340),        997,       0.00,             UCPD.sys
+   WmiPrvSE.exe (5340),       1009,       0.00,        FACEIT_AC.sys
+   WmiPrvSE.exe (5340),       1945,       0.00,              vgk.sys
+   WmiPrvSE.exe (5340),        986,       0.00,         WdFilter.sys
+   WmiPrvSE.exe (5340),       1023,       0.00,          USBXHCI.SYS
+   WmiPrvSE.exe (5340),       1000,       0.00,         nvlddmkm.sys
+   WmiPrvSE.exe (5340),        985,       0.00,         kernel32.dll
+   WmiPrvSE.exe (5340),       1025,       0.00,         ucrtbase.dll
+   WmiPrvSE.exe (5340),      13008,       0.00,           msvcrt.dll
+   WmiPrvSE.exe (5340),       1979,       0.00,       KernelBase.dll
+   WmiPrvSE.exe (5340),      25653,       0.00,            ntdll.dll
+   WmiPrvSE.exe (5340),       1000,       0.00,          combase.dll
+   WmiPrvSE.exe (5340),       9033,       0.00,         oleaut32.dll
+   WmiPrvSE.exe (5340),       4077,       0.00,         wbemcomn.dll
+   WmiPrvSE.exe (5340),      46474,       0.01,         fastprox.dll
+   WmiPrvSE.exe (5340),       7007,       0.00,       framedynos.dll
+MpDefenderCoreService.exe (5608),       1000,       0.00,            ntdll.dll
+nvcontainer.exe (5620),       2000,       0.00,            ntdll.dll
+gamingservices.exe (8040),       5956,       0.00,         ntoskrnl.exe
+gamingservices.exe (8040),       1000,       0.00,             Ntfs.sys
+gamingservices.exe (8040),       1000,       0.00,       KernelBase.dll
+gamingservices.exe (8040),       1000,       0.00,            ntdll.dll
+gamingservices.exe (8040),        976,       0.00,   gamingservices.dll
+     sihost.exe (8268),       1034,       0.00,         ntoskrnl.exe
+     sihost.exe (8268),       1000,       0.00,         storport.sys
+     sihost.exe (8268),       1000,       0.00,       win32kbase.sys
+     sihost.exe (8268),       2000,       0.00,            ntdll.dll
+    svchost.exe (5516),      17323,       0.00,         ntoskrnl.exe
+    svchost.exe (5516),       2000,       0.00,            ntdll.dll
+    svchost.exe (5516),       1062,       0.00,           eeprov.dll
+GameInputRedistService.exe (5860),        978,       0.00,         ntoskrnl.exe
+logi_lamparray_service.AMD64.exe (5664),      62222,       0.01,         ntoskrnl.exe
+logi_lamparray_service.AMD64.exe (5664),       1000,       0.00,          USBXHCI.SYS
+logi_lamparray_service.AMD64.exe (5664),       1000,       0.00,         nvlddmkm.sys
+logi_lamparray_service.AMD64.exe (5664),       3000,       0.00,           user32.dll
+logi_lamparray_service.AMD64.exe (5664),       2000,       0.00,         kernel32.dll
+logi_lamparray_service.AMD64.exe (5664),       1000,       0.00,           msvcrt.dll
+logi_lamparray_service.AMD64.exe (5664),       1000,       0.00,       KernelBase.dll
+logi_lamparray_service.AMD64.exe (5664),       3000,       0.00,            ntdll.dll
+logi_lamparray_service.AMD64.exe (5664),      12141,       0.00, logi_lamparray_service.AMD64.exe
+    svchost.exe (7404),       1000,       0.00,            ntdll.dll
+OfficeClickToRun.exe (5656),       1000,       0.00,            "Unknown"
+OfficeClickToRun.exe (5656),      23028,       0.00,         ntoskrnl.exe
+OfficeClickToRun.exe (5656),        996,       0.00,           FLTMGR.SYS
+OfficeClickToRun.exe (5656),       5014,       0.00,             Ntfs.sys
+OfficeClickToRun.exe (5656),       1000,       0.00,         kernel32.dll
+OfficeClickToRun.exe (5656),       3002,       0.00,            ntdll.dll
+OfficeClickToRun.exe (5656),       1084,       0.00,     vcruntime140.dll
+OfficeClickToRun.exe (5656),       2978,       0.00, OfficeClickToRun.exe
+    MsMpEng.exe (5648),     109978,       0.01,            "Unknown"
+    MsMpEng.exe (5648),     501440,       0.07,         ntoskrnl.exe
+    MsMpEng.exe (5648),       1000,       0.00,         storport.sys
+    MsMpEng.exe (5648),       1000,       0.00,         stornvme.sys
+    MsMpEng.exe (5648),       1000,       0.00,          dxgkrnl.sys
+    MsMpEng.exe (5648),      23152,       0.00,           FLTMGR.SYS
+    MsMpEng.exe (5648),       1000,       0.00,              vgk.sys
+    MsMpEng.exe (5648),       2000,       0.00,         WdFilter.sys
+    MsMpEng.exe (5648),      17006,       0.00,             Ntfs.sys
+    MsMpEng.exe (5648),       1000,       0.00,           fvevol.sys
+    MsMpEng.exe (5648),       1000,       0.00,           volume.sys
+    MsMpEng.exe (5648),       1000,       0.00,            tcpip.sys
+    MsMpEng.exe (5648),       2000,       0.00,          volsnap.sys
+    MsMpEng.exe (5648),       3963,       0.00,          USBXHCI.SYS
+    MsMpEng.exe (5648),      13151,       0.00,         nvlddmkm.sys
+    MsMpEng.exe (5648),       7067,       0.00,         kernel32.dll
+    MsMpEng.exe (5648),       4009,       0.00, bcryptprimitives.dll
+    MsMpEng.exe (5648),      17161,       0.00,       KernelBase.dll
+    MsMpEng.exe (5648),        998,       0.00,           rpcrt4.dll
+    MsMpEng.exe (5648),       1000,       0.00,            luafv.sys
+    MsMpEng.exe (5648),       1000,       0.00,              bfs.sys
+    MsMpEng.exe (5648),       3014,       0.00,           cldflt.sys
+    MsMpEng.exe (5648),       2033,       0.00,          dxgmms2.sys
+    MsMpEng.exe (5648),     224029,       0.03,            ntdll.dll
+    MsMpEng.exe (5648),       2002,       0.00,           bcrypt.dll
+    MsMpEng.exe (5648),       1000,       0.00,          crypt32.dll
+    MsMpEng.exe (5648),    3702013,       0.49,         mpengine.dll
+    MsMpEng.exe (5648),       9067,       0.00,         MpClient.dll
+    MsMpEng.exe (5648),       7096,       0.00,            MpSvc.dll
+    MsMpEng.exe (5648),      33036,       0.00,            MpRtp.dll
+lghub_updater.exe (5840),       1000,       0.00,         ntoskrnl.exe
+     NgcIso.exe (10192),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (8332),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (9340),       1000,       0.00,              cng.sys
+    svchost.exe (9340),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (8672),       1000,       0.00,         ntoskrnl.exe
+    svchost.exe (9180),       1000,       0.00,         ntoskrnl.exe
+RuntimeBroker.exe (11520),       4000,       0.00,         ntoskrnl.exe
+RuntimeBroker.exe (11520),        937,       0.00,         ucrtbase.dll
+RuntimeBroker.exe (11520),       1000,       0.00,       win32kbase.sys
+RuntimeBroker.exe (11520),       1015,       0.00,            ntdll.dll
+nvcontainer.exe (11476),      80176,       0.01,         ntoskrnl.exe
+nvcontainer.exe (11476),       1000,       0.00,          dxgkrnl.sys
+nvcontainer.exe (11476),       1000,       0.00,           win32k.sys
+nvcontainer.exe (11476),       2013,       0.00,        FACEIT_AC.sys
+nvcontainer.exe (11476),       1005,       0.00,              vgk.sys
+nvcontainer.exe (11476),       1993,       0.00,         WdFilter.sys
+nvcontainer.exe (11476),       1000,       0.00,             Ntfs.sys
+nvcontainer.exe (11476),       2000,       0.00,         nvlddmkm.sys
+nvcontainer.exe (11476),       2000,       0.00,         kernel32.dll
+nvcontainer.exe (11476),       2000,       0.00,       KernelBase.dll
+nvcontainer.exe (11476),       1000,       0.00,              bfs.sys
+nvcontainer.exe (11476),      73838,       0.01,            ntdll.dll
+nvcontainer.exe (11476),       1000,       0.00,         cfgmgr32.dll
+nvcontainer.exe (11476),     321489,       0.04,          nvapi64.dll
+nvcontainer.exe (11476),        953,       0.00,         setupapi.dll
+nvcontainer.exe (11476),      20152,       0.00,       Ontology64.dll
+nvcontainer.exe (11476),      26066,       0.00,      NvBackend64.dll
+   explorer.exe (9736),       2000,       0.00,            "Unknown"
+   explorer.exe (9736),      32987,       0.00,         ntoskrnl.exe
+   explorer.exe (9736),       1000,       0.00,           win32k.sys
+   explorer.exe (9736),       1000,       0.00,        FACEIT_AC.sys
+   explorer.exe (9736),       1000,       0.00,           user32.dll
+   explorer.exe (9736),       2074,       0.00,           win32u.dll
+   explorer.exe (9736),       1000,       0.00,           rpcrt4.dll
+   explorer.exe (9736),       2000,       0.00,       win32kfull.sys
+   explorer.exe (9736),       1000,       0.00,    win32kbase_rs.sys
+   explorer.exe (9736),       7023,       0.00,       win32kbase.sys
+   explorer.exe (9736),       7022,       0.00,            ntdll.dll
+   explorer.exe (9736),       1000,       0.00,  ServicingCommon.dll
+   explorer.exe (9736),       2000,       0.00,          combase.dll
+   explorer.exe (9736),       1000,       0.00,         WinTypes.dll
+   explorer.exe (9736),       1000,       0.00,  Windows.UI.Xaml.dll
+   explorer.exe (9736),        997,       0.00,            dcomp.dll
+   explorer.exe (9736),       2000,       0.00,    WindowsCodecs.dll
+   explorer.exe (9736),       1000,       0.00,       dmcmnutils.dll
+   explorer.exe (9736),       2000,       0.00,          Taskbar.dll
+   explorer.exe (9736),       2000,       0.00,       SystemTray.dll
+   explorer.exe (9736),       1052,       0.00,  StructuredQuery.dll
+ SearchHost.exe (10956),       1000,       0.00,         ntoskrnl.exe
+StartMenuExperienceHost.exe (10964),       1000,       0.00,         ntoskrnl.exe
+  ShellHost.exe (9784),       1000,       0.00, NvMemMapStoragex.dll
+    svchost.exe (8596),        964,       0.00,         ntoskrnl.exe
+    svchost.exe (5440),       1000,       0.00,            ntdll.dll
+    svchost.exe (9412),       1013,       0.00,         ntoskrnl.exe
+    svchost.exe (9412),       1000,       0.00,           rpcrt4.dll
+    svchost.exe (10216),       1000,       0.00,            ntdll.dll
+nvcontainer.exe (11376),       1071,       0.00,         ntoskrnl.exe
+    svchost.exe (18676),       1000,       0.00,            "Unknown"
+    svchost.exe (18676),      21111,       0.00,         ntoskrnl.exe
+    svchost.exe (18676),       3000,       0.00,           rpcrt4.dll
+    svchost.exe (18676),       8000,       0.00,            ntdll.dll
+    svchost.exe (18676),       3043,       0.00,      FrameServer.dll
+        Dia.exe (11936),       1000,       0.00,         ntoskrnl.exe
+        Dia.exe (11936),       1000,       0.00,          dxgmms2.sys
+        Dia.exe (11936),       3000,       0.00,          ArcCore.dll
+        Dia.exe (20116),      18098,       0.00,            "Unknown"
+        Dia.exe (20116),     244151,       0.03,         ntoskrnl.exe
+        Dia.exe (20116),       1000,       0.00,         nvlddmkm.sys
+        Dia.exe (20116),       1000,       0.00,         intelppm.sys
+        Dia.exe (20116),       7093,       0.00,         kernel32.dll
+        Dia.exe (20116),      12000,       0.00,       KernelBase.dll
+        Dia.exe (20116),      58185,       0.01,            ntdll.dll
+        Dia.exe (20116),       2000,       0.00,            winmm.dll
+        Dia.exe (20116),     226531,       0.03,          ArcCore.dll
+ FanControl.exe (14468),       2000,       0.00,            "Unknown"
+ FanControl.exe (14468),     149488,       0.02,         ntoskrnl.exe
+ FanControl.exe (14468),       4000,       0.00,         storport.sys
+ FanControl.exe (14468),       3063,       0.00,         stornvme.sys
+ FanControl.exe (14468),       1000,       0.00,          dxgkrnl.sys
+ FanControl.exe (14468),       2000,       0.00,         Wdf01000.sys
+ FanControl.exe (14468),       8000,       0.00,           FLTMGR.SYS
+ FanControl.exe (14468),       2000,       0.00,         CLASSPNP.SYS
+ FanControl.exe (14468),       4009,       0.00,             Ntfs.sys
+ FanControl.exe (14468),       1000,       0.00,           fvevol.sys
+ FanControl.exe (14468),       1000,       0.00,           volume.sys
+ FanControl.exe (14468),       1000,       0.00,            tcpip.sys
+ FanControl.exe (14468),       1004,       0.00,         fileinfo.sys
+ FanControl.exe (14468),     129720,       0.02,           PawnIO.sys
+ FanControl.exe (14468),      65359,       0.01,         nvlddmkm.sys
+ FanControl.exe (14468),      11987,       0.00,         ucrtbase.dll
+ FanControl.exe (14468),       1000,       0.00,            luafv.sys
+ FanControl.exe (14468),      37174,       0.00,            ntdll.dll
+ FanControl.exe (14468),       2040,       0.00,      System.Linq.dll
+ FanControl.exe (14468),       2000,       0.00, FanControl.Library.dll
+ FanControl.exe (14468),       1013,       0.00,     NvAPIWrapper.dll
+ FanControl.exe (14468),       4970,       0.00, LibreHardwareMonitorLib.dll
+ FanControl.exe (14468),       3000,       0.00, System.Private.CoreLib.dll
+ FanControl.exe (14468),       6031,       0.00,           clrjit.dll
+ FanControl.exe (14468),     162018,       0.02,          coreclr.dll
+        Dia.exe (17044),       3000,       0.00,         ntoskrnl.exe
+        Dia.exe (18008),       2014,       0.00,         ntoskrnl.exe
+        Dia.exe (17332),      43139,       0.01,         ntoskrnl.exe
+        Dia.exe (17332),       4000,       0.00,       KernelBase.dll
+        Dia.exe (17332),       8051,       0.00,            ntdll.dll
+        Dia.exe (17332),       3000,       0.00,        nvwgf2umx.dll
+        Dia.exe (17332),       1000,       0.00,          ArcCore.dll
+        Dia.exe (19984),      74188,       0.01,            "Unknown"
+        Dia.exe (19984),     176371,       0.02,         ntoskrnl.exe
+        Dia.exe (19984),       1000,       0.00,         Wdf01000.sys
+        Dia.exe (19984),       1000,       0.00,             Npfs.SYS
+        Dia.exe (19984),       1000,       0.00,              vgk.sys
+        Dia.exe (19984),       3986,       0.00,         nvlddmkm.sys
+        Dia.exe (19984),       2000,       0.00,         kernel32.dll
+        Dia.exe (19984),       4000,       0.00,       KernelBase.dll
+        Dia.exe (19984),      33032,       0.00,            ntdll.dll
+        Dia.exe (19984),     567785,       0.08,          ArcCore.dll
+SecurityHealthSystray.exe (2552),        965,       0.00,         ntoskrnl.exe
+SecurityHealthService.exe (19688),       2042,       0.00,            ntdll.dll
+     vgtray.exe (3908),      80344,       0.01,         ntoskrnl.exe
+     vgtray.exe (3908),       1000,       0.00,           win32k.sys
+     vgtray.exe (3908),       1000,       0.00,        FACEIT_AC.sys
+     vgtray.exe (3908),       1000,       0.00,         nvlddmkm.sys
+     vgtray.exe (3908),       3002,       0.00,       KernelBase.dll
+     vgtray.exe (3908),       4046,       0.00,           rpcrt4.dll
+     vgtray.exe (3908),       2000,       0.00,       win32kbase.sys
+     vgtray.exe (3908),      12000,       0.00,            ntdll.dll
+     vgtray.exe (3908),       2023,       0.00,        nvwgf2umx.dll
+SearchIndexer.exe (18892),       2012,       0.00,            "Unknown"
+SearchIndexer.exe (18892),       1996,       0.00,              cng.sys
+SearchIndexer.exe (18892),      34092,       0.00,         ntoskrnl.exe
+SearchIndexer.exe (18892),       3008,       0.00,           FLTMGR.SYS
+SearchIndexer.exe (18892),       3987,       0.00,               CI.dll
+SearchIndexer.exe (18892),       2000,       0.00,        FACEIT_AC.sys
+SearchIndexer.exe (18892),       1014,       0.00,              vgk.sys
+SearchIndexer.exe (18892),       2000,       0.00,             Ntfs.sys
+SearchIndexer.exe (18892),       1000,       0.00,         nvlddmkm.sys
+SearchIndexer.exe (18892),       1049,       0.00,         kernel32.dll
+SearchIndexer.exe (18892),       7147,       0.00,         ucrtbase.dll
+SearchIndexer.exe (18892),     121201,       0.02,       KernelBase.dll
+SearchIndexer.exe (18892),     145044,       0.02,            ntdll.dll
+SearchIndexer.exe (18892),       1009,       0.00,          combase.dll
+SearchIndexer.exe (18892),      79155,       0.01,           mssrch.dll
+SearchIndexer.exe (18892),       1000,       0.00,           tquery.dll
+SearchIndexer.exe (18892),       8960,       0.00, SearchIndexerCore.dll
+SearchIndexer.exe (18892),       1000,       0.00,            MSWB7.dll
+SearchIndexer.exe (18892),       1000,       0.00,           elslad.dll
+lghub_system_tray.exe (18528),     117141,       0.02,         ntoskrnl.exe
+lghub_system_tray.exe (18528),       1000,       0.00,         nvlddmkm.sys
+lghub_system_tray.exe (18528),       1000,       0.00,         kernel32.dll
+lghub_system_tray.exe (18528),       1000,       0.00,         ucrtbase.dll
+lghub_system_tray.exe (18528),       7080,       0.00,       KernelBase.dll
+lghub_system_tray.exe (18528),       2000,       0.00,       win32kfull.sys
+lghub_system_tray.exe (18528),      22080,       0.00,            ntdll.dll
+lghub_system_tray.exe (18528),       9000,       0.00,        nvwgf2umx.dll
+lghub_system_tray.exe (18528),       4000,       0.00,         msvcp140.dll
+lghub_system_tray.exe (18528),      12000,       0.00, lghub_system_tray.exe
+lghub_agent.exe (2420),     104200,       0.01,         ntoskrnl.exe
+lghub_agent.exe (2420),       1000,       0.00,         stornvme.sys
+lghub_agent.exe (2420),       1996,       0.00,           FLTMGR.SYS
+lghub_agent.exe (2420),       4001,       0.00,             Ntfs.sys
+lghub_agent.exe (2420),       1996,       0.00,            NETIO.SYS
+lghub_agent.exe (2420),       1000,       0.00,            tcpip.sys
+lghub_agent.exe (2420),       1052,       0.00,         nvlddmkm.sys
+lghub_agent.exe (2420),       1000,       0.00,         kernel32.dll
+lghub_agent.exe (2420),       6995,       0.00,         ucrtbase.dll
+lghub_agent.exe (2420),       1000,       0.00, bcryptprimitives.dll
+lghub_agent.exe (2420),       1000,       0.00,           rpcrt4.dll
+lghub_agent.exe (2420),     104199,       0.01,            ntdll.dll
+lghub_agent.exe (2420),       1000,       0.00,          combase.dll
+lghub_agent.exe (2420),       1000,       0.00,         fastprox.dll
+lghub_agent.exe (2420),       1000,       0.00,       Windows.UI.dll
+lghub_agent.exe (2420),       4000,       0.00,     vcruntime140.dll
+lghub_agent.exe (2420),       3000,       0.00,         msvcp140.dll
+lghub_agent.exe (2420),      43893,       0.01,      lghub_agent.exe
+        Dia.exe (17236),       1000,       0.00,              vgk.sys
+agent-server.exe (18476),      17193,       0.00,         ntoskrnl.exe
+agent-server.exe (18476),       1034,       0.00,             Ntfs.sys
+agent-server.exe (18476),       1000,       0.00,         kernel32.dll
+agent-server.exe (18476),       9000,       0.00,            ntdll.dll
+agent-server.exe (18476),      20048,       0.00,     agent-server.exe
+        Dia.exe (18424),       3000,       0.00,         ntoskrnl.exe
+        Dia.exe (18424),       1000,       0.00,            ntdll.dll
+        Dia.exe (3544),       1000,       0.00,         ntoskrnl.exe
+    Latenci.exe (15284),      63218,       0.01,         ntoskrnl.exe
+    Latenci.exe (15284),       1000,       0.00,             ndis.sys
+    Latenci.exe (15284),       1000,       0.00,         HIDCLASS.SYS
+    Latenci.exe (15284),       1000,       0.00,         kernel32.dll
+    Latenci.exe (15284),       7999,       0.00,       KernelBase.dll
+    Latenci.exe (15284),       3988,       0.00,            ntdll.dll
+    Latenci.exe (15284),       4000,       0.00,        nvwgf2umx.dll
+        Dia.exe (6972),       1005,       0.00,            ntdll.dll
+        Dia.exe (6972),       1000,       0.00,          ArcCore.dll
+        Dia.exe (7072),       1000,       0.00,         ntoskrnl.exe
+        Dia.exe (17316),       1000,       0.00,            "Unknown"
+        Dia.exe (17316),       1000,       0.00,         ntoskrnl.exe
+        Dia.exe (17316),       6097,       0.00,          ArcCore.dll
+msedgewebview2.exe (9584),       1000,       0.00,         ntoskrnl.exe
+msedgewebview2.exe (9584),       1000,       0.00,           msedge.dll
+msedgewebview2.exe (12032),       1000,       0.00,         ntoskrnl.exe
+msedgewebview2.exe (12032),       1000,       0.00,           msedge.dll
+steamwebhelper.exe (16164),       3057,       0.00,         ntoskrnl.exe
+steamwebhelper.exe (16164),       1000,       0.00,           FLTMGR.SYS
+steamwebhelper.exe (16164),      12073,       0.00,           libcef.dll
+steamwebhelper.exe (16248),       1000,       0.00,         ntoskrnl.exe
+steamwebhelper.exe (16248),       1000,       0.00,           libcef.dll
+steamwebhelper.exe (15268),     232281,       0.03,         ntoskrnl.exe
+steamwebhelper.exe (15268),       1000,       0.00,         storport.sys
+steamwebhelper.exe (15268),       1000,       0.00,         Wdf01000.sys
+steamwebhelper.exe (15268),       8988,       0.00,           win32k.sys
+steamwebhelper.exe (15268),       1000,       0.00,             UCPD.sys
+steamwebhelper.exe (15268),       1000,       0.00,              vgk.sys
+steamwebhelper.exe (15268),       1000,       0.00,             ndis.sys
+steamwebhelper.exe (15268),       1026,       0.00,            tcpip.sys
+steamwebhelper.exe (15268),       1000,       0.00,         nvlddmkm.sys
+steamwebhelper.exe (15268),       3000,       0.00,           user32.dll
+steamwebhelper.exe (15268),       9039,       0.00,           win32u.dll
+steamwebhelper.exe (15268),       2000,       0.00,         kernel32.dll
+steamwebhelper.exe (15268),       7087,       0.00,       win32kfull.sys
+steamwebhelper.exe (15268),      17932,       0.00,       win32kbase.sys
+steamwebhelper.exe (15268),       1000,       0.00,              Ndu.sys
+steamwebhelper.exe (15268),      12090,       0.00,            ntdll.dll
+steamwebhelper.exe (15268),      14070,       0.00,             SDL3.dll
+steamwebhelper.exe (15268),     101302,       0.01,           libcef.dll
+steamwebhelper.exe (15268),       7038,       0.00,        tier0_s64.dll
+steamwebhelper.exe (15268),       9000,       0.00,   steamwebhelper.exe
+     ctfmon.exe (14256),       8000,       0.00,         ntoskrnl.exe
+     ctfmon.exe (14256),       1000,       0.00,           user32.dll
+     ctfmon.exe (14256),       1000,       0.00,           win32u.dll
+     ctfmon.exe (14256),       2000,       0.00,       win32kfull.sys
+     ctfmon.exe (14256),       2000,       0.00,    CoreMessaging.dll
+        Dia.exe (14132),      78235,       0.01,         ntoskrnl.exe
+        Dia.exe (14132),       2000,       0.00,         kernel32.dll
+        Dia.exe (14132),       6990,       0.00,       KernelBase.dll
+        Dia.exe (14132),       1000,       0.00,          dxgmms2.sys
+        Dia.exe (14132),      23096,       0.00,            ntdll.dll
+        Dia.exe (14132),       7000,       0.00,        nvwgf2umx.dll
+        Dia.exe (14132),       4976,       0.00,          ArcCore.dll
+    Discord.exe (15200),       1000,       0.00,            ntdll.dll
+    Discord.exe (15200),       1000,       0.00,          Discord.exe
+    Discord.exe (15232),       5012,       0.00,         ntoskrnl.exe
+    Discord.exe (15232),       1000,       0.00,             Ntfs.sys
+    Discord.exe (15232),        925,       0.00,            ntdll.dll
+    Discord.exe (15232),       4138,       0.00,          Discord.exe
+steamservice.exe (15392),       3000,       0.00,         ntoskrnl.exe
+steamservice.exe (15392),       1000,       0.00,       KernelBase.dll
+steamservice.exe (15392),       1000,       0.00,          sechost.dll
+steamservice.exe (15392),       1000,       0.00,            ntdll.dll
+steamservice.exe (15392),       1000,       0.00,     SteamService.dll
+msedgewebview2.exe (13160),       2997,       0.00,         ntoskrnl.exe
+msedgewebview2.exe (13160),       1000,       0.00,         stornvme.sys
+msedgewebview2.exe (13160),        970,       0.00, bcryptprimitives.dll
+msedgewebview2.exe (13160),       1000,       0.00,       win32kbase.sys
+msedgewebview2.exe (13160),       1000,       0.00,            ntdll.dll
+msedgewebview2.exe (13160),       3000,       0.00,           msedge.dll
+    Discord.exe (14492),       4000,       0.00,            "Unknown"
+    Discord.exe (14492),     193147,       0.03,         ntoskrnl.exe
+    Discord.exe (14492),       1000,       0.00,     FACEIT_IOMMU.sys
+    Discord.exe (14492),       1010,       0.00,         Wdf01000.sys
+    Discord.exe (14492),       4000,       0.00,           FLTMGR.SYS
+    Discord.exe (14492),       1000,       0.00,           win32k.sys
+    Discord.exe (14492),       1000,       0.00,             UCPD.sys
+    Discord.exe (14492),       2000,       0.00,        FACEIT_AC.sys
+    Discord.exe (14492),       3000,       0.00,         WdFilter.sys
+    Discord.exe (14492),       6000,       0.00,             Ntfs.sys
+    Discord.exe (14492),       1038,       0.00,          USBXHCI.SYS
+    Discord.exe (14492),       1000,       0.00,         nvlddmkm.sys
+    Discord.exe (14492),       1000,       0.00,           user32.dll
+    Discord.exe (14492),       2000,       0.00,           win32u.dll
+    Discord.exe (14492),       5021,       0.00,         kernel32.dll
+    Discord.exe (14492),        999,       0.00,            gdi32.dll
+    Discord.exe (14492),       1000,       0.00,       KernelBase.dll
+    Discord.exe (14492),       5050,       0.00,       win32kfull.sys
+    Discord.exe (14492),       2000,       0.00,              bfs.sys
+    Discord.exe (14492),       3022,       0.00,       win32kbase.sys
+    Discord.exe (14492),      10996,       0.00,            ntdll.dll
+    Discord.exe (14492),      45193,       0.01,          Discord.exe
+     NisSrv.exe (14136),      36184,       0.00,         ntoskrnl.exe
+     NisSrv.exe (14136),       1032,       0.00,         ucrtbase.dll
+     NisSrv.exe (14136),       1000,       0.00,         advapi32.dll
+     NisSrv.exe (14136),       2029,       0.00,           rpcrt4.dll
+     NisSrv.exe (14136),       8028,       0.00,            ntdll.dll
+     NisSrv.exe (14136),       1000,       0.00,         MpClient.dll
+     NisSrv.exe (14136),       9034,       0.00,           NisSrv.exe
+      steam.exe (10200),    1233840,       0.16,         ntoskrnl.exe
+      steam.exe (10200),       4028,       0.00,         storport.sys
+      steam.exe (10200),       2005,       0.00,         stornvme.sys
+      steam.exe (10200),      73147,       0.01,          dxgkrnl.sys
+      steam.exe (10200),       1000,       0.00,         Wdf01000.sys
+      steam.exe (10200),      45978,       0.01,           FLTMGR.SYS
+      steam.exe (10200),       2032,       0.00,         watchdog.sys
+      steam.exe (10200),       3973,       0.00,           win32k.sys
+      steam.exe (10200),       2000,       0.00,              vgk.sys
+      steam.exe (10200),      10998,       0.00,         WdFilter.sys
+      steam.exe (10200),      64216,       0.01,             Ntfs.sys
+      steam.exe (10200),       2004,       0.00,            NETIO.SYS
+      steam.exe (10200),       1004,       0.00,            tcpip.sys
+      steam.exe (10200),       2001,       0.00,         fileinfo.sys
+      steam.exe (10200),      37113,       0.00,         nvlddmkm.sys
+      steam.exe (10200),       3000,       0.00,              e1d.sys
+      steam.exe (10200),        937,       0.00,         intelppm.sys
+      steam.exe (10200),      11039,       0.00,           user32.dll
+      steam.exe (10200),      43263,       0.01,           win32u.dll
+      steam.exe (10200),      13949,       0.00,         kernel32.dll
+      steam.exe (10200),      15024,       0.00,         ucrtbase.dll
+      steam.exe (10200),      23987,       0.00,       KernelBase.dll
+      steam.exe (10200),      22042,       0.00,       win32kfull.sys
+      steam.exe (10200),       1014,       0.00,            luafv.sys
+      steam.exe (10200),       3007,       0.00,           cldflt.sys
+      steam.exe (10200),      70302,       0.01,          dxgmms2.sys
+      steam.exe (10200),      10012,       0.00,       win32kbase.sys
+      steam.exe (10200),       1000,       0.00,              Ndu.sys
+      steam.exe (10200),     203533,       0.03,            ntdll.dll
+      steam.exe (10200),       1000,       0.00,          gameflt.sys
+      steam.exe (10200),       1000,       0.00,           winsta.dll
+      steam.exe (10200),     397600,       0.05,        nvwgf2umx.dll
+      steam.exe (10200),      19166,       0.00,            d3d11.dll
+      steam.exe (10200),      24000,       0.00,         AudioSes.dll
+      steam.exe (10200),       1000,       0.00,       openvr_api.dll
+      steam.exe (10200),     109420,       0.01,    steamclient64.dll
+      steam.exe (10200),       3030,       0.00,        friendsui.dll
+      steam.exe (10200),      13025,       0.00,            steam.exe
+      steam.exe (10200),       4000,       0.00,      vstdlib_s64.dll
+      steam.exe (10200),    4418309,       0.59,          SteamUI.dll
+      steam.exe (10200),      78150,       0.01,     libavutil-60.dll
+      steam.exe (10200),      52163,       0.01,    nvEncodeAPI64.dll
+      steam.exe (10200),       8000,       0.00,          vgui2_s.dll
+      steam.exe (10200),      60152,       0.01,          video64.dll
+      steam.exe (10200),      87102,       0.01,        tier0_s64.dll
+      steam.exe (10200),       9076,       0.00,  libswresample-6.dll
+      steam.exe (10200),       1000,       0.00,             SDL3.dll
+      steam.exe (10200),    1985806,       0.26,    libavcodec-62.dll
+      steam.exe (10200),     108354,       0.01,   libavformat-62.dll
+        Dia.exe (14968),       2000,       0.00,         ntoskrnl.exe
+        Dia.exe (14968),       2000,       0.00,       KernelBase.dll
+        Dia.exe (14968),       2046,       0.00,          ArcCore.dll
+steamwebhelper.exe (15744),      44058,       0.01,         ntoskrnl.exe
+steamwebhelper.exe (15744),       1000,       0.00,         nvlddmkm.sys
+steamwebhelper.exe (15744),       1000,       0.00,         kernel32.dll
+steamwebhelper.exe (15744),       1000,       0.00,       KernelBase.dll
+steamwebhelper.exe (15744),      11068,       0.00,            ntdll.dll
+steamwebhelper.exe (15744),       5005,       0.00,        nvwgf2umx.dll
+steamwebhelper.exe (15744),      12143,       0.00,           libcef.dll
+msedgewebview2.exe (10120),       1000,       0.00,         ntoskrnl.exe
+steamwebhelper.exe (8852),     144750,       0.02,            "Unknown"
+steamwebhelper.exe (8852),      82372,       0.01,         ntoskrnl.exe
+steamwebhelper.exe (8852),       1000,       0.00,           FLTMGR.SYS
+steamwebhelper.exe (8852),       1000,       0.00,         fwpkclnt.sys
+steamwebhelper.exe (8852),       2980,       0.00,         nvlddmkm.sys
+steamwebhelper.exe (8852),       1000,       0.00,         kernel32.dll
+steamwebhelper.exe (8852),      15081,       0.00,            ntdll.dll
+steamwebhelper.exe (8852),     908254,       0.12,           libcef.dll
+        Dia.exe (14156),       6000,       0.00,            "Unknown"
+        Dia.exe (14156),     311064,       0.04,         ntoskrnl.exe
+        Dia.exe (14156),       1000,       0.00,          partmgr.sys
+        Dia.exe (14156),       1000,       0.00,      WppRecorder.sys
+        Dia.exe (14156),       3000,       0.00,           FLTMGR.SYS
+        Dia.exe (14156),       1000,       0.00,             Npfs.SYS
+        Dia.exe (14156),        992,       0.00,        FACEIT_AC.sys
+        Dia.exe (14156),       2000,       0.00,             Ntfs.sys
+        Dia.exe (14156),       3000,       0.00,         nvlddmkm.sys
+        Dia.exe (14156),       1000,       0.00,           win32u.dll
+        Dia.exe (14156),       4000,       0.00,         kernel32.dll
+        Dia.exe (14156),       1000,       0.00,         ucrtbase.dll
+        Dia.exe (14156),      12000,       0.00,       KernelBase.dll
+        Dia.exe (14156),       2000,       0.00,       win32kfull.sys
+        Dia.exe (14156),      61561,       0.01,            ntdll.dll
+        Dia.exe (14156),       1000,       0.00,    policymanager.dll
+        Dia.exe (14156),       1000,       0.00,           ws2_32.dll
+        Dia.exe (14156),        997,       0.00,          crypt32.dll
+        Dia.exe (14156),      13027,       0.00,        nvwgf2umx.dll
+        Dia.exe (14156),       1000,       0.00,          dbghelp.dll
+        Dia.exe (14156),       1000,       0.00, Microsoft.WindowsAppRuntime.Insights.Resource.dll
+        Dia.exe (14156),       1000,       0.00,     vcruntime140.dll
+        Dia.exe (14156),       1000,       0.00, Microsoft.UI.Input.dll
+        Dia.exe (14156),     111443,       0.01,          ArcCore.dll
+        Dia.exe (14156),       4032,       0.00,        swiftCore.dll
+        Dia.exe (14156),       2000,       0.00, swift_Concurrency.dll
+        Dia.exe (14156),       1000,       0.00,       chrome_elf.dll
+        Dia.exe (14228),       3080,       0.00,         ntoskrnl.exe
+        Dia.exe (14228),       1000,       0.00,        FACEIT_AC.sys
+        Dia.exe (14228),       1000,       0.00,            NETIO.SYS
+        Dia.exe (14228),       1059,       0.00,       KernelBase.dll
+        Dia.exe (14228),       4000,       0.00,            ntdll.dll
+        Dia.exe (14228),       3110,       0.00,          ArcCore.dll
+msedgewebview2.exe (11168),       1000,       0.00,           msedge.dll
+    Discord.exe (16820),      86200,       0.01,            "Unknown"
+    Discord.exe (16820),     956500,       0.13,         ntoskrnl.exe
+    Discord.exe (16820),       1765,       0.00,           volmgr.sys
+    Discord.exe (16820),        998,       0.00,         mountmgr.sys
+    Discord.exe (16820),       1000,       0.00,         storport.sys
+    Discord.exe (16820),       2999,       0.00,           FLTMGR.SYS
+    Discord.exe (16820),       9998,       0.00,           win32k.sys
+    Discord.exe (16820),       1003,       0.00,             UCPD.sys
+    Discord.exe (16820),       1000,       0.00,             Npfs.SYS
+    Discord.exe (16820),       5018,       0.00,              vgk.sys
+    Discord.exe (16820),       1984,       0.00,         WdFilter.sys
+    Discord.exe (16820),       1000,       0.00,             Ntfs.sys
+    Discord.exe (16820),       1000,       0.00,           fvevol.sys
+    Discord.exe (16820),       1008,       0.00,             ndis.sys
+    Discord.exe (16820),       4051,       0.00,            NETIO.SYS
+    Discord.exe (16820),       1000,       0.00,            tcpip.sys
+    Discord.exe (16820),       1027,       0.00,          volsnap.sys
+    Discord.exe (16820),       1079,       0.00,          USBXHCI.SYS
+    Discord.exe (16820),      20261,       0.00,         nvlddmkm.sys
+    Discord.exe (16820),       4000,       0.00,              e1d.sys
+    Discord.exe (16820),       2000,       0.00,           user32.dll
+    Discord.exe (16820),       9015,       0.00,           win32u.dll
+    Discord.exe (16820),      37172,       0.00,         kernel32.dll
+    Discord.exe (16820),       7000,       0.00,         ucrtbase.dll
+    Discord.exe (16820),      31177,       0.00,       KernelBase.dll
+    Discord.exe (16820),      10000,       0.00,           rpcrt4.dll
+    Discord.exe (16820),      46212,       0.01,       win32kfull.sys
+    Discord.exe (16820),       4988,       0.00,          dxgmms2.sys
+    Discord.exe (16820),      14145,       0.00,       win32kbase.sys
+    Discord.exe (16820),     270388,       0.04,            ntdll.dll
+    Discord.exe (16820),       1000,       0.00,          uxtheme.dll
+    Discord.exe (16820),       1040,       0.00,           ws2_32.dll
+    Discord.exe (16820),       6993,       0.00,            winmm.dll
+    Discord.exe (16820),      44115,       0.01,         AudioSes.dll
+    Discord.exe (16820),       4013,       0.00,          RTWorkQ.dll
+    Discord.exe (16820),     885253,       0.12,          Discord.exe
+    Discord.exe (16820),       5032,       0.00,   discord_utils.node
+    Discord.exe (16820),    2660020,       0.35,   discord_voice.node
+    Discord.exe (16820),    2231261,       0.30,   discord_krisp.node
+    Discord.exe (16820),       1000,       0.00, FrameServerClient.dll
+    Discord.exe (16820),       1000,       0.00, discord_desktop_overlay.node
+   Grok Bot.exe (9576),     763123,       0.10,            "Unknown"
+   Grok Bot.exe (9576),    3606861,       0.48,         ntoskrnl.exe
+   Grok Bot.exe (9576),       1000,       0.00,         storport.sys
+   Grok Bot.exe (9576),     248393,       0.03,          dxgkrnl.sys
+   Grok Bot.exe (9576),      17973,       0.00,         Wdf01000.sys
+   Grok Bot.exe (9576),       7085,       0.00,      WppRecorder.sys
+   Grok Bot.exe (9576),      14086,       0.00,           FLTMGR.SYS
+   Grok Bot.exe (9576),      10038,       0.00,         watchdog.sys
+   Grok Bot.exe (9576),      38209,       0.01,           win32k.sys
+   Grok Bot.exe (9576),       8843,       0.00,             UCPD.sys
+   Grok Bot.exe (9576),      27985,       0.00,             Npfs.SYS
+   Grok Bot.exe (9576),       3036,       0.00,        FACEIT_AC.sys
+   Grok Bot.exe (9576),      28046,       0.00,              vgk.sys
+   Grok Bot.exe (9576),       1000,       0.00,         CLASSPNP.SYS
+   Grok Bot.exe (9576),       1993,       0.00,          wfplwfs.sys
+   Grok Bot.exe (9576),      11877,       0.00,             ndis.sys
+   Grok Bot.exe (9576),       7037,       0.00,            NETIO.SYS
+   Grok Bot.exe (9576),      10940,       0.00,            tcpip.sys
+   Grok Bot.exe (9576),       2982,       0.00,         fwpkclnt.sys
+   Grok Bot.exe (9576),       2000,       0.00,          volsnap.sys
+   Grok Bot.exe (9576),       2000,       0.00,              afd.sys
+   Grok Bot.exe (9576),      10786,       0.00,          USBXHCI.SYS
+   Grok Bot.exe (9576),       1000,       0.00,               ks.sys
+   Grok Bot.exe (9576),       1000,       0.00,         ucx01000.sys
+   Grok Bot.exe (9576),     214779,       0.03,         nvlddmkm.sys
+   Grok Bot.exe (9576),       2000,       0.00,           ibtusb.sys
+   Grok Bot.exe (9576),       1060,       0.00,           mouhid.sys
+   Grok Bot.exe (9576),       1000,       0.00,         mouclass.sys
+   Grok Bot.exe (9576),       1000,       0.00,         HIDCLASS.SYS
+   Grok Bot.exe (9576),      26965,       0.00,              e1d.sys
+   Grok Bot.exe (9576),       1000,       0.00,         intelppm.sys
+   Grok Bot.exe (9576),      25039,       0.00,           user32.dll
+   Grok Bot.exe (9576),      67041,       0.01,           win32u.dll
+   Grok Bot.exe (9576),      37991,       0.01,         kernel32.dll
+   Grok Bot.exe (9576),       6000,       0.00,        msvcp_win.dll
+   Grok Bot.exe (9576),      14017,       0.00,         ucrtbase.dll
+   Grok Bot.exe (9576),      21733,       0.00,            gdi32.dll
+   Grok Bot.exe (9576),      95085,       0.01,       KernelBase.dll
+   Grok Bot.exe (9576),       4007,       0.00,       win32kfull.sys
+   Grok Bot.exe (9576),      16856,       0.00,    win32kbase_rs.sys
+   Grok Bot.exe (9576),      95212,       0.01,          dxgmms2.sys
+   Grok Bot.exe (9576),     117857,       0.02,       win32kbase.sys
+   Grok Bot.exe (9576),     929630,       0.12,            ntdll.dll
+   Grok Bot.exe (9576),    3590318,       0.48,        nvwgf2umx.dll
+   Grok Bot.exe (9576),      86027,       0.01,             dxgi.dll
+   Grok Bot.exe (9576),       2917,       0.00,           dwmapi.dll
+   Grok Bot.exe (9576),       1000,       0.00,            winmm.dll
+   Grok Bot.exe (9576),     670756,       0.09,            d3d11.dll
+   Grok Bot.exe (9576),    2131365,       0.28,        libGLESv2.dll
+   Grok Bot.exe (9576),      14018,       0.00,           libEGL.dll
+   Grok Bot.exe (9576),    6406134,       0.85,         Grok Bot.exe
+    svchost.exe (10000),       1000,       0.00,       KernelBase.dll
+       Blip.exe (11728),       2000,       0.00,            "Unknown"
+       Blip.exe (11728),     112192,       0.01,         ntoskrnl.exe
+       Blip.exe (11728),       3000,       0.00,         nvlddmkm.sys
+       Blip.exe (11728),       1000,       0.00,         intelppm.sys
+       Blip.exe (11728),       2000,       0.00,         kernel32.dll
+       Blip.exe (11728),       4000,       0.00,       KernelBase.dll
+       Blip.exe (11728),      33000,       0.00,            ntdll.dll
+       Blip.exe (11728),       1000,       0.00,           dsound.dll
+       Blip.exe (11728),       1000,       0.00,         blip-jni.dll
+       Blip.exe (11728),      65047,       0.01,              jvm.dll
+       Blip.exe (11728),       1000,       0.00,     vcruntime140.dll
+steamwebhelper.exe (21228),       1000,       0.00,         ntoskrnl.exe
+   Grok Bot.exe (7892),      20778,       0.00,            "Unknown"
+   Grok Bot.exe (7892),     518527,       0.07,         ntoskrnl.exe
+   Grok Bot.exe (7892),       4000,       0.00,      WppRecorder.sys
+   Grok Bot.exe (7892),       1000,       0.00,           FLTMGR.SYS
+   Grok Bot.exe (7892),      17000,       0.00,           win32k.sys
+   Grok Bot.exe (7892),       1000,       0.00,         WdFilter.sys
+   Grok Bot.exe (7892),       3087,       0.00,             Ntfs.sys
+   Grok Bot.exe (7892),       2994,       0.00,            tcpip.sys
+   Grok Bot.exe (7892),       1030,       0.00,         HDAudBus.sys
+   Grok Bot.exe (7892),       5000,       0.00,         nvlddmkm.sys
+   Grok Bot.exe (7892),       6000,       0.00,           user32.dll
+   Grok Bot.exe (7892),      14987,       0.00,           win32u.dll
+   Grok Bot.exe (7892),       5000,       0.00,         kernel32.dll
+   Grok Bot.exe (7892),       1000,       0.00,       KernelBase.dll
+   Grok Bot.exe (7892),      20921,       0.00,       win32kfull.sys
+   Grok Bot.exe (7892),       1000,       0.00,            luafv.sys
+   Grok Bot.exe (7892),      30119,       0.00,       win32kbase.sys
+   Grok Bot.exe (7892),      22208,       0.00,            ntdll.dll
+   Grok Bot.exe (7892),     153479,       0.02,         Grok Bot.exe
+    Screeni.exe (2088),       4063,       0.00,         ntoskrnl.exe
+    Screeni.exe (2088),       1000,       0.00,           win32k.sys
+    Screeni.exe (2088),       1060,       0.00,       Qt6Widgets.dll
+    svchost.exe (14892),       1070,       0.00,         ntoskrnl.exe
+    svchost.exe (22276),       1000,       0.00,         ntoskrnl.exe
+OverwolfBrowser.exe (16776),       5000,       0.00,         ntoskrnl.exe
+OverwolfBrowser.exe (16776),       1000,       0.00,         storport.sys
+OverwolfBrowser.exe (16776),       3000,       0.00,            ntdll.dll
+OverwolfBrowser.exe (16776),       1001,       0.00, vcruntime140_clr0400.dll
+OverwolfBrowser.exe (16776),        995,       0.00,           libcef.dll
+OverwolfBrowser.exe (16776),      13014,       0.00,              clr.dll
+OverwolfHelper64.exe (21540),     152061,       0.02,         ntoskrnl.exe
+OverwolfHelper64.exe (21540),       1021,       0.00,         stornvme.sys
+OverwolfHelper64.exe (21540),       1000,       0.00,            ntdll.dll
+OverwolfHelper64.exe (21540),        984,       0.00, OWExplorerLauncher.dll
+    svchost.exe (2280),       1879,       0.00,            "Unknown"
+    svchost.exe (2280),      11000,       0.00,         ntoskrnl.exe
+    svchost.exe (2280),       1000,       0.00,         stornvme.sys
+    svchost.exe (2280),       1009,       0.00,         nvlddmkm.sys
+    svchost.exe (2280),       1000,       0.00,        msvcp_win.dll
+    svchost.exe (2280),       8963,       0.00,         ucrtbase.dll
+    svchost.exe (2280),      10878,       0.00,          sechost.dll
+    svchost.exe (2280),       2935,       0.00,       KernelBase.dll
+    svchost.exe (2280),      28997,       0.00,            ntdll.dll
+    svchost.exe (2280),      97701,       0.01,  GraphicsPerfSvc.dll
+    svchost.exe (2280),       5066,       0.00,      onnxruntime.dll
+    svchost.exe (2280),       6941,       0.00, Windows.AI.MachineLearning.dll
+OverwolfBrowser.exe (16944),      12156,       0.00,         ntoskrnl.exe
+OverwolfBrowser.exe (16944),       6086,       0.00,            ntdll.dll
+OverwolfBrowser.exe (16944),        999,       0.00, ucrtbase_clr0400.dll
+OverwolfBrowser.exe (16944),       1045,       0.00,           libcef.dll
+OverwolfBrowser.exe (16944),       6935,       0.00,              clr.dll
+    svchost.exe (15844),       7000,       0.00,         ntoskrnl.exe
+    svchost.exe (15844),       1000,       0.00,         ucrtbase.dll
+    svchost.exe (15844),       1000,       0.00, bcryptprimitives.dll
+    svchost.exe (15844),       1995,       0.00,           rpcrt4.dll
+    svchost.exe (15844),       1000,       0.00,       win32kbase.sys
+    svchost.exe (15844),       4000,       0.00,            ntdll.dll
+    svchost.exe (15844),       2015,       0.00,          combase.dll
+   unsecapp.exe (16792),       3913,       0.00,         ntoskrnl.exe
+   unsecapp.exe (16792),       1000,       0.00,         fastprox.dll
+OverwolfHelper.exe (9800),     213101,       0.03,         ntoskrnl.exe
+OverwolfHelper.exe (9800),       3011,       0.00,         nvlddmkm.sys
+OverwolfHelper.exe (9800),       5000,       0.00,            wow64.dll
+OverwolfHelper.exe (9800),        926,       0.00,            ntdll.dll
+OverwolfHelper.exe (9800),       2009,       0.00, OWExplorerLauncher.dll
+   Grok Bot.exe (11028),       2000,       0.00,         ntoskrnl.exe
+   Grok Bot.exe (11028),       1000,       0.00,       KernelBase.dll
+   Grok Bot.exe (11028),       2000,       0.00,         Grok Bot.exe
+   Overwolf.exe (20892),       2000,       0.00,            "Unknown"
+   Overwolf.exe (20892),     470585,       0.06,         ntoskrnl.exe
+   Overwolf.exe (20892),       1000,       0.00,           volmgr.sys
+   Overwolf.exe (20892),       1000,       0.00,         Wdf01000.sys
+   Overwolf.exe (20892),       1000,       0.00,           win32k.sys
+   Overwolf.exe (20892),       1001,       0.00,              vgk.sys
+   Overwolf.exe (20892),       1982,       0.00,         nvlddmkm.sys
+   Overwolf.exe (20892),       1000,       0.00,           user32.dll
+   Overwolf.exe (20892),       1000,       0.00,           win32u.dll
+   Overwolf.exe (20892),       9000,       0.00,         kernel32.dll
+   Overwolf.exe (20892),       7010,       0.00,       KernelBase.dll
+   Overwolf.exe (20892),       1073,       0.00,          mswsock.dll
+   Overwolf.exe (20892),       3964,       0.00,       win32kfull.sys
+   Overwolf.exe (20892),       1022,       0.00,          dxgmms2.sys
+   Overwolf.exe (20892),       2045,       0.00,       win32kbase.sys
+   Overwolf.exe (20892),     110304,       0.01,            ntdll.dll
+   Overwolf.exe (20892),       1000,       0.00,  ServicingCommon.dll
+   Overwolf.exe (20892),       2000,       0.00,         schannel.dll
+   Overwolf.exe (20892),       1000,       0.00,         oleaut32.dll
+   Overwolf.exe (20892),       1044,       0.00, UIAutomationCore.dll
+   Overwolf.exe (20892),       5029,       0.00, vcruntime140_clr0400.dll
+   Overwolf.exe (20892),       9988,       0.00, ucrtbase_clr0400.dll
+   Overwolf.exe (20892),       1090,       0.00,       chrome_elf.dll
+   Overwolf.exe (20892),      55443,       0.01,           libcef.dll
+   Overwolf.exe (20892),       1000,       0.00,          OWAgent.dll
+   Overwolf.exe (20892),      28020,       0.00,         OWServer.dll
+   Overwolf.exe (20892),       1000,       0.00,   WindowsBase.ni.dll
+   Overwolf.exe (20892),       5982,       0.00,      mscorlib.ni.dll
+   Overwolf.exe (20892),     136018,       0.02,              clr.dll
+  SDXHelper.exe (6128),       2000,       0.00,            "Unknown"
+  SDXHelper.exe (6128),      64457,       0.01,         ntoskrnl.exe
+  SDXHelper.exe (6128),       2000,       0.00,         storport.sys
+  SDXHelper.exe (6128),       1011,       0.00,         stornvme.sys
+  SDXHelper.exe (6128),       1000,       0.00,           FLTMGR.SYS
+  SDXHelper.exe (6128),       1000,       0.00,              vgk.sys
+  SDXHelper.exe (6128),       1000,       0.00,         nvlddmkm.sys
+  SDXHelper.exe (6128),       1000,       0.00,           user32.dll
+  SDXHelper.exe (6128),       1000,       0.00,           win32u.dll
+  SDXHelper.exe (6128),       1000,       0.00,       win32kfull.sys
+  SDXHelper.exe (6128),       2000,       0.00,       win32kbase.sys
+  SDXHelper.exe (6128),       3977,       0.00,            ntdll.dll
+  SDXHelper.exe (6128),       4000,       0.00, Mso20win32client.dll
+    svchost.exe (12512),       2062,       0.00,         ntoskrnl.exe
+    svchost.exe (2520),       1000,       0.00,            ntdll.dll
+OverwolfBrowser.exe (21320),       6071,       0.00,         ntoskrnl.exe
+OverwolfBrowser.exe (21320),       1000,       0.00,         storport.sys
+OverwolfBrowser.exe (21320),        961,       0.00,           FLTMGR.SYS
+OverwolfBrowser.exe (21320),       5998,       0.00,            ntdll.dll
+OverwolfBrowser.exe (21320),      11979,       0.00,              clr.dll
+    Spotify.exe (8484),        987,       0.00,         ntoskrnl.exe
+    Spotify.exe (8484),       1000,       0.00,           libcef.dll
+    conhost.exe (12712),       4000,       0.00,         ntoskrnl.exe
+   Grok Bot.exe (4208),      54010,       0.01,         ntoskrnl.exe
+   Grok Bot.exe (4208),       1000,       0.00,         kernel32.dll
+   Grok Bot.exe (4208),       3000,       0.00,       KernelBase.dll
+   Grok Bot.exe (4208),       8011,       0.00,            ntdll.dll
+   Grok Bot.exe (4208),       5000,       0.00,        nvwgf2umx.dll
+SystemSettings.exe (17804),       1000,       0.00,            "Unknown"
+SystemSettings.exe (17804),      17045,       0.00,         ntoskrnl.exe
+SystemSettings.exe (17804),       1002,       0.00,           user32.dll
+SystemSettings.exe (17804),       1000,       0.00,       win32kfull.sys
+SystemSettings.exe (17804),       6000,       0.00,            ntdll.dll
+SystemSettings.exe (17804),       1000,       0.00,            gpapi.dll
+SystemSettings.exe (17804),       1000,       0.00,        wincorlib.dll
+   Grok Bot.exe (8220),     103004,       0.01,            "Unknown"
+   Grok Bot.exe (8220),     476726,       0.06,         ntoskrnl.exe
+   Grok Bot.exe (8220),       1000,       0.00,         intelpep.sys
+   Grok Bot.exe (8220),       5000,       0.00,         storport.sys
+   Grok Bot.exe (8220),       1000,       0.00,         stornvme.sys
+   Grok Bot.exe (8220),       1000,       0.00,          partmgr.sys
+   Grok Bot.exe (8220),       1000,       0.00,         Wdf01000.sys
+   Grok Bot.exe (8220),       1022,       0.00,      WppRecorder.sys
+   Grok Bot.exe (8220),      56973,       0.01,           FLTMGR.SYS
+   Grok Bot.exe (8220),       1000,       0.00,             UCPD.sys
+   Grok Bot.exe (8220),       2000,       0.00,              vgk.sys
+   Grok Bot.exe (8220),       3082,       0.00,         CLASSPNP.SYS
+   Grok Bot.exe (8220),      13013,       0.00,         WdFilter.sys
+   Grok Bot.exe (8220),      84511,       0.01,             Ntfs.sys
+   Grok Bot.exe (8220),       2000,       0.00,              Wof.sys
+   Grok Bot.exe (8220),       1000,       0.00,             ndis.sys
+   Grok Bot.exe (8220),       1071,       0.00,            NETIO.SYS
+   Grok Bot.exe (8220),       5030,       0.00,            tcpip.sys
+   Grok Bot.exe (8220),       1000,       0.00,          volsnap.sys
+   Grok Bot.exe (8220),       2000,       0.00,         fileinfo.sys
+   Grok Bot.exe (8220),       1000,       0.00,           iorate.sys
+   Grok Bot.exe (8220),       4085,       0.00,              afd.sys
+   Grok Bot.exe (8220),       6000,       0.00,         nvlddmkm.sys
+   Grok Bot.exe (8220),       2995,       0.00,              e1d.sys
+   Grok Bot.exe (8220),      10991,       0.00,       KernelBase.dll
+   Grok Bot.exe (8220),        976,       0.00,          mswsock.dll
+   Grok Bot.exe (8220),       4000,       0.00,            luafv.sys
+   Grok Bot.exe (8220),       1000,       0.00,              bfs.sys
+   Grok Bot.exe (8220),       4000,       0.00,           cldflt.sys
+   Grok Bot.exe (8220),       1000,       0.00,          bindflt.sys
+   Grok Bot.exe (8220),      60995,       0.01,            ntdll.dll
+   Grok Bot.exe (8220),       6000,       0.00,          gameflt.sys
+   Grok Bot.exe (8220),     553973,       0.07,         Grok Bot.exe
+    valheim.exe (19912),     389038,       0.05,            "Unknown"
+    valheim.exe (19912),    6085146,       0.81,                     
+    valheim.exe (19912),   39661359,       5.28,         ntoskrnl.exe
+    valheim.exe (19912),       3054,       0.00,         storport.sys
+    valheim.exe (19912),       4000,       0.00,             ACPI.sys
+    valheim.exe (19912),       3015,       0.00,         stornvme.sys
+    valheim.exe (19912),     174406,       0.02,          dxgkrnl.sys
+    valheim.exe (19912),      84024,       0.01,         Wdf01000.sys
+    valheim.exe (19912),      34127,       0.00,      WppRecorder.sys
+    valheim.exe (19912),      18120,       0.00,           FLTMGR.SYS
+    valheim.exe (19912),       4995,       0.00,         watchdog.sys
+    valheim.exe (19912),      40120,       0.01,           win32k.sys
+    valheim.exe (19912),       3045,       0.00,             Npfs.SYS
+    valheim.exe (19912),       1000,       0.00,         CLASSPNP.SYS
+    valheim.exe (19912),       2044,       0.00,         WdFilter.sys
+    valheim.exe (19912),       4956,       0.00,             Ntfs.sys
+    valheim.exe (19912),        758,       0.00,              Wof.sys
+    valheim.exe (19912),       2979,       0.00,          wfplwfs.sys
+    valheim.exe (19912),      55018,       0.01,             ndis.sys
+    valheim.exe (19912),      56896,       0.01,            NETIO.SYS
+    valheim.exe (19912),      81895,       0.01,            tcpip.sys
+    valheim.exe (19912),       9023,       0.00,         fwpkclnt.sys
+    valheim.exe (19912),       2000,       0.00,          volsnap.sys
+    valheim.exe (19912),       1000,       0.00,         fileinfo.sys
+    valheim.exe (19912),       1000,       0.00,           iorate.sys
+    valheim.exe (19912),      22853,       0.00,              afd.sys
+    valheim.exe (19912),       1058,       0.00,        npsvctrig.sys
+    valheim.exe (19912),      60336,       0.01,          USBXHCI.SYS
+    valheim.exe (19912),       5080,       0.00,         ucx01000.sys
+    valheim.exe (19912),       3068,       0.00,         HDAudBus.sys
+    valheim.exe (19912),     709567,       0.09,         nvlddmkm.sys
+    valheim.exe (19912),       2044,       0.00,         usbaudio.sys
+    valheim.exe (19912),       3137,       0.00,           ibtusb.sys
+    valheim.exe (19912),       2069,       0.00,           BTHUSB.sys
+    valheim.exe (19912),       1964,       0.00,          UsbHub3.sys
+    valheim.exe (19912),       2000,       0.00,          usbccgp.sys
+    valheim.exe (19912),       2052,       0.00,           mouhid.sys
+    valheim.exe (19912),       2098,       0.00,         mouclass.sys
+    valheim.exe (19912),      13210,       0.00,          BTHport.sys
+    valheim.exe (19912),      14060,       0.00,         HIDCLASS.SYS
+    valheim.exe (19912),       6043,       0.00,           hidusb.sys
+    valheim.exe (19912),       4976,       0.00,         HIDPARSE.SYS
+    valheim.exe (19912),      78923,       0.01,              e1d.sys
+    valheim.exe (19912),      33279,       0.00,         intelppm.sys
+    valheim.exe (19912),      40715,       0.01,           user32.dll
+    valheim.exe (19912),      69192,       0.01,           win32u.dll
+    valheim.exe (19912),     544669,       0.07,         kernel32.dll
+    valheim.exe (19912),       2000,       0.00,        msvcp_win.dll
+    valheim.exe (19912),       4000,       0.00,         ucrtbase.dll
+    valheim.exe (19912),      24933,       0.00, bcryptprimitives.dll
+    valheim.exe (19912),        925,       0.00,           msvcrt.dll
+    valheim.exe (19912),      15982,       0.00,          sspicli.dll
+    valheim.exe (19912),       1000,       0.00,            gdi32.dll
+    valheim.exe (19912),     291808,       0.04,       KernelBase.dll
+    valheim.exe (19912),      14914,       0.00,          mswsock.dll
+    valheim.exe (19912),       2000,       0.00,          BthA2dp.sys
+    valheim.exe (19912),     159573,       0.02,       win32kfull.sys
+    valheim.exe (19912),       1985,       0.00,    win32kbase_rs.sys
+    valheim.exe (19912),     162307,       0.02,          dxgmms2.sys
+    valheim.exe (19912),     105762,       0.01,       win32kbase.sys
+    valheim.exe (19912),      16872,       0.00,              Ndu.sys
+    valheim.exe (19912),   17292000,       2.30,            ntdll.dll
+    valheim.exe (19912),       8979,       0.00,           bcrypt.dll
+    valheim.exe (19912),      16942,       0.00,       ncryptsslp.dll
+    valheim.exe (19912),      13056,       0.00,         schannel.dll
+    valheim.exe (19912),        994,       0.00,          combase.dll
+    valheim.exe (19912),       5883,       0.00,          uxtheme.dll
+    valheim.exe (19912),      23206,       0.00,           ws2_32.dll
+    valheim.exe (19912),       6026,       0.00,           ncrypt.dll
+    valheim.exe (19912),       5688,       0.00,            imm32.dll
+    valheim.exe (19912),       1000,       0.00,         oleaut32.dll
+    valheim.exe (19912),     744280,       0.10,        nvwgf2umx.dll
+    valheim.exe (19912),      33100,       0.00,             dxgi.dll
+    valheim.exe (19912),       1000,       0.00,     NvMessageBus.dll
+    valheim.exe (19912),       2907,       0.00,            winmm.dll
+    valheim.exe (19912),       2000,       0.00,    CoreMessaging.dll
+    valheim.exe (19912),        944,       0.00, CoreUIComponents.dll
+    valheim.exe (19912),       9000,       0.00,         AudioSes.dll
+    valheim.exe (19912),       1000,       0.00,            msctf.dll
+    valheim.exe (19912),     162943,       0.02,        D3D12Core.dll
+    valheim.exe (19912),      10976,       0.00,            D3D12.dll
+    valheim.exe (19912),      10000,       0.00,     vcruntime140.dll
+    valheim.exe (19912),       1000,       0.00,         msvcp140.dll
+    valheim.exe (19912),        994,       0.00, TextInputFramework.dll
+    valheim.exe (19912),      32506,       0.00,    steamclient64.dll
+    valheim.exe (19912),       2000,       0.00,      vstdlib_s64.dll
+    valheim.exe (19912),       1000,       0.00,        tier0_s64.dll
+    valheim.exe (19912),      12692,       0.00, InputCapturePlugin_x64.dll
+    valheim.exe (19912),       5880,       0.00,      steam_api64.dll
+    valheim.exe (19912),     206572,       0.03,       PartyWin32.dll
+    valheim.exe (19912),    2255498,       0.30,   mono-2.0-bdwgc.dll
+    valheim.exe (19912),    1268553,       0.17, lib_burst_generated.dll
+    valheim.exe (19912),   98339060,      13.09,      UnityPlayer.dll
+    valheim.exe (19912),       2009,       0.00,         OWClient.dll
+    valheim.exe (19912),   10183134,       1.36,         nvoglv64.dll
+    valheim.exe (19912),       2934,       0.00,  graphics-hook64.dll
+    valheim.exe (19912),    1664388,       0.22, GameOverlayRenderer64.dll
+    valheim.exe (19912),      17780,       0.00,         vulkan-1.dll
+    valheim.exe (19912),      10995,       0.00, SteamOverlayVulkanLayer64.dll
+    valheim.exe (19912),       4011,       0.00, ow-graphics-hook64.dll
+    valheim.exe (19912),      17955,       0.00, we-graphics-hook64.dll
+   Grok Bot.exe (18176),       3000,       0.00,         Grok Bot.exe
+    Spotify.exe (3816),       6027,       0.00,            "Unknown"
+    Spotify.exe (3816),     446751,       0.06,         ntoskrnl.exe
+    Spotify.exe (3816),       1000,       0.00,         storport.sys
+    Spotify.exe (3816),      10995,       0.00,           FLTMGR.SYS
+    Spotify.exe (3816),       1948,       0.00,         WdFilter.sys
+    Spotify.exe (3816),       4988,       0.00,             Ntfs.sys
+    Spotify.exe (3816),       2004,       0.00,             ndis.sys
+    Spotify.exe (3816),       3058,       0.00,            NETIO.SYS
+    Spotify.exe (3816),       1004,       0.00,            tcpip.sys
+    Spotify.exe (3816),       1000,       0.00,          volsnap.sys
+    Spotify.exe (3816),       1000,       0.00,         fileinfo.sys
+    Spotify.exe (3816),       1056,       0.00,         nvlddmkm.sys
+    Spotify.exe (3816),       1979,       0.00,              e1d.sys
+    Spotify.exe (3816),       1000,       0.00,         intelppm.sys
+    Spotify.exe (3816),       7000,       0.00,         kernel32.dll
+    Spotify.exe (3816),       5000,       0.00,         ucrtbase.dll
+    Spotify.exe (3816),       9992,       0.00,       KernelBase.dll
+    Spotify.exe (3816),       1000,       0.00,           rpcrt4.dll
+    Spotify.exe (3816),       2000,       0.00,       win32kfull.sys
+    Spotify.exe (3816),       1000,       0.00,            luafv.sys
+    Spotify.exe (3816),       1000,       0.00,          dxgmms2.sys
+    Spotify.exe (3816),       1000,       0.00,       win32kbase.sys
+    Spotify.exe (3816),     161467,       0.02,            ntdll.dll
+    Spotify.exe (3816),       1000,       0.00,         cryptnet.dll
+    Spotify.exe (3816),       5071,       0.00,          combase.dll
+    Spotify.exe (3816),      15000,       0.00,         AudioSes.dll
+    Spotify.exe (3816),     571266,       0.08,          Spotify.dll
+    Spotify.exe (3816),      37162,       0.00,           libcef.dll
+ powershell.exe (17588),        998,       0.00,            "Unknown"
+ powershell.exe (17588),       4976,       0.00,         ntoskrnl.exe
+ powershell.exe (17588),       3993,       0.00,            ntdll.dll
+ powershell.exe (17588),       4993,       0.00,              clr.dll
+   Grok Bot.exe (21944),      10182,       0.00,            "Unknown"
+   Grok Bot.exe (21944),      31196,       0.00,         ntoskrnl.exe
+   Grok Bot.exe (21944),       1000,       0.00,             Ntfs.sys
+   Grok Bot.exe (21944),       2019,       0.00,            tcpip.sys
+   Grok Bot.exe (21944),       1071,       0.00,              afd.sys
+   Grok Bot.exe (21944),       1000,       0.00,         ucrtbase.dll
+   Grok Bot.exe (21944),       1000,       0.00,       KernelBase.dll
+   Grok Bot.exe (21944),       1009,       0.00,           rpcrt4.dll
+   Grok Bot.exe (21944),       5005,       0.00,            ntdll.dll
+   Grok Bot.exe (21944),       1000,       0.00,          gameflt.sys
+   Grok Bot.exe (21944),      36902,       0.00,         Grok Bot.exe
+    msiexec.exe (22744),       5927,       0.00,         ntoskrnl.exe
+    msiexec.exe (22744),       2000,       0.00,           FLTMGR.SYS
+    msiexec.exe (22744),       1000,       0.00,         WdFilter.sys
+    msiexec.exe (22744),       1000,       0.00,          apphelp.dll
+    msiexec.exe (22744),       1051,       0.00,         oleaut32.dll
+    Spotify.exe (10868),       4995,       0.00,            "Unknown"
+    Spotify.exe (10868),     125134,       0.02,         ntoskrnl.exe
+    Spotify.exe (10868),       2000,       0.00,          dxgkrnl.sys
+    Spotify.exe (10868),       1078,       0.00,              vgk.sys
+    Spotify.exe (10868),       3000,       0.00,         nvlddmkm.sys
+    Spotify.exe (10868),       1026,       0.00,          UsbHub3.sys
+    Spotify.exe (10868),       3000,       0.00,           win32u.dll
+    Spotify.exe (10868),       2000,       0.00,         kernel32.dll
+    Spotify.exe (10868),       4000,       0.00,       KernelBase.dll
+    Spotify.exe (10868),       1000,       0.00,    win32kbase_rs.sys
+    Spotify.exe (10868),       4000,       0.00,       win32kbase.sys
+    Spotify.exe (10868),      18009,       0.00,            ntdll.dll
+    Spotify.exe (10868),      23066,       0.00,        nvwgf2umx.dll
+    Spotify.exe (10868),       2002,       0.00,             dxgi.dll
+    Spotify.exe (10868),       2001,       0.00,            d3d11.dll
+    Spotify.exe (10868),      50984,       0.01,           libcef.dll
+    Spotify.exe (10868),       5041,       0.00,        libGLESv2.dll
+    Spotify.exe (23520),       4000,       0.00,            "Unknown"
+    Spotify.exe (23520),     100226,       0.01,         ntoskrnl.exe
+    Spotify.exe (23520),       1000,       0.00,             Npfs.SYS
+    Spotify.exe (23520),        955,       0.00,          wfplwfs.sys
+    Spotify.exe (23520),       2052,       0.00,             ndis.sys
+    Spotify.exe (23520),       2000,       0.00,            NETIO.SYS
+    Spotify.exe (23520),       1034,       0.00,            tcpip.sys
+    Spotify.exe (23520),       1046,       0.00,         fwpkclnt.sys
+    Spotify.exe (23520),       4000,       0.00,              afd.sys
+    Spotify.exe (23520),      12104,       0.00,              e1d.sys
+    Spotify.exe (23520),       1000,       0.00,         kernel32.dll
+    Spotify.exe (23520),       1000,       0.00,       KernelBase.dll
+    Spotify.exe (23520),       1000,       0.00,          mswsock.dll
+    Spotify.exe (23520),       2935,       0.00,              Ndu.sys
+    Spotify.exe (23520),      21094,       0.00,            ntdll.dll
+    Spotify.exe (23520),      57950,       0.01,           libcef.dll
+UnityCrashHandler64.exe (21468),       1061,       0.00,            ntdll.dll
+        Dia.exe (19496),      12048,       0.00,         ntoskrnl.exe
+        Dia.exe (19496),       1023,       0.00,           FLTMGR.SYS
+        Dia.exe (19496),       2038,       0.00,            ntdll.dll
+        Dia.exe (19496),       5049,       0.00,          ArcCore.dll
+VBCSCompiler.exe (6236),       3002,       0.00,            "Unknown"
+VBCSCompiler.exe (6236),      46200,       0.01,         ntoskrnl.exe
+VBCSCompiler.exe (6236),       1000,       0.00,          BTHport.sys
+VBCSCompiler.exe (6236),       3978,       0.00,         ucrtbase.dll
+VBCSCompiler.exe (6236),       1000,       0.00,       KernelBase.dll
+VBCSCompiler.exe (6236),       1043,       0.00,          dxgmms2.sys
+VBCSCompiler.exe (6236),      70181,       0.01,            ntdll.dll
+VBCSCompiler.exe (6236),       6009,       0.00,           clrjit.dll
+VBCSCompiler.exe (6236),     174165,       0.02,          coreclr.dll
+   Grok Bot.exe (12440),    1231003,       0.16,            "Unknown"
+   Grok Bot.exe (12440),    2835665,       0.38,         ntoskrnl.exe
+   Grok Bot.exe (12440),       3092,       0.00,         storport.sys
+   Grok Bot.exe (12440),       2003,       0.00,         stornvme.sys
+   Grok Bot.exe (12440),        879,       0.00,          dxgkrnl.sys
+   Grok Bot.exe (12440),      11140,       0.00,         Wdf01000.sys
+   Grok Bot.exe (12440),       5018,       0.00,      WppRecorder.sys
+   Grok Bot.exe (12440),      10000,       0.00,           FLTMGR.SYS
+   Grok Bot.exe (12440),      19054,       0.00,             Npfs.SYS
+   Grok Bot.exe (12440),       1000,       0.00,         CLASSPNP.SYS
+   Grok Bot.exe (12440),       1042,       0.00,          wfplwfs.sys
+   Grok Bot.exe (12440),       2000,       0.00,             ndis.sys
+   Grok Bot.exe (12440),       3921,       0.00,            tcpip.sys
+   Grok Bot.exe (12440),       1068,       0.00,         fwpkclnt.sys
+   Grok Bot.exe (12440),       1049,       0.00,              afd.sys
+   Grok Bot.exe (12440),      10128,       0.00,          USBXHCI.SYS
+   Grok Bot.exe (12440),       1000,       0.00,         ucx01000.sys
+   Grok Bot.exe (12440),       1000,       0.00,         HDAudBus.sys
+   Grok Bot.exe (12440),      54783,       0.01,         nvlddmkm.sys
+   Grok Bot.exe (12440),       1000,       0.00,          UsbHub3.sys
+   Grok Bot.exe (12440),       1000,       0.00,          BTHport.sys
+   Grok Bot.exe (12440),       3000,       0.00,         HIDCLASS.SYS
+   Grok Bot.exe (12440),       2951,       0.00,         HIDPARSE.SYS
+   Grok Bot.exe (12440),        996,       0.00,              vhf.sys
+   Grok Bot.exe (12440),      11839,       0.00,              e1d.sys
+   Grok Bot.exe (12440),       2997,       0.00,         intelppm.sys
+   Grok Bot.exe (12440),      61017,       0.01,         kernel32.dll
+   Grok Bot.exe (12440),       4024,       0.00, bcryptprimitives.dll
+   Grok Bot.exe (12440),      57082,       0.01,       KernelBase.dll
+   Grok Bot.exe (12440),       7978,       0.00,          dxgmms2.sys
+   Grok Bot.exe (12440),       2055,       0.00,              Ndu.sys
+   Grok Bot.exe (12440),     666978,       0.09,            ntdll.dll
+   Grok Bot.exe (12440),       5093,       0.00,            winmm.dll
+   Grok Bot.exe (12440),   23242600,       3.09,         Grok Bot.exe
+SearchProtocolHost.exe (12672),       2014,       0.00,            "Unknown"
+SearchProtocolHost.exe (12672),      29166,       0.00,         ntoskrnl.exe
+SearchProtocolHost.exe (12672),       1000,       0.00,     FACEIT_IOMMU.sys
+SearchProtocolHost.exe (12672),       1000,       0.00,         storport.sys
+SearchProtocolHost.exe (12672),       2008,       0.00,              vgk.sys
+SearchProtocolHost.exe (12672),       1948,       0.00,             Ntfs.sys
+SearchProtocolHost.exe (12672),       1012,       0.00,         kernel32.dll
+SearchProtocolHost.exe (12672),       1000,       0.00,           rpcrt4.dll
+SearchProtocolHost.exe (12672),       8979,       0.00,            ntdll.dll
+SearchProtocolHost.exe (12672),       1000,       0.00,          combase.dll
+SearchProtocolHost.exe (12672),       1000,       0.00,  windows.storage.dll
+SearchProtocolHost.exe (12672),       1000,       0.00,          shlwapi.dll
+    Spotify.exe (6988),      29983,       0.00,            "Unknown"
+    Spotify.exe (6988),      81116,       0.01,         ntoskrnl.exe
+    Spotify.exe (6988),       1000,       0.00,           FLTMGR.SYS
+    Spotify.exe (6988),       1054,       0.00,             Npfs.SYS
+    Spotify.exe (6988),       1000,       0.00,             ndis.sys
+    Spotify.exe (6988),        999,       0.00,         nvlddmkm.sys
+    Spotify.exe (6988),       1040,       0.00,              e1d.sys
+    Spotify.exe (6988),       3000,       0.00,         kernel32.dll
+    Spotify.exe (6988),       3000,       0.00,       KernelBase.dll
+    Spotify.exe (6988),       2031,       0.00,          dxgmms2.sys
+    Spotify.exe (6988),      20132,       0.00,            ntdll.dll
+    Spotify.exe (6988),     485514,       0.06,           libcef.dll
+gameoverlayui64.exe (14104),     120117,       0.02,         ntoskrnl.exe
+gameoverlayui64.exe (14104),       6000,       0.00,           FLTMGR.SYS
+gameoverlayui64.exe (14104),       2000,       0.00,        FACEIT_AC.sys
+gameoverlayui64.exe (14104),       7044,       0.00,              vgk.sys
+gameoverlayui64.exe (14104),       3000,       0.00,         WdFilter.sys
+gameoverlayui64.exe (14104),       1000,       0.00,           hidusb.sys
+gameoverlayui64.exe (14104),       5000,       0.00,         kernel32.dll
+gameoverlayui64.exe (14104),       6006,       0.00,       KernelBase.dll
+gameoverlayui64.exe (14104),       1000,       0.00,       win32kfull.sys
+gameoverlayui64.exe (14104),      51165,       0.01,            ntdll.dll
+gameoverlayui64.exe (14104),       2000,       0.00,      TextShaping.dll
+gameoverlayui64.exe (14104),       2000,       0.00,           DWrite.dll
+gameoverlayui64.exe (14104),      13070,       0.00,    steamclient64.dll
+gameoverlayui64.exe (14104),       2000,       0.00,       chromehtml.dll
+gameoverlayui64.exe (14104),       7988,       0.00,      vstdlib_s64.dll
+gameoverlayui64.exe (14104),      98046,       0.01,          vgui2_s.dll
+gameoverlayui64.exe (14104),       6000,       0.00,        tier0_s64.dll
+gameoverlayui64.exe (14104),      64140,       0.01,    gameoverlayui.dll
+        Dia.exe (22344),       2028,       0.00,            "Unknown"
+        Dia.exe (22344),        997,       0.00,         ntoskrnl.exe
+        Dia.exe (22344),       1009,       0.00,          ArcCore.dll
+ApplicationFrameHost.exe (10780),       1000,       0.00,         ntoskrnl.exe
+ApplicationFrameHost.exe (10780),       1000,       0.00,           win32k.sys
+ApplicationFrameHost.exe (10780),       1000,       0.00,       win32kfull.sys
+ApplicationFrameHost.exe (10780),       1000,       0.00,       win32kbase.sys
+    Spotify.exe (12092),       1000,       0.00,           libcef.dll
+ powershell.exe (19392),      41120,       0.01,         ntoskrnl.exe
+ powershell.exe (19392),      15985,       0.00,            ntdll.dll
+ powershell.exe (19392),       1000,       0.00,      mscorlib.ni.dll
+ powershell.exe (19392),       1000,       0.00,          mscoree.dll
+ powershell.exe (19392),      13180,       0.00,              clr.dll
+ powershell.exe (11592),      17992,       0.00,            "Unknown"
+ powershell.exe (11592),     422733,       0.06,         ntoskrnl.exe
+ powershell.exe (11592),       1000,       0.00,     FACEIT_IOMMU.sys
+ powershell.exe (11592),        998,       0.00,           volmgr.sys
+ powershell.exe (11592),       1000,       0.00,         storport.sys
+ powershell.exe (11592),       1000,       0.00,      EhStorClass.sys
+ powershell.exe (11592),       1051,       0.00,          dxgkrnl.sys
+ powershell.exe (11592),       1000,       0.00,         Wdf01000.sys
+ powershell.exe (11592),      30183,       0.00,           FLTMGR.SYS
+ powershell.exe (11592),        998,       0.00,           win32k.sys
+ powershell.exe (11592),        925,       0.00,             UCPD.sys
+ powershell.exe (11592),       6938,       0.00,        FACEIT_AC.sys
+ powershell.exe (11592),      14010,       0.00,              vgk.sys
+ powershell.exe (11592),       1000,       0.00,         CLASSPNP.SYS
+ powershell.exe (11592),       8947,       0.00,         WdFilter.sys
+ powershell.exe (11592),      22052,       0.00,             Ntfs.sys
+ powershell.exe (11592),       2020,       0.00,         nvlddmkm.sys
+ powershell.exe (11592),       2983,       0.00,         kernel32.dll
+ powershell.exe (11592),       1009,       0.00,         ucrtbase.dll
+ powershell.exe (11592),       1000,       0.00,          sechost.dll
+ powershell.exe (11592),       1000,       0.00,         advapi32.dll
+ powershell.exe (11592),       6987,       0.00, bcryptprimitives.dll
+ powershell.exe (11592),      11099,       0.00,       KernelBase.dll
+ powershell.exe (11592),       5041,       0.00,           rpcrt4.dll
+ powershell.exe (11592),       2984,       0.00,            luafv.sys
+ powershell.exe (11592),       6905,       0.00,              bfs.sys
+ powershell.exe (11592),       4007,       0.00,           cldflt.sys
+ powershell.exe (11592),       1000,       0.00,       win32kbase.sys
+ powershell.exe (11592),     103175,       0.01,            ntdll.dll
+ powershell.exe (11592),       4018,       0.00,          gameflt.sys
+ powershell.exe (11592),       1000,       0.00,          combase.dll
+ powershell.exe (11592),       1990,       0.00,          crypt32.dll
+ powershell.exe (11592),       1000,       0.00,  windows.storage.dll
+ powershell.exe (11592),        999,       0.00,            ole32.dll
+ powershell.exe (11592),       2000,       0.00,         iertutil.dll
+ powershell.exe (11592),       1999,       0.00,         MpClient.dll
+ powershell.exe (11592),       7999,       0.00, vcruntime140_clr0400.dll
+ powershell.exe (11592),       4044,       0.00, ucrtbase_clr0400.dll
+ powershell.exe (11592),       1990,       0.00,        System.ni.dll
+ powershell.exe (11592),      48235,       0.01,      mscorlib.ni.dll
+ powershell.exe (11592),       6008,       0.00,   System.Core.ni.dll
+ powershell.exe (11592),      70815,       0.01,           clrjit.dll
+ powershell.exe (11592),     215280,       0.03,              clr.dll
+ powershell.exe (11592),      32167,       0.00, System.Management.Automation.ni.dll
+        wpr.exe (5400),       4970,       0.00,            "Unknown"
+        wpr.exe (5400),     302514,       0.04,         ntoskrnl.exe
+        wpr.exe (5400),       2000,       0.00,     FACEIT_IOMMU.sys
+        wpr.exe (5400),       1001,       0.00,         storport.sys
+        wpr.exe (5400),       1017,       0.00,          partmgr.sys
+        wpr.exe (5400),        998,       0.00,      WppRecorder.sys
+        wpr.exe (5400),      28725,       0.00,           FLTMGR.SYS
+        wpr.exe (5400),       2009,       0.00,             UCPD.sys
+        wpr.exe (5400),       4008,       0.00,        FACEIT_AC.sys
+        wpr.exe (5400),       4978,       0.00,              vgk.sys
+        wpr.exe (5400),       6092,       0.00,         WdFilter.sys
+        wpr.exe (5400),      58148,       0.01,             Ntfs.sys
+        wpr.exe (5400),       1000,       0.00,        npsvctrig.sys
+        wpr.exe (5400),       1000,       0.00,          USBXHCI.SYS
+        wpr.exe (5400),       2009,       0.00,         nvlddmkm.sys
+        wpr.exe (5400),      11091,       0.00,         ucrtbase.dll
+        wpr.exe (5400),       1000,       0.00,          sechost.dll
+        wpr.exe (5400),       1017,       0.00,         advapi32.dll
+        wpr.exe (5400),     128974,       0.02,       KernelBase.dll
+        wpr.exe (5400),       1000,       0.00,            luafv.sys
+        wpr.exe (5400),       3063,       0.00,           cldflt.sys
+        wpr.exe (5400),       2000,       0.00,       win32kbase.sys
+        wpr.exe (5400),       3008,       0.00,          bindflt.sys
+        wpr.exe (5400),      31072,       0.00,            ntdll.dll
+        wpr.exe (5400),       1000,       0.00,          gameflt.sys
+        wpr.exe (5400),       1968,       0.00,          combase.dll
+        wpr.exe (5400),      53106,       0.01,         cfgmgr32.dll
+        wpr.exe (5400),       2994,       0.00,          xmllite.dll
+        wpr.exe (5400),      11921,       0.00,           msxml6.dll
+        wpr.exe (5400),       2998,       0.00, windowsperformancerecordercontrol.dll
+  taskhostw.exe (20988),       9181,       0.00,         ntoskrnl.exe
+  taskhostw.exe (20988),       1000,       0.00,           FLTMGR.SYS
+  taskhostw.exe (20988),       1000,       0.00,             Ntfs.sys
+  taskhostw.exe (20988),        970,       0.00,         advapi32.dll
+  taskhostw.exe (20988),       1000,       0.00,           rpcrt4.dll
+  taskhostw.exe (20988),       3000,       0.00,            ntdll.dll
+  taskhostw.exe (20988),       1000,       0.00,          combase.dll
+        wpr.exe (12220),     129197,       0.02,         ntoskrnl.exe
+        wpr.exe (12220),       1022,       0.00,         storport.sys
+        wpr.exe (12220),      14811,       0.00,           FLTMGR.SYS
+        wpr.exe (12220),       2000,       0.00,              vgk.sys
+        wpr.exe (12220),      15036,       0.00,             Ntfs.sys
+        wpr.exe (12220),       1996,       0.00,         ucrtbase.dll
+        wpr.exe (12220),       1000,       0.00,       KernelBase.dll
+        wpr.exe (12220),       1000,       0.00,          bindflt.sys
+        wpr.exe (12220),       2979,       0.00,            ntdll.dll
+        wpr.exe (12220),       1000,       0.00,          gameflt.sys
+        wpr.exe (12220),       8009,       0.00,           msxml6.dll
+        wpr.exe (12220),       1000,       0.00, windowsperformancerecordercontrol.dll
+     ctfmon.exe (6740),       3006,       0.00,         ntoskrnl.exe
+     ctfmon.exe (6740),       1000,       0.00,       win32kfull.sys
+    conhost.exe (19956),       3000,       0.00,         ntoskrnl.exe
+    conhost.exe (18664),      16124,       0.00,         ntoskrnl.exe
+    conhost.exe (18664),       1978,       0.00,           FLTMGR.SYS
+    conhost.exe (18664),       1011,       0.00,              vgk.sys
+    conhost.exe (18664),       1000,       0.00,          ahcache.sys
+    conhost.exe (18664),       1000,       0.00,       win32kfull.sys
+    conhost.exe (18664),       6016,       0.00,            ntdll.dll
+    conhost.exe (18664),       1067,       0.00,          combase.dll
+ powershell.exe (19412),       2963,       0.00,            "Unknown"
+ powershell.exe (19412),       1026,       0.00,              cng.sys
+ powershell.exe (19412),      66987,       0.01,         ntoskrnl.exe
+ powershell.exe (19412),       6003,       0.00,           FLTMGR.SYS
+ powershell.exe (19412),       1000,       0.00,               CI.dll
+ powershell.exe (19412),       1000,       0.00,        FACEIT_AC.sys
+ powershell.exe (19412),       1022,       0.00,         WdFilter.sys
+ powershell.exe (19412),       1000,       0.00,             Ntfs.sys
+ powershell.exe (19412),       2000,       0.00,         nvlddmkm.sys
+ powershell.exe (19412),        996,       0.00,         kernel32.dll
+ powershell.exe (19412),       3020,       0.00, bcryptprimitives.dll
+ powershell.exe (19412),       2000,       0.00,           msvcrt.dll
+ powershell.exe (19412),       1000,       0.00,       KernelBase.dll
+ powershell.exe (19412),       1000,       0.00,            luafv.sys
+ powershell.exe (19412),        997,       0.00,              bfs.sys
+ powershell.exe (19412),       1958,       0.00,           cldflt.sys
+ powershell.exe (19412),        997,       0.00,          bindflt.sys
+ powershell.exe (19412),      10208,       0.00,            ntdll.dll
+ powershell.exe (19412),       1000,       0.00,           rsaenh.dll
+ powershell.exe (19412),       3000,       0.00,          crypt32.dll
+ powershell.exe (19412),       1000,       0.00,      OpcServices.dll
+ powershell.exe (19412),       1000,       0.00, ucrtbase_clr0400.dll
+ powershell.exe (19412),       6995,       0.00,      mscorlib.ni.dll
+ powershell.exe (19412),       3981,       0.00,           clrjit.dll
+ powershell.exe (19412),      47930,       0.01,              clr.dll
+ powershell.exe (19412),       2977,       0.00, System.Management.Automation.ni.dll
+SearchFilterHost.exe (4224),      26913,       0.00,         ntoskrnl.exe
+SearchFilterHost.exe (4224),       2988,       0.00,              vgk.sys
+SearchFilterHost.exe (4224),       1098,       0.00,         WdFilter.sys
+SearchFilterHost.exe (4224),        986,       0.00,             Ntfs.sys
+SearchFilterHost.exe (4224),        994,       0.00,         kernel32.dll
+SearchFilterHost.exe (4224),       2019,       0.00,         ucrtbase.dll
+SearchFilterHost.exe (4224),       1029,       0.00, bcryptprimitives.dll
+SearchFilterHost.exe (4224),       1000,       0.00,           rpcrt4.dll
+SearchFilterHost.exe (4224),       1007,       0.00,       win32kbase.sys
+SearchFilterHost.exe (4224),      11058,       0.00,            ntdll.dll
+SearchFilterHost.exe (4224),       1000,       0.00,          gameflt.sys
+SearchFilterHost.exe (4224),       1004,       0.00,         oleaut32.dll
+           Idle (   0),  448896768,      59.76, <Heuristic Low Power State>
+
+Total Weight: 302282390

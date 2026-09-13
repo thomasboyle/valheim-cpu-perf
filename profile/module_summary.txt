@@ -1,0 +1,42 @@
+﻿TOTAL_VALHEIM_WEIGHT=181530357
+TOP MODULES:
+    98,339,060   13.09%  UnityPlayer.dll
+    39,661,359    5.28%  ntoskrnl.exe
+    17,292,000    2.30%  ntdll.dll
+    10,183,134    1.36%  nvoglv64.dll
+     6,085,146    0.81%  
+     2,255,498    0.30%  mono-2.0-bdwgc.dll
+     1,664,388    0.22%  GameOverlayRenderer64.dll
+     1,268,553    0.17%  lib_burst_generated.dll
+       744,280    0.10%  nvwgf2umx.dll
+       709,567    0.09%  nvlddmkm.sys
+       544,669    0.07%  kernel32.dll
+       389,038    0.05%  Unknown
+       291,808    0.04%  KernelBase.dll
+       206,572    0.03%  PartyWin32.dll
+       174,406    0.02%  dxgkrnl.sys
+       162,943    0.02%  D3D12Core.dll
+       162,307    0.02%  dxgmms2.sys
+       159,573    0.02%  win32kfull.sys
+       105,762    0.01%  win32kbase.sys
+        84,024    0.01%  Wdf01000.sys
+        81,895    0.01%  tcpip.sys
+        78,923    0.01%  e1d.sys
+        69,192    0.01%  win32u.dll
+        60,336    0.01%  USBXHCI.SYS
+        56,896    0.01%  NETIO.SYS
+        55,018    0.01%  ndis.sys
+        40,715    0.01%  user32.dll
+        40,120    0.01%  win32k.sys
+        34,127    0.00%  WppRecorder.sys
+        33,279    0.00%  intelppm.sys
+        33,100    0.00%  dxgi.dll
+        32,506    0.00%  steamclient64.dll
+        24,933    0.00%  bcryptprimitives.dll
+        23,206    0.00%  ws2_32.dll
+        22,853    0.00%  afd.sys
+STACK FILES:
+cpu_stacks.txt 0
+cpu_stacks_pid.txt 272381
+cpu_stacks_valheim.txt 263529
+
