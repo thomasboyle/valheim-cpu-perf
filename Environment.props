@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <!-- Override locally if your Valheim install differs -->
+    <ValheimPath>D:\Steam Library\steamapps\common\Valheim</ValheimPath>
+    <ValheimManaged>$(ValheimPath)\valheim_Data\Managed</ValheimManaged>
+    <BepInExPath>$(ValheimPath)\BepInEx</BepInExPath>
+    <BepInExCore>$(BepInExPath)\core</BepInExCore>
+    <BepInExPlugins>$(BepInExPath)\plugins</BepInExPlugins>
+  </PropertyGroup>
+</Project>

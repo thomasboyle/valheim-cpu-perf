@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+_bepinex_dl/
+_reflect.txt
+*.dll
+*.pdb
+*.mdb
