@@ -1,0 +1,7 @@
+baseline_file=gpu_pass_baseline_20260913_200152.csv
+frames=2530
+fps_avg=77.34
+fps_p50=75.07
+ms_frame_avg=15.79
+ms_gpubusy_avg=14.89
+ms_gputime_avg=15.16
