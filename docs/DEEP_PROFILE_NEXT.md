@@ -87,3 +87,33 @@ Deployed: `BepInEx/plugins/ValheimCpuPerf.dll` (0.5.0) + `ValheimCpuPerf.Profile
 ## Phase D - Verify
 
 Pending restart. Targets vs post-0.4: CPU cores vs ~3.06, FPS vs ~73, Character/Humanoid managed % drop, GPU util.
+
+---
+
+## 0.5.1 follow-up (Humanoid + ZNetScene re-check)
+
+### Humanoid.CustomFixedUpdate — DEFINITIVE fix shipped
+
+IL (25 ops):
+1. `IsValid` early-out
+2. If owner: `UpdateAttack` / `UpdateEquipment` / `UpdateBlock`
+3. **Always** `UpdateUseVisual` (equip effect + hand visual — cosmetic)
+4. Non-virtual `Character.CustomFixedUpdate`
+
+0.5.0 Character Prefix already short-circuits step 4 for distant non-owners after restart, but Humanoid still paid for `UpdateUseVisual` + inclusive sampler cost. **0.5.1** Prefix on `Humanoid.CustomFixedUpdate` mirrors Character: distant >64 m non-owner → `SetVisible(HasOwner)` only (skips UseVisual + Character call).
+
+### ZNetScene.CreateDestroyObjects — still no safe fix (harder pass)
+
+- `Update` hardcodes `0.03333334` (30 Hz); `m_createDestroyFps` field is **never read**.
+- `CreateObjects` hardcodes max 10/frame (`m_maxCreatedPerFrame` unused).
+- `RemoveObjects`: earmark current sector ZDOs with `TempRemoveEarmark(frame&255)`, then walk **all** `m_instances` Values — no incremental earmark API.
+- `m_clientChangeQueue` / `GetClientChangeQueue` used only by `SendZDOs` / `CreateSyncList` (network sync), not create/destroy membership.
+- Skipping when zone unchanged would delay spawn/despawn for ZDOs that arrive while the player stands still (MP buildings, drops, players) — not safe.
+
+### StaticPhysics.SUpdate — no patch
+
+Unchanged conclusion: already `ShouldUpdate` + `OutsideActiveArea` via SlowUpdater.
+
+### Shipped 0.5.1
+
+Version bump **0.5.1** (Humanoid only; ZNetScene not shipped). Deploy DLL + keep Profile.dll if present for verify. **Requires Valheim restart.**

@@ -1,4 +1,4 @@
-﻿# Managed hotspot capture (in-process Harmony sampler)
+# Managed hotspot capture (in-process Harmony sampler)
 
 ## Capture conditions
 
@@ -162,5 +162,15 @@ See **`docs/PROFILE_0_4.md`** for full tables. Measure-only; no new fixes this r
 **New definitive fix:** `Character.CustomFixedUpdate` distant non-owner lite (64 m) - SetVisible(HasOwner) only; skip liquid/effects/tilt/look cosmetics. Owners + near non-owners unchanged.
 
 **Re-checked, still unfixed:** ZNetScene.CreateDestroyObjects (`m_dirtyChunks` is save-only). StaticPhysics already gated. UpdateMotion owner-only.
+
+See `docs/DEEP_PROFILE_NEXT.md`.
+
+---
+
+## 0.5.1 (2026-09-13)
+
+**New definitive fix:** `Humanoid.CustomFixedUpdate` distant non-owner lite (64 m) — same `SetVisible(HasOwner)` gate as Character; also skips `UpdateUseVisual` (equip VFX / hand visual). Owners + near non-owners unchanged.
+
+**Re-checked hard IL, still unfixed:** `ZNetScene.CreateDestroyObjects` — Update hardcodes 1/30s (`m_createDestroyFps` unused); `RemoveObjects` walks all `m_instances`; `m_dirtyChunks` save-only; `m_clientChangeQueue` is sync SendZDOs only. StaticPhysics already gated.
 
 See `docs/DEEP_PROFILE_NEXT.md`.

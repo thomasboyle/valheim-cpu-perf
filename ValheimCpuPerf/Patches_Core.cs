@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using UnityEngine;
 
 namespace ValheimCpuPerf.Patches
@@ -255,7 +255,9 @@ namespace ValheimCpuPerf.Patches
     /// Beyond DistantCharacterMeters those cosmetics cannot affect local gameplay - keep only
     /// SetVisible(HasOwner) (LOD ownership bookkeeping), matching vanilla visibility side effect.
     /// Owners (local player + any owned AI) are never gated. Near non-owners unchanged.
-    /// Humanoid.CustomFixedUpdate calls this via non-virtual call - patch applies there too.
+    /// Non-humanoid Characters only for the exclusive cost; Humanoids also use
+    /// Humanoid_DistantNonOwnerLite (skips UpdateUseVisual + this call). This patch still
+    /// covers animals/etc. and remains a safety net if Humanoid falls through.
     /// </summary>
     [HarmonyPatch(typeof(Character), nameof(Character.CustomFixedUpdate))]
     internal static class Character_DistantNonOwnerLite
@@ -288,9 +290,50 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    // ZNetScene.CreateDestroyObjects: re-checked for 0.5 - ZDOMan.m_dirtyChunks is SAVE-ONLY
-    // (UpdateSaveState / DirtyChunks getter), not a runtime sector-membership dirty bit.
-    // No safe unchanged-sector skip. StaticPhysics already ShouldUpdate + OutsideActiveArea
-    // via SlowUpdater (100/frame + 0.1s). UpdateMotion is owner-only already (sleep skips walk).
+    /// <summary>
+    /// Post-0.4 hotspot: Humanoid.CustomFixedUpdate (~10% inclusive).
+    /// IL: non-owners skip Attack/Equipment/Block but always run UpdateUseVisual (equip VFX /
+    /// hand visual) then non-virtual Character.CustomFixedUpdate. Beyond DistantCharacterMeters
+    /// those cosmetics cannot affect local gameplay - keep only SetVisible(HasOwner), matching
+    /// Character_DistantNonOwnerLite. Owners (local player) never gated; near non-owners unchanged.
+    /// </summary>
+    [HarmonyPatch(typeof(Humanoid), nameof(Humanoid.CustomFixedUpdate))]
+    internal static class Humanoid_DistantNonOwnerLite
+    {
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
+        private static bool Prefix(Humanoid __instance)
+        {
+            if (__instance == null)
+                return true;
+
+            ZNetView nv = HotFields.CharacterNView(__instance);
+            if (nv == null || !nv.IsValid())
+                return true;
+
+            if (__instance.IsOwner())
+                return true;
+
+            Player player = Player.m_localPlayer;
+            if (player == null)
+                return true;
+
+            Vector3 delta = player.transform.position - __instance.transform.position;
+            float limit = HotFields.DistantCharacterMeters * HotFields.DistantCharacterMeters;
+            if (delta.sqrMagnitude <= limit)
+                return true;
+
+            HotFields.CharacterSetVisible(__instance, nv.HasOwner());
+            return false;
+        }
+    }
+
+    // ZNetScene.CreateDestroyObjects: re-checked for 0.5.1 - still NO safe fix.
+    // Update hardcodes 1/30s (m_createDestroyFps=30 field unused at runtime).
+    // CreateObjects hardcodes max 10/frame (m_maxCreatedPerFrame unused).
+    // RemoveObjects always earmarks then walks ALL m_instances - no incremental path.
+    // ZDOMan.m_dirtyChunks is SAVE-ONLY; m_clientChangeQueue is ZDO sync SendZDOs only,
+    // not sector-membership dirty. Zone-unchanged skip would delay MP pop-in/despawn.
+    // StaticPhysics already ShouldUpdate + OutsideActiveArea via SlowUpdater (100/frame + 0.1s).
     // See docs/DEEP_PROFILE_NEXT.md.
 }
