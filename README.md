@@ -1,4 +1,4 @@
-﻿# ValheimCpuPerf
+# ValheimCpuPerf
 
 Open-source **performance** mod for Valheim (BepInEx 5 / HarmonyX).  
 **Not a cheat mod** — no godmode, damage, stamina, teleport, or item exploits.
@@ -13,7 +13,7 @@ There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mi
 
 **Honest disclaimer:** this does **not** guarantee 120 FPS. GPU limits, sync, and uncapped vs VSync settings still apply.
 
-## Always-on core tweaks (v0.3.0)
+## Always-on core tweaks (v0.5.0)
 
 From **live** managed sampling 2026-09-13 (steady-state in-world delta):
 

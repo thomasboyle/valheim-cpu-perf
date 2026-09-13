@@ -119,3 +119,48 @@ Deployed DLL: `BepInEx/plugins/ValheimCpuPerf.dll`. **Restart Valheim** after re
 ## Sampler artifact
 
 Temporary project: `ValheimCpuPerf.Profile/` (not shipped). Remove `ValheimCpuPerf.Profile.dll` from `BepInEx/plugins` after capture (not present in shipping deploy).
+
+---
+
+## Post-0.4.0 re-profile (COMPLETE 2026-09-13 ~19:08–19:10 BST)
+
+| Item | Value |
+|------|-------|
+| Process | `valheim.exe` PID **10852** |
+| Plugins | **ValheimCpuPerf 0.4.0** + Profile 0.3.0-profile (Profile **removed from disk after capture**) |
+| Sample window | **19:08:30 → 19:10:00** (~90 s, `inWorld=True`) |
+| Process CPU | **3.06** equiv cores (WS ~3.45 GB) — vs baseline **3.22** (shipping off + Profile) |
+| PresentMon | **~73.1 avg FPS** / ~85.8 p50 (vs baseline ~58 / prior shipping-only ~65) |
+| Delta CSV | `managed_hotspots_20260913_190830.csv` → `...191000.csv` |
+| Analyzer | `profile/analyze_delta_0_4_postrestart.ps1` → `managed_delta_0_4_postrestart.csv` |
+
+### Patched methods: before → after
+
+| Method | Baseline % | Post-0.4 % | Baseline ms (~72s) | Post-0.4 ms (~90s) |
+|--------|----------:|-----------:|-------------------:|-------------------:|
+| ZSyncTransform.CustomFixedUpdate | 30.6 | **1.5** | 8744 | **365** |
+| WaterVolume.UpdateFloaters | 7.7 | **1.4** | 2188 | **344** |
+| Smoke.CustomUpdate | 5.2 | **0.0** | 1485 | **0** |
+| Fish.CustomFixedUpdate | 3.7 | **0.8** | 1058 | **193** |
+
+### Top 5 remaining (post-0.4 delta)
+
+1. Character.CustomFixedUpdate — 11.6%
+2. Humanoid.CustomFixedUpdate — 10.7%
+3. ZNetScene.CreateDestroyObjects (via Update) — ~9.3%
+4. StaticPhysics.SUpdate — 6.8%
+5. Character.UpdateMotion — 4.4%
+
+See **`docs/PROFILE_0_4.md`** for full tables. Measure-only; no new fixes this run.
+
+**Note:** Profile.dll deleted from `BepInEx/plugins`. Restart Valheim once more when convenient to unload it from the live process; shipping 0.4.0 stays loaded from disk on next launch.
+
+---
+
+## 0.5.0 (2026-09-13)
+
+**New definitive fix:** `Character.CustomFixedUpdate` distant non-owner lite (64 m) - SetVisible(HasOwner) only; skip liquid/effects/tilt/look cosmetics. Owners + near non-owners unchanged.
+
+**Re-checked, still unfixed:** ZNetScene.CreateDestroyObjects (`m_dirtyChunks` is save-only). StaticPhysics already gated. UpdateMotion owner-only.
+
+See `docs/DEEP_PROFILE_NEXT.md`.

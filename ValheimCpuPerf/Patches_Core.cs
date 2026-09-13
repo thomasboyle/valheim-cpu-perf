@@ -44,6 +44,13 @@ namespace ValheimCpuPerf.Patches
             AccessTools.MethodDelegate<System.Action<Smoke>>(
                 AccessTools.Method(typeof(Smoke), "StartFadeOut", System.Type.EmptyTypes));
 
+        internal static readonly AccessTools.FieldRef<Character, ZNetView> CharacterNView =
+            AccessTools.FieldRefAccess<Character, ZNetView>("m_nview");
+
+        internal static readonly System.Action<Character, bool> CharacterSetVisible =
+            AccessTools.MethodDelegate<System.Action<Character, bool>>(
+                AccessTools.Method(typeof(Character), "SetVisible", new[] { typeof(bool) }));
+
         /// <summary>Beyond this distance, non-character/projectile transforms sync 1/3 frames.</summary>
         internal const float DistantSyncMeters = 64f;
 
@@ -55,6 +62,12 @@ namespace ValheimCpuPerf.Patches
 
         /// <summary>Beyond this distance, smoke skips Rigidbody force work (timer/fade only).</summary>
         internal const float DistantSmokeMeters = 64f;
+
+        /// <summary>
+        /// Beyond this distance, non-owner Character.CustomFixedUpdate keeps SetVisible only
+        /// (skip liquid/effects/tilt/look cosmetics). Owners always full-rate.
+        /// </summary>
+        internal const float DistantCharacterMeters = 64f;
 
         internal const int DistantSyncPeriod = 3;
         internal const int VeryDistantSyncPeriod = 6;
@@ -235,8 +248,49 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    // ZNetScene.CreateDestroyObjects (#2): no safe definitive Harmony fix shipped -
-    // reducing create/destroy rate or skipping when zone-unchanged risks multiplayer
-    // pop-in / delayed despawn. FindSectorObjects + RemoveObjects walk is intentional.
-    // See docs/MANAGED_HOTSPOTS.md.
+    /// <summary>
+    /// Post-0.4 top hotspot: Character.CustomFixedUpdate (~11% delta).
+    /// IL: owners run full motion/combat sim; non-owners still always run CalculateLiquidDepth,
+    /// UpdateContinousEffects, UpdateGroundTilt (client ZDO tilt lerp), SetVisible, look, etc.
+    /// Beyond DistantCharacterMeters those cosmetics cannot affect local gameplay - keep only
+    /// SetVisible(HasOwner) (LOD ownership bookkeeping), matching vanilla visibility side effect.
+    /// Owners (local player + any owned AI) are never gated. Near non-owners unchanged.
+    /// Humanoid.CustomFixedUpdate calls this via non-virtual call - patch applies there too.
+    /// </summary>
+    [HarmonyPatch(typeof(Character), nameof(Character.CustomFixedUpdate))]
+    internal static class Character_DistantNonOwnerLite
+    {
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
+        private static bool Prefix(Character __instance)
+        {
+            if (__instance == null)
+                return true;
+
+            ZNetView nv = HotFields.CharacterNView(__instance);
+            if (nv == null || !nv.IsValid())
+                return true;
+
+            if (__instance.IsOwner())
+                return true;
+
+            Player player = Player.m_localPlayer;
+            if (player == null)
+                return true;
+
+            Vector3 delta = player.transform.position - __instance.transform.position;
+            float limit = HotFields.DistantCharacterMeters * HotFields.DistantCharacterMeters;
+            if (delta.sqrMagnitude <= limit)
+                return true;
+
+            HotFields.CharacterSetVisible(__instance, nv.HasOwner());
+            return false;
+        }
+    }
+
+    // ZNetScene.CreateDestroyObjects: re-checked for 0.5 - ZDOMan.m_dirtyChunks is SAVE-ONLY
+    // (UpdateSaveState / DirtyChunks getter), not a runtime sector-membership dirty bit.
+    // No safe unchanged-sector skip. StaticPhysics already ShouldUpdate + OutsideActiveArea
+    // via SlowUpdater (100/frame + 0.1s). UpdateMotion is owner-only already (sleep skips walk).
+    // See docs/DEEP_PROFILE_NEXT.md.
 }
