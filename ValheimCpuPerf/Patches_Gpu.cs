@@ -7,12 +7,13 @@ using UnityEngine.Rendering;
 namespace ValheimCpuPerf.Patches
 {
     /// <summary>
-    /// v0.7.0 structural GPU/renderer pass. Replaces the v0.6.0 QualitySettings /
+    /// v0.7.x structural GPU/renderer pass. Replaces the v0.6.0 QualitySettings /
     /// graphics-menu caps. Harmony hooks land on Valheim managed render paths:
     /// LightLod per-instance shadows, Heightmap MeshRenderer shadow mode,
-    /// ReflectionUpdate probes, ParticleMist emit, ClutterSystem patch build,
-    /// AmplifyOcclusionEffect component. No QualitySettings.shadowDistance /
-    /// softParticles / pixelLightCount / lodBias writes. No SetSSAO(0) wrapper.
+    /// ParticleMist emit, ClutterSystem patch build, AmplifyOcclusionEffect
+    /// cheap settings (kept ENABLED — 0.7.1). ReflectionUpdate left vanilla
+    /// (0.7.1). No QualitySettings.shadowDistance / softParticles /
+    /// pixelLightCount / lodBias writes. No SetSSAO(0) wrapper.
     /// </summary>
     internal static class RenderFields
     {
@@ -37,11 +38,6 @@ namespace ValheimCpuPerf.Patches
         internal static readonly AccessTools.FieldRef<GameCamera, Camera> GameMainCam =
             AccessTools.FieldRefAccess<GameCamera, Camera>("m_camera");
 
-        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> Probe1 =
-            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe1");
-
-        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> Probe2 =
-            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe2");
 
         /// <summary>Beyond this, LightLod point lights drop shadow maps (hysteresis restore below).</summary>
         internal const float ShadowOffMeters = 28f;
@@ -74,7 +70,6 @@ namespace ValheimCpuPerf.Patches
         internal static readonly HashSet<int> ParticlesStopped = new HashSet<int>();
         internal static readonly HashSet<int> ExtraCamsDisabled = new HashSet<int>();
         internal static bool LoggedAo;
-        internal static bool LoggedReflect;
         internal static int ShadowTouches;
         internal static int PatchSkips;
         internal static int MistClamps;
@@ -170,45 +165,10 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    /// <summary>
-    /// Bottleneck 2: ReflectionUpdate drives two ReflectionProbes (cubemap GPU
-    /// renders) on an interval. Prefix-skip Update and disable the probes.
-    /// This is a secondary camera/probe path — not a QualitySettings toggle.
-    /// </summary>
-    [HarmonyPatch(typeof(ReflectionUpdate), "Update")]
-    internal static class Gpu_ReflectionUpdateSkip
-    {
-        [HarmonyPrefix]
-        [HarmonyPriority(Priority.First)]
-        private static bool Prefix(ReflectionUpdate __instance)
-        {
-            if (__instance == null)
-                return false;
-
-            DisableProbe(RenderFields.Probe1(__instance));
-            DisableProbe(RenderFields.Probe2(__instance));
-
-            if (!RenderCache.LoggedReflect)
-            {
-                RenderCache.LoggedReflect = true;
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.7 renderer: ReflectionUpdate.Update skipped; probes disabled.");
-            }
-            return false;
-        }
-
-        private static void DisableProbe(ReflectionProbe probe)
-        {
-            if (probe == null)
-                return;
-            if (probe.enabled)
-                probe.enabled = false;
-            if (probe.mode == ReflectionProbeMode.Realtime)
-            {
-                probe.refreshMode = ReflectionProbeRefreshMode.ViaScripting;
-                probe.mode = ReflectionProbeMode.Custom;
-            }
-        }
-    }
+    // Bottleneck 2 (0.7.1): ReflectionUpdate left vanilla.
+    // 0.7.0 prefix-skipped Update and forced probes Custom/disabled, which blew
+    // out ambient/specular on vegetation (white bushes). Prefer correct lighting
+    // over that GPU win. Extra Depth/Reflect cameras still disabled in RendererScan.
 
     /// <summary>
     /// Bottleneck 3a: ParticleMist.Emit is the GPU particle-buffer fill. Clamp
@@ -363,13 +323,13 @@ namespace ValheimCpuPerf.Patches
     }
 
     /// <summary>
-    /// Bottleneck 5: AmplifyOcclusionEffect is a fullscreen command-buffer pass
-    /// (OnPreRender / commandBuffer_FillComputeOcclusion). Patch the effect
-    /// object: force Low sample count + downsample, then disable the behaviour
-    /// so the CB is never filled. Structural on the component — not CameraEffects.SetSSAO(0).
+    /// Bottleneck 5 (0.7.1): AmplifyOcclusionEffect fullscreen CB pass.
+    /// Keep the component ENABLED (foliage contact AO) but force cheap settings:
+    /// SampleCount=Low, Downsample, FilterDownsample, Blur off, Intensity cap.
+    /// Structural on the component — not CameraEffects.SetSSAO(0).
     /// </summary>
     [HarmonyPatch(typeof(AmplifyOcclusionEffect), "OnEnable")]
-    internal static class Gpu_AmplifyOcclusionDisable
+    internal static class Gpu_AmplifyOcclusionCheap
     {
         [HarmonyPostfix]
         [HarmonyPriority(Priority.Last)]
@@ -383,42 +343,27 @@ namespace ValheimCpuPerf.Patches
             if (ao == null)
                 return;
 
+            // 0.7.1: keep the component ENABLED so foliage retains contact AO.
+            // Only cut structural cost: Low samples, downsample, no blur, intensity cap.
             ao.SampleCount = AmplifyOcclusion.SampleCountLevel.Low;
             ao.Downsample = true;
             ao.FilterDownsample = true;
             ao.BlurEnabled = false;
-            ao.FilterEnabled = false;
-            if (ao.Intensity > 0.35f)
-                ao.Intensity = 0.35f;
-
-            if (ao.enabled)
-                ao.enabled = false;
+            if (ao.Intensity > 0.45f)
+                ao.Intensity = 0.45f;
 
             if (!RenderCache.LoggedAo)
             {
                 RenderCache.LoggedAo = true;
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.7 renderer: AmplifyOcclusionEffect disabled (SampleCount=Low, Downsample, no blur/filter).");
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.7.1 renderer: AmplifyOcclusionEffect kept ENABLED (SampleCount=Low, Downsample, Blur off, Intensity<=0.45).");
             }
         }
     }
 
-    [HarmonyPatch(typeof(AmplifyOcclusionEffect), "Update")]
-    internal static class Gpu_AmplifyOcclusionStayOff
-    {
-        [HarmonyPrefix]
-        [HarmonyPriority(Priority.First)]
-        private static bool Prefix(AmplifyOcclusionEffect __instance)
-        {
-            if (__instance != null && __instance.enabled)
-                __instance.enabled = false;
-            return false;
-        }
-    }
-
     /// <summary>
-    /// CameraEffects.ApplySettings re-enables AO via SetSSAO(int). After that
-    /// runs, disable the effect object again (do not call SetSSAO — we want the
-    /// component story, not the graphics-menu wrapper).
+    /// CameraEffects.ApplySettings may reset AO via SetSSAO(int). After that
+    /// runs, re-apply cheap Low/Downsample settings but leave the effect ENABLED
+    /// (0.7.1). Do not call SetSSAO — component story, not graphics-menu wrapper.
     /// </summary>
     [HarmonyPatch(typeof(CameraEffects), "ApplySettings")]
     internal static class Gpu_CameraEffectsReassertAo
@@ -429,7 +374,7 @@ namespace ValheimCpuPerf.Patches
         {
             if (__instance == null)
                 return;
-            Gpu_AmplifyOcclusionDisable.Apply(RenderFields.FxAO(__instance));
+            Gpu_AmplifyOcclusionCheap.Apply(RenderFields.FxAO(__instance));
 
             // Sun shafts: disable the image-effect behaviour if present (no SetSunShafts API).
             DisableBehaviourByName(__instance.gameObject, "UnityStandardAssets.ImageEffects.SunShafts");
