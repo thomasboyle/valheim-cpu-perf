@@ -14,7 +14,7 @@ namespace ValheimCpuPerf
     {
         public const string PluginGuid = "com.thomasboyle.valheimcpuperf";
         public const string PluginName = "ValheimCpuPerf";
-        public const string PluginVersion = "0.8.0";
+        public const string PluginVersion = "0.8.1";
 
         internal static ManualLogSource Log { get; private set; }
 
@@ -25,7 +25,7 @@ namespace ValheimCpuPerf
             Log = Logger;
             _harmony = new Harmony(PluginGuid);
             _harmony.PatchAll();
-            Log.LogInfo(PluginName + " " + PluginVersion + " loaded - CPU 0.5.1 gates kept; 0.8.0 Tier A/B rewrites: AO cheap every-2nd-frame OnPreRender (still ENABLED), ZSync distant-char 1/3, soft-shadow cap + veg shadow Off, Clutter per-call amountScale thin, ReflectionUpdate interval/resolution (probes stay live), water/extra-cam harden. No white-bush path (AO on, probes not Custom). Restart Valheim after replacing the DLL.");
+            Log.LogInfo(PluginName + " " + PluginVersion + " loaded - CPU 0.5.1 gates kept; 0.8.1: ReflectionUpdate fully VANILLA (fixes ~3s foliage white flash from 0.8.0 probe interval/128/IndividualFaces). AO cheap every-frame OnPreRender (ENABLED). Soft-shadow cap + veg Off, Clutter thin, water/extra-cam harden kept. Restart Valheim after replacing the DLL.");
         }
 
         private void Update()

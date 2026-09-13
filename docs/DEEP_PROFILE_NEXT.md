@@ -86,34 +86,49 @@ Deployed: `BepInEx/plugins/ValheimCpuPerf.dll` (0.5.0) + `ValheimCpuPerf.Profile
 
 ## Phase D - Verify
 
-Pending restart. Targets vs post-0.4: CPU cores vs ~3.06, FPS vs ~73, Character/Humanoid managed % drop, GPU util.
+**Done (0.5.1 after restart).** Full write-up: `docs/PROFILE_0_5.md`.
+
+| Metric | Post-0.4 | Deep pre-0.5 | **0.5.1 VERIFY** |
+|--------|----------|--------------|------------------|
+| CPU cores | 3.06 | 3.18 | **2.95** |
+| FPS avg / p50 | 73.1 / 85.8 | 67.9 / 83.6 | **64.9 / 81.7** |
+| GPU util avg | - | 81.3% | **93.3%** (often 99; more GPU-bound) |
+| Character CFU | 11.6% / 2877 ms | **10.6% / 3416 ms** | **3.9% / 744 ms** (~8.3 ms/s vs ~38) |
+| Humanoid CFU | 10.7% / 2641 ms | **10.0% / 3220 ms** | **4.0% / 774 ms** (~8.6 ms/s vs ~36) |
+
+Character **-6.7 pp** / **~78%** less ms/s vs deep pre-0.5; Humanoid **-6.0 pp** / **~76%** less ms/s. CPU **-0.11** cores vs post-0.4. FPS p50 close (~82 vs ~86); avg lower with more p95 spikes + GPU saturation.
+Remaining top 5: ZSync 19.5% (denser scene; 0.4 gates still in), ZNetScene CDO ~5.8%, StaticPhysics 5.5%, Player.Update 4.6% (hitchy), Humanoid/Character ~4% leftover (owners + near).
 
 ---
 
 ## 0.5.1 follow-up (Humanoid + ZNetScene re-check)
 
-### Humanoid.CustomFixedUpdate — DEFINITIVE fix shipped
+### Humanoid.CustomFixedUpdate â€” DEFINITIVE fix shipped
 
 IL (25 ops):
 1. `IsValid` early-out
 2. If owner: `UpdateAttack` / `UpdateEquipment` / `UpdateBlock`
-3. **Always** `UpdateUseVisual` (equip effect + hand visual — cosmetic)
+3. **Always** `UpdateUseVisual` (equip effect + hand visual â€” cosmetic)
 4. Non-virtual `Character.CustomFixedUpdate`
 
-0.5.0 Character Prefix already short-circuits step 4 for distant non-owners after restart, but Humanoid still paid for `UpdateUseVisual` + inclusive sampler cost. **0.5.1** Prefix on `Humanoid.CustomFixedUpdate` mirrors Character: distant >64 m non-owner → `SetVisible(HasOwner)` only (skips UseVisual + Character call).
+0.5.0 Character Prefix already short-circuits step 4 for distant non-owners after restart, but Humanoid still paid for `UpdateUseVisual` + inclusive sampler cost. **0.5.1** Prefix on `Humanoid.CustomFixedUpdate` mirrors Character: distant >64 m non-owner â†’ `SetVisible(HasOwner)` only (skips UseVisual + Character call).
 
-### ZNetScene.CreateDestroyObjects — still no safe fix (harder pass)
+### ZNetScene.CreateDestroyObjects â€” still no safe fix (harder pass)
 
 - `Update` hardcodes `0.03333334` (30 Hz); `m_createDestroyFps` field is **never read**.
 - `CreateObjects` hardcodes max 10/frame (`m_maxCreatedPerFrame` unused).
-- `RemoveObjects`: earmark current sector ZDOs with `TempRemoveEarmark(frame&255)`, then walk **all** `m_instances` Values — no incremental earmark API.
+- `RemoveObjects`: earmark current sector ZDOs with `TempRemoveEarmark(frame&255)`, then walk **all** `m_instances` Values â€” no incremental earmark API.
 - `m_clientChangeQueue` / `GetClientChangeQueue` used only by `SendZDOs` / `CreateSyncList` (network sync), not create/destroy membership.
-- Skipping when zone unchanged would delay spawn/despawn for ZDOs that arrive while the player stands still (MP buildings, drops, players) — not safe.
+- Skipping when zone unchanged would delay spawn/despawn for ZDOs that arrive while the player stands still (MP buildings, drops, players) â€” not safe.
 
-### StaticPhysics.SUpdate — no patch
+### StaticPhysics.SUpdate â€” no patch
 
 Unchanged conclusion: already `ShouldUpdate` + `OutsideActiveArea` via SlowUpdater.
 
 ### Shipped 0.5.1
 
 Version bump **0.5.1** (Humanoid only; ZNetScene not shipped). Deploy DLL + keep Profile.dll if present for verify. **Requires Valheim restart.**
+
+### 0.5.1 VERIFY (after restart)
+
+See `docs/PROFILE_0_5.md`. Character 10.6% -> **3.9%**, Humanoid 10.0% -> **4.0%**, CPU **2.95** cores, FPS ~65 avg / ~82 p50, GPU avg **93%**. Profile.dll removed after capture.

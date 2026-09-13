@@ -174,3 +174,17 @@ See `docs/DEEP_PROFILE_NEXT.md`.
 **Re-checked hard IL, still unfixed:** `ZNetScene.CreateDestroyObjects` — Update hardcodes 1/30s (`m_createDestroyFps` unused); `RemoveObjects` walks all `m_instances`; `m_dirtyChunks` save-only; `m_clientChangeQueue` is sync SendZDOs only. StaticPhysics already gated.
 
 See `docs/DEEP_PROFILE_NEXT.md`.
+
+### 0.5.1 VERIFY (2026-09-13 ~19:52-19:53 BST)
+
+See **`docs/PROFILE_0_5.md`**.
+
+| Metric | Deep pre-0.5 | **0.5.1** |
+|--------|--------------|-----------|
+| Character.CustomFixedUpdate | 10.6% / 3416 ms | **3.9% / 744 ms** |
+| Humanoid.CustomFixedUpdate | 10.0% / 3220 ms | **4.0% / 774 ms** |
+| CPU cores | 3.18 (deep) / 3.06 (post-0.4) | **2.95** |
+| FPS avg / p50 | 67.9 / 83.6 (deep) ; 73.1 / 85.8 (post-0.4) | **64.9 / 81.7** |
+| GPU util avg | 81.3% | **93.3%** |
+
+Remaining top 5: ZSync 19.5%, ZNetScene CDO ~5.8%, StaticPhysics 5.5%, Player.Update 4.6% (hitch), Humanoid ~4%. Profile.dll removed after capture.

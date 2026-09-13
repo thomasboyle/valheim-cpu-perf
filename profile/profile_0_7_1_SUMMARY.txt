@@ -1,0 +1,13 @@
+file=profile_0_7_1_20260913_210049.csv
+frames=2795
+fps_avg=87.12
+fps_p50=85.11
+ms_frame_avg=14.28
+ms_gpubusy_avg=13.6
+ms_gpubusy_p50=13.61
+nvidia_util_avg=94.2
+nvidia_util_min=81
+nvidia_util_max=99
+vram_mib_avg=3659
+cpu_equiv_cores_avg=3.632
+cpu_equiv_cores_p50=3.75

@@ -7,10 +7,11 @@ using UnityEngine.Rendering;
 namespace ValheimCpuPerf.Patches
 {
     /// <summary>
-    /// v0.8.0 Tier A/B structural GPU/renderer rewrites on Valheim managed paths.
+    /// v0.8.1 GPU/renderer patches on Valheim managed paths.
     /// Keeps CPU 0.5.1 gates and 0.7.1 foliage-safe constraints:
-    /// AmplifyOcclusionEffect stays ENABLED; ReflectionUpdate probes stay live
-    /// (no Custom/disabled probes). No QualitySettings.* / SetSSAO(0) wrappers.
+    /// AmplifyOcclusionEffect stays ENABLED; ReflectionUpdate is fully VANILLA
+    /// (0.8.0 interval/128/IndividualFaces caused ~3s foliage flash — removed).
+    /// Extra Depth/Reflect cameras still disabled. No QualitySettings.* / SetSSAO(0).
     /// </summary>
     internal static class RenderFields
     {
@@ -38,14 +39,6 @@ namespace ValheimCpuPerf.Patches
         internal static readonly AccessTools.FieldRef<ClutterSystem, float> ClutterAmountScale =
             AccessTools.FieldRefAccess<ClutterSystem, float>("m_amountScale");
 
-        internal static readonly AccessTools.FieldRef<ReflectionUpdate, float> ReflectInterval =
-            AccessTools.FieldRefAccess<ReflectionUpdate, float>("m_interval");
-
-        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> ReflectProbe1 =
-            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe1");
-
-        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> ReflectProbe2 =
-            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe2");
 
         internal static readonly AccessTools.FieldRef<WaterVolume, MeshRenderer> WaterSurface =
             AccessTools.FieldRefAccess<WaterVolume, MeshRenderer>("m_waterSurface");
@@ -78,14 +71,9 @@ namespace ValheimCpuPerf.Patches
         /// <summary>Throttled scan: stop / hide distant particle systems.</summary>
         internal const float DistantParticleMeters = 48f;
 
-        /// <summary>ReflectionUpdate: floor for m_interval (seconds between RenderProbe).</summary>
-        internal const float ReflectMinInterval = 2.5f;
-
-        /// <summary>ReflectionProbe.resolution (power-of-two cube face). 128 keeps lighting, cuts GPU.</summary>
-        internal const int ReflectProbeResolution = 128;
-
-        /// <summary>AO OnPreRender period: run full CB every N frames (1 = every frame).</summary>
-        internal const int AoPreRenderPeriod = 2;
+        /// <summary>AO OnPreRender period: run full CB every N frames (1 = every frame).
+        /// 0.8.1: every frame (was 2) to avoid any AO shimmer; foliage flash was probes.</summary>
+        internal const int AoPreRenderPeriod = 1;
 
         internal const int ScanPeriodFrames = 30;
     }
@@ -101,7 +89,6 @@ namespace ValheimCpuPerf.Patches
         internal static readonly HashSet<int> VegShadowsOff = new HashSet<int>();
         internal static readonly Dictionary<int, float> ClutterScaleRestore = new Dictionary<int, float>();
         internal static bool LoggedAo;
-        internal static bool LoggedReflect;
         internal static bool LoggedShadowCap;
         internal static int ShadowTouches;
         internal static int PatchSkips;
@@ -254,74 +241,15 @@ namespace ValheimCpuPerf.Patches
     }
 
     // -------------------------------------------------------------------------
-    // Tier B5: ReflectionUpdate — cheap probes, NOT disabled (white-bush safe)
+    // Tier B5: ReflectionUpdate — VANILLA in 0.8.1 (flash fix)
+    // 0.8.0 forced m_interval>=2.5s, resolution 128, IndividualFaces; that made
+    // vegetation ambient/specular flash white every ~2.5-3s on cubemap refresh.
+    // Probes must stay fully vanilla (like 0.7.1). Extra Depth/Reflect cameras
+    // remain disabled in RendererScan — that path does not flash foliage.
     // -------------------------------------------------------------------------
 
-    /// <summary>
-    /// Rewrite ReflectionUpdate: raise m_interval, clamp probe.resolution to 128,
-    /// keep probes enabled and Realtime (never Custom/disabled — 0.7.0 white bushes).
-    /// </summary>
-    [HarmonyPatch(typeof(ReflectionUpdate), "Start")]
-    internal static class Gpu_ReflectionUpdateCheap
-    {
-        [HarmonyPostfix]
-        [HarmonyPriority(Priority.Last)]
-        private static void Postfix(ReflectionUpdate __instance)
-        {
-            Apply(__instance);
-        }
-
-        internal static void Apply(ReflectionUpdate ru)
-        {
-            if (ru == null)
-                return;
-
-            float interval = RenderFields.ReflectInterval(ru);
-            if (interval < RenderFields.ReflectMinInterval)
-                RenderFields.ReflectInterval(ru) = RenderFields.ReflectMinInterval;
-
-            HardenProbe(RenderFields.ReflectProbe1(ru));
-            HardenProbe(RenderFields.ReflectProbe2(ru));
-
-            if (!RenderCache.LoggedReflect)
-            {
-                RenderCache.LoggedReflect = true;
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.0 renderer: ReflectionUpdate m_interval>=" + RenderFields.ReflectMinInterval + "s, probe resolution=" + RenderFields.ReflectProbeResolution + " (probes stay live).");
-            }
-        }
-
-        internal static void HardenProbe(ReflectionProbe probe)
-        {
-            if (probe == null)
-                return;
-            // Keep enabled + realtime refresh — only cut cube resolution.
-            if (probe.resolution > RenderFields.ReflectProbeResolution)
-                probe.resolution = RenderFields.ReflectProbeResolution;
-            // Prefer once-per-scripted RenderProbe (already driven by ReflectionUpdate).
-            if (probe.timeSlicingMode != ReflectionProbeTimeSlicingMode.IndividualFaces)
-                probe.timeSlicingMode = ReflectionProbeTimeSlicingMode.IndividualFaces;
-        }
-    }
-
-    /// <summary>
-    /// Re-assert cheap probe settings each Update without skipping RenderProbe entirely.
-    /// Prefix never returns false (probes must keep contributing ambient/specular).
-    /// </summary>
-    [HarmonyPatch(typeof(ReflectionUpdate), "Update")]
-    internal static class Gpu_ReflectionUpdateReassert
-    {
-        [HarmonyPrefix]
-        [HarmonyPriority(Priority.First)]
-        private static void Prefix(ReflectionUpdate __instance)
-        {
-            // Periodic re-assert in case graphics settings reset probe resolution.
-            if ((Time.frameCount % 120) == 0)
-                Gpu_ReflectionUpdateCheap.Apply(__instance);
-        }
-    }
-
     // -------------------------------------------------------------------------
-    // ParticleMist (kept from 0.7)
+// ParticleMist (kept from 0.7)
     // -------------------------------------------------------------------------
 
     [HarmonyPatch(typeof(ParticleMist), "Emit")]
@@ -526,7 +454,7 @@ namespace ValheimCpuPerf.Patches
             if (!RenderCache.LoggedAo)
             {
                 RenderCache.LoggedAo = true;
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.0 renderer: AmplifyOcclusionEffect ENABLED cheap (Low, Downsample, Filter off, Blur off, Intensity<=0.4); OnPreRender every " + RenderFields.AoPreRenderPeriod + " frames.");
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.1 renderer: AmplifyOcclusionEffect ENABLED cheap (Low, Downsample, Filter off, Blur off, Intensity<=0.4); OnPreRender every " + RenderFields.AoPreRenderPeriod + " frames.");
             }
         }
     }

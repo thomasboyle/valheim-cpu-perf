@@ -13,7 +13,7 @@ There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mi
 
 **Honest disclaimer:** this does **not** guarantee 120 FPS. GPU limits, sync, and uncapped vs VSync settings still apply.
 
-## Always-on core tweaks (v0.8.0)
+## Always-on core tweaks (v0.8.1)
 
 ### CPU (kept from v0.5.1 + 0.8.0 ZSync rewrite)
 
@@ -25,7 +25,7 @@ There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mi
 | — | Character / Humanoid.CustomFixedUpdate | Distant (>64 m) non-owner: SetVisible only | **Definitive** |
 | — | ZNetScene.CreateDestroyObjects | *No shipped fix* (MP pop-in risk) | Documented only |
 
-### GPU (v0.8.0 — Tier A/B structural rewrites)
+### GPU (v0.8.1 — Tier A/B + flash fix)
 
 See [docs/REWRITE_0_8.md](docs/REWRITE_0_8.md) and [docs/RENDERER_PASS_0_7.md](docs/RENDERER_PASS_0_7.md).
 
@@ -33,14 +33,16 @@ See [docs/REWRITE_0_8.md](docs/REWRITE_0_8.md) and [docs/RENDERER_PASS_0_7.md](d
 
 | # | Bottleneck | Baked behaviour | Visual tradeoff |
 |---|------------|-----------------|-----------------|
-| A1 | AmplifyOcclusionEffect | ENABLED cheap + OnPreRender every 2nd frame | Slightly softer AO; **no white bushes** |
+| A1 | AmplifyOcclusionEffect | ENABLED cheap + OnPreRender **every frame** (0.8.1) | Softer AO; **no white bushes** |
 | A2 | ZSync character sync | Distant characters 1/3 | Distant remote motion slightly choppier |
 | A3 | Soft shadows + veg cast | Closest 3 Soft lights; veg MeshRenderer Off | Fewer soft maps; grass casts no shadow |
 | B4 | ClutterSystem.GenerateVegPatch | Per-call amountScale thin + early-out | Less grass density mid-ring |
-| B5 | ReflectionUpdate | Interval ≥2.5 s, resolution 128 (probes live) | Slightly slower env reflection update |
+| B5 | ReflectionUpdate | **VANILLA (0.8.1)** — no interval/res/IndividualFaces patch | Fixes ~3s foliage white flash from 0.8.0 |
 | B6 | Water / extra cams | Surface shadow Off; disable Reflect/Water cams | Flatter water reflections if cams existed |
 
 No `QualitySettings.*` writes. No `SetSSAO(0)`. Probes never forced Custom/disabled.
+**0.8.1 flash fix:** 0.8.0 ReflectionUpdate rewrite (interval >=2.5 s / res 128 / IndividualFaces) caused vegetation ambient/specular to flash white every ~2.5-3 s. Probes restored to fully vanilla (like 0.7.1). Extra Depth/Reflect camera disable kept.
+
 
 ## Requirements
 

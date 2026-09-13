@@ -39,3 +39,15 @@ dotnet build ValheimCpuPerf\ValheimCpuPerf.csproj -c Release
 ```
 
 **Restart Valheim** after DLL replace. PresentMon vs 0.7.1 after restart.
+
+## 0.8.1 hotfix - foliage white flash every ~3s (2026-09-13)
+
+**Root cause:** 0.8.0 `ReflectionUpdate` rewrite forced `m_interval >= 2.5s`, probe `resolution = 128`, and `IndividualFaces`. Cubemap refresh then flashed vegetation ambient/specular on that period. Matches user report (~3 s). AO every-2nd-frame could shimmer but not on a 3 s period.
+
+**Fix:**
+- Removed all `ReflectionUpdate` Harmony patches — probes fully vanilla again (like 0.7.1).
+- Kept extra Depth/Reflect camera disable in `RendererScan` (does not flash foliage).
+- AO `OnPreRender` period set to **every frame** (was 2); still Low/Downsample/Filter off.
+
+**Deploy:** DLL FileVersion 0.8.1.0 → BepInEx plugins. **Requires full Valheim restart** to load.
+
