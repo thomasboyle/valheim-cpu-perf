@@ -13,35 +13,34 @@ There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mi
 
 **Honest disclaimer:** this does **not** guarantee 120 FPS. GPU limits, sync, and uncapped vs VSync settings still apply.
 
-## Always-on core tweaks (v0.7.0)
+## Always-on core tweaks (v0.8.0)
 
-### CPU (kept from v0.5.1)
-
-From **live** managed sampling 2026-09-13 + post-0.4 deep profile:
+### CPU (kept from v0.5.1 + 0.8.0 ZSync rewrite)
 
 | Rank | Bottleneck | Baked behaviour | Confidence |
 |------|------------|-----------------|------------|
-| 1 | ZSyncTransform.CustomFixedUpdate | Owner skip + distant 1/3 / very-distant 1/6 client sync | **Definitive** |
+| 1 | ZSyncTransform.CustomFixedUpdate | Owner skip; distant static 1/3 / 1/6; **distant characters >80 m 1/3**; projectiles full-rate | **Definitive** |
 | — | WaterVolume.UpdateFloaters | Skip when >48 m from local player | **Definitive** |
 | — | Smoke.CustomUpdate / Fish.CustomFixedUpdate | Distant smoke timer-only; Fish non-owner early-out | **Definitive** |
 | — | Character / Humanoid.CustomFixedUpdate | Distant (>64 m) non-owner: SetVisible only | **Definitive** |
 | — | ZNetScene.CreateDestroyObjects | *No shipped fix* (MP pop-in risk) | Documented only |
 
-### GPU (v0.7.0 — structural renderer patches)
+### GPU (v0.8.0 — Tier A/B structural rewrites)
 
-0.6.0 QualitySettings / graphics-menu caps were **removed**. 0.7.0 patches actual render code paths (Mono.Cecil-mapped). See [docs/RENDERER_PASS_0_7.md](docs/RENDERER_PASS_0_7.md).
+See [docs/REWRITE_0_8.md](docs/REWRITE_0_8.md) and [docs/RENDERER_PASS_0_7.md](docs/RENDERER_PASS_0_7.md).
 
-PresentMon + nvidia-smi on GTX 1070 Ti (~77 FPS avg, MsGPUBusy≈frame, util ~95%).
+0.7.1 MEASURED baseline (GTX 1070 Ti): FPS **87.1/85.1**, MsGPUBusy **13.6**, util **94.2%**, CPU **3.63**.
 
 | # | Bottleneck | Baked behaviour | Visual tradeoff |
 |---|------------|-----------------|-----------------|
-| 1 | LightLod + Heightmap shadow casters | Distant lights `Light.shadows=None` (28 m); distant Heightmap LOD `shadowCastingMode=Off` | No point-light / distant-terrain shadows far away |
-| 2 | ReflectionUpdate + extra cameras | Prefix-skip probe Update; disable Depth/Reflect extra cams | Flatter env reflections; no extra probe views |
-| 3 | ParticleMist / distant particles | Clamp Emit(toEmit≤6); skip distant MisterEmit; pause far systems; kill soft-particle keyword on mist | Thinner mist; harder particle edges |
-| 4 | ClutterSystem.GenerateVegPatch | Skip patch build >24 m; checkerboard-skip odd patches >14 m | Less grass in the outer ring |
-| 5 | AmplifyOcclusionEffect | Disable the AO behaviour (Low/Downsample first); disable SunShafts component | No SSAO / shafts |
+| A1 | AmplifyOcclusionEffect | ENABLED cheap + OnPreRender every 2nd frame | Slightly softer AO; **no white bushes** |
+| A2 | ZSync character sync | Distant characters 1/3 | Distant remote motion slightly choppier |
+| A3 | Soft shadows + veg cast | Closest 3 Soft lights; veg MeshRenderer Off | Fewer soft maps; grass casts no shadow |
+| B4 | ClutterSystem.GenerateVegPatch | Per-call amountScale thin + early-out | Less grass density mid-ring |
+| B5 | ReflectionUpdate | Interval ≥2.5 s, resolution 128 (probes live) | Slightly slower env reflection update |
+| B6 | Water / extra cams | Surface shadow Off; disable Reflect/Water cams | Flatter water reflections if cams existed |
 
-No `QualitySettings.*` writes. No `SetSSAO(0)` / clutter `m_amountScale` field caps.
+No `QualitySettings.*` writes. No `SetSSAO(0)`. Probes never forced Custom/disabled.
 
 ## Requirements
 

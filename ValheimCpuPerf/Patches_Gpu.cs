@@ -7,13 +7,10 @@ using UnityEngine.Rendering;
 namespace ValheimCpuPerf.Patches
 {
     /// <summary>
-    /// v0.7.x structural GPU/renderer pass. Replaces the v0.6.0 QualitySettings /
-    /// graphics-menu caps. Harmony hooks land on Valheim managed render paths:
-    /// LightLod per-instance shadows, Heightmap MeshRenderer shadow mode,
-    /// ParticleMist emit, ClutterSystem patch build, AmplifyOcclusionEffect
-    /// cheap settings (kept ENABLED — 0.7.1). ReflectionUpdate left vanilla
-    /// (0.7.1). No QualitySettings.shadowDistance / softParticles /
-    /// pixelLightCount / lodBias writes. No SetSSAO(0) wrapper.
+    /// v0.8.0 Tier A/B structural GPU/renderer rewrites on Valheim managed paths.
+    /// Keeps CPU 0.5.1 gates and 0.7.1 foliage-safe constraints:
+    /// AmplifyOcclusionEffect stays ENABLED; ReflectionUpdate probes stay live
+    /// (no Custom/disabled probes). No QualitySettings.* / SetSSAO(0) wrappers.
     /// </summary>
     internal static class RenderFields
     {
@@ -38,16 +35,39 @@ namespace ValheimCpuPerf.Patches
         internal static readonly AccessTools.FieldRef<GameCamera, Camera> GameMainCam =
             AccessTools.FieldRefAccess<GameCamera, Camera>("m_camera");
 
+        internal static readonly AccessTools.FieldRef<ClutterSystem, float> ClutterAmountScale =
+            AccessTools.FieldRefAccess<ClutterSystem, float>("m_amountScale");
+
+        internal static readonly AccessTools.FieldRef<ReflectionUpdate, float> ReflectInterval =
+            AccessTools.FieldRefAccess<ReflectionUpdate, float>("m_interval");
+
+        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> ReflectProbe1 =
+            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe1");
+
+        internal static readonly AccessTools.FieldRef<ReflectionUpdate, ReflectionProbe> ReflectProbe2 =
+            AccessTools.FieldRefAccess<ReflectionUpdate, ReflectionProbe>("m_probe2");
+
+        internal static readonly AccessTools.FieldRef<WaterVolume, MeshRenderer> WaterSurface =
+            AccessTools.FieldRefAccess<WaterVolume, MeshRenderer>("m_waterSurface");
 
         /// <summary>Beyond this, LightLod point lights drop shadow maps (hysteresis restore below).</summary>
         internal const float ShadowOffMeters = 28f;
         internal const float ShadowOnMeters = 22f;
+
+        /// <summary>Max concurrent Soft/Hard shadow-casting lights near the player (closest N).</summary>
+        internal const int MaxSoftShadowLights = 3;
 
         /// <summary>Clutter GeneratePatch / GenerateVegPatch skip beyond this XZ distance.</summary>
         internal const float ClutterPatchMeters = 24f;
 
         /// <summary>Outer-ring patches: skip odd (x+y) so spawn loop never runs (50% thin).</summary>
         internal const float ClutterCheckerMeters = 14f;
+
+        /// <summary>Near-field amountScale multiplier (look preserved).</summary>
+        internal const float ClutterNearScale = 0.85f;
+
+        /// <summary>Mid-ring amountScale multiplier (structural density cut).</summary>
+        internal const float ClutterMidScale = 0.5f;
 
         /// <summary>ParticleMist.Emit hard cap on toEmit (vanilla can burst dozens per tick).</summary>
         internal const int MaxMistEmit = 6;
@@ -57,6 +77,15 @@ namespace ValheimCpuPerf.Patches
 
         /// <summary>Throttled scan: stop / hide distant particle systems.</summary>
         internal const float DistantParticleMeters = 48f;
+
+        /// <summary>ReflectionUpdate: floor for m_interval (seconds between RenderProbe).</summary>
+        internal const float ReflectMinInterval = 2.5f;
+
+        /// <summary>ReflectionProbe.resolution (power-of-two cube face). 128 keeps lighting, cuts GPU.</summary>
+        internal const int ReflectProbeResolution = 128;
+
+        /// <summary>AO OnPreRender period: run full CB every N frames (1 = every frame).</summary>
+        internal const int AoPreRenderPeriod = 2;
 
         internal const int ScanPeriodFrames = 30;
     }
@@ -69,17 +98,26 @@ namespace ValheimCpuPerf.Patches
         internal static readonly HashSet<int> ShadowsForcedOff = new HashSet<int>();
         internal static readonly HashSet<int> ParticlesStopped = new HashSet<int>();
         internal static readonly HashSet<int> ExtraCamsDisabled = new HashSet<int>();
+        internal static readonly HashSet<int> VegShadowsOff = new HashSet<int>();
+        internal static readonly Dictionary<int, float> ClutterScaleRestore = new Dictionary<int, float>();
         internal static bool LoggedAo;
+        internal static bool LoggedReflect;
+        internal static bool LoggedShadowCap;
         internal static int ShadowTouches;
         internal static int PatchSkips;
         internal static int MistClamps;
+        internal static int AoSkips;
+        internal static int SoftCaps;
     }
 
+    // -------------------------------------------------------------------------
+    // Tier A3: Near-field soft-shadow cap + distant LightLod (kept) + veg Off
+    // -------------------------------------------------------------------------
+
     /// <summary>
-    /// Bottleneck 1: LightLod point-light shadow maps. Vanilla UpdateLights sorts
-    /// and assigns m_lightPrio; UpdateLoop then may keep shadows on within
-    /// m_shadowDistance. We structurally force Light.shadows = None on instances
-    /// beyond ShadowOffMeters (restore inside ShadowOnMeters). Not QualitySettings.shadowDistance.
+    /// Bottleneck 1: LightLod point-light shadow maps. Distant Soft->None (0.7),
+    /// plus 0.8.0 rewrite: among remaining Soft/Hard lights, keep only the closest
+    /// MaxSoftShadowLights; force the rest to None. Not QualitySettings.shadowDistance.
     /// </summary>
     [HarmonyPatch(typeof(LightLod), "UpdateLights")]
     internal static class Gpu_LightLodDistantShadows
@@ -89,6 +127,7 @@ namespace ValheimCpuPerf.Patches
         private static void Postfix()
         {
             ApplyDistantLightShadows();
+            CapNearSoftShadows();
         }
 
         internal static void ApplyDistantLightShadows()
@@ -134,13 +173,62 @@ namespace ValheimCpuPerf.Patches
                 }
             }
         }
+
+        /// <summary>
+        /// Cap concurrent Soft/Hard shadow casters to the closest N near the player.
+        /// Important player-area lights keep looking OK; excess Soft maps are dropped.
+        /// </summary>
+        internal static void CapNearSoftShadows()
+        {
+            Player player = Player.m_localPlayer;
+            if (player == null)
+                return;
+
+            HashSet<LightLod> lights = Traverse.Create(typeof(LightLod)).Field("m_lights").GetValue<HashSet<LightLod>>();
+            if (lights == null)
+                return;
+
+            Vector3 pos = player.transform.position;
+            List<KeyValuePair<float, Light>> soft = new List<KeyValuePair<float, Light>>(16);
+
+            foreach (LightLod lod in lights)
+            {
+                if (lod == null)
+                    continue;
+                Light light = RenderFields.LightLodLight(lod);
+                if (light == null || light.shadows == LightShadows.None)
+                    continue;
+                if (RenderCache.ShadowsForcedOff.Contains(lod.GetInstanceID()))
+                    continue;
+
+                float sqr = (lod.transform.position - pos).sqrMagnitude;
+                soft.Add(new KeyValuePair<float, Light>(sqr, light));
+            }
+
+            if (soft.Count <= RenderFields.MaxSoftShadowLights)
+                return;
+
+            soft.Sort((a, b) => a.Key.CompareTo(b.Key));
+            for (int i = RenderFields.MaxSoftShadowLights; i < soft.Count; i++)
+            {
+                if (soft[i].Value.shadows != LightShadows.None)
+                {
+                    soft[i].Value.shadows = LightShadows.None;
+                    RenderCache.SoftCaps++;
+                }
+            }
+
+            if (!RenderCache.LoggedShadowCap)
+            {
+                RenderCache.LoggedShadowCap = true;
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.0 renderer: Soft shadow cap = closest " + RenderFields.MaxSoftShadowLights + " LightLod lights.");
+            }
+        }
     }
 
     /// <summary>
-    /// Bottleneck 1b: Heightmap.UpdateShadowSettings already writes
-    /// MeshRenderer.shadowCastingMode. Distant LOD chunks still cast when
-    /// GraphicsSettingsState.m_distantShadows is true. Force Off on distant LOD
-    /// renderers — per-mesh structural, not a global shadowDistance cap.
+    /// Bottleneck 1b: Heightmap.UpdateShadowSettings — Force Off on distant LOD
+    /// renderers (kept from 0.7).
     /// </summary>
     [HarmonyPatch(typeof(Heightmap), "UpdateShadowSettings")]
     internal static class Gpu_HeightmapDistantShadowsOff
@@ -165,15 +253,77 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    // Bottleneck 2 (0.7.1): ReflectionUpdate left vanilla.
-    // 0.7.0 prefix-skipped Update and forced probes Custom/disabled, which blew
-    // out ambient/specular on vegetation (white bushes). Prefer correct lighting
-    // over that GPU win. Extra Depth/Reflect cameras still disabled in RendererScan.
+    // -------------------------------------------------------------------------
+    // Tier B5: ReflectionUpdate — cheap probes, NOT disabled (white-bush safe)
+    // -------------------------------------------------------------------------
 
     /// <summary>
-    /// Bottleneck 3a: ParticleMist.Emit is the GPU particle-buffer fill. Clamp
-    /// toEmit so the spawn loop cannot burst a full mist cloud every 0.1s.
+    /// Rewrite ReflectionUpdate: raise m_interval, clamp probe.resolution to 128,
+    /// keep probes enabled and Realtime (never Custom/disabled — 0.7.0 white bushes).
     /// </summary>
+    [HarmonyPatch(typeof(ReflectionUpdate), "Start")]
+    internal static class Gpu_ReflectionUpdateCheap
+    {
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(ReflectionUpdate __instance)
+        {
+            Apply(__instance);
+        }
+
+        internal static void Apply(ReflectionUpdate ru)
+        {
+            if (ru == null)
+                return;
+
+            float interval = RenderFields.ReflectInterval(ru);
+            if (interval < RenderFields.ReflectMinInterval)
+                RenderFields.ReflectInterval(ru) = RenderFields.ReflectMinInterval;
+
+            HardenProbe(RenderFields.ReflectProbe1(ru));
+            HardenProbe(RenderFields.ReflectProbe2(ru));
+
+            if (!RenderCache.LoggedReflect)
+            {
+                RenderCache.LoggedReflect = true;
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.0 renderer: ReflectionUpdate m_interval>=" + RenderFields.ReflectMinInterval + "s, probe resolution=" + RenderFields.ReflectProbeResolution + " (probes stay live).");
+            }
+        }
+
+        internal static void HardenProbe(ReflectionProbe probe)
+        {
+            if (probe == null)
+                return;
+            // Keep enabled + realtime refresh — only cut cube resolution.
+            if (probe.resolution > RenderFields.ReflectProbeResolution)
+                probe.resolution = RenderFields.ReflectProbeResolution;
+            // Prefer once-per-scripted RenderProbe (already driven by ReflectionUpdate).
+            if (probe.timeSlicingMode != ReflectionProbeTimeSlicingMode.IndividualFaces)
+                probe.timeSlicingMode = ReflectionProbeTimeSlicingMode.IndividualFaces;
+        }
+    }
+
+    /// <summary>
+    /// Re-assert cheap probe settings each Update without skipping RenderProbe entirely.
+    /// Prefix never returns false (probes must keep contributing ambient/specular).
+    /// </summary>
+    [HarmonyPatch(typeof(ReflectionUpdate), "Update")]
+    internal static class Gpu_ReflectionUpdateReassert
+    {
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
+        private static void Prefix(ReflectionUpdate __instance)
+        {
+            // Periodic re-assert in case graphics settings reset probe resolution.
+            if ((Time.frameCount % 120) == 0)
+                Gpu_ReflectionUpdateCheap.Apply(__instance);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // ParticleMist (kept from 0.7)
+    // -------------------------------------------------------------------------
+
     [HarmonyPatch(typeof(ParticleMist), "Emit")]
     internal static class Gpu_ParticleMistEmitClamp
     {
@@ -189,10 +339,6 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    /// <summary>
-    /// Bottleneck 3b: ParticleMist.MisterEmit — skip when the mister is far from
-    /// the local player (GPU overdraw, not CPU Smoke-style).
-    /// </summary>
     [HarmonyPatch(typeof(ParticleMist), "MisterEmit")]
     internal static class Gpu_ParticleMistMisterDistant
     {
@@ -213,10 +359,6 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    /// <summary>
-    /// Bottleneck 3c: ParticleMist.Awake — disable soft-particle material path on
-    /// the mist ParticleSystem renderer (per-instance, not QualitySettings.softParticles).
-    /// </summary>
     [HarmonyPatch(typeof(ParticleMist), "Awake")]
     internal static class Gpu_ParticleMistAwakeSoftOff
     {
@@ -237,11 +379,9 @@ namespace ValheimCpuPerf.Patches
             ParticleSystemRenderer r = ps.GetComponent<ParticleSystemRenderer>();
             if (r == null)
                 return;
-            // Soft particles are a material keyword on Valheim mist/smoke shaders.
             Material mat = r.sharedMaterial;
             if (mat != null && mat.IsKeywordEnabled("_SOFTPARTICLES_ON"))
             {
-                // sharedMaterial is the asset — do not mutate. Use instance material once.
                 Material inst = r.material;
                 if (inst != null)
                     inst.DisableKeyword("_SOFTPARTICLES_ON");
@@ -251,11 +391,10 @@ namespace ValheimCpuPerf.Patches
         }
     }
 
-    /// <summary>
-    /// Bottleneck 4a: ClutterSystem.GeneratePatch — vanilla already DistanceXZ-gates
-    /// against m_distance (default 40). Prefix a tighter early-out so GenerateVegPatch
-    /// (the instance spawn + mesh-build hot method) never runs for outer patches.
-    /// </summary>
+    // -------------------------------------------------------------------------
+    // Tier B4: ClutterSystem.GenerateVegPatch structural density rewrite
+    // -------------------------------------------------------------------------
+
     [HarmonyPatch(typeof(ClutterSystem), "GeneratePatch")]
     internal static class Gpu_ClutterGeneratePatchEarlyOut
     {
@@ -278,11 +417,9 @@ namespace ValheimCpuPerf.Patches
     }
 
     /// <summary>
-    /// Bottleneck 4b: ClutterSystem.GenerateVegPatch — the actual spawn loop
-    /// (m_amount / quality * m_amountScale, then Random point + Instantiate).
-    /// Skip odd (x+y) patches beyond ClutterCheckerMeters so half of the outer
-    /// ring never enters the per-instance loop. Deeper than writing m_amountScale.
-    /// Returning false leaves PatchData null; GeneratePatch already treats that as skip.
+    /// 0.8.0 rewrite: per-call temporary m_amountScale reduction (restore in Postfix)
+    /// plus outer early-out / checkerboard. Structural density cut without permanent
+    /// QualitySettings / field caps.
     /// </summary>
     [HarmonyPatch(typeof(ClutterSystem), "GenerateVegPatch")]
     internal static class Gpu_ClutterGenerateVegPatchThin
@@ -318,15 +455,43 @@ namespace ValheimCpuPerf.Patches
                 RenderCache.PatchSkips++;
                 return false;
             }
+
+            // Per-call structural rewrite: thin instance count via m_amountScale, restore after.
+            int key = __instance.GetInstanceID();
+            if (!RenderCache.ClutterScaleRestore.ContainsKey(key))
+            {
+                float original = RenderFields.ClutterAmountScale(__instance);
+                RenderCache.ClutterScaleRestore[key] = original;
+                float mul = dist <= RenderFields.ClutterCheckerMeters
+                    ? RenderFields.ClutterNearScale
+                    : RenderFields.ClutterMidScale;
+                RenderFields.ClutterAmountScale(__instance) = original * mul;
+            }
             return true;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(ClutterSystem __instance)
+        {
+            if (__instance == null)
+                return;
+            int key = __instance.GetInstanceID();
+            float original;
+            if (RenderCache.ClutterScaleRestore.TryGetValue(key, out original))
+            {
+                RenderFields.ClutterAmountScale(__instance) = original;
+                RenderCache.ClutterScaleRestore.Remove(key);
+            }
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Tier A1: AmplifyOcclusionEffect — ENABLED, cheaper path, every-2nd OnPreRender
+    // -------------------------------------------------------------------------
+
     /// <summary>
-    /// Bottleneck 5 (0.7.1): AmplifyOcclusionEffect fullscreen CB pass.
-    /// Keep the component ENABLED (foliage contact AO) but force cheap settings:
-    /// SampleCount=Low, Downsample, FilterDownsample, Blur off, Intensity cap.
-    /// Structural on the component — not CameraEffects.SetSSAO(0).
+    /// Keep AO ENABLED (foliage contact). Force Low/Downsample/no blur/no temporal filter.
     /// </summary>
     [HarmonyPatch(typeof(AmplifyOcclusionEffect), "OnEnable")]
     internal static class Gpu_AmplifyOcclusionCheap
@@ -343,28 +508,56 @@ namespace ValheimCpuPerf.Patches
             if (ao == null)
                 return;
 
-            // 0.7.1: keep the component ENABLED so foliage retains contact AO.
-            // Only cut structural cost: Low samples, downsample, no blur, intensity cap.
+            // MUST stay enabled — 0.7.0 full disable caused white bushes.
+            if (!ao.enabled)
+                ao.enabled = true;
+
             ao.SampleCount = AmplifyOcclusion.SampleCountLevel.Low;
             ao.Downsample = true;
             ao.FilterDownsample = true;
             ao.BlurEnabled = false;
-            if (ao.Intensity > 0.45f)
-                ao.Intensity = 0.45f;
+            // Temporal filter is the heavy history path; disable for single-pass cheap AO.
+            ao.FilterEnabled = false;
+            if (ao.Intensity > 0.4f)
+                ao.Intensity = 0.4f;
+            if (ao.Radius > 1.2f)
+                ao.Radius = 1.2f;
 
             if (!RenderCache.LoggedAo)
             {
                 RenderCache.LoggedAo = true;
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.7.1 renderer: AmplifyOcclusionEffect kept ENABLED (SampleCount=Low, Downsample, Blur off, Intensity<=0.45).");
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.8.0 renderer: AmplifyOcclusionEffect ENABLED cheap (Low, Downsample, Filter off, Blur off, Intensity<=0.4); OnPreRender every " + RenderFields.AoPreRenderPeriod + " frames.");
             }
         }
     }
 
     /// <summary>
-    /// CameraEffects.ApplySettings may reset AO via SetSSAO(int). After that
-    /// runs, re-apply cheap Low/Downsample settings but leave the effect ENABLED
-    /// (0.7.1). Do not call SetSSAO — component story, not graphics-menu wrapper.
+    /// Skip expensive OnPreRender CB fill on alternate frames. Component stays enabled
+    /// so the last occlusion contribution remains; avoids white-bush full disable.
     /// </summary>
+    [HarmonyPatch(typeof(AmplifyOcclusionEffect), "OnPreRender")]
+    internal static class Gpu_AmplifyOcclusionPreRenderGate
+    {
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
+        private static bool Prefix(AmplifyOcclusionEffect __instance)
+        {
+            if (__instance == null)
+                return true;
+
+            // Re-assert cheap settings cheaply (fields only).
+            if ((Time.frameCount & 63) == 0)
+                Gpu_AmplifyOcclusionCheap.Apply(__instance);
+
+            if ((Time.frameCount % RenderFields.AoPreRenderPeriod) != 0)
+            {
+                RenderCache.AoSkips++;
+                return false;
+            }
+            return true;
+        }
+    }
+
     [HarmonyPatch(typeof(CameraEffects), "ApplySettings")]
     internal static class Gpu_CameraEffectsReassertAo
     {
@@ -375,9 +568,9 @@ namespace ValheimCpuPerf.Patches
             if (__instance == null)
                 return;
             Gpu_AmplifyOcclusionCheap.Apply(RenderFields.FxAO(__instance));
-
-            // Sun shafts: disable the image-effect behaviour if present (no SetSunShafts API).
             DisableBehaviourByName(__instance.gameObject, "UnityStandardAssets.ImageEffects.SunShafts");
+            // Water / SSR path: disable ScreenSpaceReflection component if present (planar-ish extra pass).
+            DisablePostProcessSSR(__instance);
         }
 
         internal static void DisableBehaviourByName(GameObject go, string typeName)
@@ -392,11 +585,88 @@ namespace ValheimCpuPerf.Patches
             if (b != null && b.enabled)
                 b.enabled = false;
         }
+
+        internal static void DisablePostProcessSSR(CameraEffects fx)
+        {
+            if (fx == null)
+                return;
+            try
+            {
+                var trav = Traverse.Create(fx);
+                var pp = trav.Field("m_postProcessing").GetValue();
+                if (pp == null)
+                    return;
+                // UnityEngine.PostProcessing.PostProcessingBehaviour profile.screenSpaceReflection.enabled
+                var profile = Traverse.Create(pp).Field("profile").GetValue();
+                if (profile == null)
+                    profile = Traverse.Create(pp).Property("profile").GetValue();
+                if (profile == null)
+                    return;
+                var ssr = Traverse.Create(profile).Field("screenSpaceReflection").GetValue();
+                if (ssr == null)
+                    ssr = Traverse.Create(profile).Property("screenSpaceReflection").GetValue();
+                if (ssr == null)
+                    return;
+                Traverse.Create(ssr).Field("enabled").SetValue(false);
+                // Some builds use m_Enabled / property
+                try { Traverse.Create(ssr).Property("enabled").SetValue(false); } catch { }
+            }
+            catch
+            {
+                // Optional path — ignore if profile shape differs.
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Tier B6: Water surface harden + extra reflection cameras
+    // -------------------------------------------------------------------------
+
+    [HarmonyPatch(typeof(WaterVolume), "Awake")]
+    internal static class Gpu_WaterVolumeSurfaceCheap
+    {
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(WaterVolume __instance)
+        {
+            Harden(__instance);
+        }
+
+        internal static void Harden(WaterVolume wv)
+        {
+            if (wv == null)
+                return;
+            MeshRenderer mr = RenderFields.WaterSurface(wv);
+            if (mr == null)
+                return;
+            if (mr.shadowCastingMode != ShadowCastingMode.Off)
+                mr.shadowCastingMode = ShadowCastingMode.Off;
+            if (mr.receiveShadows)
+                mr.receiveShadows = false;
+        }
+    }
+
+    [HarmonyPatch(typeof(Water), "ApplySettings")]
+    internal static class Gpu_WaterMeshCheap
+    {
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(Water __instance)
+        {
+            if (__instance == null)
+                return;
+            MeshRenderer mr = __instance.GetComponent<MeshRenderer>();
+            if (mr == null)
+                return;
+            if (mr.shadowCastingMode != ShadowCastingMode.Off)
+                mr.shadowCastingMode = ShadowCastingMode.Off;
+            if (mr.receiveShadows)
+                mr.receiveShadows = false;
+        }
     }
 
     /// <summary>
-    /// Throttled (every 30 frames) scene scan: extra cameras, distant particle
-    /// systems. Cached by instance id — no per-frame flicker.
+    /// Throttled scene scan: extra cameras, distant particles, veg shadow Off, soft-shadow reassert.
     /// </summary>
     internal static class RendererScan
     {
@@ -411,11 +681,13 @@ namespace ValheimCpuPerf.Patches
             {
                 ScanExtraCameras();
                 ScanDistantParticles();
+                ScanVegetationShadowsOff();
                 Gpu_LightLodDistantShadows.ApplyDistantLightShadows();
+                Gpu_LightLodDistantShadows.CapNearSoftShadows();
             }
             catch (Exception ex)
             {
-                ValheimCpuPerfPlugin.Log?.LogWarning("0.7 renderer scan: " + ex.Message);
+                ValheimCpuPerfPlugin.Log?.LogWarning("0.8 renderer scan: " + ex.Message);
             }
         }
 
@@ -447,7 +719,9 @@ namespace ValheimCpuPerf.Patches
                     n.IndexOf("Depth", StringComparison.OrdinalIgnoreCase) >= 0 ||
                     n.IndexOf("Reflect", StringComparison.OrdinalIgnoreCase) >= 0 ||
                     n.IndexOf("WaterCam", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    n.IndexOf("Planar", StringComparison.OrdinalIgnoreCase) >= 0;
+                    n.IndexOf("Planar", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    n.IndexOf("Mirror", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    n.IndexOf("Water Reflection", StringComparison.OrdinalIgnoreCase) >= 0;
 
                 if (!extra)
                     continue;
@@ -458,7 +732,7 @@ namespace ValheimCpuPerf.Patches
 
                 c.enabled = false;
                 RenderCache.ExtraCamsDisabled.Add(id);
-                ValheimCpuPerfPlugin.Log?.LogInfo("0.7 renderer: disabled extra camera '" + n + "'");
+                ValheimCpuPerfPlugin.Log?.LogInfo("0.8 renderer: disabled extra camera '" + n + "'");
             }
         }
 
@@ -498,6 +772,44 @@ namespace ValheimCpuPerf.Patches
                     if (!ps.isPlaying)
                         ps.Play(true);
                     RenderCache.ParticlesStopped.Remove(id);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Force ShadowCastingMode.Off on clutter/vegetation MeshRenderers under grassroot
+        /// and common veg name prefixes. Keeps player/building lights looking OK.
+        /// </summary>
+        private static void ScanVegetationShadowsOff()
+        {
+            ClutterSystem cs = ClutterSystem.instance;
+            if (cs != null)
+            {
+                Transform root = null;
+                try
+                {
+                    var go = Traverse.Create(cs).Field("m_grassRoot").GetValue<GameObject>();
+                    if (go != null)
+                        root = go.transform;
+                }
+                catch { root = null; }
+
+                if (root != null)
+                {
+                    MeshRenderer[] mrs = root.GetComponentsInChildren<MeshRenderer>(true);
+                    for (int i = 0; i < mrs.Length; i++)
+                    {
+                        MeshRenderer mr = mrs[i];
+                        if (mr == null)
+                            continue;
+                        int id = mr.GetInstanceID();
+                        if (RenderCache.VegShadowsOff.Contains(id))
+                            continue;
+                        if (mr.shadowCastingMode != ShadowCastingMode.Off)
+                            mr.shadowCastingMode = ShadowCastingMode.Off;
+                        mr.receiveShadows = false;
+                        RenderCache.VegShadowsOff.Add(id);
+                    }
                 }
             }
         }

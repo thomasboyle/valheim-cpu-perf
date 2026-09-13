@@ -6,6 +6,7 @@ namespace ValheimCpuPerf.Patches
     /// <summary>
     /// Always-on structural early-outs for LIVE managed top bottlenecks
     /// (docs/MANAGED_HOTSPOTS.md). Performance only - no gameplay cheats.
+    /// v0.8.0: ZSync ClientSync rewrite also throttles distant characters.
     /// </summary>
     internal static class HotFields
     {
@@ -57,6 +58,12 @@ namespace ValheimCpuPerf.Patches
         /// <summary>Beyond this distance, non-character/projectile transforms sync 1/6 frames.</summary>
         internal const float VeryDistantSyncMeters = 128f;
 
+        /// <summary>
+        /// Beyond this, Character-bearing ZSyncTransforms sync 1/3 frames (projectiles never).
+        /// Near characters stay full-rate for locomotion correctness.
+        /// </summary>
+        internal const float DistantCharacterSyncMeters = 80f;
+
         /// <summary>Beyond this distance from water collider, skip floater liquid updates.</summary>
         internal const float DistantWaterMeters = 48f;
 
@@ -71,13 +78,14 @@ namespace ValheimCpuPerf.Patches
 
         internal const int DistantSyncPeriod = 3;
         internal const int VeryDistantSyncPeriod = 6;
+        internal const int DistantCharacterSyncPeriod = 3;
     }
 
     /// <summary>
-    /// #1 bottleneck: ZSyncTransform.CustomFixedUpdate -> ClientSync.
-    /// ClientSync already no-ops for owners; skipping the call is correctness-preserving.
-    /// Distant static (no Character/Projectile) objects do not need full-rate client sync.
-    /// v0.4: second distance tier at 128 m (1/6 frames) for larger client-sync savings.
+    /// #1 bottleneck rewrite (0.8.0): ZSyncTransform.CustomFixedUpdate -> ClientSync.
+    /// Owners skip (ClientSync would no-op). Projectiles always full-rate.
+    /// Characters: full-rate near; beyond DistantCharacterSyncMeters throttle 1/3 frames.
+    /// Non-char/projectile: 1/3 beyond 64 m, 1/6 beyond 128 m (same tiers as 0.5.1, kept).
     /// Owner path remains on CustomLateUpdate -> OwnerSync (untouched).
     /// </summary>
     [HarmonyPatch(typeof(ZSyncTransform), nameof(ZSyncTransform.CustomFixedUpdate))]
@@ -94,10 +102,9 @@ namespace ValheimCpuPerf.Patches
             if (nv != null && nv.IsOwner())
                 return false; // ClientSync would return immediately
 
-            Character ch = HotFields.ZSyncCharacter(__instance);
             Projectile proj = HotFields.ZSyncProjectile(__instance);
-            if (ch != null || proj != null)
-                return true; // keep full-rate for characters / projectiles
+            if (proj != null)
+                return true; // projectiles always correct
 
             Player player = Player.m_localPlayer;
             if (player == null)
@@ -105,13 +112,24 @@ namespace ValheimCpuPerf.Patches
 
             Vector3 delta = player.transform.position - __instance.transform.position;
             float sqr = delta.sqrMagnitude;
+            int id = __instance.GetInstanceID();
+
+            Character ch = HotFields.ZSyncCharacter(__instance);
+            if (ch != null)
+            {
+                float charFar = HotFields.DistantCharacterSyncMeters * HotFields.DistantCharacterSyncMeters;
+                if (sqr < charFar)
+                    return true;
+                // Distant characters: reduce transform write frequency (1/3 frames).
+                return ((Time.frameCount + id) % HotFields.DistantCharacterSyncPeriod) == 0;
+            }
+
             float veryFar = HotFields.VeryDistantSyncMeters * HotFields.VeryDistantSyncMeters;
             float far = HotFields.DistantSyncMeters * HotFields.DistantSyncMeters;
 
             if (sqr < far)
                 return true;
 
-            int id = __instance.GetInstanceID();
             int period = sqr >= veryFar
                 ? HotFields.VeryDistantSyncPeriod
                 : HotFields.DistantSyncPeriod;
@@ -255,9 +273,6 @@ namespace ValheimCpuPerf.Patches
     /// Beyond DistantCharacterMeters those cosmetics cannot affect local gameplay - keep only
     /// SetVisible(HasOwner) (LOD ownership bookkeeping), matching vanilla visibility side effect.
     /// Owners (local player + any owned AI) are never gated. Near non-owners unchanged.
-    /// Non-humanoid Characters only for the exclusive cost; Humanoids also use
-    /// Humanoid_DistantNonOwnerLite (skips UpdateUseVisual + this call). This patch still
-    /// covers animals/etc. and remains a safety net if Humanoid falls through.
     /// </summary>
     [HarmonyPatch(typeof(Character), nameof(Character.CustomFixedUpdate))]
     internal static class Character_DistantNonOwnerLite
@@ -335,5 +350,5 @@ namespace ValheimCpuPerf.Patches
     // ZDOMan.m_dirtyChunks is SAVE-ONLY; m_clientChangeQueue is ZDO sync SendZDOs only,
     // not sector-membership dirty. Zone-unchanged skip would delay MP pop-in/despawn.
     // StaticPhysics already ShouldUpdate + OutsideActiveArea via SlowUpdater (100/frame + 0.1s).
-    // See docs/DEEP_PROFILE_NEXT.md.
+    // See docs/DEEP_PROFILE_NEXT.md. DO NOT rewrite in 0.8.0.
 }

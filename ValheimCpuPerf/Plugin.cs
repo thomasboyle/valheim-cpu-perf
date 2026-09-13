@@ -14,7 +14,7 @@ namespace ValheimCpuPerf
     {
         public const string PluginGuid = "com.thomasboyle.valheimcpuperf";
         public const string PluginName = "ValheimCpuPerf";
-        public const string PluginVersion = "0.7.1";
+        public const string PluginVersion = "0.8.0";
 
         internal static ManualLogSource Log { get; private set; }
 
@@ -25,7 +25,7 @@ namespace ValheimCpuPerf
             Log = Logger;
             _harmony = new Harmony(PluginGuid);
             _harmony.PatchAll();
-            Log.LogInfo(PluginName + " " + PluginVersion + " loaded - CPU 0.5.1 gates kept; GPU 0.7.1 STRUCTURAL renderer (hotfix): LightLod distant shadows Off, Heightmap distant ShadowCastingMode.Off, ParticleMist emit clamp + distant stop, Clutter GeneratePatch/VegPatch early-out, AmplifyOcclusionEffect ENABLED cheap (Low/Downsample), ReflectionUpdate vanilla (0.7.0 skip removed — white bush fix). Restart Valheim after replacing the DLL.");
+            Log.LogInfo(PluginName + " " + PluginVersion + " loaded - CPU 0.5.1 gates kept; 0.8.0 Tier A/B rewrites: AO cheap every-2nd-frame OnPreRender (still ENABLED), ZSync distant-char 1/3, soft-shadow cap + veg shadow Off, Clutter per-call amountScale thin, ReflectionUpdate interval/resolution (probes stay live), water/extra-cam harden. No white-bush path (AO on, probes not Custom). Restart Valheim after replacing the DLL.");
         }
 
         private void Update()
