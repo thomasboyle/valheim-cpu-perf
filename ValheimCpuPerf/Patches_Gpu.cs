@@ -31,6 +31,9 @@ namespace ValheimCpuPerf.Patches
         internal const float MaxClutterDistance = 28f;
         internal const float MaxClutterAmountScale = 0.70f;
 
+        internal static readonly AccessTools.FieldRef<ClutterSystem, ClutterSystem.Quality> ClutterQuality =
+            AccessTools.FieldRefAccess<ClutterSystem, ClutterSystem.Quality>("m_quality");
+
         internal static readonly System.Action<CameraEffects, int> CameraSetSSAO =
             AccessTools.MethodDelegate<System.Action<CameraEffects, int>>(
                 AccessTools.Method(typeof(CameraEffects), "SetSSAO", new[] { typeof(int) }));
@@ -53,7 +56,7 @@ namespace ValheimCpuPerf.Patches
             if (QualitySettings.pixelLightCount > MaxPixelLights)
                 QualitySettings.pixelLightCount = MaxPixelLights;
 
-            // LOD bias nudge (part of light/geometry budget — applied with quality caps)
+            // LOD bias nudge (geometry density at distance)
             if (QualitySettings.lodBias > MaxLodBias)
                 QualitySettings.lodBias = MaxLodBias;
         }
@@ -76,7 +79,7 @@ namespace ValheimCpuPerf.Patches
             if (CameraSetSSAO != null)
                 CameraSetSSAO(fx, 0);
 
-            // bundled with post stack: sun shafts (public API)
+            // Sun shafts (public API on CameraEffects)
             fx.SetSunShafts(false);
         }
 
@@ -87,9 +90,10 @@ namespace ValheimCpuPerf.Patches
 
             // 5) Vegetation / clutter GPU fill
             bool rebuilt = false;
-            if (clutter.m_quality > ClutterSystem.Quality.Med)
+            ClutterSystem.Quality q = ClutterQuality(clutter);
+            if (q > ClutterSystem.Quality.Med)
             {
-                clutter.m_quality = ClutterSystem.Quality.Med;
+                ClutterQuality(clutter) = ClutterSystem.Quality.Med;
                 rebuilt = true;
             }
 
@@ -134,7 +138,7 @@ namespace ValheimCpuPerf.Patches
     }
 
     /// <summary>
-    /// Safety net: any full session apply also re-runs quality + light caps.
+    /// Safety net: any full session apply also re-runs quality + light + camera + clutter caps.
     /// </summary>
     [HarmonyPatch(typeof(GraphicsSettingsManager), "ApplyGraphicsSettingsToCurrentSession")]
     internal static class Gpu_ApplySession
@@ -153,9 +157,9 @@ namespace ValheimCpuPerf.Patches
     }
 
     /// <summary>
-    /// Bottleneck 4: Amplify SSAO + sun shafts after CameraEffects.ApplySettings.
+    /// Bottleneck 4: Amplify SSAO + sun shafts after CameraEffects.ApplySettings (private).
     /// </summary>
-    [HarmonyPatch(typeof(CameraEffects), nameof(CameraEffects.ApplySettings))]
+    [HarmonyPatch(typeof(CameraEffects), "ApplySettings")]
     internal static class Gpu_CameraEffects
     {
         [HarmonyPostfix]
@@ -169,7 +173,7 @@ namespace ValheimCpuPerf.Patches
     /// <summary>
     /// Bottleneck 5: clutter / vegetation distance + amount + quality ceiling.
     /// </summary>
-    [HarmonyPatch(typeof(ClutterSystem), nameof(ClutterSystem.ApplySettings))]
+    [HarmonyPatch(typeof(ClutterSystem), "ApplySettings")]
     internal static class Gpu_ClutterSettings
     {
         [HarmonyPostfix]
