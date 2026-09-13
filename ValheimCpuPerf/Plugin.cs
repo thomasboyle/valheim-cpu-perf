@@ -1,6 +1,7 @@
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using UnityEngine;
 
 namespace ValheimCpuPerf
 {
@@ -13,7 +14,7 @@ namespace ValheimCpuPerf
     {
         public const string PluginGuid = "com.thomasboyle.valheimcpuperf";
         public const string PluginName = "ValheimCpuPerf";
-        public const string PluginVersion = "0.6.0";
+        public const string PluginVersion = "0.7.0";
 
         internal static ManualLogSource Log { get; private set; }
 
@@ -24,7 +25,12 @@ namespace ValheimCpuPerf
             Log = Logger;
             _harmony = new Harmony(PluginGuid);
             _harmony.PatchAll();
-            Log.LogInfo($"{PluginName} {PluginVersion} loaded - CPU 0.5.1 gates kept; GPU 0.6.0 caps: shadowDistance/cascades, softParticles off, pixel+point lights, SSAO+sunshafts off, clutter distance/amount/quality. Restart Valheim after replacing the DLL.");
+            Log.LogInfo(PluginName + " " + PluginVersion + " loaded - CPU 0.5.1 gates kept; GPU 0.7.0 STRUCTURAL renderer patches (not QualitySettings caps): LightLod shadows Off by distance, Heightmap distant ShadowCastingMode.Off, ReflectionUpdate skip, ParticleMist emit clamp + distant stop, Clutter GeneratePatch/VegPatch early-out, AmplifyOcclusionEffect disable/cheap. Restart Valheim after replacing the DLL.");
+        }
+
+        private void Update()
+        {
+            Patches.RendererScan.Tick();
         }
 
         private void OnDestroy()

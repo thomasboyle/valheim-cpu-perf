@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\Environment.props" />
   <PropertyGroup>
@@ -11,7 +11,7 @@
     <AssemblyName>ValheimCpuPerf</AssemblyName>
     <RootNamespace>ValheimCpuPerf</RootNamespace>
     <Deterministic>true</Deterministic>
-    <Version>0.6.0</Version>
+    <Version>0.7.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BepInEx">
@@ -40,6 +40,10 @@
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>$(ValheimManaged)\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>$(ValheimManaged)\UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

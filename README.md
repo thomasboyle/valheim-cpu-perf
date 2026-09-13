@@ -13,7 +13,7 @@ There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mi
 
 **Honest disclaimer:** this does **not** guarantee 120 FPS. GPU limits, sync, and uncapped vs VSync settings still apply.
 
-## Always-on core tweaks (v0.6.0)
+## Always-on core tweaks (v0.7.0)
 
 ### CPU (kept from v0.5.1)
 
@@ -27,19 +27,21 @@ From **live** managed sampling 2026-09-13 + post-0.4 deep profile:
 | — | Character / Humanoid.CustomFixedUpdate | Distant (>64 m) non-owner: SetVisible only | **Definitive** |
 | — | ZNetScene.CreateDestroyObjects | *No shipped fix* (MP pop-in risk) | Documented only |
 
-### GPU (new in v0.6.0)
+### GPU (v0.7.0 — structural renderer patches)
 
-PresentMon + nvidia-smi showed **GPU-bound** play on GTX 1070 Ti (~77 FPS avg, MsGPUBusy≈frame, util ~95%). See [docs/GPU_PASS_0_6.md](docs/GPU_PASS_0_6.md).
+0.6.0 QualitySettings / graphics-menu caps were **removed**. 0.7.0 patches actual render code paths (Mono.Cecil-mapped). See [docs/RENDERER_PASS_0_7.md](docs/RENDERER_PASS_0_7.md).
+
+PresentMon + nvidia-smi on GTX 1070 Ti (~77 FPS avg, MsGPUBusy≈frame, util ~95%).
 
 | # | Bottleneck | Baked behaviour | Visual tradeoff |
 |---|------------|-----------------|-----------------|
-| 1 | Shadow distance / cascades | Cap shadowDistance≤55, cascades≤2, resolution≤Medium | Shorter/softer shadows |
-| 2 | Soft particles | Force QualitySettings.softParticles=false | Harder particle edges |
-| 3 | Pixel + point lights | pixelLightCount≤3; LightLod lights≤12, shadows≤1 | Fewer lit/shadowed lights |
-| 4 | SSAO + sun shafts | SetSSAO(0) + SetSunShafts(false) after apply | Flatter AO; no shafts |
-| 5 | Clutter / vegetation | Quality≤Med, distance≤28, amountScale≤0.70 | Less distant grass |
+| 1 | LightLod + Heightmap shadow casters | Distant lights `Light.shadows=None` (28 m); distant Heightmap LOD `shadowCastingMode=Off` | No point-light / distant-terrain shadows far away |
+| 2 | ReflectionUpdate + extra cameras | Prefix-skip probe Update; disable Depth/Reflect extra cams | Flatter env reflections; no extra probe views |
+| 3 | ParticleMist / distant particles | Clamp Emit(toEmit≤6); skip distant MisterEmit; pause far systems; kill soft-particle keyword on mist | Thinner mist; harder particle edges |
+| 4 | ClutterSystem.GenerateVegPatch | Skip patch build >24 m; checkerboard-skip odd patches >14 m | Less grass in the outer ring |
+| 5 | AmplifyOcclusionEffect | Disable the AO behaviour (Low/Downsample first); disable SunShafts component | No SSAO / shafts |
 
-Caps re-apply on every vanilla graphics apply (not one-shot). PlayerPrefs untouched — remove DLL to restore.
+No `QualitySettings.*` writes. No `SetSSAO(0)` / clutter `m_amountScale` field caps.
 
 ## Requirements
 

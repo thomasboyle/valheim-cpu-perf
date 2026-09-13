@@ -1,0 +1,4340 @@
+######## ASSEMBLY assembly_valheim.dll types=705 ########
+======================================================================
+TYPE VisEquipment base=UnityEngine.MonoBehaviour
+  NESTED VisEquipment/PlayerModel
+    NF Mesh m_mesh
+    NF Material m_baseMaterial
+    NM .ctor IL=3
+  NESTED VisEquipment/<>c__DisplayClass31_0
+    NF HelmetHairType type
+    NM .ctor IL=3
+    NM <GetHairItem>b__0 IL=6
+  F [Private, Static] System.Collections.Generic.List`1<ParticleIntensityScaler> s_scalers
+  F [Private] System.Single m_snowLevel
+  F [Public] UnityEngine.SkinnedMeshRenderer m_bodyModel
+  F [Public] ZNetView m_nViewOverride
+  F [Public] UnityEngine.Transform m_leftHand
+  F [Public] UnityEngine.Transform m_rightHand
+  F [Public] UnityEngine.Transform m_helmet
+  F [Public] UnityEngine.Transform m_backShield
+  F [Public] UnityEngine.Transform m_backMelee
+  F [Public] UnityEngine.Transform m_backTwohandedMelee
+  F [Public] UnityEngine.Transform m_backBow
+  F [Public] UnityEngine.Transform m_backTool
+  F [Public] UnityEngine.Transform m_backAtgeir
+  F [Public] System.Collections.Generic.List`1<MagicaCloth2.ColliderComponent> m_clothColliders
+  F [Public] VisEquipment/PlayerModel[] m_models
+  F [Public] System.Boolean m_isPlayer
+  F [Public] Player m_playerComponent
+  F [Public] System.Boolean m_useAllTrails
+  F [Public] System.Boolean m_isArmorStand
+  F [Public] System.Boolean m_randomModelIndex
+  F [Public] System.String m_hairPrefabPrefix
+  F [Public] System.Int32 m_hairPrefabCount
+  F [Public] System.Single m_npcHairChance
+  F [Public] System.String m_beardPrefabPrefix
+  F [Public] System.Int32 m_beardPrefabCount
+  F [Public] System.Single m_npcBeardChance
+  F [Public] UnityEngine.Material m_overrideHairMaterial
+  F [Public] System.Boolean m_disableHairShadows
+  F [Private] System.Int32 m_leftItem
+  F [Private] System.Int32 m_rightItem
+  F [Private] System.Int32 m_chestItem
+  F [Private] System.Int32 m_legItem
+  F [Private] System.Int32 m_helmetItem
+  F [Private] System.Int32 m_shoulderItem
+  F [Private] System.Int32 m_beardItem
+  F [Private] System.Int32 m_hairItem
+  F [Private] System.Int32 m_utilityItem
+  F [Private] System.Int32 m_leftBackItem
+  F [Private] System.Int32 m_rightBackItem
+  F [Private] System.String m_trinketItem
+  F [Private] System.Int32 m_shoulderItemVariant
+  F [Private] System.Int32 m_leftItemVariant
+  F [Private] System.Int32 m_leftBackItemVariant
+  F [Private] System.Int32 m_rightItemQuality
+  F [Private] System.Int32 m_rightBackItemQuality
+  F [Private] System.Int32 m_shoulderItemQuality
+  F [Private] System.Int32 m_leftItemQuality
+  F [Private] System.Int32 m_leftBackItemQuality
+  F [Private] UnityEngine.GameObject m_leftItemInstance
+  F [Private] UnityEngine.GameObject m_rightItemInstance
+  F [Private] UnityEngine.GameObject m_helmetItemInstance
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_chestItemInstances
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_legItemInstances
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_shoulderItemInstances
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_utilityItemInstances
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_trinketItemInstances
+  F [Private] UnityEngine.GameObject m_beardItemInstance
+  F [Private] UnityEngine.GameObject m_hairItemInstance
+  F [Private] UnityEngine.GameObject m_leftBackItemInstance
+  F [Private] UnityEngine.GameObject m_rightBackItemInstance
+  F [Private] System.Collections.Generic.Dictionary`2<System.String,UnityEngine.Transform> m_boneMap
+  F [Private] System.Int32 m_currentLeftItemHash
+  F [Private] System.Int32 m_currentRightItemHash
+  F [Private] System.Int32 m_currentChestItemHash
+  F [Private] System.Int32 m_currentLegItemHash
+  F [Private] System.Int32 m_currentHelmetItemHash
+  F [Private] System.Int32 m_currentShoulderItemHash
+  F [Private] System.Int32 m_currentBeardItemHash
+  F [Private] System.Int32 m_currentHairItemHash
+  F [Private] System.Int32 m_currentUtilityItemHash
+  F [Private] System.Int32 m_currentTrinketItemHash
+  F [Private] System.Int32 m_currentLeftBackItemHash
+  F [Private] System.Int32 m_currentRightBackItemHash
+  F [Private] System.Int32 m_currentShoulderItemVariant
+  F [Private] System.Int32 m_currentLeftItemVariant
+  F [Private] System.Int32 m_currentLeftBackItemVariant
+  F [Private] System.Int32 m_currentRightItemQuality
+  F [Private] System.Int32 m_currentRightBackItemQuality
+  F [Private] System.Int32 m_currentShoulderItemQuality
+  F [Private] System.Int32 m_currentLeftItemQuality
+  F [Private] System.Int32 m_currentLeftBackItemQuality
+  F [Private] ItemDrop/ItemData/HelmetHairType m_helmetHideHair
+  F [Private] ItemDrop/ItemData/HelmetHairType m_helmetHideBeard
+  F [Private] UnityEngine.Texture m_emptyBodyTexture
+  F [Private] UnityEngine.Texture m_emptyBodyBumpTexture
+  F [Private] UnityEngine.Texture m_emptyLegsTexture
+  F [Private] UnityEngine.Texture m_emptyLegsBumpTexture
+  F [Private] System.Int32 m_modelIndex
+  F [Private] UnityEngine.Vector3 m_skinColor
+  F [Private] UnityEngine.Vector3 m_hairColor
+  F [Private] UnityEngine.MaterialPropertyBlock m_hairPropertyBlock
+  F [Private] System.Int32 m_currentModelIndex
+  F [Private] ZNetView m_nview
+  F [Private] UnityEngine.GameObject m_visual
+  F [Private] UnityEngine.LODGroup m_lodGroup
+  F [Private, Static, InitOnly] System.Int32 s_skinColorID
+  F [Private, Static, InitOnly] System.Int32 s_mainTex
+  F [Private, Static, InitOnly] System.Int32 s_skinBumpMap
+  F [Private, Static, InitOnly] System.Int32 s_chestTex
+  F [Private, Static, InitOnly] System.Int32 s_chestBumpMap
+  F [Private, Static, InitOnly] System.Int32 s_legsTex
+  F [Private, Static, InitOnly] System.Int32 s_legsBumpMap
+  F [Private, Static, InitOnly] System.Int32 s_chestMetal
+  F [Private, Static, InitOnly] System.Int32 s_legsMetal
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  P Single SnowLevel
+  P List`1 Instances
+  M Void Awake() IL=164
+  M Void SetupFacialHairNonPlayer() IL=37
+  M Void SetupNpcHair(ZDO zdo) IL=35
+  M Void SetupNpcBeard(ZDO zdo) IL=35
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M Void Start() IL=3
+  M Void SetWeaponTrails(Boolean enabled) IL=51
+  M Void SetModel(Int32 index) IL=40
+  M Void SetSkinColor(Vector3 color) IL=25
+  M Void SetHairColor(Vector3 color) IL=25
+  M Void SetItem(VisSlot slot, Int32 itemHash, Int32 variant, Int32 quality) IL=62
+  M Void SetLeftItem(Int32 itemHash, Int32 variant, Int32 quality) IL=48
+  M Void SetRightItem(Int32 itemHash, Int32 quality) IL=16
+  M Void SetRightItemVisual(Int32 itemHash, Int32 quality) IL=23
+  M Void SetLeftBackItem(Int32 itemHash, Int32 variant, Int32 quality) IL=48
+  M Void SetRightBackItem(Int32 itemHash, Int32 quality) IL=34
+  M Void SetChestItem(Int32 itemHash) IL=24
+  M Void SetLegItem(Int32 itemHash) IL=24
+  M Void SetHelmetItem(Int32 itemHash) IL=24
+  M Void SetShoulderItem(Int32 itemHash, Int32 variant, Int32 quality) IL=48
+  M Void SetBeardItem(Int32 itemHash) IL=24
+  M Void SetHairItem(Int32 itemHash) IL=24
+  M Void SetUtilityItem(Int32 itemHash) IL=24
+  M Void SetTrinketItem(String name) IL=31
+  M Void CustomUpdate(Single deltaTime, Single time) IL=3
+  M Void UpdateVisuals() IL=13
+  M Void UpdateColors() IL=101
+  M Void SetupHairRenderer(Renderer mr, Color hairHue) IL=43
+  M Void UpdateBaseModel() IL=203
+  M Void UpdateEquipmentVisuals() IL=323
+  M Int32 GetHairItem(HelmetHairType type, Int32 itemHash, AccessoryType accessory) IL=64
+  M Void UpdateLodgroup() IL=80
+  M Boolean SetRightHandEquipped(Int32 hash, Int32 quality) IL=41
+  M Boolean SetLeftHandEquipped(Int32 hash, Int32 variant, Int32 quality) IL=48
+  M Boolean SetBackEquipped(Int32 leftItem, Int32 rightItem, Int32 leftVariant, Int32 leftQuality, Int32 rightQuality) IL=81
+  M GameObject AttachBackItem(Int32 hash, Int32 variant, Boolean rightHand, Int32 quality) IL=132
+  M Boolean SetChestEquipped(Int32 hash) IL=139
+  M Boolean SetShoulderEquipped(Int32 hash, Int32 variant, Int32 quality) IL=89
+  M Boolean SetLegEquipped(Int32 hash) IL=128
+  M Boolean SetBeardEquipped(Int32 hash) IL=34
+  M Boolean SetHairEquipped(Int32 hash) IL=34
+  M Boolean SetHelmetEquipped(Int32 hash, Int32 hairHash) IL=40
+  M Boolean SetUtilityEquipped(Int32 hash) IL=52
+  M Boolean SetTrinketEquipped(Int32 hash) IL=52
+  M Void HelmetHides(Int32 itemHash, HelmetHairType& hideHair, HelmetHairType& hideBeard) IL=34
+  M Void SetupCloth(GameObject item) IL=77
+  M List`1 AttachArmor(Int32 itemHash, Int32 variant, Int32 quality) IL=184
+  M GameObject AttachItem(Int32 itemHash, Int32 variant, Transform joint, Boolean enableEquipEffects, Boolean backAttach, Int32 quality) IL=235
+  M Void CleanupInstance(GameObject instance) IL=21
+  M Void EnableEquippedEffects(GameObject instance) IL=13
+  M Int32 GetModelIndex() IL=16
+  M Void RefreshSnowLevel() IL=10
+  M Single get_SnowLevel() IL=3
+  M Void set_SnowLevel(Single value) IL=14
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=27
+  M Void .cctor() IL=32
+======================================================================
+TYPE SE_Demister base=StatusEffect
+  F [Public] UnityEngine.GameObject m_ballPrefab
+  F [Public] UnityEngine.Vector3 m_offset
+  F [Public] UnityEngine.Vector3 m_offsetInterior
+  F [Public] System.Single m_maxDistance
+  F [Public] System.Single m_ballAcceleration
+  F [Public] System.Single m_ballMaxSpeed
+  F [Public] System.Single m_ballFriction
+  F [Public] System.Single m_noiseDistance
+  F [Public] System.Single m_noiseDistanceInterior
+  F [Public] System.Single m_noiseDistanceYScale
+  F [Public] System.Single m_noiseSpeed
+  F [Public] System.Single m_characterVelocityFactor
+  F [Public] System.Single m_rotationSpeed
+  F [Private] System.Int32 m_coverRayMask
+  F [Private] UnityEngine.GameObject m_ballInstance
+  F [Private] UnityEngine.Vector3 m_ballVel
+  M Void Setup(Character character) IL=32
+  M Boolean IsUnderRoof() IL=14
+  M Void UpdateStatusEffect(Single dt) IL=214
+  M Void RemoveEffects() IL=17
+  M Void OnApplicationQuit() IL=6
+  M Void Stop() IL=5
+  M Void OnDestroy() IL=5
+  M Void .ctor() IL=51
+======================================================================
+TYPE AmplifyOcclusionEffect base=UnityEngine.MonoBehaviour
+  NESTED AmplifyOcclusionEffect/ApplicationMethod
+    NF Int32 value__
+    NF ApplicationMethod PostEffect
+    NF ApplicationMethod Deferred
+    NF ApplicationMethod Debug
+  NESTED AmplifyOcclusionEffect/PerPixelNormalSource
+    NF Int32 value__
+    NF PerPixelNormalSource None
+    NF PerPixelNormalSource Camera
+    NF PerPixelNormalSource GBuffer
+    NF PerPixelNormalSource GBufferOctaEncoded
+  NESTED AmplifyOcclusionEffect/CmdBuffer
+    NF CommandBuffer cmdBuffer
+    NF CameraEvent cmdBufferEvent
+    NF String cmdBufferName
+  F [Private, Static] System.Int32 m_nextID
+  F [Private] System.Int32 m_myID
+  F [Private] System.String m_myIDstring
+  F [Private] System.Single m_oneOverDepthScale
+  F [Public] AmplifyOcclusionEffect/ApplicationMethod ApplyMethod
+  F [Public] AmplifyOcclusion.SampleCountLevel SampleCount
+  F [Public] AmplifyOcclusionEffect/PerPixelNormalSource PerPixelNormals
+  F [Public] System.Single Intensity
+  F [Public] UnityEngine.Color Tint
+  F [Public] System.Single Radius
+  F [Public] System.Single PowerExponent
+  F [Public] System.Single Bias
+  F [Public] System.Single Thickness
+  F [Public] System.Boolean Downsample
+  F [Public] System.Boolean CacheAware
+  F [Public] System.Boolean FadeEnabled
+  F [Public] System.Single FadeStart
+  F [Public] System.Single FadeLength
+  F [Public] System.Single FadeToIntensity
+  F [Public] UnityEngine.Color FadeToTint
+  F [Public] System.Single FadeToRadius
+  F [Public] System.Single FadeToPowerExponent
+  F [Public] System.Single FadeToThickness
+  F [Public] System.Boolean BlurEnabled
+  F [Public] System.Int32 BlurRadius
+  F [Public] System.Int32 BlurPasses
+  F [Public] System.Single BlurSharpness
+  F [Public] System.Boolean FilterEnabled
+  F [Public] System.Boolean FilterDownsample
+  F [Public] System.Single FilterBlending
+  F [Public] System.Single FilterResponse
+  F [Private] System.Boolean m_HDR
+  F [Private] System.Boolean m_MSAA
+  F [Private] AmplifyOcclusionEffect/PerPixelNormalSource m_prevPerPixelNormals
+  F [Private] AmplifyOcclusionEffect/ApplicationMethod m_prevApplyMethod
+  F [Private] System.Boolean m_prevDeferredReflections
+  F [Private] AmplifyOcclusion.SampleCountLevel m_prevSampleCount
+  F [Private] System.Boolean m_prevDownsample
+  F [Private] System.Boolean m_prevCacheAware
+  F [Private] System.Boolean m_prevBlurEnabled
+  F [Private] System.Int32 m_prevBlurRadius
+  F [Private] System.Int32 m_prevBlurPasses
+  F [Private] System.Boolean m_prevFilterEnabled
+  F [Private] System.Boolean m_prevFilterDownsample
+  F [Private] System.Boolean m_prevHDR
+  F [Private] System.Boolean m_prevMSAA
+  F [Private] UnityEngine.Camera m_targetCamera
+  F [Private] UnityEngine.Rendering.RenderTargetIdentifier[] applyDebugTargetsTemporal
+  F [Private] UnityEngine.Rendering.RenderTargetIdentifier[] applyDeferredTargets_Log_Temporal
+  F [Private] UnityEngine.Rendering.RenderTargetIdentifier[] applyDeferredTargetsTemporal
+  F [Private] UnityEngine.Rendering.RenderTargetIdentifier[] applyOcclusionTemporal
+  F [Private] UnityEngine.Rendering.RenderTargetIdentifier[] applyPostEffectTargetsTemporal
+  F [Private] System.Boolean useMRTBlendingFallback
+  F [Private] System.Boolean checkedforMRTBlendingFallback
+  F [Private] AmplifyOcclusionEffect/CmdBuffer m_commandBuffer_Parameters
+  F [Private] AmplifyOcclusionEffect/CmdBuffer m_commandBuffer_Occlusion
+  F [Private] AmplifyOcclusionEffect/CmdBuffer m_commandBuffer_Apply
+  F [Private, Static] UnityEngine.Mesh m_quadMesh
+  F [Private, Static] UnityEngine.Material m_occlusionMat
+  F [Private, Static] UnityEngine.Material m_blurMat
+  F [Private, Static] UnityEngine.Material m_applyOcclusionMat
+  F [Private] UnityEngine.RenderTextureFormat m_occlusionRTFormat
+  F [Private] UnityEngine.RenderTextureFormat m_accumTemporalRTFormat
+  F [Private] UnityEngine.RenderTextureFormat m_temporaryEmissionRTFormat
+  F [Private] UnityEngine.RenderTextureFormat m_motionIntensityRTFormat
+  F [Private] System.Boolean m_paramsChanged
+  F [Private] System.Boolean m_clearHistory
+  F [Private] UnityEngine.RenderTexture m_occlusionDepthRT
+  F [Private] UnityEngine.RenderTexture[] m_temporalAccumRT
+  F [Private] UnityEngine.RenderTexture m_depthMipmap
+  F [Private] System.UInt32 m_sampleStep
+  F [Private] System.UInt32 m_curTemporalIdx
+  F [Private] System.UInt32 m_prevTemporalIdx
+  F [Private] System.String[] m_tmpMipString
+  F [Private] System.Int32 m_numberMips
+  F [Private, InitOnly] UnityEngine.Rendering.RenderTargetIdentifier[] m_applyDeferredTargets
+  F [Private, InitOnly] UnityEngine.Rendering.RenderTargetIdentifier[] m_applyDeferredTargets_Log
+  F [Private] AmplifyOcclusion.TargetDesc m_target
+  F [Private] AmplifyOcclusion.AmplifyOcclusionViewProjMatrix m_viewProjMatrix
+  P Boolean UsingTemporalFilter
+  P Boolean UsingMotionVectors
+  P Boolean UsingFilterDownsample
+  M Boolean get_UsingTemporalFilter() IL=17
+  M Boolean get_UsingMotionVectors() IL=12
+  M Boolean get_UsingFilterDownsample() IL=11
+  M Void createCommandBuffer(CmdBuffer& aCmdBuffer, String aCmdBufferName, CameraEvent aCameraEvent) IL=26
+  M Void cleanupCommandBuffer(CmdBuffer& aCmdBuffer) IL=44
+  M Void createQuadMesh() IL=90
+  M Void PerformBlit(CommandBuffer cb, Material mat, Int32 pass) IL=8
+  M Void checkMaterials(Boolean aThroughErrorMsg) IL=44
+  M Boolean checkRenderTextureFormats() IL=27
+  M Void OnEnable() IL=72
+  M Void Reset() IL=36
+  M Void OnDisable() IL=3
+  M Void releaseTemporalRT() IL=25
+  M Void ClearHistory(CommandBuffer cb) IL=37
+  M Void checkParamsChanged() IL=369
+  M Void updateParams() IL=44
+  M Void Update() IL=117
+  M Void OnPreRender() IL=233
+  M Void OnPostRender() IL=31
+  M Void commandBuffer_FillComputeOcclusion(CommandBuffer cb) IL=363
+  M Int32 commandBuffer_NeighborMotionIntensity(CommandBuffer cb, Int32 aSourceWidth, Int32 aSourceHeight) IL=99
+  M Void commandBuffer_Blur(CommandBuffer cb, RenderTargetIdentifier aSourceRT, Int32 aSourceWidth, Int32 aSourceHeight) IL=77
+  M Int32 getTemporalPass() IL=11
+  M Void commandBuffer_TemporalFilter(CommandBuffer cb) IL=42
+  M Void commandBuffer_FillApplyDeferred(CommandBuffer cb, Boolean logTarget) IL=416
+  M Void commandBuffer_FillApplyPostEffect(CommandBuffer cb) IL=166
+  M Void commandBuffer_FillApplyDebug(CommandBuffer cb) IL=121
+  M Void UpdateGlobalShaderConstants(CommandBuffer cb) IL=11
+  M Void UpdateGlobalShaderConstants_AmbientOcclusion(CommandBuffer cb) IL=162
+  M Void UpdateGlobalShaderConstants_Matrices(CommandBuffer cb) IL=9
+  M Void .ctor() IL=162
+======================================================================
+TYPE CameraEffects base=UnityEngine.MonoBehaviour
+  F [Private, Static] CameraEffects m_instance
+  F [Public] System.Boolean m_forceDof
+  F [Public] UnityEngine.LayerMask m_dofRayMask
+  F [Public] System.Boolean m_dofAutoFocus
+  F [Public] System.Single m_dofMinDistance
+  F [Public] System.Single m_dofMinDistanceShip
+  F [Public] System.Single m_dofMaxDistance
+  F [Private] UnityEngine.PostProcessing.PostProcessingBehaviour m_postProcessing
+  F [Private] UnityStandardAssets.ImageEffects.DepthOfField m_dof
+  F [Private] AmplifyOcclusionEffect m_amplifyOcclusion
+  P CameraEffects instance
+  M CameraEffects get_instance() IL=2
+  M Void Awake() IL=21
+  M Void OnDestroy() IL=11
+  M Void ApplySettings() IL=33
+  M Void SetSunShafts(Boolean enabled) IL=11
+  M Void SetBloom(Boolean enabled) IL=7
+  M Void SetSSAO(Int32 value) IL=34
+  M Void SetEnvironmentAOParams(Color color, Single intensity) IL=13
+  M Void SetMotionBlur(Boolean enabled) IL=7
+  M Void SetAntiAliasing(Boolean enabled) IL=7
+  M Void SetCA(Boolean enabled) IL=7
+  M Void SetDof(Boolean enabled) IL=10
+  M Void LateUpdate() IL=3
+  M Boolean ControllingShip() IL=13
+  M Void UpdateDOF() IL=55
+  M Void .ctor() IL=12
+======================================================================
+TYPE MistEmitter base=UnityEngine.MonoBehaviour
+  F [Public] System.Single m_interval
+  F [Public] System.Single m_totalRadius
+  F [Public] System.Single m_testRadius
+  F [Public] System.Int32 m_rays
+  F [Public] System.Single m_placeOffset
+  F [Public] UnityEngine.ParticleSystem m_psystem
+  F [Private] System.Single m_placeTimer
+  F [Private] System.Boolean m_emit
+  M Void SetEmit(Boolean emit) IL=4
+  M Void Update() IL=21
+  M Void PlaceOne() IL=80
+  M Boolean GetRandomPoint(Vector3 center, Single radius, Vector3& p) IL=53
+  M Vector3 GetPointOnEdge(Vector3 center, Single angle, Single radius) IL=27
+  M Void .ctor() IL=21
+======================================================================
+TYPE OceanBubbleParticles base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.ParticleSystem m_particleSystem
+  F [Private] UnityEngine.ParticleSystem/Particle[] m_particles
+  M Void Start() IL=5
+  M Void Update() IL=58
+  M Void .ctor() IL=3
+======================================================================
+TYPE ParticleDecal base=UnityEngine.MonoBehaviour
+  F [Public] UnityEngine.ParticleSystem m_decalSystem
+  F [Public] System.Single m_chance
+  F [Private] UnityEngine.ParticleSystem part
+  F [Private] System.Collections.Generic.List`1<UnityEngine.ParticleCollisionEvent> collisionEvents
+  M Void Awake() IL=8
+  M Void OnParticleCollision(GameObject other) IL=80
+  M Void .ctor() IL=9
+======================================================================
+TYPE ParticleIntensityScaler base=UnityEngine.MonoBehaviour
+  NESTED ParticleIntensityScaler/ParticleData
+    NF ParticleSystem system
+    NF Single emissionRate
+    NF Int16 burstCount
+    NF MinMaxCurve startSpeed
+    NF MinMaxCurve startSize
+    NF MinMaxCurve startLifetime
+    NF MinMaxGradient startColor
+    NF Boolean hasColorOverLifetime
+    NF MinMaxGradient colorOverLifetime
+    NF MinMaxCurve velocityX
+    NF MinMaxCurve velocityY
+    NF MinMaxCurve velocityZ
+    NF MinMaxCurve forceX
+    NF MinMaxCurve forceY
+    NF MinMaxCurve forceZ
+    NF MinMaxCurve rotationSpeed
+    NF Single gravityModifier
+    NF Single trailLifetimeMultiplier
+    NF Single noiseStrengthX
+    NF Single noiseStrengthY
+    NF Single noiseStrengthZ
+    NF Single lightRatio
+    NM .ctor IL=3
+  NESTED ParticleIntensityScaler/LightData
+    NF Light light
+    NF Single intensity
+    NF Single range
+    NF Single bounceIntensity
+    NF Single shadowStrength
+    NF Color color
+    NM .ctor IL=3
+  F [Public] System.Single itemDropLevelMultiplier
+  F [Public] System.Int32 maxQuality
+  F [Public] System.Single intensity
+  F [Public] System.Single scaleEmission
+  F [Public] System.Single scaleBurstCount
+  F [Public] System.Single scaleSpeed
+  F [Public] System.Single scaleVelocityOverLifetime
+  F [Public] System.Single scaleForceOverLifetime
+  F [Public] System.Single scaleSize
+  F [Public] System.Single scaleLifetime
+  F [Public] System.Single scaleAlpha
+  F [Public] System.Single scaleRotationSpeed
+  F [Public] System.Single scaleGravity
+  F [Public] System.Single scaleTrails
+  F [Public] System.Single scaleNoise
+  F [Public] System.Single scaleLights
+  F [Public] System.Single scaleExternalForces
+  F [Public] System.Boolean inverseLifetimeScaling
+  F [Public] UnityEngine.Gradient intensityColorGradient
+  F [Public] System.Single intensityColorMax
+  F [Public] System.Boolean affectStartColor
+  F [Public] System.Boolean affectColorOverLifetime
+  F [Public] System.Single scaleLightsIntensity
+  F [Public] System.Single lightIntensityMax
+  F [Public] System.Single scaleLightsRange
+  F [Public] System.Single scaleLightsBounce
+  F [Public] System.Single scaleLightsAlpha
+  F [Private] UnityEngine.Light[] childLights
+  F [Private] ParticleIntensityScaler/LightData[] originalLightData
+  F [Private] UnityEngine.ParticleSystem[] systems
+  F [Private] ParticleIntensityScaler/ParticleData[] originalData
+  F [Private] System.Int32 lastItemDropLevel
+  F [Private] ItemDrop itemdrop
+  M Void Start() IL=16
+  M Void SetQuality(Int32 quality) IL=32
+  M Void OnEnable() IL=5
+  M Void OnValidate() IL=10
+  M Void CacheOriginalValues() IL=241
+  M Void ApplyIntensity() IL=477
+  M Color EvaluateIntensityColor(Single intensity) IL=25
+  M MinMaxCurve MultiplyCurve(MinMaxCurve curve, Single multiplier) IL=26
+  M MinMaxGradient SetGradientColor(MinMaxGradient gradient, Color newColor) IL=118
+  M MinMaxGradient ScaleGradientAlpha(MinMaxGradient gradient, Single multiplier) IL=53
+  M Void .ctor() IL=24
+======================================================================
+TYPE ParticleMist base=UnityEngine.MonoBehaviour
+  NESTED ParticleMist/<>c
+    NF <>c <>9
+    NF Comparison`1 <>9__15_0
+    NM .cctor IL=3
+    NM .ctor IL=3
+    NM <GetAllForcefields>b__15_0 IL=8
+  F [Private] System.Collections.Generic.List`1<Heightmap> tempHeightmaps
+  F [Private] System.Collections.Generic.List`1<Demister> fields
+  F [Private] System.Collections.Generic.List`1<System.Collections.Generic.KeyValuePair`2<Demister,System.Single>> sortList
+  F [Private, Static] ParticleMist m_instance
+  F [Private] UnityEngine.ParticleSystem m_ps
+  F [Public] Heightmap/Biome m_biome
+  F [Public] System.Single m_localRange
+  F [Public] System.Int32 m_localEmission
+  F [Public] System.Int32 m_localEmissionPerUnit
+  F [Public] System.Single m_maxMistAltitude
+  F [Public] System.Single m_distantMaxRange
+  F [Public] System.Single m_distantMinSize
+  F [Public] System.Single m_distantMaxSize
+  F [Public] System.Single m_distantEmissionMax
+  F [Public] System.Single m_distantEmissionMaxVel
+  F [Public] System.Single m_distantThickness
+  F [Public] System.Single m_minDistance
+  F [Public] System.Single m_maxDistance
+  F [Public] System.Single m_emissionMax
+  F [Public] System.Single m_emissionPerUnit
+  F [Public] System.Single m_minSize
+  F [Public] System.Single m_maxSize
+  F [Private] System.Single m_inMistAreaTimer
+  F [Private] System.Single m_accumulator
+  F [Private] System.Single m_combinedMovement
+  F [Private] UnityEngine.Vector3 m_lastUpdatePos
+  F [Private] System.Boolean m_haveActiveMist
+  P ParticleMist instance
+  M ParticleMist get_instance() IL=2
+  M Void Awake() IL=12
+  M Void OnDestroy() IL=7
+  M Void Update() IL=241
+  M Void Emit(Vector3 center, Single radius, Single thickness, Int32 toEmit, List`1 fields, Demister pf, Single minAlt) IL=90
+  M Void MisterEmit(Mister mister, List`1 allMisters, List`1 fields, Single minAlt, Single dt) IL=152
+  M Boolean IsInsideOtherDemister(List`1 fields, Vector3 p, Single radius, Demister ignore) IL=37
+  M Boolean IsInMist(Vector3 p0) IL=23
+  M Boolean IsMistBlocked(Vector3 p0, Vector3 p1) IL=11
+  M Boolean IsMistBlocked_internal(Vector3 p0, Vector3 p1) IL=50
+  M Boolean InsideDemister(Vector3 p) IL=31
+  M Void GetAllForcefields(List`1 fields) IL=65
+  M Void FindMaxMistAlltitude(Single testRange, Single& minMistHeight, Single& maxMistHeight) IL=61
+  M Void .ctor() IL=63
+======================================================================
+TYPE ShieldDomeParticleColor base=UnityEngine.MonoBehaviour
+  NESTED ShieldDomeParticleColor/ColorMode
+    NF Int32 value__
+    NF ColorMode ClosestShieldWall
+    NF ColorMode ClosestShieldGenerator
+  F [Public] ShieldDomeParticleColor/ColorMode m_colorMode
+  F [Public] UnityEngine.ParticleSystem[] m_particleSystems
+  M Void Start() IL=49
+  M Void .ctor() IL=3
+======================================================================
+TYPE Smoke base=UnityEngine.MonoBehaviour
+  F [Public] UnityEngine.Vector3 m_vel
+  F [Public] System.Single m_randomVel
+  F [Public] System.Single m_force
+  F [Public] System.Single m_ttl
+  F [Public] System.Single m_fadetime
+  F [Private] UnityEngine.Rigidbody m_body
+  F [Private] System.Single m_time
+  F [Private] System.Single m_fadeTimer
+  F [Private] System.Boolean m_added
+  F [Private] UnityEngine.Vector3Int <RenderChunk>k__BackingField
+  F [Private] UnityEngine.ParticleSystem/Particle m_renderParticle
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<Smoke> s_smoke
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  P Vector3Int RenderChunk
+  P List`1 Instances
+  M Void Awake() IL=33
+  M Void SetupParticle() IL=55
+  M Particle GetParticleValues() IL=30
+  M Single GetAlpha() IL=23
+  M Void OnEnable() IL=7
+  M Void OnDisable() IL=8
+  M Void OnDestroy() IL=11
+  M Void StartFadeOut() IL=27
+  M Int32 GetTotalSmoke() IL=3
+  M Void FadeOldest() IL=9
+  M Void FadeMostDistant() IL=53
+  M Void CustomUpdate(Single deltaTime, Single time) IL=86
+  M Vector3Int get_RenderChunk() IL=3
+  M Void set_RenderChunk(Vector3Int value) IL=4
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=24
+  M Void .cctor() IL=5
+======================================================================
+TYPE SmokeRenderer base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.ParticleSystem _particleSystemPrefab
+  F [Private] UnityEngine.Color m_smokeColor
+  F [Private] System.Single m_smokeBallSize
+  F [Private] System.Single m_chunkSize
+  F [Private] System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem> m_chunkedParticleSystems
+  F [Private] System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,System.Collections.Generic.List`1<Smoke>> m_chunkedSmoke
+  F [Private] System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem/Particle[]> m_chunkedParticles
+  F [Private] System.Collections.Generic.List`1<System.Tuple`3<UnityEngine.Vector3Int,UnityEngine.Vector3Int,Smoke>> m_chunkedSmokeToMove
+  F [Public, Static] SmokeRenderer Instance
+  F [Private, Static, Literal, HasDefault] System.Int32 c_MaxChunkParticleCount
+  M Void Awake() IL=11
+  M Void RegisterSmoke(Smoke smoke) IL=9
+  M Void UnregisterSmoke(Smoke smoke) IL=6
+  M Vector3Int PositionToChunk(Vector3 pos) IL=24
+  M Vector3 ChunkToWorld(Vector3Int chunk) IL=20
+  M Void AddSmokeToChunk(Vector3Int chunk, Smoke smoke) IL=44
+  M Void RemoveSmokeFromChunk(Vector3Int chunk, Smoke smoke) IL=22
+  M Void CleanupChunk(Vector3Int chunk) IL=24
+  M Void TransferSmokeBetweenChunks() IL=84
+  M Void LateUpdate() IL=109
+  M Void OnDrawGizmosSelected() IL=53
+  M Void .ctor() IL=21
+======================================================================
+TYPE SmokeSpawner base=UnityEngine.MonoBehaviour
+  F [Private, Static] UnityEngine.Collider[] s_colliders
+  F [Private, Static, Literal, HasDefault] System.Single m_minPlayerDistance
+  F [Private, Static, Literal, HasDefault] System.Int32 m_maxGlobalSmoke
+  F [Private, Static, Literal, HasDefault] System.Single m_blockedMinTime
+  F [Public] UnityEngine.GameObject m_smokePrefab
+  F [Public] System.Single m_interval
+  F [Public] UnityEngine.LayerMask m_testMask
+  F [Public] System.Single m_testRadius
+  F [Public] System.Single m_spawnRadius
+  F [Public] System.Boolean m_stopFireOnStart
+  F [Private] System.Single m_lastSpawnTime
+  F [Private] System.Single m_time
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  P List`1 Instances
+  M Void Awake() IL=42
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M Void CustomUpdate(Single deltaTime, Single time) IL=18
+  M Void Spawn(Single time) IL=67
+  M Boolean TestBlocked() IL=14
+  M Boolean IsBlocked() IL=14
+  M Void OnDrawGizmos() IL=10
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=9
+  M Void .cctor() IL=6
+======================================================================
+TYPE VortexParticles base=UnityEngine.MonoBehaviour
+  NESTED VortexParticles/VortexParticlesJob
+    NF Vector3 vortexCenter
+    NF Single pullStrength
+    NF Vector3 upDir
+    NF Single vortexStrength
+    NF Boolean lineAttraction
+    NF Boolean useCustomData
+    NF Single deltaTime
+    NF Boolean distanceStrengthFalloff
+    NM Execute IL=142
+  F [Private] UnityEngine.ParticleSystem ps
+  F [Private] VortexParticles/VortexParticlesJob job
+  F [Private] System.Boolean effectOn
+  F [Private] UnityEngine.Vector3 centerOffset
+  F [Private] System.Single pullStrength
+  F [Private] System.Single vortexStrength
+  F [Private] System.Boolean lineAttraction
+  F [Private] System.Boolean useCustomData
+  F [Private] System.Boolean distanceStrengthFalloff
+  M Void Start() IL=20
+  M Void Update() IL=65
+  M Void OnParticleUpdateJobScheduled() IL=38
+  M Void .ctor() IL=6
+======================================================================
+TYPE WrapParticles base=UnityEngine.MonoBehaviour
+  NESTED WrapParticles/WrapParticlesJob
+    NF Boolean isGlobal
+    NF Vector3 globalCenter
+    NF WrapMode wrapMode
+    NF Vector3 boxSize
+    NF Single sphereRadiusSqr
+    NF Single sphereRadius
+    NF Vector3 wrapCenterOffset
+    NF Boolean ignoreY
+    NM Execute IL=179
+  NESTED WrapParticles/WrapMode
+    NF Int32 value__
+    NF WrapMode Sphere
+    NF WrapMode Box
+  F [Private] UnityEngine.ParticleSystem m_ps
+  F [Private] System.Boolean m_effectOn
+  F [Private] WrapParticles/WrapMode m_wrapMode
+  F [Private] System.Boolean m_ignoreY
+  F [Private] UnityEngine.Vector3 m_wrapCenterOffset
+  F [Private] UnityEngine.Vector3 m_wrapBoxSize
+  F [Private] System.Single m_wrapSphereRadius
+  F [Private] WrapParticles/WrapParticlesJob job
+  M Void Start() IL=20
+  M Void Update() IL=51
+  M Void OnDrawGizmosSelected() IL=30
+  M Void OnParticleUpdateJobScheduled() IL=38
+  M Void .ctor() IL=17
+======================================================================
+TYPE InventoryGui base=UnityEngine.MonoBehaviour
+  NESTED InventoryGui/SortMethod
+    NF Int32 value__
+    NF SortMethod Original
+    NF SortMethod Name
+    NF SortMethod Type
+    NF SortMethod Weight
+    NF SortMethod Count
+  NESTED InventoryGui/RecipeDataPair
+    NF Recipe <Recipe>k__BackingField
+    NF ItemData <ItemData>k__BackingField
+    NF GameObject <InterfaceElement>k__BackingField
+    NF Boolean <CanCraft>k__BackingField
+    NM .ctor IL=13
+    NM get_Recipe IL=3
+    NM set_Recipe IL=4
+    NM get_ItemData IL=3
+    NM set_ItemData IL=4
+    NM get_InterfaceElement IL=3
+    NM set_InterfaceElement IL=4
+    NM get_CanCraft IL=3
+    NM set_CanCraft IL=4
+  NESTED InventoryGui/<>c
+    NF <>c <>9
+    NF Comparison`1 <>9__41_0
+    NF Comparison`1 <>9__41_1
+    NF Comparison`1 <>9__41_2
+    NF Comparison`1 <>9__41_3
+    NM .cctor IL=3
+    NM .ctor IL=3
+    NM <UpdateRecipeList>b__41_0 IL=34
+    NM <UpdateRecipeList>b__41_1 IL=24
+    NM <UpdateRecipeList>b__41_2 IL=42
+    NM <UpdateRecipeList>b__41_3 IL=40
+  NESTED InventoryGui/<>c__DisplayClass43_0
+    NF InventoryGui <>4__this
+    NF GameObject element
+    NM .ctor IL=3
+    NM <AddRecipeToList>b__0 IL=6
+  NESTED InventoryGui/<>c__DisplayClass83_0
+    NF Achievement item
+    NF AchievementsGui achievementsGui
+    NF Boolean clickable
+    NM .ctor IL=3
+    NM <UpdateAchievementsList>b__0 IL=8
+  F [Private] System.Collections.Generic.List`1<Recipe> m_tempRecipes
+  F [Private] System.Collections.Generic.List`1<ItemDrop/ItemData> m_tempItemList
+  F [Private] System.Collections.Generic.List`1<ItemDrop/ItemData> m_tempWornItems
+  F [Private, Static] InventoryGui m_instance
+  F [Public] UIGroupHandler m_inventoryGroup
+  F [Public] UIGroupHandler[] m_uiGroups
+  F [Private] System.Int32 m_activeGroup
+  F [Private] System.Boolean m_inventoryGroupCycling
+  F [Public] UnityEngine.Transform m_inventoryRoot
+  F [Public] UnityEngine.RectTransform m_player
+  F [Public] UnityEngine.RectTransform m_crafting
+  F [Public] UnityEngine.RectTransform m_info
+  F [Public] UnityEngine.RectTransform m_container
+  F [Public] UnityEngine.GameObject m_dragItemPrefab
+  F [Public] UnityEngine.GameObject[] m_touchDragEffects
+  F [Public] UnityEngine.Transform m_touchSplitAnchor
+  F [Public] TMPro.TMP_Text m_containerName
+  F [Public] UnityEngine.UI.Button m_dropButton
+  F [Public] UnityEngine.UI.Button m_takeAllButton
+  F [Public] UnityEngine.UI.Button m_stackAllButton
+  F [Public] System.Single m_autoCloseDistance
+  F [Public] UnityEngine.UI.Button m_tabCraft
+  F [Public] UnityEngine.UI.Button m_tabUpgrade
+  F [Public] UnityEngine.GameObject m_recipeElementPrefab
+  F [Public] UnityEngine.RectTransform m_recipeListRoot
+  F [Public] UnityEngine.UI.Scrollbar m_recipeListScroll
+  F [Public] System.Single m_recipeListSpace
+  F [Public] System.Single m_craftBonusChance
+  F [Public] System.Int32 m_craftBonusAmount
+  F [Public] EffectList m_craftBonusEffect
+  F [Public] System.Single m_craftDurationSkillMaxDecrease
+  F [Public] System.Single m_craftDuration
+  F [Public] System.Int32 m_multiCraftAmount
+  F [Public] System.Single m_multiCraftDuration
+  F [Public] System.Single m_upgraderDuration
+  F [Public] System.Single m_upgraderDurationPerLevel
+  F [Public] UnityEngine.GameObject CraftingVibration
+  F [Public] TMPro.TMP_Text m_craftingStationName
+  F [Public] UnityEngine.UI.Image m_craftingStationIcon
+  F [Public] UnityEngine.RectTransform m_craftingStationLevelRoot
+  F [Public] TMPro.TMP_Text m_craftingStationLevel
+  F [Public] TMPro.TMP_Text m_recipeName
+  F [Public] TMPro.TMP_Text m_recipeDecription
+  F [Public] UnityEngine.UI.Image m_recipeIcon
+  F [Public] UnityEngine.GameObject[] m_recipeRequirementList
+  F [Public] UnityEngine.UI.Button m_variantButton
+  F [Public] UnityEngine.UI.Button m_craftButton
+  F [Public] UnityEngine.UI.Button m_craftCancelButton
+  F [Public] UnityEngine.Transform m_craftProgressPanel
+  F [Public] GuiBar m_craftProgressBar
+  F [Public] UnityEngine.UI.Button m_repairButton
+  F [Public] UnityEngine.Transform m_repairPanel
+  F [Public] UnityEngine.UI.Image m_repairButtonGlow
+  F [Public] UnityEngine.Transform m_repairPanelSelection
+  F [Public] UnityEngine.UI.Image m_upgradeItemIcon
+  F [Public] GuiBar m_upgradeItemDurability
+  F [Public] TMPro.TMP_Text m_upgradeItemName
+  F [Public] TMPro.TMP_Text m_upgradeItemQuality
+  F [Public] UnityEngine.GameObject m_upgradeItemQualityArrow
+  F [Public] TMPro.TMP_Text m_upgradeItemNextQuality
+  F [Public] TMPro.TMP_Text m_upgradeItemIndex
+  F [Public] TMPro.TMP_Text m_itemCraftType
+  F [Public] UnityEngine.RectTransform m_qualityPanel
+  F [Public] UnityEngine.UI.Button m_qualityLevelDown
+  F [Public] UnityEngine.UI.Button m_qualityLevelUp
+  F [Public] TMPro.TMP_Text m_qualityLevel
+  F [Public] UnityEngine.UI.Image m_minStationLevelIcon
+  F [Private] UnityEngine.Color m_minStationLevelBasecolor
+  F [Public] TMPro.TMP_Text m_minStationLevelText
+  F [Public] ScrollRectEnsureVisible m_recipeEnsureVisible
+  F [Public] VariantDialog m_variantDialog
+  F [Public] SkillsDialog m_skillsDialog
+  F [Public] TextsDialog m_textsDialog
+  F [Public] SplitDialog m_splitDialog
+  F [Public] System.Single m_longPressTimeToShowSplit
+  F [Public] UnityEngine.Transform m_infoPanel
+  F [Public] TMPro.TMP_Text m_playerName
+  F [Public] TMPro.TMP_Text m_armor
+  F [Public] TMPro.TMP_Text m_weight
+  F [Public] TMPro.TMP_Text m_containerWeight
+  F [Public] UnityEngine.UI.Toggle m_pvp
+  F [Public] UnityEngine.GameObject m_trophiesPanel
+  F [Public] UnityEngine.RectTransform m_trophieListRoot
+  F [Public] System.Single m_trophieListSpace
+  F [Public] UnityEngine.GameObject m_trophieElementPrefab
+  F [Public] UnityEngine.UI.Scrollbar m_trophyListScroll
+  F [Public] AchievementsGui m_achievementsPanel
+  F [Public] UnityEngine.RectTransform m_achievementsListRoot
+  F [Public] UnityEngine.GameObject m_achievementsElementPrefab
+  F [Public] UnityEngine.UI.Scrollbar m_achievementsListScroll
+  F [Public] UnityEngine.Sprite m_secretAchievementIcon
+  F [Public] TMPro.TextMeshProUGUI m_achievementsCheatedText
+  F [Public] TMPro.TextMeshProUGUI m_achievementsCompletionRateText
+  F [Public] EffectList m_moveItemEffects
+  F [Public] EffectList m_craftItemEffects
+  F [Public] EffectList m_craftItemDoneEffects
+  F [Public] EffectList m_openInventoryEffects
+  F [Public] EffectList m_closeInventoryEffects
+  F [Public] EffectList m_setActiveGroupEffects
+  F [Public] InventoryGrid m_playerGrid
+  F [Private] InventoryGrid m_containerGrid
+  F [Private] UnityEngine.Animator m_animator
+  F [Private] Container m_currentContainer
+  F [Private] System.Boolean m_firstContainerUpdate
+  F [Private] System.Single m_containerHoldTime
+  F [Private] System.Single m_containerHoldPlaceStackDelay
+  F [Private] System.Single m_containerHoldExitDelay
+  F [Private] System.Int32 m_containerHoldState
+  F [Private] System.Boolean m_waitForContainerStack
+  F [Private] InventoryGui/RecipeDataPair m_selectedRecipe
+  F [Private] System.Collections.Generic.List`1<ItemDrop/ItemData> m_upgradeItems
+  F [Private] System.Collections.Generic.List`1<Piece/Requirement> m_reqList
+  F [Private] System.Int32 m_selectedVariant
+  F [Private] Recipe m_craftRecipe
+  F [Private] ItemDrop/ItemData m_craftUpgradeItem
+  F [Private] System.Int32 m_craftVariant
+  F [Private] System.Collections.Generic.List`1<InventoryGui/RecipeDataPair> m_availableRecipes
+  F [Private] UnityEngine.GameObject m_dragGo
+  F [Private] ItemDrop/ItemData m_dragItem
+  F [Private] Inventory m_dragInventory
+  F [Private] System.Int32 m_dragAmount
+  F [Private] UnityEngine.GameObject m_lastSelected
+  F [Private] ItemDrop/ItemData m_splitItem
+  F [Private] Inventory m_splitInventory
+  F [Private] System.Single m_craftTimer
+  F [Private] System.Boolean m_multiCrafting
+  F [Private] System.Boolean m_touchMultiCrafting
+  F [Private] System.Boolean m_currentlyHoldingOnCraftButton
+  F [Private] System.Single m_recipeListBaseSize
+  F [Private] System.Int32 m_hiddenFrames
+  F [Private] System.Int32 m_shownFrames
+  F [Private] System.String m_splitInput
+  F [Private] System.DateTime m_lastSplitInput
+  F [Public] System.Single m_splitNumInputTimeoutSec
+  F [Private] System.Collections.Generic.List`1<UnityEngine.GameObject> m_trophyList
+  F [Private] System.Single m_trophieListBaseSize
+  F [Private] System.Boolean m_isSplitDropping
+  F [Private] System.Single m_invGridHeight
+  F [Private] System.Single m_playerHeight
+  F [Private] UnityEngine.RectTransform m_invRect
+  P InventoryGui instance
+  P Boolean IsSplitDropping
+  P Int32 ActiveGroup
+  P Boolean IsSkillsPanelOpen
+  P Boolean IsTextPanelOpen
+  P Boolean IsTrophisPanelOpen
+  P Boolean IsAchievementsPanelOpen
+  P InventoryGrid ContainerGrid
+  M InventoryGui get_instance() IL=2
+  M Void Awake() IL=336
+  M Void OnEnable() IL=16
+  M Void OnDisable() IL=16
+  M Void MoveToLowerInventoryGrid(Vector2i previousGridPosition) IL=55
+  M Void MoveToUpperInventoryGrid(Vector2i previousGridPosition) IL=56
+  M Void SetTouchSelection(InventoryGrid grid) IL=10
+  M Void ClearTouchSelection() IL=7
+  M Boolean CanDropDragOntoItem(ItemData item) IL=12
+  M Void OnDestroy() IL=7
+  M Void InputLayoutChanged() IL=8
+  M Void Update() IL=280
+  M Void UpdateGamepad() IL=44
+  M Void SetActiveGroup(UIGroupHandler group, Boolean playSound) IL=8
+  M Void SetActiveGroup(Int32 index, Boolean playSound) IL=95
+  M Void UpdateCharacterStats(Player player) IL=27
+  M Void UpdateInventoryWeight(Player player) IL=48
+  M Void UpdateContainerWeight() IL=18
+  M Void UpdateInventory(Player player) IL=11
+  M Void UpdateContainer(Player player) IL=137
+  M Boolean UseButtonHeld() IL=8
+  M RectTransform GetSelectedGamepadElement() IL=20
+  M Vector3 GetSelectedSize() IL=21
+  M Void UpdateItemDrag() IL=138
+  M Void OnTakeAll() IL=22
+  M Void OnStackAll() IL=22
+  M Void OnDropOutside() IL=63
+  M Void OnRightClickItem(InventoryGrid grid, ItemData item, Vector2i pos) IL=12
+  M Void OnSelectedItem(InventoryGrid grid, ItemData item, Vector2i pos, Modifier mod) IL=323
+  M Void OnReleasedItem(InventoryGrid grid, ItemData item, Vector2i pos) IL=25
+  M Void OnEnterElement(InventoryGrid grid, Vector2i pos) IL=28
+  M Boolean IsVisible() IL=12
+  M Boolean IsContainerOpen() IL=5
+  M Boolean WaitForStack() IL=3
+  M Void Show(Container container, Int32 activeGroup) IL=60
+  M Void Hide() IL=92
+  M Void CloseContainer() IL=35
+  M Void SetupCrafting() IL=4
+  M Void UpdateCraftingPanel(Boolean focusView) IL=110
+  M Void UpdateRecipeList(List`1 recipes) IL=325
+  M Void AddRecipeToList(Player player, Recipe recipe, ItemData item, Boolean canCraft) IL=166
+  M Void OnSelectedRecipe(GameObject button) IL=18
+  M Void UpdateRecipeGamepadInput() IL=42
+  M Int32 GetSelectedRecipeIndex(Boolean acceptOneLevelHigher) IL=137
+  M Void SetRecipe(Int32 index, Boolean center) IL=104
+  M Void UpdateRecipe(Player player, Single dt) IL=652
+  M Void SetupRequirementList(Int32 quality, Player player, Boolean allowedQuality, Int32 amount) IL=199
+  M Void SetupUpgradeItem(Recipe recipe, ItemData item) IL=117
+  M Void SetInventorySize(Int32 rows) IL=19
+  M Boolean SetupRequirement(Transform elementRoot, Requirement req, Player player, Boolean craft, Int32 quality, Int32 craftMultiplier) IL=125
+  M Void HideRequirement(Transform elementRoot) IL=33
+  M Void DoCrafting(Player player) IL=859
+  M Int32 FindSelectedRecipe(GameObject button) IL=26
+  M Void OnCraftCancelPressed() IL=12
+  M Void OnCraftPointerDown() IL=4
+  M Void OnCraftPointerUp() IL=4
+  M Void OnCraftPointerExit() IL=7
+  M Void TouchLongPressStarted() IL=5
+  M Void TouchLongPressPerformed() IL=7
+  M Void OnCraftPressed() IL=191
+  M Void OnRepairPressed() IL=15
+  M Void UpdateRepair() IL=88
+  M Void RepairOneItem() IL=110
+  M Boolean HaveRepairableItems() IL=63
+  M Boolean CanRepair(ItemData item) IL=90
+  M Void SetupDragItem(ItemData item, Inventory inventory, Int32 amount) IL=55
+  M Void ShowSplitDialog(ItemData item, Inventory fromIventory) IL=51
+  M Void HideSplitDialog() IL=17
+  M Void UpdateSplitDialog() IL=115
+  M Void OnSplitCancel() IL=9
+  M Void OnSplitOk() IL=23
+  M Void OnOpenSkills() IL=22
+  M Void OnOpenTexts() IL=22
+  M Void OnOpenTrophies() IL=20
+  M Void OnPvpChanged(Boolean value) IL=10
+  M Void OnCloseTrophies() IL=5
+  M Void OnOpenAchievements() IL=14
+  M Void OnCloseAchievements() IL=9
+  M Void UpdateTrophyList() IL=174
+  M Void UpdateAchievementsList() IL=332
+  M Void OnShowVariantSelection() IL=15
+  M Void OnVariantSelected(Int32 index) IL=9
+  M Boolean InUpradeTab() IL=11
+  M Boolean InCraftTab() IL=11
+  M Void OnTabCraftPressed() IL=19
+  M Void OnTabUpgradePressed() IL=19
+  M Boolean get_IsSplitDropping() IL=3
+  M Void set_IsSplitDropping(Boolean value) IL=12
+  M Int32 get_ActiveGroup() IL=3
+  M Boolean get_IsSkillsPanelOpen() IL=5
+  M Boolean get_IsTextPanelOpen() IL=5
+  M Boolean get_IsTrophisPanelOpen() IL=4
+  M Boolean get_IsAchievementsPanelOpen() IL=5
+  M InventoryGrid get_ContainerGrid() IL=3
+  M Void .ctor() IL=116
+  M Void <Awake>b__2_0(UIDragHandler _) IL=3
+  M Int32 <UpdateRecipeList>g__byCraftable|41_4(RecipeDataPair a, RecipeDataPair b) IL=8
+  M Int32 <UpdateRecipeList>g__bySortWeight|41_5(RecipeDataPair a, RecipeDataPair b) IL=8
+  M Int32 <UpdateRecipeList>g__byName|41_6(RecipeDataPair a, RecipeDataPair b) IL=18
+  M Int32 <UpdateRecipeList>g__byLevel|41_7(RecipeDataPair a, RecipeDataPair b) IL=16
+  M Boolean <GetSelectedRecipeIndex>g__isOneLevelHigher|46_0(ItemData available, ItemData selected) IL=36
+======================================================================
+TYPE Minimap base=UnityEngine.MonoBehaviour
+  NESTED Minimap/MapMode
+    NF Int32 value__
+    NF MapMode None
+    NF MapMode Small
+    NF MapMode Large
+  NESTED Minimap/PinType
+    NF Int32 value__
+    NF PinType Icon0
+    NF PinType Icon1
+    NF PinType Icon2
+    NF PinType Icon3
+    NF PinType Death
+    NF PinType Bed
+    NF PinType Icon4
+    NF PinType Shout
+    NF PinType None
+    NF PinType Boss
+    NF PinType Player
+    NF PinType RandomEvent
+    NF PinType Ping
+    NF PinType EventArea
+    NF PinType Hildir1
+    NF PinType Hildir2
+    NF PinType Hildir3
+    NF PinType Memorial
+  NESTED Minimap/PinData
+    NF String m_name
+    NF PinType m_type
+    NF Sprite m_icon
+    NF Vector3 m_pos
+    NF Boolean m_save
+    NF Int64 m_ownerID
+    NF PlatformUserID m_author
+    NF Boolean m_shouldDelete
+    NF Boolean m_checked
+    NF Boolean m_doubleSize
+    NF Boolean m_animate
+    NF Single m_worldSize
+    NF RectTransform m_uiElement
+    NF GameObject m_checkedElement
+    NF Image m_iconElement
+    NF PinNameData m_NamePinData
+    NM .ctor IL=3
+  NESTED Minimap/PinNameData
+    NF PinData ParentPin
+    NF TMP_Text <PinNameText>k__BackingField
+    NF GameObject <PinNameGameObject>k__BackingField
+    NF RectTransform <PinNameRectTransform>k__BackingField
+    NM set_PinNameText IL=4
+    NM get_PinNameText IL=3
+    NM set_PinNameGameObject IL=4
+    NM get_PinNameGameObject IL=3
+    NM set_PinNameRectTransform IL=4
+    NM get_PinNameRectTransform IL=3
+    NM .ctor IL=6
+    NM SetTextAndGameObject IL=51
+    NM DestroyMapMarker IL=7
+  NESTED Minimap/SpriteData
+    NF PinType m_name
+    NF Sprite m_icon
+  NESTED Minimap/LocationSpriteData
+    NF String m_name
+    NF Sprite m_icon
+  NESTED Minimap/<>c
+    NF <>c <>9
+    NF Func`2 <>9__75_0
+    NM .cctor IL=3
+    NM .ctor IL=3
+    NM <GetMapData>b__75_0 IL=3
+  NESTED Minimap/<>c__DisplayClass87_0
+    NF PinType type
+    NM .ctor IL=3
+    NM <GetSprite>b__0 IL=6
+  NESTED Minimap/<DelayActivation>d__23
+    NF Int32 <>1__state
+    NF Object <>2__current
+    NF GameObject go
+    NF Single delay
+    NF Minimap <>4__this
+    NM .ctor IL=6
+    NM System.IDisposable.Dispose IL=1
+    NM MoveNext IL=54
+    NM System.Collections.Generic.IEnumerator<System.Object>.get_Current IL=3
+    NM System.Collections.IEnumerator.Reset IL=2
+    NM System.Collections.IEnumerator.get_Current IL=3
+  NESTED Minimap/<DelayedOpenKeyboard>d__18
+    NF Int32 <>1__state
+    NF Object <>2__current
+    NF Minimap <>4__this
+    NM .ctor IL=6
+    NM System.IDisposable.Dispose IL=1
+    NM MoveNext IL=35
+    NM System.Collections.Generic.IEnumerator<System.Object>.get_Current IL=3
+    NM System.Collections.IEnumerator.Reset IL=2
+    NM System.Collections.IEnumerator.get_Current IL=3
+  F [Private] System.Collections.Generic.Dictionary`2<System.Int32,System.Tuple`2<Minimap/PinData,Minimap/PinData>> m_persistentEventPins
+  F [Private] System.Single m_updatePersistentEventTime
+  F [Private, Static, InitOnly] UnityEngine.Color s_forestColor
+  F [Private, Static, InitOnly] UnityEngine.Color s_noForestColor
+  F [Private] System.Single inputDelay
+  F [Private, Static] Minimap s_instance
+  F [Public] UnityEngine.GameObject m_smallRoot
+  F [Public] UnityEngine.GameObject m_largeRoot
+  F [Public] UnityEngine.UI.RawImage m_mapImageSmall
+  F [Public] UnityEngine.UI.RawImage m_mapImageLarge
+  F [Public] UnityEngine.RectTransform m_pinRootSmall
+  F [Public] UnityEngine.RectTransform m_pinRootLarge
+  F [Public] UnityEngine.RectTransform m_pinNameRootSmall
+  F [Public] UnityEngine.RectTransform m_pinNameRootLarge
+  F [Public] TMPro.TMP_Text m_biomeNameSmall
+  F [Public] TMPro.TMP_Text m_biomeNameLarge
+  F [Public] UnityEngine.RectTransform m_smallShipMarker
+  F [Public] UnityEngine.RectTransform m_largeShipMarker
+  F [Public] UnityEngine.RectTransform m_smallMarker
+  F [Public] UnityEngine.RectTransform m_largeMarker
+  F [Public] UnityEngine.RectTransform m_windMarker
+  F [Public] UnityEngine.RectTransform m_gamepadCrosshair
+  F [Public] UnityEngine.UI.Toggle m_publicPosition
+  F [Public] UnityEngine.UI.Image m_selectedIcon0
+  F [Public] UnityEngine.UI.Image m_selectedIcon1
+  F [Public] UnityEngine.UI.Image m_selectedIcon2
+  F [Public] UnityEngine.UI.Image m_selectedIcon3
+  F [Public] UnityEngine.UI.Image m_selectedIcon4
+  F [Public] UnityEngine.UI.Image m_selectedIconDeath
+  F [Public] UnityEngine.UI.Image m_selectedIconBoss
+  F [Public] UnityEngine.UI.Image m_selectedIconPing
+  F [Public] UnityEngine.Transform m_touchPingPanel
+  F [Private] System.Collections.Generic.Dictionary`2<Minimap/PinType,UnityEngine.UI.Image> m_selectedIcons
+  F [Public] UnityEngine.Sprite m_pingIcon
+  F [Public] UnityEngine.Sprite m_pingIconMac
+  F [Public] UnityEngine.UI.Image m_pingImageObject
+  F [Private] System.Boolean[] m_visibleIconTypes
+  F [Private] System.Boolean m_showSharedMapData
+  F [Public] System.Single m_sharedMapDataFadeRate
+  F [Private] System.Single m_sharedMapDataFade
+  F [Public] UnityEngine.GameObject m_mapSmall
+  F [Public] UnityEngine.GameObject m_mapLarge
+  F [Private] UnityEngine.Material m_mapSmallShader
+  F [Private] UnityEngine.Material m_mapLargeShader
+  F [Public] UnityEngine.GameObject m_pinPrefab
+  F [Private] UnityEngine.GameObject m_pinNamePrefab
+  F [Private] UnityEngine.GameObject m_touchVibrationPrefab
+  F [Public] GUIFramework.GuiInputField m_nameInput
+  F [Public] System.Int32 m_textureSize
+  F [Public] System.Single m_pixelSize
+  F [Public] System.Single m_minZoom
+  F [Public] System.Single m_maxZoom
+  F [Public] System.Single m_showNamesZoom
+  F [Public] System.Single m_exploreInterval
+  F [Public] System.Single m_exploreRadius
+  F [Public] System.Single m_removeRadius
+  F [Public] System.Single m_pinSizeSmall
+  F [Public] System.Single m_pinSizeLarge
+  F [Public] System.Single m_clickDuration
+  F [Public] System.Single m_longPressToDeleteTime
+  F [Public] System.Collections.Generic.List`1<Minimap/SpriteData> m_icons
+  F [Public] System.Collections.Generic.List`1<Minimap/LocationSpriteData> m_locationIcons
+  F [Public] UnityEngine.Color m_meadowsColor
+  F [Public] UnityEngine.Color m_ashlandsColor
+  F [Public] UnityEngine.Color m_blackforestColor
+  F [Public] UnityEngine.Color m_deepnorthColor
+  F [Public] UnityEngine.Color m_heathColor
+  F [Public] UnityEngine.Color m_swampColor
+  F [Public] UnityEngine.Color m_mountainColor
+  F [Private] UnityEngine.Color m_mistlandsColor
+  F [Private] Minimap/PinData m_namePin
+  F [Private] Minimap/PinType m_selectedType
+  F [Private] Minimap/PinData m_deathPin
+  F [Private] Minimap/PinData m_spawnPointPin
+  F [Private] System.Collections.Generic.Dictionary`2<UnityEngine.Vector3,Minimap/PinData> m_locationPins
+  F [Private] System.Single m_updateLocationsTimer
+  F [Private] System.Collections.Generic.List`1<Minimap/PinData> m_pingPins
+  F [Private] System.Collections.Generic.List`1<Minimap/PinData> m_shoutPins
+  F [Private] System.Collections.Generic.List`1<Chat/WorldTextInstance> m_tempShouts
+  F [Private] System.Collections.Generic.List`1<Minimap/PinData> m_playerPins
+  F [Private] System.Collections.Generic.List`1<ZNet/PlayerInfo> m_tempPlayerInfo
+  F [Private] Minimap/PinData m_randEventPin
+  F [Private] Minimap/PinData m_randEventAreaPin
+  F [Private] System.Single m_updateEventTime
+  F [Private] System.Collections.BitArray m_explored
+  F [Private] System.Collections.BitArray m_exploredOthers
+  F [Public] UnityEngine.GameObject m_sharedMapHint
+  F [Public] System.Collections.Generic.List`1<UnityEngine.GameObject> m_hints
+  F [Private] System.Collections.Generic.List`1<Minimap/PinData> m_pins
+  F [Private] System.Boolean m_pinUpdateRequired
+  F [Private] UnityEngine.Vector3 m_previousMapCenter
+  F [Private] System.Single m_previousLargeZoom
+  F [Private] System.Single m_previousSmallZoom
+  F [Private] UnityEngine.Texture2D m_forestMaskTexture
+  F [Public] UnityEngine.Texture2D m_mapTexture
+  F [Private] UnityEngine.Texture2D m_heightTexture
+  F [Private] UnityEngine.Texture2D m_fogTexture
+  F [Private] System.Single m_largeZoom
+  F [Private] System.Single m_lastLargeZoom
+  F [Private] System.Single m_smallZoom
+  F [Private] BiomeSector m_biome
+  F [Public] Minimap/MapMode m_mode
+  F [Public] System.Single m_nomapPingDistance
+  F [Private] System.Single m_exploreTimer
+  F [Private] System.Boolean m_hasGenerated
+  F [Private] System.Boolean m_dragView
+  F [Private] UnityEngine.Vector3 m_mapOffset
+  F [Private] System.Int32 m_lastTouchCount
+  F [Private, InitOnly] UnityEngine.Vector3[] m_lastPinchZoomPoints
+  F [Private] UnityEngine.Vector3 m_moveInertia
+  F [Private] System.Single m_zoomInertia
+  F [Private] UnityEngine.Vector3 m_lastZoomPoint
+  F [Private] System.Boolean m_startedZooming
+  F [Private] System.Single m_leftDownTime
+  F [Private] System.Single m_leftClickTime
+  F [Private] UnityEngine.Vector3 m_leftClickPosition
+  F [Private] UnityEngine.Vector3 m_dragWorldPos
+  F [Private] System.Boolean m_wasFocused
+  F [Private] System.Single m_delayTextInput
+  F [Private] System.Single m_pauseUpdate
+  F [Private, Static, Literal, HasDefault] System.Boolean m_enableLastDeathAutoPin
+  F [Private] System.Int32 m_hiddenFrames
+  F [Private] System.Int32 m_shownFrames
+  F [Private] System.Single m_gamepadMoveSpeed
+  F [Private] System.Boolean debugMapView
+  F [Private] System.String m_saveDirectory
+  F [Private] System.String m_cachedMinimapMaskTexturePath
+  F [Private] System.String m_cachedMinimapBiomeTexturePath
+  F [Private] System.String m_cachedMinimapHeightTexturePath
+  F [Private] System.String m_cachedMinimapMetaPath
+  F [Private, Static, Literal, HasDefault] System.String c_MaskTextureName
+  F [Private, Static, Literal, HasDefault] System.String c_BiomeTextureName
+  F [Private, Static, Literal, HasDefault] System.String c_HeightTextureName
+  F [Private, Static, Literal, HasDefault] System.String c_MetaName
+  P Minimap instance
+  P Single PinInteractRadius
+  P Single SmallZoom
+  P Single LargeZoom
+  M Minimap get_instance() IL=2
+  M Void Awake() IL=18
+  M Void OnDestroy() IL=20
+  M Void OnEnable() IL=18
+  M Void OnDisable() IL=13
+  M Void PauseUpdateTemporarily() IL=4
+  M Boolean IsOpen() IL=18
+  M Boolean InTextInput() IL=12
+  M Void OnLanguageChange() IL=22
+  M Void Start() IL=324
+  M Texture2D CreateMapTexture(GraphicsFormat[] formats, TextureFormat fallback) IL=39
+  M Void Reset() IL=48
+  M Void ResetSharedMapData() IL=67
+  M Void ForceRegen() IL=5
+  M Void Update() IL=317
+  M Boolean TryLoadMinimapTextureData(Int32 worldSeed) IL=144
+  M Void ShowPinNameInput(Vector3 pos) IL=88
+  M IEnumerator DelayedOpenKeyboard() IL=6
+  M Void SubscribeToVirtualKeyboardChange() IL=21
+  M Void UpdateNameInput() IL=18
+  M Void VirtualKeyboardStateChange(VirtualKeyboardState state) IL=10
+  M Void CreateMapNamePin(PinData namePin, RectTransform root) IL=25
+  M IEnumerator DelayActivation(GameObject go, Single delay) IL=12
+  M Void OnPinTextEntered(String t) IL=60
+  M Void HidePinTextInput(Boolean delayTextInput) IL=35
+  M Void UpdateMap(Player player, Single dt, Boolean takeInput) IL=849
+  M Void TouchZoom(Player player, Vector2 point, Single zoomDelta) IL=35
+  M Void TouchLongPressStarted() IL=5
+  M Void TouchLongPressPerformed() IL=6
+  M Void TouchLayoutChanged() IL=15
+  M Void SetMapMode(MapMode mode) IL=86
+  M Void CenterMap(Vector3 centerPoint) IL=128
+  M Boolean UpdatedMap(Vector3 centerPoint) IL=46
+  M Void UpdateDynamicPins(Single dt) IL=18
+  M Void UpdateProfilePins() IL=54
+  M Void UpdateEventPin(Single dt) IL=112
+  M Void UpdatePersistentEventPins() IL=170
+  M Void UpdateLocationPins(Single dt) IL=130
+  M Sprite GetLocationIcon(String name) IL=29
+  M Void UpdatePlayerPins(Single dt) IL=153
+  M Void UpdatePingPins() IL=121
+  M Void UpdateShoutPins() IL=121
+  M Void UpdatePins() IL=363
+  M Void DestroyPinMarker(PinData pin) IL=19
+  M Void UpdateWindMarker() IL=15
+  M Void UpdatePlayerMarker(Player player, Quaternion playerRot) IL=133
+  M Vector2 MapPointToLocalGuiPos(Single mx, Single my, RawImage img) IL=10
+  M Vector2 MapPointToLocalGuiPos(Single mx, Single my, Rect uvRect, Rect transformRect) IL=38
+  M Vector2 MapSizeToLocalGuiSize(Vector2 size, RawImage img) IL=42
+  M Boolean IsPointVisible(Vector3 p, RawImage map) IL=36
+  M Void ExploreAll() IL=31
+  M Void WorldToMapPoint(Vector3 p, Single& mx, Single& my) IL=42
+  M Vector3 MapPointToWorld(Single mx, Single my) IL=42
+  M Void WorldToPixel(Vector3 p, Int32& px, Int32& py) IL=28
+  M Void UpdateExplore(Single dt, Player player) IL=22
+  M Void Explore(Vector3 p, Single radius) IL=84
+  M Boolean Explore(Int32 x, Int32 y) IL=39
+  M Void ResetAndExplore(Byte[] explored, Byte[] exploredOthers) IL=55
+  M Void ResetAndExplore(BitArray explored, BitArray exploredOthers) IL=81
+  M Boolean ExploreOthers(Int32 x, Int32 y) IL=49
+  M Boolean IsExplored(Vector3 worldPos) IL=43
+  M Single GetHeight(Int32 x, Int32 y) IL=7
+  M Void GenerateWorldMap() IL=175
+  M Void SaveMapTextureDataToDisk(Color32[] maskPixels, Color32[] biomePixels, Single[] savedHeightPixels) IL=57
+  M Void DeleteMapTextureData(String worldName) IL=56
+  M String GetCompleteTexturePath(String rootPath, String maskTextureName) IL=5
+  M Color GetMaskColor(Single wx, Single wy, Single height, Biome biome) IL=83
+  M Color GetPixelColor(Biome biome) IL=59
+  M Void LoadMapData() IL=11
+  M Void SaveMapData() IL=6
+  M Byte[] GetMapData() IL=150
+  M Void SetMapData(Byte[] data) IL=201
+  M Boolean RemovePin(Vector3 pos, Single radius) IL=15
+  M Boolean HavePinInRange(Vector3 pos, Single radius) IL=32
+  M PinData GetClosestPinToCursor() IL=9
+  M PinData GetClosestPin(Vector3 pos, Single radius, Boolean mustBeVisible) IL=57
+  M Void RemovePin(PinData pin) IL=12
+  M Void ShowPointOnMap(Vector3 point) IL=19
+  M Boolean DiscoverLocation(Vector3 pos, PinType type, String name, Boolean showMap) IL=70
+  M Boolean HaveSimilarPin(Vector3 pos, PinType type, String name, Boolean save) IL=42
+  M PinData AddPin(Vector3 pos, PinType type, String name, Boolean save, Boolean isChecked, Int64 ownerID, PlatformUserID author) IL=79
+  M Sprite GetSprite(PinType type) IL=19
+  M Vector3 GetViewCenterWorldPoint() IL=25
+  M Vector3 ScreenToWorldPoint(Vector3 mousePos) IL=48
+  M Void DebugTeleport(Vector3 worldPoint) IL=31
+  M Void OnMapLeftDown(UIInputHandler handler) IL=4
+  M Void OnMapLeftUp(UIInputHandler handler) IL=52
+  M Void OnMapDblClick() IL=27
+  M Void OnMapLeftClick() IL=40
+  M Void OnMapMiddleClick(UIInputHandler handler) IL=27
+  M Void OnOutsideMapClick() IL=9
+  M Void OnSmallMapClick() IL=9
+  M Void RemovePinUnderPointer() IL=29
+  M Void OnPressedIcon0() IL=4
+  M Void OnPressedIcon1() IL=4
+  M Void OnPressedIcon2() IL=4
+  M Void OnPressedIcon3() IL=4
+  M Void OnPressedIcon4() IL=4
+  M Void OnPressedPingIcon() IL=4
+  M Void OnPressedIconDeath() IL=6
+  M Void OnPressedIconBoss() IL=6
+  M Void OnAltPressedIcon0() IL=4
+  M Void OnAltPressedIcon1() IL=4
+  M Void OnAltPressedIcon2() IL=4
+  M Void OnAltPressedIcon3() IL=4
+  M Void OnAltPressedIcon4() IL=4
+  M Void OnAltPressedIconDeath() IL=4
+  M Void OnAltPressedIconBoss() IL=4
+  M Void IconPressed(PinType icon) IL=10
+  M Void OnTogglePublicPosition() IL=9
+  M Void OnToggleSharedMapData() IL=7
+  M Void SelectIcon(PinType type) IL=36
+  M Void ToggleIconFilter(PinType type) IL=47
+  M Void ClearPins() IL=26
+  M Void UpdateBiome(Player player) IL=79
+  M Byte[] GetSharedMapData(Byte[] oldMapData) IL=169
+  M List`1 ReadExploredArray(ZPackage pkg, SharedMap version) IL=54
+  M Boolean AddSharedMapData(Byte[] dataArray) IL=236
+  M Single get_PinInteractRadius() IL=16
+  M Single get_SmallZoom() IL=3
+  M Void set_SmallZoom(Single value) IL=9
+  M Single get_LargeZoom() IL=3
+  M Void set_LargeZoom(Single value) IL=13
+  M Void .ctor() IL=172
+  M Void .cctor() IL=13
+  M Void <Start>b__10_0(UIInputHandler _) IL=3
+======================================================================
+TYPE WaterMark base=UnityEngine.MonoBehaviour
+  F [Public] TMPro.TMP_Text m_text
+  M Void Awake() IL=8
+  M Void .ctor() IL=3
+======================================================================
+TYPE ClothQualityManager base=UnityEngine.MonoBehaviour
+  M Void OnEnable() IL=7
+  M Void OnDisable() IL=5
+  M Void RefreshClothQuality() IL=33
+  M Void .ctor() IL=3
+======================================================================
+TYPE EnvMan base=UnityEngine.MonoBehaviour
+  NESTED EnvMan/<>c__DisplayClass23_0
+    NF String block
+    NM .ctor IL=3
+    NM <GetAvailableEnvironments>b__0 IL=6
+  F [Private, Static] System.Int32 s_lastFrame
+  F [Private] System.Collections.Generic.List`1<EnvEntry> m_tempEnvs
+  F [Private, Static] EnvMan s_instance
+  F [Private, Static] System.Boolean s_isDay
+  F [Private, Static] System.Boolean s_isDaylight
+  F [Private, Static] System.Boolean s_isAfternoon
+  F [Private, Static] System.Boolean s_isCold
+  F [Private, Static] System.Boolean s_isFreezing
+  F [Private, Static] System.Boolean s_isNight
+  F [Private, Static] System.Boolean s_isWet
+  F [Private, Static] System.Boolean s_canSleep
+  F [Public] UnityEngine.Light m_dirLight
+  F [Public] System.Boolean m_debugTimeOfDay
+  F [Public] System.Single m_debugTime
+  F [Public] System.String m_debugEnv
+  F [Public] System.Boolean m_debugWind
+  F [Public] System.Single m_debugWindAngle
+  F [Public] System.Single m_debugWindIntensity
+  F [Public] System.Single m_sunHorizonTransitionH
+  F [Public] System.Single m_sunHorizonTransitionL
+  F [Public] System.Int64 m_dayLengthSec
+  F [Public] System.Single m_transitionDuration
+  F [Public] System.Int64 m_environmentDuration
+  F [Public] System.Int64 m_windPeriodDuration
+  F [Public] System.Single m_windTransitionDuration
+  F [Public] System.Collections.Generic.List`1<EnvSetup> m_environments
+  F [Public] System.Collections.Generic.List`1<System.String> m_interiorBuildingOverrideEnvironments
+  F [Public] System.Collections.Generic.List`1<BiomeEnvSetup> m_biomes
+  F [Public] System.String m_introEnvironment
+  F [Public] System.Single m_edgeOfWorldWidth
+  F [Public] System.Single m_randomMusicIntervalMin
+  F [Public] System.Single m_randomMusicIntervalMax
+  F [Public] UnityEngine.Texture3D _SnowGlintNoiseOffsetTex
+  F [Public] System.Single _SnowGlintSize
+  F [Public] System.Single _SnowGlintDensity
+  F [Public] System.Single _SnowGlintStrength
+  F [Public] System.Single _SnowGlintNoiseDensity
+  F [Public] System.Single _SnowGlintNoiseAmount
+  F [Public] System.Single _SnowGlintViewAmount
+  F [Public] System.Single _SnowGlintTimeAmount
+  F [Public] UnityEngine.MeshRenderer m_clouds
+  F [Public] UnityEngine.MeshRenderer m_rainClouds
+  F [Public] UnityEngine.MeshRenderer m_rainCloudsDownside
+  F [Public] System.Single m_wetTransitionDuration
+  F [Public] System.Double m_sleepCooldownSeconds
+  F [Public] System.Single m_oceanLevelEnvCheckAshlandsDeepnorth
+  F [Private] System.Boolean m_skipTime
+  F [Private] System.Double m_skipToTime
+  F [Private] System.Double m_timeSkipSpeed
+  F [Private, Static, Literal, HasDefault] System.Double c_TimeSkipDuration
+  F [Private] System.Double m_totalSeconds
+  F [Private] System.Single m_smoothDayFraction
+  F [Private] UnityEngine.Color m_sunFogColor
+  F [Private] UnityEngine.GameObject[] m_currentPSystems
+  F [Private] UnityEngine.GameObject m_currentEnvObject
+  F [Private, Static, Literal, HasDefault] System.Single c_MorningL
+  F [Private] System.Single m_forceInstantEnvSwitchTimer
+  F [Private] UnityEngine.Vector4 m_windDir1
+  F [Private] UnityEngine.Vector4 m_windDir2
+  F [Private] UnityEngine.Vector4 m_wind
+  F [Private] System.Single m_windTransitionTimer
+  F [Private] UnityEngine.Vector3 m_cloudOffset
+  F [Private] System.String m_forceEnv
+  F [Private] EnvSetup m_currentEnv
+  F [Private] EnvSetup m_prevEnv
+  F [Private] EnvSetup m_nextEnv
+  F [Private] System.String m_ambientMusic
+  F [Private] System.Single m_ambientMusicTimer
+  F [Private] Heightmap m_cachedHeightmap
+  F [Private] BiomeSector m_currentBiome
+  F [Private] System.Boolean m_inAshlandsOrDeepnorth
+  F [Private] System.Int64 m_environmentPeriod
+  F [Private] System.Single m_transitionTimer
+  F [Private] System.Boolean m_firstEnv
+  F [Private] MagicaCloth2.MagicaWindZone m_clothWindZone
+  F [Private, Static, InitOnly] System.Int32 s_netRefPos
+  F [Private, Static, InitOnly] System.Int32 s_skyboxSunDir
+  F [Private, Static, InitOnly] System.Int32 s_sunDir
+  F [Private, Static, InitOnly] System.Int32 s_sunFogColor
+  F [Private, Static, InitOnly] System.Int32 s_wet
+  F [Private, Static, InitOnly] System.Int32 s_sunColor
+  F [Private, Static, InitOnly] System.Int32 s_ambientColor
+  F [Private, Static, InitOnly] System.Int32 s_globalWind1
+  F [Private, Static, InitOnly] System.Int32 s_globalWind2
+  F [Private, Static, InitOnly] System.Int32 s_globalWindAlpha
+  F [Private, Static, InitOnly] System.Int32 s_cloudOffset
+  F [Private, Static, InitOnly] System.Int32 s_globalWindForce
+  F [Private, Static, InitOnly] System.Int32 s_rain
+  F [Private, Static, InitOnly] System.Int32 s_opacity
+  F [Private, Static, InitOnly] System.Int32 s_auroraIntensity
+  F [Private, Static, InitOnly] System.Int32 s_auroraGradientCurrent
+  F [Private, Static, InitOnly] System.Int32 s_auroraGradientNext
+  F [Private, Static, InitOnly] System.Int32 s_auroraGradientBlend
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintSize
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintDensity
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintStrength
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintNoiseDensity
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintNoiseAmount
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintViewAmount
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintTimeAmount
+  F [Private, Static, InitOnly] System.Int32 s_SnowGlintOffsetNoise
+  P EnvMan instance
+  P Boolean forceInstantEnvSwitch
+  M EnvMan get_instance() IL=2
+  M Void Awake() IL=49
+  M Void OnDestroy() IL=3
+  M Void InitializeEnvironment(EnvSetup env) IL=22
+  M Void InitializeBiomeEnvSetup(BiomeEnvSetup biome) IL=23
+  M Void SetParticleArrayEnabled(GameObject[] psystems, Boolean enabled) IL=86
+  M Single RescaleDayFraction(Single fraction) IL=43
+  M Void Update() IL=56
+  M Void FixedUpdate() IL=260
+  M Int32 GetCurrentDay() IL=8
+  M Void UpdateTriggers(Single oldDayFraction, Single newDayFraction, Biome biome, Single dt) IL=51
+  M Void UpdateAmbientMusic(Biome biome, EnvSetup currentEnv, Single dt) IL=70
+  M String GetAmbientMusic() IL=3
+  M Void OnMorning(Biome biome, EnvSetup currentEnv) IL=70
+  M Void OnEvening(Biome biome, EnvSetup currentEnv) IL=52
+  M Void SetForceEnvironment(String env) IL=21
+  M EnvSetup SelectWeightedEnvironment(List`1 environments) IL=87
+  M String GetEnvironmentOverride() IL=77
+  M Void UpdateEnvironment(Int64 sec, BiomeSector biome) IL=143
+  M BiomeEnvSetup GetBiomeEnvSetup(Biome biome) IL=27
+  M List`1 GetAvailableEnvironments(BiomeSector biome) IL=67
+  M BiomeSector GetBiome() IL=81
+  M Void InterpolateEnvironment(Single dt) IL=68
+  M Void QueueEnvironment(String name) IL=27
+  M Void QueueEnvironment(EnvSetup env) IL=40
+  M EnvSetup InterpolateEnvironment(EnvSetup a, EnvSetup b, Single i) IL=384
+  M Void SetEnv(EnvSetup env, Single dayInt, Single nightInt, Single morningInt, Single eveningInt, Single dt) IL=497
+  M Single GetDayFraction() IL=3
+  M Int32 GetDay() IL=5
+  M Int32 GetDay(Double time) IL=7
+  M Double GetMorningStartSec(Int32 day) IL=14
+  M Void UpdateTimeSkip(Single dt) IL=32
+  M Boolean IsTimeSkipping() IL=3
+  M Void SkipToMorning() IL=79
+  M Boolean IsFreezing() IL=2
+  M Boolean IsCold() IL=2
+  M Boolean IsWet() IL=2
+  M Boolean CanSleep() IL=2
+  M Boolean IsDay() IL=2
+  M Boolean IsAfternoon() IL=2
+  M Boolean IsNight() IL=2
+  M Boolean IsDaylight() IL=2
+  M Boolean CalculateFreezing() IL=21
+  M Boolean CalculateCold() IL=21
+  M Boolean CalculateWet() IL=10
+  M Boolean CalculateCanSleep() IL=21
+  M Boolean CalculateDay() IL=14
+  M Boolean CalculateAfternoon() IL=14
+  M Boolean CalculateNight() IL=14
+  M Boolean CalculateDaylight() IL=12
+  M Biome GetCurrentBiome() IL=4
+  M Boolean IsEnvironment(String name) IL=6
+  M Boolean IsEnvironment(List`1 names) IL=8
+  M EnvSetup GetCurrentEnvironment() IL=16
+  M Color GetSunFogColor() IL=3
+  M Vector3 GetSunDirection() IL=5
+  M Single GetSnowBuildup() IL=10
+  M EnvSetup GetEnv(String name) IL=28
+  M EnvSetup GetDefaultEnv() IL=26
+  M Void SetDebugWind(Single angle, Single intensity) IL=11
+  M Void ResetDebugWind() IL=4
+  M Vector3 GetWindForce() IL=7
+  M Vector3 GetWindDir() IL=11
+  M Single GetWindIntensity() IL=4
+  M Void UpdateWind(Int64 timeSec, Single dt) IL=136
+  M Void AddWindOctave(Int64 timeSec, Int32 octave, Single& angle, Single& intensity) IL=36
+  M Void SetTargetWind(Vector3 dir, Single intensity) IL=52
+  M Void UpdateWindTransition(Single dt) IL=79
+  M Void GetWindData(Vector4& wind1, Vector4& wind2, Single& alpha) IL=25
+  M Void AppendEnvironment(EnvSetup env) IL=26
+  M Void AppendBiomeSetup(BiomeEnvSetup biomeEnv) IL=62
+  M Boolean CheckInteriorBuildingOverride() IL=31
+  M Void ForceInstantEnvironmentSwitch() IL=4
+  M Boolean get_forceInstantEnvSwitch() IL=5
+  M Void .ctor() IL=132
+  M Void .cctor() IL=81
+======================================================================
+TYPE GameCamera base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.Vector3 m_playerPos
+  F [Private] UnityEngine.Vector3 m_currentBaseOffset
+  F [Private] UnityEngine.Vector3 m_offsetBaseVel
+  F [Private] UnityEngine.Vector3 m_playerVel
+  F [Public] UnityEngine.Vector3 m_3rdOffset
+  F [Public] UnityEngine.Vector3 m_3rdCombatOffset
+  F [Public] UnityEngine.Vector3 m_fpsOffset
+  F [Public] System.Single m_flyingDistance
+  F [Public] UnityEngine.LayerMask m_blockCameraMask
+  F [Public] System.Single m_minDistance
+  F [Public] System.Single m_maxDistance
+  F [Public] System.Single m_maxDistanceBoat
+  F [Public] System.Single m_raycastWidth
+  F [Public] System.Single m_heightCheckDist
+  F [Public] System.Single m_snowForwardAvoidance
+  F [Public] System.Single m_snowAvoidanceInertia
+  F [Public] System.Single m_snowPlayerDist
+  F [Public] System.Boolean m_smoothYTilt
+  F [Public] System.Single m_zoomSens
+  F [Public] System.Single m_inventoryOffset
+  F [Public] System.Single m_nearClipPlaneMin
+  F [Public] System.Single m_nearClipPlaneMax
+  F [Public] System.Single m_fov
+  F [Public] System.Single m_freeFlyMinFov
+  F [Public] System.Single m_freeFlyMaxFov
+  F [Public] System.Single m_tiltSmoothnessShipMin
+  F [Public] System.Single m_tiltSmoothnessShipMax
+  F [Public] System.Single m_shakeFreq
+  F [Public] System.Single m_shakeMovement
+  F [Public] System.Single m_smoothness
+  F [Public] System.Single m_minWaterDistance
+  F [Public] UnityEngine.Camera m_skyCamera
+  F [Private] System.Single m_fovBase
+  F [Private] System.Single m_fovTarget
+  F [Private] System.Single m_fovInertia
+  F [Private] System.Single m_distance
+  F [Private] System.Boolean m_freeFly
+  F [Private] System.Single m_shakeIntensity
+  F [Private] System.Single m_shakeTimer
+  F [Private] System.Boolean m_cameraShakeEnabled
+  F [Private] System.Boolean m_mouseCapture
+  F [Private] UnityEngine.Quaternion m_freeFlyRef
+  F [Private] System.Single m_freeFlyYaw
+  F [Private] System.Single m_freeFlyPitch
+  F [Private] System.Single m_freeFlySpeed
+  F [Private] System.Single m_freeFlySmooth
+  F [Private] UnityEngine.Vector3 m_freeFlySavedVel
+  F [Private] UnityEngine.Transform m_freeFlyTarget
+  F [Private] UnityEngine.Vector3 m_freeFlyTargetOffset
+  F [Private] UnityEngine.Transform m_freeFlyLockon
+  F [Private] UnityEngine.Vector3 m_freeFlyLockonOffset
+  F [Private] UnityEngine.Vector3 m_freeFlyVel
+  F [Private] UnityEngine.Vector3 m_freeFlyAcc
+  F [Private] UnityEngine.Vector3 m_freeFlyTurnVel
+  F [Private] System.Boolean m_shipCameraTilt
+  F [Private] UnityEngine.Vector3 m_smoothedCameraUp
+  F [Private] UnityEngine.Vector3 m_smoothedCameraUpVel
+  F [Private] UnityEngine.AudioListener m_listner
+  F [Private] UnityEngine.Camera m_camera
+  F [Private] System.Boolean m_waterClipping
+  F [Private] System.Single m_snowDist
+  F [Private] System.Single m_snowDistTarget
+  F [Private] System.Boolean m_camZoomToggle
+  F [Public] HeatDistortImageEffect m_heatDistortImageEffect
+  F [Private, Static] GameCamera m_instance
+  P GameCamera instance
+  M GameCamera get_instance() IL=2
+  M Void Awake() IL=28
+  M Void OnDestroy() IL=7
+  M Void ApplySettings() IL=21
+  M Void LateUpdate() IL=35
+  M Void UpdateMouseCapture() IL=67
+  M Void ScreenShot() IL=72
+  M Void UpdateListner() IL=22
+  M Void UpdateCamera(Single dt) IL=199
+  M Void GetCameraPosition(Single dt, Vector3& pos, Quaternion& rot) IL=115
+  M Void ApplyCameraTilt(Player player, Single dt, Quaternion& rot) IL=86
+  M Void UpdateNearClipping(Vector3 eyePos, Vector3 camPos, Single dt) IL=39
+  M Void CollideRay2(Vector3 eyePos, Vector3 offsetedEyePos, Vector3& end) IL=74
+  M Boolean RayTestPoint(Vector3 point, Vector3 offsetedPoint, Vector3 dir, Single maxDist, Single& distance) IL=236
+  M Boolean RayTestPoint(Vector3 point, Vector3 dir, Single maxDist, Vector3& hitPoint) IL=46
+  M Void UpdateFreeFly(Single dt) IL=540
+  M Void UpdateCameraShake(Single dt) IL=64
+  M Void AddShake(Vector3 point, Single range, Single strength, Boolean continous) IL=55
+  M Single GetAttenuatedShakeIntensity() IL=9
+  M Single RayTest(Vector3 point, Vector3 dir, Single maxDist) IL=15
+  M Vector3 GetCameraBaseOffset(Player player) IL=36
+  M Void UpdateBaseOffset(Player player, Single dt) IL=43
+  M Vector3 GetOffsetedEyePos() IL=38
+  M Vector3 GetCameraOffset(Player player) IL=31
+  M Void ToggleFreeFly() IL=7
+  M Void SetFreeFlySmoothness(Single smooth) IL=7
+  M Single GetFreeFlySmoothness() IL=3
+  M Boolean InFreeFly() IL=8
+  M Void SetTempFOV(Single target, Single inertia) IL=15
+  M Void ResetTempFOV() IL=5
+  M Void UpdateFOV() IL=31
+  M Void .ctor() IL=126
+  M Single <UpdateCamera>g__debugCamera|9_0(Single scroll) IL=105
+======================================================================
+TYPE InstanceRenderer base=UnityEngine.MonoBehaviour
+  F [Public] UnityEngine.Mesh m_mesh
+  F [Public] UnityEngine.Material m_material
+  F [Public] UnityEngine.Vector3 m_scale
+  F [Public] System.Boolean m_frustumCull
+  F [Public] System.Boolean m_useLod
+  F [Public] System.Boolean m_useXZLodDistance
+  F [Public] System.Single m_lodMinDistance
+  F [Public] System.Single m_lodMaxDistance
+  F [Public] UnityEngine.Rendering.ShadowCastingMode m_shadowCasting
+  F [Private] System.Boolean m_dirtyBounds
+  F [Private] UnityEngine.BoundingSphere m_bounds
+  F [Private] System.Single m_lodCount
+  F [Private] UnityEngine.Matrix4x4[] m_instances
+  F [Private] System.Int32 m_instanceCount
+  F [Private] System.Boolean m_firstFrame
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  F [Private, Static] System.Int32 s_layer
+  P List`1 Instances
+  M Void OnEnable() IL=10
+  M Void OnDisable() IL=5
+  M Void CustomUpdate(Single deltaTime, Single time) IL=133
+  M Void UpdateBounds() IL=105
+  M Void AddInstance(Vector3 pos, Quaternion rot, Single scale) IL=12
+  M Void AddInstance(Vector3 pos, Quaternion rot) IL=10
+  M Void AddInstance(Matrix4x4 m) IL=21
+  M Void Clear() IL=7
+  M Void SetInstance(Int32 index, Vector3 pos, Quaternion rot, Single scale) IL=17
+  M Void Resize(Int32 instances) IL=7
+  M Void SetInstances(List`1 transforms, Boolean faceCamera) IL=34
+  M Void SetInstancesBillboard(List`1 points) IL=60
+  M Void OnDrawGizmosSelected() IL=1
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=28
+  M Void .cctor() IL=5
+======================================================================
+TYPE ReflectionUpdate base=UnityEngine.MonoBehaviour
+  F [Private, Static] ReflectionUpdate m_instance
+  F [Public] UnityEngine.ReflectionProbe m_probe1
+  F [Public] UnityEngine.ReflectionProbe m_probe2
+  F [Public] System.Single m_interval
+  F [Public] System.Single m_reflectionHeight
+  F [Public] System.Single m_transitionDuration
+  F [Public] System.Single m_power
+  F [Private] UnityEngine.ReflectionProbe m_current
+  F [Private] System.Int32 m_renderID
+  F [Private] System.Single m_updateTimer
+  P ReflectionUpdate instance
+  M ReflectionUpdate get_instance() IL=2
+  M Void Start() IL=7
+  M Void OnDestroy() IL=3
+  M Void UpdateReflection() IL=34
+  M Void Update() IL=120
+  M Void .ctor() IL=15
+======================================================================
+TYPE RenderGroupSubscriber base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.MeshRenderer m_renderer
+  F [Private] RenderGroup m_group
+  F [Private] System.Boolean m_isRegistered
+  P RenderGroup Group
+  M RenderGroup get_Group() IL=3
+  M Void set_Group(RenderGroup value) IL=8
+  M Void Start() IL=3
+  M Void OnEnable() IL=3
+  M Void OnDisable() IL=3
+  M Void Register() IL=28
+  M Void Unregister() IL=15
+  M Void OnGroupChanged(Boolean shouldRender) IL=5
+  M Void .ctor() IL=3
+======================================================================
+TYPE RenderGroupSystem base=UnityEngine.MonoBehaviour
+  NESTED RenderGroupSystem/GroupChangedHandler
+  NESTED RenderGroupSystem/RenderGroupState
+    NF Boolean active
+    NF GroupChangedHandler GroupChanged
+    NM get_Active IL=3
+    NM set_Active IL=18
+    NM add_GroupChanged IL=20
+    NM remove_GroupChanged IL=20
+    NM .ctor IL=3
+  F [Private, Static] RenderGroupSystem s_instance
+  F [Private] System.Collections.Generic.Dictionary`2<RenderGroup,RenderGroupSystem/RenderGroupState> m_renderGroups
+  M Void Awake() IL=37
+  M Void OnDestroy() IL=7
+  M Void LateUpdate() IL=30
+  M Boolean Register(RenderGroup group, GroupChangedHandler subscriber) IL=19
+  M Boolean Unregister(RenderGroup group, GroupChangedHandler subscriber) IL=13
+  M Boolean IsGroupActive(RenderGroup group) IL=12
+  M Void .ctor() IL=6
+======================================================================
+TYPE TerrainLod base=UnityEngine.MonoBehaviour
+  NESTED TerrainLod/HeightmapState
+    NF Int32 value__
+    NF HeightmapState NeedsRebuild
+    NF HeightmapState ReadyToRebuild
+    NF HeightmapState Done
+  NESTED TerrainLod/HeightmapWithOffset
+    NF Heightmap m_heightmap
+    NF Vector3 m_offset
+    NF HeightmapState m_state
+    NM .ctor IL=12
+  F [Private] System.Single m_updateStepDistance
+  F [Private] System.Single m_terrainSize
+  F [Private] System.Int32 m_regionsPerAxis
+  F [Private] System.Single m_vertexDistance
+  F [Private] UnityEngine.Material m_material
+  F [Private] System.Collections.Generic.List`1<TerrainLod/HeightmapWithOffset> m_heightmaps
+  F [Private] UnityEngine.Vector3 m_lastPoint
+  F [Private] TerrainLod/HeightmapState m_heightmapState
+  M Void OnEnable() IL=3
+  M Void OnDisable() IL=3
+  M Void CreateMeshes() IL=83
+  M Void CreateMesh(Single scale, Int32 width, Vector3 offset) IL=36
+  M Void ResetMeshes() IL=32
+  M Void Update() IL=3
+  M Void UpdateHeightmaps() IL=15
+  M Void RebuildAllHeightmaps() IL=22
+  M Boolean IsAllTerrainReady() IL=31
+  M Boolean IsTerrainReady(HeightmapWithOffset heightmapWithOffset) IL=33
+  M Void RebuildHeightmap(HeightmapWithOffset heightmapWithOffset) IL=17
+  M Boolean NeedsRebuild() IL=75
+  M Void .ctor() IL=27
+======================================================================
+TYPE ClutterSystem base=UnityEngine.MonoBehaviour
+  NESTED ClutterSystem/Clutter
+    NF String m_name
+    NF Boolean m_enabled
+    NF Biome m_biome
+    NF Boolean m_instanced
+    NF GameObject m_prefab
+    NF Int32 m_amount
+    NF Boolean m_onUncleared
+    NF Boolean m_onCleared
+    NF Single m_minVegetation
+    NF Single m_maxVegetation
+    NF Single m_scaleMin
+    NF Single m_scaleMax
+    NF Single m_maxTilt
+    NF Single m_minTilt
+    NF Single m_maxAlt
+    NF Single m_minAlt
+    NF Boolean m_snapToWater
+    NF Boolean m_terrainTilt
+    NF Single m_randomOffset
+    NF Single m_minOceanDepth
+    NF Single m_maxOceanDepth
+    NF Boolean m_inForest
+    NF Single m_forestTresholdMin
+    NF Single m_forestTresholdMax
+    NF Single m_fractalScale
+    NF Single m_fractalOffset
+    NF Single m_fractalTresholdMin
+    NF Single m_fractalTresholdMax
+    NM .ctor IL=39
+  NESTED ClutterSystem/PatchData
+    NF Vector3 center
+    NF List`1 m_objects
+    NF Single m_timer
+    NF Boolean m_reset
+    NM .ctor IL=6
+  NESTED ClutterSystem/Quality
+    NF Int32 value__
+    NF Quality Off
+    NF Quality Low
+    NF Quality Med
+    NF Quality High
+  F [Private, Static] ClutterSystem m_instance
+  F [Private] System.Int32 m_placeRayMask
+  F [Public] System.Collections.Generic.List`1<ClutterSystem/Clutter> m_clutter
+  F [Public] System.Single m_grassPatchSize
+  F [Public] System.Single m_distance
+  F [Public] System.Single m_waterLevel
+  F [Public] System.Single m_playerPushFade
+  F [Public] System.Single m_amountScale
+  F [Public] System.Boolean m_menuHack
+  F [Private] System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData> m_patches
+  F [Private] System.Collections.Generic.Stack`1<ClutterSystem/PatchData> m_freePatches
+  F [Private] UnityEngine.GameObject m_grassRoot
+  F [Private] UnityEngine.Vector3 m_oldPlayerPos
+  F [Private] System.Collections.Generic.List`1<UnityEngine.Vector2Int> m_tempToRemove
+  F [Private] System.Collections.Generic.List`1<System.Collections.Generic.KeyValuePair`2<UnityEngine.Vector2Int,ClutterSystem/PatchData>> m_tempToRemovePair
+  F [Private] ClutterSystem/Quality m_quality
+  F [Private] System.Boolean m_forceRebuild
+  P ClutterSystem instance
+  M ClutterSystem get_instance() IL=2
+  M Void Awake() IL=32
+  M Void OnDestroy() IL=5
+  M Void ApplySettings() IL=15
+  M Void LateUpdate() IL=92
+  M Vector2Int GetVegPatch(Vector3 point) IL=26
+  M Vector3 GetVegPatchCenter(Vector2Int p) IL=15
+  M Boolean IsHeightmapReady() IL=18
+  M Void UpdateGrass(Single dt, Boolean rebuildAll, Vector3 center) IL=12
+  M Void GeneratePatches(Boolean rebuildAll, Vector3 center) IL=115
+  M Void GeneratePatch(Vector3 camPos, Vector2Int p, Boolean& generated, Boolean rebuildAll) IL=77
+  M Void TimeoutPatches(Single dt) IL=79
+  M Void ClearAll() IL=44
+  M Void ResetGrass(Vector3 center, Single radius) IL=69
+  M Boolean GetGroundInfo(Vector3 p, Vector3& point, Vector3& normal, Heightmap& hmap, Biome& biome) IL=50
+  M Biome GetPatchBiomes(Vector3 center, Single halfSize) IL=66
+  M PatchData GenerateVegPatch(Vector2Int patchID, Single size) IL=389
+  M PatchData AllocatePatch() IL=11
+  M Void FreePatch(PatchData patch) IL=17
+  M Void .ctor() IL=39
+======================================================================
+TYPE Demister base=UnityEngine.MonoBehaviour
+  F [Public] System.Single m_disableForcefieldDelay
+  F [Public, NotSerialized] UnityEngine.ParticleSystemForceField m_forceField
+  F [Private] UnityEngine.Vector3 m_lastUpdatePosition
+  F [Private, Static] System.Collections.Generic.List`1<Demister> m_instances
+  M Void Awake() IL=19
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M Void DisableForcefield() IL=5
+  M Single GetMovedDistance() IL=21
+  M List`1 GetDemisters() IL=2
+  M Void .ctor() IL=3
+  M Void .cctor() IL=3
+======================================================================
+TYPE IWaterInteractable base=none
+  M Void SetLiquidLevel(Single level, LiquidType type, Component liquidObj) IL=0
+  M Transform GetTransform() IL=0
+  M Int32 Increment(LiquidType type) IL=0
+  M Int32 Decrement(LiquidType type) IL=0
+======================================================================
+TYPE Heightmap base=UnityEngine.MonoBehaviour
+  NESTED Heightmap/RegenRequest
+    NF Int32 value__
+    NF RegenRequest PaintOnly
+    NF RegenRequest Full
+  NESTED Heightmap/Biome
+    NF Int32 value__
+    NF Biome None
+    NF Biome Meadows
+    NF Biome Swamp
+    NF Biome Mountain
+    NF Biome BlackForest
+    NF Biome Plains
+    NF Biome AshLands
+    NF Biome DeepNorth
+    NF Biome Ocean
+    NF Biome Mistlands
+    NF Biome All
+    NF Biome Land
+  NESTED Heightmap/BiomeIndex
+    NF Byte value__
+    NF BiomeIndex None
+    NF BiomeIndex Meadows
+    NF BiomeIndex Swamp
+    NF BiomeIndex Mountain
+    NF BiomeIndex BlackForest
+    NF BiomeIndex Plains
+    NF BiomeIndex AshLands
+    NF BiomeIndex DeepNorth
+    NF BiomeIndex Ocean
+    NF BiomeIndex Mistlands
+    NF BiomeIndex Count
+  NESTED Heightmap/BiomeArea
+    NF Int32 value__
+    NF BiomeArea Edge
+    NF BiomeArea Median
+    NF BiomeArea Everything
+  NESTED Heightmap/HeightmapExtras
+    NF Int32 value__
+    NF HeightmapExtras None
+    NF HeightmapExtras Menu
+    NF HeightmapExtras Flat
+  F [Private] Heightmap/RegenRequest m_regenRequest
+  F [Private] System.Int32 m_lastRebuildRequestFrame
+  F [Private, Static, InitOnly] System.Single[] s_tempBiomeWeights
+  F [Public] UnityEngine.GameObject m_terrainCompilerPrefab
+  F [Public] System.Int32 m_width
+  F [Public] System.Single m_scale
+  F [Public] UnityEngine.Material m_material
+  F [Public, Static, Literal, HasDefault] System.Single c_LevelMaxDelta
+  F [Public, Static, Literal, HasDefault] System.Single c_SmoothMaxDelta
+  F [Private] System.Boolean m_isDistantLod
+  F [Public] System.Boolean m_distantLodEditorHax
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<Heightmap> s_tempHmaps
+  F [Private, InitOnly] System.Collections.Generic.List`1<System.Single> m_heights
+  F [Private] HeightmapBuilder/HMBuildData m_buildData
+  F [Private] UnityEngine.Texture2D m_paintMask
+  F [Private] UnityEngine.Material m_materialInstance
+  F [Private] UnityEngine.MeshCollider m_collider
+  F [Private] UnityEngine.MeshFilter m_meshFilter
+  F [Private] UnityEngine.MeshRenderer m_meshRenderer
+  F [Private] RenderGroupSubscriber m_renderGroupSubscriber
+  F [Private, InitOnly] System.Single[] m_oceanDepth
+  F [Private] BiomeSector[] m_cornerBiomes
+  F [Private] UnityEngine.Bounds m_bounds
+  F [Private] UnityEngine.BoundingSphere m_boundingSphere
+  F [Public] System.Collections.Generic.List`1<BiomeSector> m_cornerBiomeList
+  F [Public] System.Collections.Generic.List`1<AltBiome> m_cornerAltBiomes
+  F [Private] UnityEngine.Mesh m_collisionMesh
+  F [Private] UnityEngine.Mesh m_renderMesh
+  F [Public] System.Int32 m_doLateUpdate
+  F [Private] UnityEngine.MaterialPropertyBlock m_terrainLodHideDistanceProperty
+  F [Private] System.Action m_clearConnectedWearNTearCache
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<Heightmap> s_heightmaps
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<UnityEngine.Vector3> s_tempVertices
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<UnityEngine.Vector2> s_tempUVs
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<System.Int32> s_tempIndices
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<UnityEngine.Color32> s_tempColors
+  F [Public, Static] UnityEngine.Color m_paintMaskDirt
+  F [Public, Static] UnityEngine.Color m_paintMaskCultivated
+  F [Public, Static] UnityEngine.Color m_paintMaskPaved
+  F [Public, Static] UnityEngine.Color m_paintMaskNothing
+  F [Public, Static] UnityEngine.Color m_paintMaskClearVegetation
+  F [Public, Static] UnityEngine.Color m_paintMaskDeepSnow
+  F [Private, Static] System.Int32 s_shaderPropertyClearedMaskTex
+  F [Public, Static, Literal, HasDefault] RenderGroup c_RenderGroup
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  P Boolean IsDistantLod
+  P List`1 Instances
+  M Void Awake() IL=76
+  M Void OnDestroy() IL=36
+  M Void OnEnable() IL=25
+  M Void OnDisable() IL=11
+  M Void LateUpdate() IL=10
+  M Void CustomLateUpdate(Single deltaTime) IL=10
+  M Void UpdateShadowSettings() IL=33
+  M Void ForceGenerateAll() IL=31
+  M Void Poke(Int32 delayed, Boolean paintOnly) IL=13
+  M Void TrySetPaintOnlyRequest(Boolean paintOnly) IL=32
+  M Boolean HaveQueuedRebuild() IL=5
+  M Void Regenerate() IL=35
+  M Void UpdateCornerDepths() IL=105
+  M Single[] GetOceanDepth() IL=3
+  M Single GetOceanDepth(Vector3 worldPos) IL=47
+  M Void Initialize() IL=62
+  M Boolean Generate() IL=149
+  M Single Distance(Single x, Single y, Single rx, Single ry) IL=44
+  M Boolean HaveBiome(Biome biome) IL=36
+  M Biome GetBiome(Vector3 point, Single oceanLevel, Boolean waterAlwaysOcean) IL=179
+  M BiomeArea GetBiomeArea() IL=7
+  M Boolean IsBiomeEdge() IL=38
+  M Void ApplyModifiers() IL=80
+  M Void ApplyModifier(TerrainModifier modifier, Single[] baseHeights, Single[] levelOnly) IL=61
+  M Boolean CheckTerrainModIsContained(TerrainModifier modifier) IL=68
+  M Boolean TerrainVSModifier(TerrainModifier modifier) IL=68
+  M Vector3 CalcVertex(Int32 x, Int32 y) IL=54
+  M Color GetBiomeColor(Single ix, Single iy) IL=70
+  M Color32 GetBiomeColor(BiomeSector biomeSector) IL=30
+  M Color32 GetBiomeColor(Biome biome) IL=72
+  M Void RebuildCollisionMesh() IL=226
+  M Void RebuildRenderMesh() IL=206
+  M Void SmoothTerrain2(Vector3 worldPos, Single radius, Boolean square, Single[] levelOnlyHeights, Single power, Boolean playerModifiction) IL=152
+  M Boolean AtMaxWorldLevelDepth(Vector3 worldPos) IL=24
+  M Boolean GetWorldBaseHeight(Vector3 worldPos, Single& height) IL=48
+  M Boolean GetWorldHeight(Vector3 worldPos, Single& height) IL=47
+  M Boolean AtMaxLevelDepth(Vector3 worldPos) IL=12
+  M Boolean GetHeight(Vector3 worldPos, Single& height) IL=18
+  M Void PaintCleared(Vector3 worldPos, Single radius, PaintType paintType, Boolean heightCheck, Boolean apply, Single strength) IL=181
+  M Single GetVegetationMask(Vector3 worldPos) IL=26
+  M Boolean IsCleared(Vector3 worldPos) IL=42
+  M Boolean IsCultivated(Vector3 worldPos) IL=14
+  M Single GetCultivationMask(Vector3 worldPos) IL=12
+  M Boolean IsLava(Vector3 worldPos, Single lavaValue) IL=21
+  M Single GetLava(Vector3 worldPos) IL=16
+  M Single GetHeightOffset(Vector3 worldPos) IL=42
+  M Void WorldToVertex(Vector3 worldPos, Int32& x, Int32& y) IL=36
+  M Void WorldToVertexMask(Vector3 worldPos, Int32& x, Int32& y) IL=40
+  M Vector3 VertexMaskToWorld(Int32 x, Int32 y) IL=34
+  M Void WorldToNormalizedHM(Vector3 worldPos, Single& x, Single& y) IL=30
+  M Void LevelTerrain(Vector3 worldPos, Single radius, Boolean square, Single[] baseHeights, Single[] levelOnly, Boolean playerModifiction) IL=124
+  M Color GetPaintMask(Vector3 worldPos) IL=11
+  M Color GetPaintMask(Int32 x, Int32 y) IL=24
+  M Texture2D GetPaintMask() IL=3
+  M Void SetPaintMask(Int32 x, Int32 y, Color paint) IL=22
+  M Single GetHeight(Int32 x, Int32 y) IL=28
+  M Void SetHeight(Int32 x, Int32 y, Single h) IL=28
+  M Boolean IsPointInside(Vector3 point, Single radius) IL=79
+  M List`1 GetAllHeightmaps() IL=2
+  M Heightmap FindHeightmap(Vector3 point) IL=27
+  M Void FindHeightmap(Vector3 point, Single radius, List`1 heightmaps) IL=24
+  M Biome FindBiome(Vector3 point) IL=14
+  M Boolean HaveQueuedRebuild(Vector3 point, Single radius) IL=29
+  M Void UpdateTerrainAlpha() IL=43
+  M Boolean UpdateTerrainAlpha(Heightmap hmap) IL=82
+  M GroundMaterial GetGroundMaterial(Vector3 groundNormal, Vector3 point, Single lavaValue) IL=78
+  M Single GetGroundMaterialOffset(GroundMaterial material) IL=30
+  M Void ApplySettingsOnAll() IL=17
+  M Void ApplySettings() IL=42
+  M Single GetLodHideDistance() IL=20
+  M Biome FindBiomeClutter(Vector3 point) IL=23
+  M Void Clear() IL=35
+  M TerrainComp GetAndCreateTerrainCompiler() IL=19
+  M String BiomeToString(Biome biome) IL=51
+  M Boolean get_IsDistantLod() IL=3
+  M Void set_IsDistantLod(Boolean value) IL=21
+  M Void add_m_clearConnectedWearNTearCache(Action value) IL=20
+  M Void remove_m_clearConnectedWearNTearCache(Action value) IL=20
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=45
+  M Void .cctor() IL=56
+======================================================================
+TYPE LightLod base=UnityEngine.MonoBehaviour
+  NESTED LightLod/<>c
+    NF <>c <>9
+    NF Comparison`1 <>9__6_0
+    NM .cctor IL=3
+    NM .ctor IL=3
+    NM <UpdateLights>b__6_0 IL=6
+  NESTED LightLod/<UpdateLoop>d__4
+    NF Int32 <>1__state
+    NF Object <>2__current
+    NF LightLod <>4__this
+    NF Single <distance>5__2
+    NM .ctor IL=6
+    NM System.IDisposable.Dispose IL=1
+    NM MoveNext IL=252
+    NM System.Collections.Generic.IEnumerator<System.Object>.get_Current IL=3
+    NM System.Collections.IEnumerator.Reset IL=2
+    NM System.Collections.IEnumerator.get_Current IL=3
+  F [Private, Static] System.Collections.Generic.HashSet`1<LightLod> m_lights
+  F [Private, Static] System.Collections.Generic.List`1<LightLod> m_sortedLights
+  F [Public, Static] System.Int32 m_lightLimit
+  F [Public, Static] System.Int32 m_shadowLimit
+  F [Public] System.Boolean m_lightLod
+  F [Public] System.Single m_lightDistance
+  F [Public] System.Boolean m_shadowLod
+  F [Public] System.Single m_shadowDistance
+  F [Private, Static, Literal, HasDefault] System.Single m_lightSizeWeight
+  F [Private, Static] System.Single m_updateTimer
+  F [Private, Static, InitOnly] UnityEngine.WaitForSeconds s_waitFor1Sec
+  F [Private] System.Int32 m_lightPrio
+  F [Private] System.Single m_cameraDistanceOuter
+  F [Private] UnityEngine.Light m_light
+  F [Private] System.Single m_baseRange
+  F [Private] System.Single m_baseShadowStrength
+  M Void Awake() IL=51
+  M Void OnEnable() IL=5
+  M Void OnDisable() IL=4
+  M Void OnDestroy() IL=5
+  M IEnumerator UpdateLoop() IL=6
+  M Vector3 GetLightReferencePoint() IL=14
+  M Void UpdateLights(Single dt) IL=96
+  M Void OnDrawGizmosSelected() IL=23
+  M Void .ctor() IL=15
+  M Void .cctor() IL=14
+======================================================================
+TYPE Mister base=UnityEngine.MonoBehaviour
+  NESTED Mister/<>c
+    NF <>c <>9
+    NF Comparison`1 <>9__4_0
+    NM .cctor IL=3
+    NM .ctor IL=3
+    NM <GetDemistersSorted>b__4_0 IL=6
+  F [Public] System.Single m_radius
+  F [Public] System.Single m_height
+  F [Private] System.Single m_tempDistance
+  F [Private, Static] System.Collections.Generic.List`1<Mister> m_instances
+  M Void Awake() IL=1
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M List`1 GetMisters() IL=2
+  M List`1 GetDemistersSorted(Vector3 refPoint) IL=33
+  M Mister FindMister(Vector3 p) IL=30
+  M Boolean InsideMister(Vector3 p, Single radius) IL=44
+  M Boolean IsCompletelyInsideOtherMister(Single thickness) IL=56
+  M Boolean Inside(Vector3 p, Single radius) IL=22
+  M Boolean IsInsideOtherMister(Vector3 p, Mister ignore) IL=44
+  M Void OnDrawGizmosSelected() IL=1
+  M Void .ctor() IL=9
+  M Void .cctor() IL=3
+======================================================================
+TYPE Water base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.MaterialPropertyBlock m_materialLodHideDistanceProperty
+  F [Private] UnityEngine.MeshRenderer m_meshRenderer
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<Water> <Instances>k__BackingField
+  P List`1 Instances
+  M Void Awake() IL=10
+  M Void OnEnable() IL=6
+  M Void OnDisable() IL=5
+  M Void ApplySettings() IL=28
+  M Void ApplySettingsOnAll() IL=16
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=3
+  M Void .cctor() IL=3
+======================================================================
+TYPE WaterTrigger base=UnityEngine.MonoBehaviour
+  F [Public] EffectList m_effects
+  F [Public] System.Single m_cooldownDelay
+  F [Private] System.Single m_cooldownTimer
+  F [Private] WaterVolume m_previousAndOut
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<IMonoUpdater> <Instances>k__BackingField
+  P List`1 Instances
+  M Void Start() IL=6
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M Void CustomUpdate(Single deltaTime, Single time) IL=40
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=9
+  M Void .cctor() IL=3
+======================================================================
+TYPE WaterVolume base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.Collider m_collider
+  F [Private, InitOnly] System.Single[] m_normalizedDepth
+  F [Private, InitOnly] System.Collections.Generic.List`1<IWaterInteractable> m_inWater
+  F [Private] System.Single m_oneDepth
+  F [Public] UnityEngine.MeshRenderer m_waterSurface
+  F [Public] Heightmap m_heightmap
+  F [Public] System.Single m_forceDepth
+  F [Public] System.Single m_surfaceOffset
+  F [Public] System.Boolean m_useGlobalWind
+  F [Private, Static, Literal, HasDefault] System.Boolean c_MenuWater
+  F [Private, Static] System.Single s_waterTime
+  F [Private, Static, InitOnly] System.Int32 s_shaderWaterTime
+  F [Private, Static, InitOnly] System.Int32 s_shaderDepth
+  F [Private, Static, InitOnly] System.Int32 s_shaderUseGlobalWind
+  F [Private, Static] UnityEngine.Vector4 s_globalWind1
+  F [Private, Static] UnityEngine.Vector4 s_globalWind2
+  F [Private, Static] System.Single s_globalWindAlpha
+  F [Private, Static] System.Single s_wrappedDayTimeSeconds
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<System.Int32> s_inWaterRemoveIndices
+  F [Private, Static, InitOnly] UnityEngine.Vector2[] s_createWaveDirections
+  F [Private, Static] UnityEngine.Vector2[] s_createWaveTangents
+  F [Private, Static, InitOnly] System.Collections.Generic.List`1<WaterVolume> <Instances>k__BackingField
+  P List`1 Instances
+  M Void Awake() IL=140
+  M Void Start() IL=5
+  M Void OnEnable() IL=4
+  M Void OnDisable() IL=5
+  M Void DetectWaterDepth() IL=114
+  M Void StaticUpdate() IL=11
+  M Void UpdateWaterTime(Single dt) IL=23
+  M Void UpdateMaterials() IL=7
+  M Void SetupMaterial() IL=51
+  M LiquidType GetLiquidType() IL=2
+  M Single GetWaterSurface(Vector3 point, Single waveFactor) IL=57
+  M Single TrochSin(Single x, Single k) IL=12
+  M Single CreateWave(Vector3 worldPos, Single time, Single waveSpeed, Single waveLength, Single waveHeight, Vector2 dir, Vector2 tangent, Single sharpness) IL=43
+  M Single CalcWave(Vector3 worldPos, Single depth, Vector4 wind, Single waterTime, Single waveFactor, Single waveFactorBig) IL=235
+  M Single CalcWave(Vector3 worldPos, Single depth, Single waterTime, Single waveFactor, Single waveFactorBig) IL=33
+  M Single Depth(Vector3 point) IL=64
+  M Void OnTriggerEnter(Collider triggerCollider) IL=21
+  M Void UpdateFloaters() IL=71
+  M Void OnTriggerExit(Collider triggerCollider) IL=22
+  M Void OnDestroy() IL=31
+  M Void OnDrawGizmosSelected() IL=16
+  M List`1 get_Instances() IL=2
+  M Void .ctor() IL=19
+  M Void .cctor() IL=127
+======================================================================
+TYPE AmplifyOcclusion.AmplifyOcclusionCommon base=System.Object
+  F [Public, Static, InitOnly] System.Int32 PerPixelNormalSourceCount
+  F [Public, Static, InitOnly] System.Single[] m_temporalRotations
+  F [Public, Static, InitOnly] System.Single[] m_spatialOffsets
+  M Void CommandBuffer_TemporalFilterDirectionsOffsets(CommandBuffer cb, UInt32 aSampleStep) IL=25
+  M Material CreateMaterialWithShaderName(String aShaderName, Boolean aThroughErrorMsg) IL=25
+  M Int32 SafeAllocateTemporaryRT(CommandBuffer cb, String propertyName, Int32 width, Int32 height, RenderTextureFormat format, RenderTextureReadWrite readWrite, FilterMode filterMode) IL=14
+  M Void SafeReleaseTemporaryRT(CommandBuffer cb, Int32 id) IL=4
+  M RenderTexture SafeAllocateRT(String name, Int32 width, Int32 height, RenderTextureFormat format, RenderTextureReadWrite readWrite, FilterMode filterMode, Int32 antiAliasing, Boolean aUseMipMap) IL=40
+  M Void SafeReleaseRT(RenderTexture& rt) IL=17
+  M Boolean IsStereoSinglePassEnabled(Camera aCamera) IL=12
+  M Boolean IsStereoMultiPassEnabled(Camera aCamera) IL=12
+  M Void UpdateGlobalShaderConstants(CommandBuffer cb, TargetDesc& aTarget, Camera aCamera, Boolean isDownsample, Boolean isFilterDownsample) IL=164
+  M Void .cctor() IL=15
+======================================================================
+TYPE AmplifyOcclusion.AmplifyOcclusionViewProjMatrix base=System.Object
+  F [Private] UnityEngine.Matrix4x4 m_prevViewProjMatrixLeft
+  F [Private] UnityEngine.Matrix4x4 m_prevInvViewProjMatrixLeft
+  F [Private] UnityEngine.Matrix4x4 m_prevViewProjMatrixRight
+  F [Private] UnityEngine.Matrix4x4 m_prevInvViewProjMatrixRight
+  M Void UpdateGlobalShaderConstants_Matrices(CommandBuffer cb, Camera aCamera, Boolean isUsingTemporalFilter) IL=138
+  M Void .ctor() IL=15
+######## ASSEMBLY assembly_lux.dll types=6 ########
+======================================================================
+TYPE LuxParticles.LuxParticles_AmbientLighting base=UnityEngine.MonoBehaviour
+  F [Public] System.Boolean UpdatePerFrame
+  F [Public] System.Boolean AlwaysUseSH
+  F [Private] UnityEngine.Rendering.SphericalHarmonicsL2 probe
+  F [Private] UnityEngine.Vector4[] SHLighting
+  F [Private] System.Int32 Lux_SHAr
+  F [Private] System.Int32 Lux_SHAg
+  F [Private] System.Int32 Lux_SHAb
+  F [Private] System.Int32 Lux_SHBr
+  F [Private] System.Int32 Lux_SHBg
+  F [Private] System.Int32 Lux_SHBb
+  F [Private] System.Int32 Lux_SHC
+  F [Private] System.Int32 Lux_L_SHAr
+  F [Private] System.Int32 Lux_L_SHAg
+  F [Private] System.Int32 Lux_L_SHAb
+  F [Private] System.Int32 Lux_L_SHBr
+  F [Private] System.Int32 Lux_L_SHBg
+  F [Private] System.Int32 Lux_L_SHBb
+  F [Private] System.Int32 Lux_L_SHC
+  F [Private] System.Int32 Lux_AmbientMode
+  F [Private, Static, Literal, HasDefault] System.Single k0
+  F [Private, Static, Literal, HasDefault] System.Single k1
+  F [Private, Static, Literal, HasDefault] System.Single k2
+  F [Private, Static, Literal, HasDefault] System.Single k3
+  F [Private, Static, Literal, HasDefault] System.Single k4
+  F [Private, Static] System.Single[] ks
+  F [Private] System.Int32 managedParticleSystems
+  M Void OnEnable() IL=65
+  M Void LateUpdate() IL=20
+  M Void UpdateAmbientLighting() IL=173
+  M Void UpdateAmbientLightingForNewParticleSystems() IL=107
+  M SphericalHarmonicsL2 PremultiplyCoefficients(SphericalHarmonicsL2 sh) IL=40
+  M Void GetShaderConstantsFromNormalizedSH(SphericalHarmonicsL2& ambientProbe, Boolean IsSkyLighting) IL=166
+  M Void SetSHLighting() IL=50
+  M Void .ctor() IL=10
+  M Void .cctor() IL=7
+======================================================================
+TYPE LuxParticles.LuxParticles_DirectionalLight base=UnityEngine.MonoBehaviour
+  F [Private] UnityEngine.Light m_light
+  F [Private] UnityEngine.Rendering.CommandBuffer GetShadowCascades_CB
+  M Void OnEnable() IL=27
+  M Void OnDisable() IL=14
+  M Void OnDestroy() IL=10
+  M Void .ctor() IL=3
+======================================================================
+TYPE LuxParticles.LuxParticles_LocalAmbientLighting base=UnityEngine.MonoBehaviour
+  F [Public, Static] System.Collections.Generic.List`1<LuxParticles.LuxParticles_LocalAmbientLighting> LocalProbes
+  F [Public] UnityEngine.Vector3 SampleOffset
+  F [Public, NotSerialized] UnityEngine.Transform trans
+  F [Public, NotSerialized] UnityEngine.Renderer rend
+  F [Public, NotSerialized] UnityEngine.MaterialPropertyBlock m_block
+  F [Public, NotSerialized] System.Boolean IsVisible
+  M Void OnEnable() IL=17
+  M Void Register() IL=4
+  M Void OnDisable() IL=19
+  M Void OnDestroy() IL=19
+  M Void OnBecameVisible() IL=4
+  M Void OnBecameInvisible() IL=4
+  M Void .ctor() IL=6
+  M Void .cctor() IL=3
+######## ASSEMBLY assembly_sunshafts.dll types=46 ########
+======================================================================
+TYPE UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion base=UnityEngine.MonoBehaviour
+  NESTED UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion/SSAOSamples
+    NF Int32 value__
+    NF SSAOSamples Low
+    NF SSAOSamples Medium
+    NF SSAOSamples High
+  F [Public] System.Single m_Radius
+  F [Public] UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion/SSAOSamples m_SampleCount
+  F [Public] System.Single m_OcclusionIntensity
+  F [Public] System.Int32 m_Blur
+  F [Public] System.Int32 m_Downsampling
+  F [Public] System.Single m_OcclusionAttenuation
+  F [Public] System.Single m_MinZ
+  F [Public] UnityEngine.Shader m_SSAOShader
+  F [Private] UnityEngine.Material m_SSAOMaterial
+  F [Public] UnityEngine.Texture2D m_RandomTexture
+  F [Private] System.Boolean m_Supported
+  M Material CreateMaterial(Shader shader) IL=11
+  M Void DestroyMaterial(Material mat) IL=8
+  M Void OnDisable() IL=4
+  M Void Start() IL=34
+  M Void OnEnable() IL=8
+  M Void CreateMaterials() IL=20
+  M Void OnRenderImage(RenderTexture source, RenderTexture destination) IL=251
+  M Void .ctor() IL=24
+======================================================================
+TYPE UnityStandardAssets.ImageEffects.SunShafts base=UnityStandardAssets.ImageEffects.PostEffectsBase
+  NESTED UnityStandardAssets.ImageEffects.SunShafts/SunShaftsResolution
+    NF Int32 value__
+    NF SunShaftsResolution Low
+    NF SunShaftsResolution Normal
+    NF SunShaftsResolution High
+  NESTED UnityStandardAssets.ImageEffects.SunShafts/ShaftsScreenBlendMode
+    NF Int32 value__
+    NF ShaftsScreenBlendMode Screen
+    NF ShaftsScreenBlendMode Add
+  F [Public] UnityStandardAssets.ImageEffects.SunShafts/SunShaftsResolution resolution
+  F [Public] UnityStandardAssets.ImageEffects.SunShafts/ShaftsScreenBlendMode screenBlendMode
+  F [Public] UnityEngine.Transform sunTransform
+  F [Public] System.Int32 radialBlurIterations
+  F [Public] UnityEngine.Color sunColor
+  F [Public] UnityEngine.Color sunThreshold
+  F [Public] System.Single sunShaftBlurRadius
+  F [Public] System.Single sunShaftIntensity
+  F [Public] System.Single maxRadius
+  F [Public] System.Boolean useDepthTexture
+  F [Public] UnityEngine.Shader sunShaftsShader
+  F [Private] UnityEngine.Material sunShaftsMaterial
+  F [Public] UnityEngine.Shader simpleClearShader
+  F [Private] UnityEngine.Material simpleClearMaterial
+  F [Private, Static, InitOnly] System.Int32 s_blurRadius4
+  F [Private, Static, InitOnly] System.Int32 s_sunPosition
+  F [Private, Static, InitOnly] System.Int32 s_sunThreshold
+  F [Private, Static, InitOnly] System.Int32 s_skybox
+  F [Private, Static, InitOnly] System.Int32 s_sunColor
+  F [Private, Static, InitOnly] System.Int32 s_colorBuffer
+  F [Private, Static, InitOnly] UnityEngine.Vector4 s_oneOneZeroZero
+  F [Private, Static] UnityEngine.Vector4 s_ofsZero
+  F [Private, Static, InitOnly] UnityEngine.Vector3 s_halfHalfZero
+  M Boolean CheckResources() IL=29
+  M Void OnRenderImage(RenderTexture source, RenderTexture destination) IL=286
+  M Void .ctor() IL=30
+  M Void .cctor() IL=36
+######## ASSEMBLY assembly_postprocessing.dll types=51 ########
+======================================================================
+TYPE UnityEngine.PostProcessing.AmbientOcclusionComponent base=UnityEngine.PostProcessing.PostProcessingComponentCommandBuffer`1<UnityEngine.PostProcessing.AmbientOcclusionModel>
+  NESTED UnityEngine.PostProcessing.AmbientOcclusionComponent/Uniforms
+    NF Int32 _Intensity
+    NF Int32 _IntensityFar
+    NF Int32 _FarDistance
+    NF Int32 _Radius
+    NF Int32 _FogParams
+    NF Int32 _Downsample
+    NF Int32 _SampleCount
+    NF Int32 _OcclusionTexture1
+    NF Int32 _OcclusionTexture2
+    NF Int32 _OcclusionTexture
+    NF Int32 _MainTex
+    NF Int32 _TempRT
+    NM .cctor IL=37
+  NESTED UnityEngine.PostProcessing.AmbientOcclusionComponent/OcclusionSource
+    NF Int32 value__
+    NF OcclusionSource DepthTexture
+    NF OcclusionSource DepthNormalsTexture
+    NF OcclusionSource GBuffer
+  F [Private, Static, Literal, HasDefault] System.String k_BlitShaderString
+  F [Private, Static, Literal, HasDefault] System.String k_ShaderString
+  F [Private, InitOnly] UnityEngine.Rendering.RenderTargetIdentifier[] m_MRT
+  P OcclusionSource occlusionSource
+  P Boolean ambientOnlySupported
+  P Boolean active
+  M OcclusionSource get_occlusionSource() IL=29
+  M Boolean get_ambientOnlySupported() IL=22
+  M Boolean get_active() IL=18
+  M DepthTextureMode GetCameraFlags() IL=19
+  M String GetName() IL=2
+  M CameraEvent GetCameraEvent() IL=14
+  M Void PopulateCommandBuffer(CommandBuffer cb) IL=278
+  M Void .ctor() IL=17
+======================================================================
+TYPE UnityEngine.PostProcessing.ScreenSpaceReflectionComponent base=UnityEngine.PostProcessing.PostProcessingComponentCommandBuffer`1<UnityEngine.PostProcessing.ScreenSpaceReflectionModel>
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionComponent/Uniforms
+    NF Int32 _RayStepSize
+    NF Int32 _AdditiveReflection
+    NF Int32 _BilateralUpsampling
+    NF Int32 _TreatBackfaceHitAsMiss
+    NF Int32 _AllowBackwardsRays
+    NF Int32 _TraceBehindObjects
+    NF Int32 _MaxSteps
+    NF Int32 _FullResolutionFiltering
+    NF Int32 _HalfResolution
+    NF Int32 _HighlightSuppression
+    NF Int32 _PixelsPerMeterAtOneMeter
+    NF Int32 _ScreenEdgeFading
+    NF Int32 _ReflectionBlur
+    NF Int32 _MaxRayTraceDistance
+    NF Int32 _FadeDistance
+    NF Int32 _LayerThickness
+    NF Int32 _SSRMultiplier
+    NF Int32 _FresnelFade
+    NF Int32 _FresnelFadePower
+    NF Int32 _ReflectionBufferSize
+    NF Int32 _ScreenSize
+    NF Int32 _InvScreenSize
+    NF Int32 _ProjInfo
+    NF Int32 _CameraClipInfo
+    NF Int32 _ProjectToPixelMatrix
+    NF Int32 _WorldToCameraMatrix
+    NF Int32 _CameraToWorldMatrix
+    NF Int32 _Axis
+    NF Int32 _CurrentMipLevel
+    NF Int32 _NormalAndRoughnessTexture
+    NF Int32 _HitPointTexture
+    NF Int32 _BlurTexture
+    NF Int32 _FilteredReflections
+    NF Int32 _FinalReflectionTexture
+    NF Int32 _TempTexture
+    NM .cctor IL=106
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionComponent/PassIndex
+    NF Int32 value__
+    NF PassIndex RayTraceStep
+    NF PassIndex CompositeFinal
+    NF PassIndex Blur
+    NF PassIndex CompositeSSR
+    NF PassIndex MinMipGeneration
+    NF PassIndex HitPointToReflections
+    NF PassIndex BilateralKeyPack
+    NF PassIndex BlitDepthAsCSZ
+    NF PassIndex PoissonBlur
+  F [Private] System.Boolean k_HighlightSuppression
+  F [Private] System.Boolean k_TraceBehindObjects
+  F [Private] System.Boolean k_TreatBackfaceHitAsMiss
+  F [Private] System.Boolean k_BilateralUpsample
+  F [Private, InitOnly] System.Int32[] m_ReflectionTextures
+  P Boolean active
+  M DepthTextureMode GetCameraFlags() IL=2
+  M Boolean get_active() IL=16
+  M Void OnEnable() IL=31
+  M String GetName() IL=2
+  M CameraEvent GetCameraEvent() IL=2
+  M Void PopulateCommandBuffer(CommandBuffer cb) IL=597
+  M Void .ctor() IL=13
+======================================================================
+TYPE UnityEngine.PostProcessing.AmbientOcclusionModel base=UnityEngine.PostProcessing.PostProcessingModel
+  NESTED UnityEngine.PostProcessing.AmbientOcclusionModel/SampleCount
+    NF Int32 value__
+    NF SampleCount Lowest
+    NF SampleCount Low
+    NF SampleCount Medium
+    NF SampleCount High
+  NESTED UnityEngine.PostProcessing.AmbientOcclusionModel/Settings
+    NF Single intensity
+    NF Single intensityFar
+    NF Single farDistance
+    NF Single radius
+    NF SampleCount sampleCount
+    NF Boolean downsampling
+    NF Boolean forceForwardCompatibility
+    NF Boolean ambientOnly
+    NF Boolean highPrecision
+    NM get_defaultSettings IL=31
+  F [Private] UnityEngine.PostProcessing.AmbientOcclusionModel/Settings m_Settings
+  P Settings settings
+  M Settings get_settings() IL=3
+  M Void set_settings(Settings value) IL=4
+  M Void Reset() IL=4
+  M Void .ctor() IL=6
+======================================================================
+TYPE UnityEngine.PostProcessing.ScreenSpaceReflectionModel base=UnityEngine.PostProcessing.PostProcessingModel
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/SSRResolution
+    NF Int32 value__
+    NF SSRResolution High
+    NF SSRResolution Low
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/SSRReflectionBlendType
+    NF Int32 value__
+    NF SSRReflectionBlendType PhysicallyBased
+    NF SSRReflectionBlendType Additive
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/IntensitySettings
+    NF Single reflectionMultiplier
+    NF Single fadeDistance
+    NF Single fresnelFade
+    NF Single fresnelFadePower
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/ReflectionSettings
+    NF SSRReflectionBlendType blendType
+    NF SSRResolution reflectionQuality
+    NF Single maxDistance
+    NF Int32 iterationCount
+    NF Int32 stepSize
+    NF Single widthModifier
+    NF Single reflectionBlur
+    NF Boolean reflectBackfaces
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/ScreenEdgeMask
+    NF Single intensity
+  NESTED UnityEngine.PostProcessing.ScreenSpaceReflectionModel/Settings
+    NF ReflectionSettings reflection
+    NF IntensitySettings intensity
+    NF ScreenEdgeMask screenEdgeMask
+    NM get_defaultSettings IL=58
+  F [Private] UnityEngine.PostProcessing.ScreenSpaceReflectionModel/Settings m_Settings
+  P Settings settings
+  M Settings get_settings() IL=3
+  M Void set_settings(Settings value) IL=4
+  M Void Reset() IL=4
+  M Void .ctor() IL=6
+######## ASSEMBLY Assembly-CSharp.dll types=17 ########
+======================================================================
+TYPE LuxParticles.Demo.LuxParticles_ExtendedFlycam base=UnityEngine.MonoBehaviour
+  F [Public] System.Single cameraSensitivity
+  F [Public] System.Single climbSpeed
+  F [Public] System.Single normalMoveSpeed
+  F [Public] System.Single slowMoveFactor
+  F [Public] System.Single fastMoveFactor
+  F [Private] System.Single rotationX
+  F [Private] System.Single rotationY
+  F [Private] System.Boolean isOrtho
+  F [Private] UnityEngine.Camera cam
+  M Void Start() IL=21
+  M Void Update() IL=235
+  M Void .ctor() IL=18
+######## KEY METHOD IL ########
+--- IL LightLod::Awake ---
+     0 ldarg.0 
+     1 ldarg.0 
+     2 call !!0 UnityEngine.Component::GetComponent<UnityEngine.Light>()
+     3 stfld UnityEngine.Light LightLod::m_light
+     4 ldarg.0 
+     5 ldarg.0 
+     6 ldfld UnityEngine.Light LightLod::m_light
+     7 callvirt System.Single UnityEngine.Light::get_range()
+     8 stfld System.Single LightLod::m_baseRange
+     9 ldarg.0 
+    10 ldarg.0 
+    11 ldfld UnityEngine.Light LightLod::m_light
+    12 callvirt System.Single UnityEngine.Light::get_shadowStrength()
+    13 stfld System.Single LightLod::m_baseShadowStrength
+    14 ldarg.0 
+    15 ldfld System.Boolean LightLod::m_shadowLod
+    16 brfalse.s IL_004a: ldarg.0
+    17 ldarg.0 
+    18 ldfld UnityEngine.Light LightLod::m_light
+    19 callvirt UnityEngine.LightShadows UnityEngine.Light::get_shadows()
+    20 brtrue.s IL_004a: ldarg.0
+    21 ldarg.0 
+    22 ldc.i4.0 
+    23 stfld System.Boolean LightLod::m_shadowLod
+    24 ldarg.0 
+    25 ldfld System.Boolean LightLod::m_lightLod
+    26 brfalse.s IL_006e: ldarg.0
+    27 ldarg.0 
+    28 ldfld UnityEngine.Light LightLod::m_light
+    29 ldc.r4 0
+    30 callvirt System.Void UnityEngine.Light::set_range(System.Single)
+    31 ldarg.0 
+    32 ldfld UnityEngine.Light LightLod::m_light
+    33 ldc.i4.0 
+    34 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+    35 ldarg.0 
+    36 ldfld System.Boolean LightLod::m_shadowLod
+    37 brfalse.s IL_0092: ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+    38 ldarg.0 
+    39 ldfld UnityEngine.Light LightLod::m_light
+    40 ldc.r4 0
+    41 callvirt System.Void UnityEngine.Light::set_shadowStrength(System.Single)
+    42 ldarg.0 
+    43 ldfld UnityEngine.Light LightLod::m_light
+    44 ldc.i4.0 
+    45 callvirt System.Void UnityEngine.Light::set_shadows(UnityEngine.LightShadows)
+    46 ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+    47 ldarg.0 
+    48 callvirt System.Boolean System.Collections.Generic.HashSet`1<LightLod>::Add(!0)
+    49 pop 
+    50 ret 
+--- IL LightLod::OnEnable ---
+     0 ldarg.0 
+     1 ldstr UpdateLoop
+     2 call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.String)
+     3 pop 
+     4 ret 
+--- IL ParticleMist::Update ---
+     0 ldarg.0 
+     1 ldfld UnityEngine.ParticleSystem ParticleMist::m_ps
+     2 callvirt UnityEngine.ParticleSystem/EmissionModule UnityEngine.ParticleSystem::get_emission()
+     3 stloc.0 
+     4 ldloca.s V_0
+     5 call System.Boolean UnityEngine.ParticleSystem/EmissionModule::get_enabled()
+     6 brtrue.s IL_0016: ldarg.0
+     7 ret 
+     8 ldarg.0 
+     9 ldarg.0 
+    10 ldfld System.Single ParticleMist::m_accumulator
+    11 call System.Single UnityEngine.Time::get_fixedDeltaTime()
+    12 add 
+    13 stfld System.Single ParticleMist::m_accumulator
+    14 ldarg.0 
+    15 ldfld System.Single ParticleMist::m_accumulator
+    16 ldc.r4 0.1
+    17 bge.un.s IL_0036: ldarg.0
+    18 ret 
+    19 ldarg.0 
+    20 ldarg.0 
+    21 ldfld System.Single ParticleMist::m_accumulator
+    22 ldc.r4 0.1
+    23 sub 
+    24 stfld System.Single ParticleMist::m_accumulator
+    25 ldsfld Player Player::m_localPlayer
+    26 stloc.1 
+    27 ldloc.1 
+    28 ldnull 
+    29 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+    30 brfalse.s IL_0058: ldloc.1
+    31 ret 
+    32 ldloc.1 
+    33 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    34 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    35 call System.Collections.Generic.List`1<Mister> Mister::GetDemistersSorted(UnityEngine.Vector3)
+    36 stloc.2 
+    37 ldloc.2 
+    38 callvirt System.Int32 System.Collections.Generic.List`1<Mister>::get_Count()
+    39 brtrue.s IL_0072: ldarg.0
+    40 ret 
+    41 ldarg.0 
+    42 ldloc.2 
+    43 callvirt System.Int32 System.Collections.Generic.List`1<Mister>::get_Count()
+    44 ldc.i4.0 
+    45 cgt 
+    46 stfld System.Boolean ParticleMist::m_haveActiveMist
+    47 ldarg.0 
+    48 ldarg.0 
+    49 ldfld System.Collections.Generic.List`1<Demister> ParticleMist::fields
+    50 call System.Void ParticleMist::GetAllForcefields(System.Collections.Generic.List`1<Demister>)
+    51 ldarg.0 
+    52 ldarg.0 
+    53 ldfld System.Single ParticleMist::m_inMistAreaTimer
+    54 ldc.r4 0.1
+    55 add 
+    56 stfld System.Single ParticleMist::m_inMistAreaTimer
+    57 ldarg.0 
+    58 call UnityEngine.Transform UnityEngine.Component::get_transform()
+    59 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    60 ldarg.0 
+    61 ldfld UnityEngine.Vector3 ParticleMist::m_lastUpdatePos
+    62 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+    63 stloc.3 
+    64 ldarg.0 
+    65 ldarg.0 
+    66 ldfld System.Single ParticleMist::m_combinedMovement
+    67 ldloc.3 
+    68 ldc.r4 0
+    69 ldc.r4 10
+    70 call System.Single UnityEngine.Mathf::Clamp(System.Single,System.Single,System.Single)
+    71 add 
+    72 stfld System.Single ParticleMist::m_combinedMovement
+    73 ldarg.0 
+    74 ldarg.0 
+    75 call UnityEngine.Transform UnityEngine.Component::get_transform()
+    76 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    77 stfld UnityEngine.Vector3 ParticleMist::m_lastUpdatePos
+    78 ldarg.0 
+    79 ldc.r4 50
+    80 ldloca.s V_5
+    81 ldloca.s V_4
+    82 call System.Void ParticleMist::FindMaxMistAlltitude(System.Single,System.Single&,System.Single&)
+    83 ldarg.0 
+    84 ldfld System.Single ParticleMist::m_combinedMovement
+    85 ldarg.0 
+    86 ldfld System.Int32 ParticleMist::m_localEmissionPerUnit
+    87 conv.r4 
+    88 mul 
+    89 conv.i4 
+    90 stloc.s V_6
+    91 ldloc.s V_6
+    92 ldc.i4.0 
+    93 ble.s IL_012b: ldarg.0
+    94 ldarg.0 
+    95 ldc.r4 0
+    96 ldarg.0 
+    97 ldfld System.Single ParticleMist::m_combinedMovement
+    98 ldloc.s V_6
+    99 conv.r4 
+   100 ldarg.0 
+   101 ldfld System.Int32 ParticleMist::m_localEmissionPerUnit
+   102 conv.r4 
+   103 div 
+   104 sub 
+   105 call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+   106 stfld System.Single ParticleMist::m_combinedMovement
+   107 ldarg.0 
+   108 ldfld System.Int32 ParticleMist::m_localEmission
+   109 conv.r4 
+   110 ldc.r4 0.1
+   111 mul 
+   112 conv.i4 
+   113 ldloc.s V_6
+   114 add 
+   115 stloc.s V_7
+   116 ldarg.0 
+   117 ldarg.0 
+   118 call UnityEngine.Transform UnityEngine.Component::get_transform()
+   119 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+   120 ldc.r4 0
+   121 ldarg.0 
+   122 ldfld System.Single ParticleMist::m_localRange
+   123 ldloc.s V_7
+   124 ldarg.0 
+   125 ldfld System.Collections.Generic.List`1<Demister> ParticleMist::fields
+   126 ldnull 
+   127 ldloc.s V_5
+   128 call System.Void ParticleMist::Emit(UnityEngine.Vector3,System.Single,System.Single,System.Int32,System.Collections.Generic.List`1<Demister>,Demister,System.Single)
+   129 ldarg.0 
+   130 ldfld System.Collections.Generic.List`1<Demister> ParticleMist::fields
+   131 callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Demister>::GetEnumerator()
+   132 stloc.s V_8
+   133 br IL_023c: ldloca.s V_8
+   134 ldloca.s V_8
+   135 call !0 System.Collections.Generic.List`1/Enumerator<Demister>::get_Current()
+   136 stloc.s V_9
+   137 ldloc.s V_9
+   138 ldfld UnityEngine.ParticleSystemForceField Demister::m_forceField
+   139 callvirt System.Single UnityEngine.ParticleSystemForceField::get_endRange()
+   140 stloc.s V_10
+   141 ldc.r4 0
+   142 ldloc.s V_9
+   143 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+   144 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+   145 ldarg.0 
+   146 call UnityEngine.Transform UnityEngine.Component::get_transform()
+   147 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+   148 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+   149 ldloc.s V_10
+   150 sub 
+   151 call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+   152 stloc.s V_11
+   153 ldloc.s V_11
+   154 ldarg.0 
+   155 ldfld System.Single ParticleMist::m_maxDistance
+   156 bgt.s IL_023c: ldloca.s V_8
+   157 ldc.r4 12.56637
+   158 ldloc.s V_10
+   159 ldloc.s V_10
+   160 mul 
+   161 mul 
+   162 ldarg.0 
+   163 ldfld System.Single ParticleMist::m_emissionMax
+   164 ldc.r4 0
+   165 ldarg.0 
+   166 ldfld System.Single ParticleMist::m_minDistance
+   167 ldarg.0 
+   168 ldfld System.Single ParticleMist::m_maxDistance
+   169 ldloc.s V_11
+   170 call System.Single Utils::LerpStep(System.Single,System.Single,System.Single)
+   171 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+   172 stloc.s V_12
+   173 ldloc.s V_12
+   174 mul 
+   175 ldc.r4 0.1
+   176 mul 
+   177 conv.i4 
+   178 stloc.s V_13
+   179 ldloc.s V_9
+   180 callvirt System.Single Demister::GetMovedDistance()
+   181 stloc.s V_14
+   182 ldloc.s V_13
+   183 ldloc.s V_14
+   184 ldarg.0 
+   185 ldfld System.Single ParticleMist::m_emissionPerUnit
+   186 mul 
+   187 conv.i4 
+   188 add 
+   189 stloc.s V_13
+   190 ldarg.0 
+   191 ldloc.s V_9
+   192 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+   193 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+   194 ldloc.s V_10
+   195 ldc.r4 0
+   196 ldloc.s V_13
+   197 ldarg.0 
+   198 ldfld System.Collections.Generic.List`1<Demister> ParticleMist::fields
+   199 ldloc.s V_9
+   200 ldloc.s V_5
+   201 call System.Void ParticleMist::Emit(UnityEngine.Vector3,System.Single,System.Single,System.Int32,System.Collections.Generic.List`1<Demister>,Demister,System.Single)
+   202 ldloca.s V_8
+   203 call System.Boolean System.Collections.Generic.List`1/Enumerator<Demister>::MoveNext()
+   204 brtrue IL_0177: ldloca.s V_8
+   205 leave.s IL_0258: ldloc.2
+   206 ldloca.s V_8
+   207 constrained. System.Collections.Generic.List`1/Enumerator<Demister>
+   208 callvirt System.Void System.IDisposable::Dispose()
+   209 endfinally 
+   210 ldloc.2 
+   211 callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<Mister>::GetEnumerator()
+   212 stloc.s V_15
+   213 br.s IL_029a: ldloca.s V_15
+   214 ldloca.s V_15
+   215 call !0 System.Collections.Generic.List`1/Enumerator<Mister>::get_Current()
+   216 stloc.s V_16
+   217 ldloc.s V_16
+   218 ldarg.0 
+   219 call UnityEngine.Transform UnityEngine.Component::get_transform()
+   220 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+   221 ldc.r4 0
+   222 callvirt System.Boolean Mister::Inside(UnityEngine.Vector3,System.Single)
+   223 brtrue.s IL_029a: ldloca.s V_15
+   224 ldarg.0 
+   225 ldloc.s V_16
+   226 ldloc.2 
+   227 ldarg.0 
+   228 ldfld System.Collections.Generic.List`1<Demister> ParticleMist::fields
+   229 ldloc.s V_5
+   230 ldc.r4 0.1
+   231 call System.Void ParticleMist::MisterEmit(Mister,System.Collections.Generic.List`1<Mister>,System.Collections.Generic.List`1<Demister>,System.Single,System.Single)
+   232 ldloca.s V_15
+   233 call System.Boolean System.Collections.Generic.List`1/Enumerator<Mister>::MoveNext()
+   234 brtrue.s IL_0262: ldloca.s V_15
+   235 leave.s IL_02b3: ret
+   236 ldloca.s V_15
+   237 constrained. System.Collections.Generic.List`1/Enumerator<Mister>
+   238 callvirt System.Void System.IDisposable::Dispose()
+   239 endfinally 
+   240 ret 
+--- IL ParticleMist::Awake ---
+     0 ldarg.0 
+     1 stsfld ParticleMist ParticleMist::m_instance
+     2 ldarg.0 
+     3 ldarg.0 
+     4 call !!0 UnityEngine.Component::GetComponent<UnityEngine.ParticleSystem>()
+     5 stfld UnityEngine.ParticleSystem ParticleMist::m_ps
+     6 ldarg.0 
+     7 ldarg.0 
+     8 call UnityEngine.Transform UnityEngine.Component::get_transform()
+     9 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    10 stfld UnityEngine.Vector3 ParticleMist::m_lastUpdatePos
+    11 ret 
+--- IL ClutterSystem::GenerateVegPatch ---
+     0 ldarg.0 
+     1 ldarg.1 
+     2 call UnityEngine.Vector3 ClutterSystem::GetVegPatchCenter(UnityEngine.Vector2Int)
+     3 stloc.0 
+     4 ldarg.2 
+     5 ldc.r4 2
+     6 div 
+     7 stloc.1 
+     8 ldarg.0 
+     9 ldloc.0 
+    10 ldloc.1 
+    11 call Heightmap/Biome ClutterSystem::GetPatchBiomes(UnityEngine.Vector3,System.Single)
+    12 stloc.2 
+    13 ldloc.2 
+    14 brtrue.s IL_001e: call UnityEngine.Random/State UnityEngine.Random::get_state()
+    15 ldnull 
+    16 ret 
+    17 call UnityEngine.Random/State UnityEngine.Random::get_state()
+    18 stloc.3 
+    19 ldarg.0 
+    20 call ClutterSystem/PatchData ClutterSystem::AllocatePatch()
+    21 stloc.s V_4
+    22 ldloc.s V_4
+    23 ldloc.0 
+    24 stfld UnityEngine.Vector3 ClutterSystem/PatchData::center
+    25 ldc.i4.0 
+    26 stloc.s V_5
+    27 br IL_0457: ldloc.s V_5
+    28 ldarg.0 
+    29 ldfld System.Collections.Generic.List`1<ClutterSystem/Clutter> ClutterSystem::m_clutter
+    30 ldloc.s V_5
+    31 callvirt !0 System.Collections.Generic.List`1<ClutterSystem/Clutter>::get_Item(System.Int32)
+    32 stloc.s V_6
+    33 ldloc.s V_6
+    34 ldfld System.Boolean ClutterSystem/Clutter::m_enabled
+    35 brfalse IL_0451: ldloc.s V_5
+    36 ldloc.2 
+    37 ldloc.s V_6
+    38 ldfld Heightmap/Biome ClutterSystem/Clutter::m_biome
+    39 and 
+    40 brfalse IL_0451: ldloc.s V_5
+    41 ldnull 
+    42 stloc.s V_7
+    43 ldarga.s patchID
+    44 call System.Int32 UnityEngine.Vector2Int::get_x()
+    45 ldarga.s patchID
+    46 call System.Int32 UnityEngine.Vector2Int::get_y()
+    47 ldc.i4 1374
+    48 mul 
+    49 mul 
+    50 ldloc.s V_5
+    51 ldc.i4 9321
+    52 mul 
+    53 add 
+    54 call System.Void UnityEngine.Random::InitState(System.Int32)
+    55 ldloca.s V_8
+    56 ldloc.s V_6
+    57 ldfld System.Single ClutterSystem/Clutter::m_fractalOffset
+    58 ldc.r4 0
+    59 ldc.r4 0
+    60 call System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+    61 ldc.r4 0.01745329
+    62 ldloc.s V_6
+    63 ldfld System.Single ClutterSystem/Clutter::m_maxTilt
+    64 mul 
+    65 call System.Single UnityEngine.Mathf::Cos(System.Single)
+    66 stloc.s V_9
+    67 ldc.r4 0.01745329
+    68 ldloc.s V_6
+    69 ldfld System.Single ClutterSystem/Clutter::m_minTilt
+    70 mul 
+    71 call System.Single UnityEngine.Mathf::Cos(System.Single)
+    72 stloc.s V_10
+    73 ldarg.0 
+    74 ldfld ClutterSystem/Quality ClutterSystem::m_quality
+    75 stloc.s V_12
+    76 ldloc.s V_12
+    77 ldc.i4.1 
+    78 beq.s IL_00df: ldloc.s V_6
+    79 ldloc.s V_12
+    80 ldc.i4.2 
+    81 beq.s IL_00ec: ldloc.s V_6
+    82 br.s IL_00f9: ldloc.s V_6
+    83 ldloc.s V_6
+    84 ldfld System.Int32 ClutterSystem/Clutter::m_amount
+    85 ldc.i4.4 
+    86 div 
+    87 stloc.s V_11
+    88 br.s IL_0102: ldloc.s V_11
+    89 ldloc.s V_6
+    90 ldfld System.Int32 ClutterSystem/Clutter::m_amount
+    91 ldc.i4.2 
+    92 div 
+    93 stloc.s V_11
+    94 br.s IL_0102: ldloc.s V_11
+    95 ldloc.s V_6
+    96 ldfld System.Int32 ClutterSystem/Clutter::m_amount
+    97 stloc.s V_11
+    98 ldloc.s V_11
+    99 conv.r4 
+   100 ldarg.0 
+   101 ldfld System.Single ClutterSystem::m_amountScale
+   102 mul 
+   103 conv.i4 
+   104 stloc.s V_11
+   105 ldc.i4.0 
+   106 stloc.s V_13
+   107 br IL_0448: ldloc.s V_13
+   108 ldloca.s V_14
+   109 ldloc.0 
+   110 ldfld System.Single UnityEngine.Vector3::x
+   111 ldloc.1 
+   112 sub 
+   113 ldloc.0 
+   114 ldfld System.Single UnityEngine.Vector3::x
+   115 ldloc.1 
+   116 add 
+   117 call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+   118 ldc.r4 0
+   119 ldloc.0 
+   120 ldfld System.Single UnityEngine.Vector3::z
+   121 ldloc.1 
+   122 sub 
+   123 ldloc.0 
+   124 ldfld System.Single UnityEngine.Vector3::z
+   125 ldloc.1 
+   126 add 
+   127 call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+   128 call System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+   129 ldc.i4.0 
+   130 ldc.i4 360
+   131 call System.Int32 UnityEngine.Random::Range(System.Int32,System.Int32)
+   132 conv.r4 
+   133 stloc.s V_15
+   134 ldloc.s V_6
+   135 ldfld System.Boolean ClutterSystem/Clutter::m_inForest
+   136 brfalse.s IL_0189: ldloc.s V_6
+   137 ldloc.s V_14
+   138 call System.Single WorldGenerator::GetForestFactor(UnityEngine.Vector3)
+   139 stloc.s V_22
+   140 ldloc.s V_22
+   141 ldloc.s V_6
+   142 ldfld System.Single ClutterSystem/Clutter::m_forestTresholdMin
+   143 blt IL_0442: ldloc.s V_13
+   144 ldloc.s V_22
+   145 ldloc.s V_6
+   146 ldfld System.Single ClutterSystem/Clutter::m_forestTresholdMax
+   147 bgt IL_0442: ldloc.s V_13
+   148 ldloc.s V_6
+   149 ldfld System.Single ClutterSystem/Clutter::m_fractalScale
+   150 ldc.r4 0
+   151 ble.un.s IL_01e4: ldarg.0
+   152 ldloc.s V_14
+   153 ldc.r4 0.01
+   154 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+   155 ldloc.s V_6
+   156 ldfld System.Single ClutterSystem/Clutter::m_fractalScale
+   157 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+   158 ldloc.s V_8
+   159 call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+   160 ldc.i4.3 
+   161 ldc.r4 1.6
+   162 ldc.r4 0.7
+   163 call System.Single Utils::Fbm(UnityEngine.Vector3,System.Int32,System.Single,System.Single)
+   164 stloc.s V_23
+   165 ldloc.s V_23
+   166 ldloc.s V_6
+   167 ldfld System.Single ClutterSystem/Clutter::m_fractalTresholdMin
+   168 blt IL_0442: ldloc.s V_13
+   169 ldloc.s V_23
+   170 ldloc.s V_6
+   171 ldfld System.Single ClutterSystem/Clutter::m_fractalTresholdMax
+   172 bgt IL_0442: ldloc.s V_13
+   173 ldarg.0 
+   174 ldloc.s V_14
+   175 ldloca.s V_16
+   176 ldloca.s V_17
+   177 ldloca.s V_18
+   178 ldloca.s V_19
+   179 call System.Boolean ClutterSystem::GetGroundInfo(UnityEngine.Vector3,UnityEngine.Vector3&,UnityEngine.Vector3&,Heightmap&,Heightmap/Biome&)
+   180 brfalse IL_0442: ldloc.s V_13
+   181 ldloc.s V_6
+   182 ldfld Heightmap/Biome ClutterSystem/Clutter::m_biome
+   183 ldloc.s V_19
+   184 and 
+   185 brfalse IL_0442: ldloc.s V_13
+   186 ldloc.s V_16
+   187 ldfld System.Single UnityEngine.Vector3::y
+   188 ldarg.0 
+   189 ldfld System.Single ClutterSystem::m_waterLevel
+   190 sub 
+   191 stloc.s V_20
+   192 ldloc.s V_20
+   193 ldloc.s V_6
+   194 ldfld System.Single ClutterSystem/Clutter::m_minAlt
+   195 blt IL_0442: ldloc.s V_13
+   196 ldloc.s V_20
+   197 ldloc.s V_6
+   198 ldfld System.Single ClutterSystem/Clutter::m_maxAlt
+   199 bgt IL_0442: ldloc.s V_13
+   200 ldloc.s V_17
+   201 ldfld System.Single UnityEngine.Vector3::y
+   202 ldloc.s V_9
+   203 blt IL_0442: ldloc.s V_13
+   204 ldloc.s V_17
+   205 ldfld System.Single UnityEngine.Vector3::y
+   206 ldloc.s V_10
+   207 bgt IL_0442: ldloc.s V_13
+   208 ldloc.s V_6
+   209 ldfld System.Single ClutterSystem/Clutter::m_minOceanDepth
+   210 ldloc.s V_6
+   211 ldfld System.Single ClutterSystem/Clutter::m_maxOceanDepth
+   212 beq.s IL_0287: ldloc.s V_6
+   213 ldloc.s V_18
+   214 ldloc.s V_14
+   215 callvirt System.Single Heightmap::GetOceanDepth(UnityEngine.Vector3)
+   216 stloc.s V_24
+   217 ldloc.s V_24
+   218 ldloc.s V_6
+   219 ldfld System.Single ClutterSystem/Clutter::m_minOceanDepth
+   220 blt IL_0442: ldloc.s V_13
+   221 ldloc.s V_24
+   222 ldloc.s V_6
+   223 ldfld System.Single ClutterSystem/Clutter::m_maxOceanDepth
+   224 bgt IL_0442: ldloc.s V_13
+   225 ldloc.s V_6
+   226 ldfld System.Single ClutterSystem/Clutter::m_minVegetation
+   227 ldloc.s V_6
+   228 ldfld System.Single ClutterSystem/Clutter::m_maxVegetation
+   229 beq.s IL_02be: ldloc.s V_6
+   230 ldloc.s V_18
+   231 ldloc.s V_16
+   232 callvirt System.Single Heightmap::GetVegetationMask(UnityEngine.Vector3)
+   233 stloc.s V_25
+   234 ldloc.s V_25
+   235 ldloc.s V_6
+   236 ldfld System.Single ClutterSystem/Clutter::m_maxVegetation
+   237 bgt IL_0442: ldloc.s V_13
+   238 ldloc.s V_25
+   239 ldloc.s V_6
+   240 ldfld System.Single ClutterSystem/Clutter::m_minVegetation
+   241 blt IL_0442: ldloc.s V_13
+   242 ldloc.s V_6
+   243 ldfld System.Boolean ClutterSystem/Clutter::m_onCleared
+   244 brfalse.s IL_02d0: ldloc.s V_18
+   245 ldloc.s V_6
+   246 ldfld System.Boolean ClutterSystem/Clutter::m_onUncleared
+   247 brtrue.s IL_02fa: ldloc.s V_16
+   248 ldloc.s V_18
+   249 ldloc.s V_16
+   250 callvirt System.Boolean Heightmap::IsCleared(UnityEngine.Vector3)
+   251 stloc.s V_26
+   252 ldloc.s V_6
+   253 ldfld System.Boolean ClutterSystem/Clutter::m_onCleared
+   254 brfalse.s IL_02eb: ldloc.s V_6
+   255 ldloc.s V_26
+   256 brfalse IL_0442: ldloc.s V_13
+   257 ldloc.s V_6
+   258 ldfld System.Boolean ClutterSystem/Clutter::m_onUncleared
+   259 ldloc.s V_26
+   260 and 
+   261 brtrue IL_0442: ldloc.s V_13
+   262 ldloc.s V_16
+   263 stloc.s V_14
+   264 ldloc.s V_6
+   265 ldfld System.Boolean ClutterSystem/Clutter::m_snapToWater
+   266 brfalse.s IL_0314: ldloc.s V_6
+   267 ldloca.s V_14
+   268 ldarg.0 
+   269 ldfld System.Single ClutterSystem::m_waterLevel
+   270 stfld System.Single UnityEngine.Vector3::y
+   271 ldloc.s V_6
+   272 ldfld System.Single ClutterSystem/Clutter::m_randomOffset
+   273 ldc.r4 0
+   274 beq.s IL_0341: call UnityEngine.Quaternion UnityEngine.Quaternion::get_identity()
+   275 ldloca.s V_14
+   276 ldflda System.Single UnityEngine.Vector3::y
+   277 dup 
+   278 ldind.r4 
+   279 ldloc.s V_6
+   280 ldfld System.Single ClutterSystem/Clutter::m_randomOffset
+   281 neg 
+   282 ldloc.s V_6
+   283 ldfld System.Single ClutterSystem/Clutter::m_randomOffset
+   284 call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+   285 add 
+   286 stind.r4 
+   287 call UnityEngine.Quaternion UnityEngine.Quaternion::get_identity()
+   288 stloc.s V_21
+   289 ldloc.s V_6
+   290 ldfld System.Boolean ClutterSystem/Clutter::m_terrainTilt
+   291 brfalse.s IL_035e: ldc.r4 0
+   292 ldloc.s V_15
+   293 ldloc.s V_17
+   294 call UnityEngine.Quaternion UnityEngine.Quaternion::AngleAxis(System.Single,UnityEngine.Vector3)
+   295 stloc.s V_21
+   296 br.s IL_0371: ldloc.s V_6
+   297 ldc.r4 0
+   298 ldloc.s V_15
+   299 ldc.r4 0
+   300 call UnityEngine.Quaternion UnityEngine.Quaternion::Euler(System.Single,System.Single,System.Single)
+   301 stloc.s V_21
+   302 ldloc.s V_6
+   303 ldfld System.Boolean ClutterSystem/Clutter::m_instanced
+   304 brfalse IL_0417: ldloc.s V_6
+   305 ldloc.s V_7
+   306 ldnull 
+   307 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+   308 brfalse.s IL_03f3: ldloc.s V_6
+   309 ldloc.s V_6
+   310 ldfld UnityEngine.GameObject ClutterSystem/Clutter::m_prefab
+   311 ldloc.0 
+   312 call UnityEngine.Quaternion UnityEngine.Quaternion::get_identity()
+   313 ldarg.0 
+   314 ldfld UnityEngine.GameObject ClutterSystem::m_grassRoot
+   315 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+   316 call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+   317 stloc.s V_28
+   318 ldloc.s V_28
+   319 callvirt !!0 UnityEngine.GameObject::GetComponent<InstanceRenderer>()
+   320 stloc.s V_7
+   321 ldloc.s V_7
+   322 ldfld System.Single InstanceRenderer::m_lodMaxDistance
+   323 ldarg.0 
+   324 ldfld System.Single ClutterSystem::m_distance
+   325 ldarg.0 
+   326 ldfld System.Single ClutterSystem::m_grassPatchSize
+   327 ldc.r4 2
+   328 div 
+   329 sub 
+   330 ble.un.s IL_03e5: ldloc.s V_4
+   331 ldloc.s V_7
+   332 ldarg.0 
+   333 ldfld System.Single ClutterSystem::m_distance
+   334 ldarg.0 
+   335 ldfld System.Single ClutterSystem::m_grassPatchSize
+   336 ldc.r4 2
+   337 div 
+   338 sub 
+   339 stfld System.Single InstanceRenderer::m_lodMaxDistance
+   340 ldloc.s V_4
+   341 ldfld System.Collections.Generic.List`1<UnityEngine.GameObject> ClutterSystem/PatchData::m_objects
+   342 ldloc.s V_28
+   343 callvirt System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::Add(!0)
+   344 ldloc.s V_6
+   345 ldfld System.Single ClutterSystem/Clutter::m_scaleMin
+   346 ldloc.s V_6
+   347 ldfld System.Single ClutterSystem/Clutter::m_scaleMax
+   348 call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+   349 stloc.s V_27
+   350 ldloc.s V_7
+   351 ldloc.s V_14
+   352 ldloc.s V_21
+   353 ldloc.s V_27
+   354 callvirt System.Void InstanceRenderer::AddInstance(UnityEngine.Vector3,UnityEngine.Quaternion,System.Single)
+   355 br.s IL_0442: ldloc.s V_13
+   356 ldloc.s V_6
+   357 ldfld UnityEngine.GameObject ClutterSystem/Clutter::m_prefab
+   358 ldloc.s V_14
+   359 ldloc.s V_21
+   360 ldarg.0 
+   361 ldfld UnityEngine.GameObject ClutterSystem::m_grassRoot
+   362 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+   363 call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)
+   364 stloc.s V_29
+   365 ldloc.s V_4
+   366 ldfld System.Collections.Generic.List`1<UnityEngine.GameObject> ClutterSystem/PatchData::m_objects
+   367 ldloc.s V_29
+   368 callvirt System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::Add(!0)
+   369 ldloc.s V_13
+   370 ldc.i4.1 
+   371 add 
+   372 stloc.s V_13
+   373 ldloc.s V_13
+   374 ldloc.s V_11
+   375 blt IL_0117: ldloca.s V_14
+   376 ldloc.s V_5
+   377 ldc.i4.1 
+   378 add 
+   379 stloc.s V_5
+   380 ldloc.s V_5
+   381 ldarg.0 
+   382 ldfld System.Collections.Generic.List`1<ClutterSystem/Clutter> ClutterSystem::m_clutter
+   383 callvirt System.Int32 System.Collections.Generic.List`1<ClutterSystem/Clutter>::get_Count()
+   384 blt IL_003c: ldarg.0
+   385 ldloc.3 
+   386 call System.Void UnityEngine.Random::set_state(UnityEngine.Random/State)
+   387 ldloc.s V_4
+   388 ret 
+--- IL ClutterSystem::GeneratePatch ---
+     0 ldarg.0 
+     1 ldarg.2 
+     2 call UnityEngine.Vector3 ClutterSystem::GetVegPatchCenter(UnityEngine.Vector2Int)
+     3 ldarg.1 
+     4 call System.Single Utils::DistanceXZ(UnityEngine.Vector3,UnityEngine.Vector3)
+     5 ldarg.0 
+     6 ldfld System.Single ClutterSystem::m_distance
+     7 ble.un.s IL_0016: ldarg.0
+     8 ret 
+     9 ldarg.0 
+    10 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData> ClutterSystem::m_patches
+    11 ldarg.2 
+    12 ldloca.s V_0
+    13 callvirt System.Boolean System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData>::TryGetValue(!0,!1&)
+    14 brfalse.s IL_003a: ldarg.s rebuildAll
+    15 ldloc.0 
+    16 ldfld System.Boolean ClutterSystem/PatchData::m_reset
+    17 brtrue.s IL_003a: ldarg.s rebuildAll
+    18 ldloc.0 
+    19 ldc.r4 0
+    20 stfld System.Single ClutterSystem/PatchData::m_timer
+    21 ret 
+    22 ldarg.s rebuildAll
+    23 brtrue.s IL_004a: ldarg.0
+    24 ldarg.3 
+    25 ldind.u1 
+    26 brfalse.s IL_004a: ldarg.0
+    27 ldarg.0 
+    28 ldfld System.Boolean ClutterSystem::m_menuHack
+    29 brfalse.s IL_00c2: ret
+    30 ldarg.0 
+    31 ldarg.2 
+    32 ldarg.0 
+    33 ldfld System.Single ClutterSystem::m_grassPatchSize
+    34 call ClutterSystem/PatchData ClutterSystem::GenerateVegPatch(UnityEngine.Vector2Int,System.Single)
+    35 stloc.1 
+    36 ldloc.1 
+    37 brfalse.s IL_00c2: ret
+    38 ldarg.0 
+    39 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData> ClutterSystem::m_patches
+    40 ldarg.2 
+    41 ldloca.s V_2
+    42 callvirt System.Boolean System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData>::TryGetValue(!0,!1&)
+    43 brfalse.s IL_00b2: ldarg.0
+    44 ldloc.2 
+    45 ldfld System.Collections.Generic.List`1<UnityEngine.GameObject> ClutterSystem/PatchData::m_objects
+    46 callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<UnityEngine.GameObject>::GetEnumerator()
+    47 stloc.3 
+    48 br.s IL_0085: ldloca.s V_3
+    49 ldloca.s V_3
+    50 call !0 System.Collections.Generic.List`1/Enumerator<UnityEngine.GameObject>::get_Current()
+    51 call System.Void UnityEngine.Object::Destroy(UnityEngine.Object)
+    52 ldloca.s V_3
+    53 call System.Boolean System.Collections.Generic.List`1/Enumerator<UnityEngine.GameObject>::MoveNext()
+    54 brtrue.s IL_0079: ldloca.s V_3
+    55 leave.s IL_009e: ldarg.0
+    56 ldloca.s V_3
+    57 constrained. System.Collections.Generic.List`1/Enumerator<UnityEngine.GameObject>
+    58 callvirt System.Void System.IDisposable::Dispose()
+    59 endfinally 
+    60 ldarg.0 
+    61 ldloc.2 
+    62 call System.Void ClutterSystem::FreePatch(ClutterSystem/PatchData)
+    63 ldarg.0 
+    64 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData> ClutterSystem::m_patches
+    65 ldarg.2 
+    66 callvirt System.Boolean System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData>::Remove(!0)
+    67 pop 
+    68 ldarg.0 
+    69 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData> ClutterSystem::m_patches
+    70 ldarg.2 
+    71 ldloc.1 
+    72 callvirt System.Void System.Collections.Generic.Dictionary`2<UnityEngine.Vector2Int,ClutterSystem/PatchData>::Add(!0,!1)
+    73 ldarg.3 
+    74 ldc.i4.1 
+    75 stind.i1 
+    76 ret 
+--- IL ClutterSystem::GeneratePatches ---
+     0 ldc.i4.0 
+     1 stloc.0 
+     2 ldarg.0 
+     3 ldarg.2 
+     4 call UnityEngine.Vector2Int ClutterSystem::GetVegPatch(UnityEngine.Vector3)
+     5 stloc.1 
+     6 ldarg.0 
+     7 ldarg.2 
+     8 ldloc.1 
+     9 ldloca.s V_0
+    10 ldarg.1 
+    11 call System.Void ClutterSystem::GeneratePatch(UnityEngine.Vector3,UnityEngine.Vector2Int,System.Boolean&,System.Boolean)
+    12 ldarg.0 
+    13 ldfld System.Single ClutterSystem::m_distance
+    14 ldarg.0 
+    15 ldfld System.Single ClutterSystem::m_grassPatchSize
+    16 ldc.r4 2
+    17 div 
+    18 sub 
+    19 ldarg.0 
+    20 ldfld System.Single ClutterSystem::m_grassPatchSize
+    21 div 
+    22 call System.Int32 UnityEngine.Mathf::CeilToInt(System.Single)
+    23 stloc.2 
+    24 ldc.i4.1 
+    25 stloc.3 
+    26 br IL_00ec: ldloc.3
+    27 ldloca.s V_1
+    28 call System.Int32 UnityEngine.Vector2Int::get_x()
+    29 ldloc.3 
+    30 sub 
+    31 stloc.s V_4
+    32 br.s IL_0083: ldloc.s V_4
+    33 ldarg.0 
+    34 ldarg.2 
+    35 ldloc.s V_4
+    36 ldloca.s V_1
+    37 call System.Int32 UnityEngine.Vector2Int::get_y()
+    38 ldloc.3 
+    39 sub 
+    40 newobj System.Void UnityEngine.Vector2Int::.ctor(System.Int32,System.Int32)
+    41 ldloca.s V_0
+    42 ldarg.1 
+    43 call System.Void ClutterSystem::GeneratePatch(UnityEngine.Vector3,UnityEngine.Vector2Int,System.Boolean&,System.Boolean)
+    44 ldarg.0 
+    45 ldarg.2 
+    46 ldloc.s V_4
+    47 ldloca.s V_1
+    48 call System.Int32 UnityEngine.Vector2Int::get_y()
+    49 ldloc.3 
+    50 add 
+    51 newobj System.Void UnityEngine.Vector2Int::.ctor(System.Int32,System.Int32)
+    52 ldloca.s V_0
+    53 ldarg.1 
+    54 call System.Void ClutterSystem::GeneratePatch(UnityEngine.Vector3,UnityEngine.Vector2Int,System.Boolean&,System.Boolean)
+    55 ldloc.s V_4
+    56 ldc.i4.1 
+    57 add 
+    58 stloc.s V_4
+    59 ldloc.s V_4
+    60 ldloca.s V_1
+    61 call System.Int32 UnityEngine.Vector2Int::get_x()
+    62 ldloc.3 
+    63 add 
+    64 ble.s IL_0049: ldarg.0
+    65 ldloca.s V_1
+    66 call System.Int32 UnityEngine.Vector2Int::get_y()
+    67 ldloc.3 
+    68 sub 
+    69 ldc.i4.1 
+    70 add 
+    71 stloc.s V_5
+    72 br.s IL_00d9: ldloc.s V_5
+    73 ldarg.0 
+    74 ldarg.2 
+    75 ldloca.s V_1
+    76 call System.Int32 UnityEngine.Vector2Int::get_x()
+    77 ldloc.3 
+    78 sub 
+    79 ldloc.s V_5
+    80 newobj System.Void UnityEngine.Vector2Int::.ctor(System.Int32,System.Int32)
+    81 ldloca.s V_0
+    82 ldarg.1 
+    83 call System.Void ClutterSystem::GeneratePatch(UnityEngine.Vector3,UnityEngine.Vector2Int,System.Boolean&,System.Boolean)
+    84 ldarg.0 
+    85 ldarg.2 
+    86 ldloca.s V_1
+    87 call System.Int32 UnityEngine.Vector2Int::get_x()
+    88 ldloc.3 
+    89 add 
+    90 ldloc.s V_5
+    91 newobj System.Void UnityEngine.Vector2Int::.ctor(System.Int32,System.Int32)
+    92 ldloca.s V_0
+    93 ldarg.1 
+    94 call System.Void ClutterSystem::GeneratePatch(UnityEngine.Vector3,UnityEngine.Vector2Int,System.Boolean&,System.Boolean)
+    95 ldloc.s V_5
+    96 ldc.i4.1 
+    97 add 
+    98 stloc.s V_5
+    99 ldloc.s V_5
+   100 ldloca.s V_1
+   101 call System.Int32 UnityEngine.Vector2Int::get_y()
+   102 ldloc.3 
+   103 add 
+   104 ldc.i4.1 
+   105 sub 
+   106 ble.s IL_009f: ldarg.0
+   107 ldloc.3 
+   108 ldc.i4.1 
+   109 add 
+   110 stloc.3 
+   111 ldloc.3 
+   112 ldloc.2 
+   113 ble IL_003c: ldloca.s V_1
+   114 ret 
+--- IL ClutterSystem::UpdateGrass ---
+     0 ldarg.0 
+     1 ldfld ClutterSystem/Quality ClutterSystem::m_quality
+     2 brtrue.s IL_0009: ldarg.0
+     3 ret 
+     4 ldarg.0 
+     5 ldarg.2 
+     6 ldarg.3 
+     7 call System.Void ClutterSystem::GeneratePatches(System.Boolean,UnityEngine.Vector3)
+     8 ldarg.0 
+     9 ldarg.1 
+    10 call System.Void ClutterSystem::TimeoutPatches(System.Single)
+    11 ret 
+--- IL ClutterSystem::LateUpdate ---
+     0 ldc.i4.1 
+     1 call System.Boolean RenderGroupSystem::IsGroupActive(RenderGroup)
+     2 brtrue.s IL_000f: call UnityEngine.Camera Utils::GetMainCamera()
+     3 ldarg.0 
+     4 call System.Void ClutterSystem::ClearAll()
+     5 ret 
+     6 call UnityEngine.Camera Utils::GetMainCamera()
+     7 stloc.0 
+     8 ldloc.0 
+     9 ldnull 
+    10 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+    11 brfalse.s IL_001f: call System.Boolean GameCamera::InFreeFly()
+    12 ret 
+    13 call System.Boolean GameCamera::InFreeFly()
+    14 brtrue.s IL_0032: ldloc.0
+    15 ldsfld Player Player::m_localPlayer
+    16 call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+    17 brtrue.s IL_003f: ldsfld Player Player::m_localPlayer
+    18 ldloc.0 
+    19 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    20 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    21 br.s IL_004e: stloc.1
+    22 ldsfld Player Player::m_localPlayer
+    23 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    24 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    25 stloc.1 
+    26 ldarg.0 
+    27 ldfld System.Boolean ClutterSystem::m_forceRebuild
+    28 brfalse.s IL_0075: ldarg.0
+    29 ldarg.0 
+    30 call System.Boolean ClutterSystem::IsHeightmapReady()
+    31 brfalse.s IL_008a: ldsfld Player Player::m_localPlayer
+    32 ldarg.0 
+    33 ldc.i4.0 
+    34 stfld System.Boolean ClutterSystem::m_forceRebuild
+    35 ldarg.0 
+    36 call System.Single UnityEngine.Time::get_deltaTime()
+    37 ldc.i4.1 
+    38 ldloc.1 
+    39 call System.Void ClutterSystem::UpdateGrass(System.Single,System.Boolean,UnityEngine.Vector3)
+    40 br.s IL_008a: ldsfld Player Player::m_localPlayer
+    41 ldarg.0 
+    42 call System.Boolean ClutterSystem::IsHeightmapReady()
+    43 brfalse.s IL_008a: ldsfld Player Player::m_localPlayer
+    44 ldarg.0 
+    45 call System.Single UnityEngine.Time::get_deltaTime()
+    46 ldc.i4.0 
+    47 ldloc.1 
+    48 call System.Void ClutterSystem::UpdateGrass(System.Single,System.Boolean,UnityEngine.Vector3)
+    49 ldsfld Player Player::m_localPlayer
+    50 stloc.2 
+    51 ldloc.2 
+    52 ldnull 
+    53 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+    54 brfalse.s IL_00eb: ldstr "_PlayerPosition"
+    55 ldarg.0 
+    56 ldarg.0 
+    57 ldfld UnityEngine.Vector3 ClutterSystem::m_oldPlayerPos
+    58 ldloc.2 
+    59 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    60 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    61 ldarg.0 
+    62 ldfld System.Single ClutterSystem::m_playerPushFade
+    63 call UnityEngine.Vector3 UnityEngine.Vector3::Lerp(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)
+    64 stfld UnityEngine.Vector3 ClutterSystem::m_oldPlayerPos
+    65 ldstr _PlayerPosition
+    66 ldloc.2 
+    67 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    68 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    69 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    70 call System.Void UnityEngine.Shader::SetGlobalVector(System.String,UnityEngine.Vector4)
+    71 ldstr _PlayerOldPosition
+    72 ldarg.0 
+    73 ldfld UnityEngine.Vector3 ClutterSystem::m_oldPlayerPos
+    74 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    75 call System.Void UnityEngine.Shader::SetGlobalVector(System.String,UnityEngine.Vector4)
+    76 ret 
+    77 ldstr _PlayerPosition
+    78 ldc.r4 999999
+    79 ldc.r4 999999
+    80 ldc.r4 999999
+    81 newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+    82 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    83 call System.Void UnityEngine.Shader::SetGlobalVector(System.String,UnityEngine.Vector4)
+    84 ldstr _PlayerOldPosition
+    85 ldc.r4 999999
+    86 ldc.r4 999999
+    87 ldc.r4 999999
+    88 newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+    89 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    90 call System.Void UnityEngine.Shader::SetGlobalVector(System.String,UnityEngine.Vector4)
+    91 ret 
+--- IL ClutterSystem::ApplySettings ---
+     0 call GraphicsSettingsManager GraphicsSettingsManager::get_Instance()
+     1 callvirt GraphicsSettingsState& modreq(System.Runtime.InteropServices.InAttribute) GraphicsSettingsManager::get_ActiveSettings()
+     2 ldfld ClutterSystem/Quality GraphicsSettingsState::m_vegetation
+     3 stloc.0 
+     4 ldarg.0 
+     5 ldfld ClutterSystem/Quality ClutterSystem::m_quality
+     6 ldloc.0 
+     7 bne.un.s IL_001a: ldarg.0
+     8 ret 
+     9 ldarg.0 
+    10 ldloc.0 
+    11 stfld ClutterSystem/Quality ClutterSystem::m_quality
+    12 ldarg.0 
+    13 call System.Void ClutterSystem::ClearAll()
+    14 ret 
+--- IL CameraEffects::SetSSAO ---
+     0 ldarg.1 
+     1 switch Mono.Cecil.Cil.Instruction[]
+     2 br.s IL_0046: ldarg.0
+     3 ldarg.0 
+     4 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+     5 ldc.i4.0 
+     6 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+     7 ret 
+     8 ldarg.0 
+     9 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    10 ldc.i4.1 
+    11 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+    12 ldarg.0 
+    13 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    14 ldc.i4.1 
+    15 stfld System.Boolean AmplifyOcclusionEffect::Downsample
+    16 ldarg.0 
+    17 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    18 ldc.i4.0 
+    19 stfld AmplifyOcclusion.SampleCountLevel AmplifyOcclusionEffect::SampleCount
+    20 ret 
+    21 ldarg.0 
+    22 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    23 ldc.i4.1 
+    24 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+    25 ldarg.0 
+    26 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    27 ldc.i4.1 
+    28 stfld System.Boolean AmplifyOcclusionEffect::Downsample
+    29 ldarg.0 
+    30 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    31 ldc.i4.1 
+    32 stfld AmplifyOcclusion.SampleCountLevel AmplifyOcclusionEffect::SampleCount
+    33 ret 
+--- IL CameraEffects::SetSunShafts ---
+     0 ldarg.0 
+     1 call !!0 UnityEngine.Component::GetComponent<UnityStandardAssets.ImageEffects.SunShafts>()
+     2 stloc.0 
+     3 ldloc.0 
+     4 ldnull 
+     5 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+     6 brfalse.s IL_0017: ret
+     7 ldloc.0 
+     8 ldarg.1 
+     9 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+    10 ret 
+--- IL CameraEffects::ApplySettings ---
+     0 call GraphicsSettingsManager GraphicsSettingsManager::get_Instance()
+     1 callvirt GraphicsSettingsState& modreq(System.Runtime.InteropServices.InAttribute) GraphicsSettingsManager::get_ActiveSettings()
+     2 ldobj GraphicsSettingsState
+     3 stloc.0 
+     4 ldarg.0 
+     5 ldloc.0 
+     6 ldfld System.Boolean GraphicsSettingsState::m_depthOfField
+     7 call System.Void CameraEffects::SetDof(System.Boolean)
+     8 ldarg.0 
+     9 ldloc.0 
+    10 ldfld System.Boolean GraphicsSettingsState::m_bloom
+    11 call System.Void CameraEffects::SetBloom(System.Boolean)
+    12 ldarg.0 
+    13 ldloc.0 
+    14 ldfld System.Int32 GraphicsSettingsState::m_ssao
+    15 call System.Void CameraEffects::SetSSAO(System.Int32)
+    16 ldarg.0 
+    17 ldloc.0 
+    18 ldfld System.Boolean GraphicsSettingsState::m_sunShafts
+    19 call System.Void CameraEffects::SetSunShafts(System.Boolean)
+    20 ldarg.0 
+    21 ldloc.0 
+    22 ldfld System.Boolean GraphicsSettingsState::m_antiAliasing
+    23 call System.Void CameraEffects::SetAntiAliasing(System.Boolean)
+    24 ldarg.0 
+    25 ldloc.0 
+    26 ldfld System.Boolean GraphicsSettingsState::m_chromaticAberration
+    27 call System.Void CameraEffects::SetCA(System.Boolean)
+    28 ldarg.0 
+    29 ldloc.0 
+    30 ldfld System.Boolean GraphicsSettingsState::m_motionBlur
+    31 call System.Void CameraEffects::SetMotionBlur(System.Boolean)
+    32 ret 
+--- IL CameraEffects::SetEnvironmentAOParams ---
+     0 ldarg.0 
+     1 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+     2 ldarg.1 
+     3 stfld UnityEngine.Color AmplifyOcclusionEffect::Tint
+     4 ldarg.0 
+     5 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+     6 ldarg.2 
+     7 stfld System.Single AmplifyOcclusionEffect::Intensity
+     8 ldarg.0 
+     9 ldfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    10 ldarg.1 
+    11 stfld UnityEngine.Color AmplifyOcclusionEffect::FadeToTint
+    12 ret 
+--- IL CameraEffects::Awake ---
+     0 ldarg.0 
+     1 stsfld CameraEffects CameraEffects::m_instance
+     2 ldarg.0 
+     3 ldarg.0 
+     4 call !!0 UnityEngine.Component::GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>()
+     5 stfld UnityEngine.PostProcessing.PostProcessingBehaviour CameraEffects::m_postProcessing
+     6 ldarg.0 
+     7 ldarg.0 
+     8 call !!0 UnityEngine.Component::GetComponent<UnityStandardAssets.ImageEffects.DepthOfField>()
+     9 stfld UnityStandardAssets.ImageEffects.DepthOfField CameraEffects::m_dof
+    10 ldarg.0 
+    11 ldarg.0 
+    12 call !!0 UnityEngine.Component::GetComponent<AmplifyOcclusionEffect>()
+    13 stfld AmplifyOcclusionEffect CameraEffects::m_amplifyOcclusion
+    14 ldarg.0 
+    15 ldftn System.Void CameraEffects::ApplySettings()
+    16 newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+    17 call System.Void GraphicsSettingsManager::add_GraphicsSettingsChanged(System.Action)
+    18 ldarg.0 
+    19 call System.Void CameraEffects::ApplySettings()
+    20 ret 
+--- IL Heightmap::UpdateShadowSettings ---
+     0 call GraphicsSettingsManager GraphicsSettingsManager::get_Instance()
+     1 callvirt GraphicsSettingsState& modreq(System.Runtime.InteropServices.InAttribute) GraphicsSettingsManager::get_ActiveSettings()
+     2 ldfld System.Boolean GraphicsSettingsState::m_distantShadows
+     3 stloc.0 
+     4 ldarg.0 
+     5 ldfld System.Boolean Heightmap::m_isDistantLod
+     6 brfalse.s IL_0037: ldarg.0
+     7 ldarg.0 
+     8 ldfld UnityEngine.MeshRenderer Heightmap::m_meshRenderer
+     9 ldloc.0 
+    10 brtrue.s IL_0024: ldc.i4.1
+    11 ldc.i4.0 
+    12 br.s IL_0025: callvirt System.Void UnityEngine.Renderer::set_shadowCastingMode(UnityEngine.Rendering.ShadowCastingMode)
+    13 ldc.i4.1 
+    14 callvirt System.Void UnityEngine.Renderer::set_shadowCastingMode(UnityEngine.Rendering.ShadowCastingMode)
+    15 ldarg.0 
+    16 ldfld UnityEngine.MeshRenderer Heightmap::m_meshRenderer
+    17 ldc.i4.0 
+    18 callvirt System.Void UnityEngine.Renderer::set_receiveShadows(System.Boolean)
+    19 ret 
+    20 ldarg.0 
+    21 ldfld UnityEngine.MeshRenderer Heightmap::m_meshRenderer
+    22 ldloc.0 
+    23 brtrue.s IL_0043: ldc.i4.1
+    24 ldc.i4.2 
+    25 br.s IL_0044: callvirt System.Void UnityEngine.Renderer::set_shadowCastingMode(UnityEngine.Rendering.ShadowCastingMode)
+    26 ldc.i4.1 
+    27 callvirt System.Void UnityEngine.Renderer::set_shadowCastingMode(UnityEngine.Rendering.ShadowCastingMode)
+    28 ldarg.0 
+    29 ldfld UnityEngine.MeshRenderer Heightmap::m_meshRenderer
+    30 ldc.i4.1 
+    31 callvirt System.Void UnityEngine.Renderer::set_receiveShadows(System.Boolean)
+    32 ret 
+--- IL WaterVolume::UpdateMaterials ---
+     0 ldarg.0 
+     1 ldfld UnityEngine.MeshRenderer WaterVolume::m_waterSurface
+     2 callvirt UnityEngine.Material UnityEngine.Renderer::get_material()
+     3 ldsfld System.Int32 WaterVolume::s_shaderWaterTime
+     4 ldsfld System.Single WaterVolume::s_waterTime
+     5 callvirt System.Void UnityEngine.Material::SetFloat(System.Int32,System.Single)
+     6 ret 
+--- IL WaterVolume::SetupMaterial ---
+     0 ldarg.0 
+     1 ldfld System.Single WaterVolume::m_forceDepth
+     2 ldc.r4 0
+     3 blt.un.s IL_004e: ldarg.0
+     4 ldarg.0 
+     5 ldfld UnityEngine.MeshRenderer WaterVolume::m_waterSurface
+     6 callvirt UnityEngine.Material UnityEngine.Renderer::get_material()
+     7 ldsfld System.Int32 WaterVolume::s_shaderDepth
+     8 ldc.i4.4 
+     9 newarr System.Single
+    10 dup 
+    11 ldc.i4.0 
+    12 ldarg.0 
+    13 ldfld System.Single WaterVolume::m_forceDepth
+    14 stelem.r4 
+    15 dup 
+    16 ldc.i4.1 
+    17 ldarg.0 
+    18 ldfld System.Single WaterVolume::m_forceDepth
+    19 stelem.r4 
+    20 dup 
+    21 ldc.i4.2 
+    22 ldarg.0 
+    23 ldfld System.Single WaterVolume::m_forceDepth
+    24 stelem.r4 
+    25 dup 
+    26 ldc.i4.3 
+    27 ldarg.0 
+    28 ldfld System.Single WaterVolume::m_forceDepth
+    29 stelem.r4 
+    30 callvirt System.Void UnityEngine.Material::SetFloatArray(System.Int32,System.Single[])
+    31 br.s IL_0069: ldarg.0
+    32 ldarg.0 
+    33 ldfld UnityEngine.MeshRenderer WaterVolume::m_waterSurface
+    34 callvirt UnityEngine.Material UnityEngine.Renderer::get_material()
+    35 ldsfld System.Int32 WaterVolume::s_shaderDepth
+    36 ldarg.0 
+    37 ldfld System.Single[] WaterVolume::m_normalizedDepth
+    38 callvirt System.Void UnityEngine.Material::SetFloatArray(System.Int32,System.Single[])
+    39 ldarg.0 
+    40 ldfld UnityEngine.MeshRenderer WaterVolume::m_waterSurface
+    41 callvirt UnityEngine.Material UnityEngine.Renderer::get_material()
+    42 ldsfld System.Int32 WaterVolume::s_shaderUseGlobalWind
+    43 ldarg.0 
+    44 ldfld System.Boolean WaterVolume::m_useGlobalWind
+    45 brtrue.s IL_0088: ldc.r4 1
+    46 ldc.r4 0
+    47 br.s IL_008d: callvirt System.Void UnityEngine.Material::SetFloat(System.Int32,System.Single)
+    48 ldc.r4 1
+    49 callvirt System.Void UnityEngine.Material::SetFloat(System.Int32,System.Single)
+    50 ret 
+--- IL EnvMan::Update ---
+     0 call EnvMan EnvMan::get_instance()
+     1 callvirt UnityEngine.Vector3 EnvMan::GetWindForce()
+     2 stloc.0 
+     3 ldarg.0 
+     4 ldarg.0 
+     5 ldfld UnityEngine.Vector3 EnvMan::m_cloudOffset
+     6 ldloc.0 
+     7 call System.Single UnityEngine.Time::get_deltaTime()
+     8 ldc.r4 0.01
+     9 mul 
+    10 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+    11 call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+    12 stfld UnityEngine.Vector3 EnvMan::m_cloudOffset
+    13 ldsfld System.Int32 EnvMan::s_cloudOffset
+    14 ldarg.0 
+    15 ldfld UnityEngine.Vector3 EnvMan::m_cloudOffset
+    16 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    17 call System.Void UnityEngine.Shader::SetGlobalVector(System.Int32,UnityEngine.Vector4)
+    18 ldsfld System.Int32 EnvMan::s_netRefPos
+    19 call ZNet ZNet::get_instance()
+    20 callvirt UnityEngine.Vector3 ZNet::GetReferencePosition()
+    21 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+    22 call System.Void UnityEngine.Shader::SetGlobalVector(System.Int32,UnityEngine.Vector4)
+    23 ldsfld System.Int32 EnvMan::s_SnowGlintOffsetNoise
+    24 ldarg.0 
+    25 ldfld UnityEngine.Texture3D EnvMan::_SnowGlintNoiseOffsetTex
+    26 call System.Void UnityEngine.Shader::SetGlobalTexture(System.Int32,UnityEngine.Texture)
+    27 ldsfld System.Int32 EnvMan::s_SnowGlintSize
+    28 ldarg.0 
+    29 ldfld System.Single EnvMan::_SnowGlintSize
+    30 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    31 ldsfld System.Int32 EnvMan::s_SnowGlintDensity
+    32 ldarg.0 
+    33 ldfld System.Single EnvMan::_SnowGlintDensity
+    34 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    35 ldsfld System.Int32 EnvMan::s_SnowGlintStrength
+    36 ldarg.0 
+    37 ldfld System.Single EnvMan::_SnowGlintStrength
+    38 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    39 ldsfld System.Int32 EnvMan::s_SnowGlintNoiseDensity
+    40 ldarg.0 
+    41 ldfld System.Single EnvMan::_SnowGlintNoiseDensity
+    42 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    43 ldsfld System.Int32 EnvMan::s_SnowGlintNoiseAmount
+    44 ldarg.0 
+    45 ldfld System.Single EnvMan::_SnowGlintNoiseAmount
+    46 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    47 ldsfld System.Int32 EnvMan::s_SnowGlintViewAmount
+    48 ldarg.0 
+    49 ldfld System.Single EnvMan::_SnowGlintViewAmount
+    50 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    51 ldsfld System.Int32 EnvMan::s_SnowGlintTimeAmount
+    52 ldarg.0 
+    53 ldfld System.Single EnvMan::_SnowGlintTimeAmount
+    54 call System.Void UnityEngine.Shader::SetGlobalFloat(System.Int32,System.Single)
+    55 ret 
+--- IL SmokeRenderer::LateUpdate ---
+     0 ldarg.0 
+     1 call System.Void SmokeRenderer::TransferSmokeBetweenChunks()
+     2 ldarg.0 
+     3 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem> SmokeRenderer::m_chunkedParticleSystems
+     4 callvirt System.Collections.Generic.Dictionary`2/KeyCollection<!0,!1> System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>::get_Keys()
+     5 callvirt System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2/KeyCollection<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>::GetEnumerator()
+     6 stloc.0 
+     7 br IL_0124: ldloca.s V_0
+     8 ldloca.s V_0
+     9 call !0 System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>::get_Current()
+    10 stloc.1 
+    11 ldarg.0 
+    12 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem> SmokeRenderer::m_chunkedParticleSystems
+    13 ldloc.1 
+    14 callvirt !1 System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>::get_Item(!0)
+    15 stloc.2 
+    16 ldarg.0 
+    17 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,System.Collections.Generic.List`1<Smoke>> SmokeRenderer::m_chunkedSmoke
+    18 ldloc.1 
+    19 callvirt !1 System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,System.Collections.Generic.List`1<Smoke>>::get_Item(!0)
+    20 stloc.3 
+    21 ldarg.0 
+    22 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem/Particle[]> SmokeRenderer::m_chunkedParticles
+    23 ldloc.1 
+    24 callvirt !1 System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem/Particle[]>::get_Item(!0)
+    25 stloc.s V_4
+    26 ldloc.3 
+    27 callvirt System.Int32 System.Collections.Generic.List`1<Smoke>::get_Count()
+    28 ldloc.2 
+    29 callvirt System.Int32 UnityEngine.ParticleSystem::get_particleCount()
+    30 ble.s IL_006d: ldc.i4.0
+    31 ldloc.2 
+    32 ldloc.3 
+    33 callvirt System.Int32 System.Collections.Generic.List`1<Smoke>::get_Count()
+    34 ldloc.2 
+    35 callvirt System.Int32 UnityEngine.ParticleSystem::get_particleCount()
+    36 sub 
+    37 callvirt System.Void UnityEngine.ParticleSystem::Emit(System.Int32)
+    38 ldc.i4.0 
+    39 stloc.s V_5
+    40 br.s IL_00df: ldloc.s V_5
+    41 ldloc.3 
+    42 ldloc.s V_5
+    43 callvirt !0 System.Collections.Generic.List`1<Smoke>::get_Item(System.Int32)
+    44 stloc.s V_6
+    45 ldloc.s V_4
+    46 ldloc.s V_5
+    47 ldloc.s V_6
+    48 callvirt UnityEngine.ParticleSystem/Particle Smoke::GetParticleValues()
+    49 stelem.any UnityEngine.ParticleSystem/Particle
+    50 ldloc.s V_4
+    51 ldloc.s V_5
+    52 ldelema UnityEngine.ParticleSystem/Particle
+    53 ldarg.0 
+    54 ldfld UnityEngine.Color SmokeRenderer::m_smokeColor
+    55 ldc.r4 1
+    56 ldc.r4 1
+    57 ldc.r4 1
+    58 ldloc.s V_6
+    59 callvirt System.Single Smoke::GetAlpha()
+    60 newobj System.Void UnityEngine.Color::.ctor(System.Single,System.Single,System.Single,System.Single)
+    61 call UnityEngine.Color UnityEngine.Color::op_Multiply(UnityEngine.Color,UnityEngine.Color)
+    62 call UnityEngine.Color32 UnityEngine.Color32::op_Implicit(UnityEngine.Color)
+    63 call System.Void UnityEngine.ParticleSystem/Particle::set_startColor(UnityEngine.Color32)
+    64 ldloc.s V_4
+    65 ldloc.s V_5
+    66 ldelema UnityEngine.ParticleSystem/Particle
+    67 ldarg.0 
+    68 ldfld System.Single SmokeRenderer::m_smokeBallSize
+    69 call System.Void UnityEngine.ParticleSystem/Particle::set_startSize(System.Single)
+    70 ldloc.s V_5
+    71 ldc.i4.1 
+    72 add 
+    73 stloc.s V_5
+    74 ldloc.s V_5
+    75 ldloc.3 
+    76 callvirt System.Int32 System.Collections.Generic.List`1<Smoke>::get_Count()
+    77 blt.s IL_0072: ldloc.3
+    78 ldloc.3 
+    79 callvirt System.Int32 System.Collections.Generic.List`1<Smoke>::get_Count()
+    80 stloc.s V_7
+    81 br.s IL_010c: ldloc.s V_7
+    82 ldloc.s V_4
+    83 ldloc.s V_7
+    84 ldelema UnityEngine.ParticleSystem/Particle
+    85 ldc.r4 -1
+    86 call System.Void UnityEngine.ParticleSystem/Particle::set_remainingLifetime(System.Single)
+    87 ldloc.s V_7
+    88 ldc.i4.1 
+    89 add 
+    90 stloc.s V_7
+    91 ldloc.s V_7
+    92 ldloc.2 
+    93 callvirt System.Int32 UnityEngine.ParticleSystem::get_particleCount()
+    94 blt.s IL_00f3: ldloc.s V_4
+    95 ldloc.2 
+    96 ldloc.s V_4
+    97 ldloc.2 
+    98 callvirt System.Int32 UnityEngine.ParticleSystem::get_particleCount()
+    99 callvirt System.Void UnityEngine.ParticleSystem::SetParticles(UnityEngine.ParticleSystem/Particle[],System.Int32)
+   100 ldloca.s V_0
+   101 call System.Boolean System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>::MoveNext()
+   102 brtrue IL_001c: ldloca.s V_0
+   103 leave.s IL_0140: ret
+   104 ldloca.s V_0
+   105 constrained. System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>
+   106 callvirt System.Void System.IDisposable::Dispose()
+   107 endfinally 
+   108 ret 
+--- IL SmokeRenderer::Awake ---
+     0 ldsfld SmokeRenderer SmokeRenderer::Instance
+     1 ldnull 
+     2 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+     3 brfalse.s IL_0014: ldarg.0
+     4 ldarg.0 
+     5 stsfld SmokeRenderer SmokeRenderer::Instance
+     6 ret 
+     7 ldarg.0 
+     8 call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+     9 call System.Void UnityEngine.Object::Destroy(UnityEngine.Object)
+    10 ret 
+--- IL ParticleIntensityScaler::Start ---
+     0 ldarg.0 
+     1 ldarg.0 
+     2 call !!0 UnityEngine.Component::GetComponentInParent<ItemDrop>()
+     3 stfld ItemDrop ParticleIntensityScaler::itemdrop
+     4 ldarg.0 
+     5 ldfld ItemDrop ParticleIntensityScaler::itemdrop
+     6 ldnull 
+     7 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+     8 brfalse.s IL_0030: ret
+     9 ldarg.0 
+    10 ldarg.0 
+    11 ldfld ItemDrop ParticleIntensityScaler::itemdrop
+    12 ldfld ItemDrop/ItemData ItemDrop::m_itemData
+    13 ldfld System.Int32 ItemDrop/ItemData::m_quality
+    14 call System.Void ParticleIntensityScaler::SetQuality(System.Int32)
+    15 ret 
+--- IL GameCamera::Awake ---
+     0 ldarg.0 
+     1 stsfld GameCamera GameCamera::m_instance
+     2 ldarg.0 
+     3 ldarg.0 
+     4 call !!0 UnityEngine.Component::GetComponent<UnityEngine.Camera>()
+     5 stfld UnityEngine.Camera GameCamera::m_camera
+     6 ldarg.0 
+     7 ldarg.0 
+     8 call !!0 UnityEngine.Component::GetComponentInChildren<UnityEngine.AudioListener>()
+     9 stfld UnityEngine.AudioListener GameCamera::m_listner
+    10 ldarg.0 
+    11 ldarg.0 
+    12 call !!0 UnityEngine.Component::GetComponent<HeatDistortImageEffect>()
+    13 stfld HeatDistortImageEffect GameCamera::m_heatDistortImageEffect
+    14 ldarg.0 
+    15 ldfld UnityEngine.Camera GameCamera::m_camera
+    16 ldc.i4.2 
+    17 callvirt System.Void UnityEngine.Camera::set_depthTextureMode(UnityEngine.DepthTextureMode)
+    18 ldarg.0 
+    19 call System.Void GameCamera::ApplySettings()
+    20 call System.Boolean UnityEngine.Application::get_isEditor()
+    21 brfalse.s IL_004a: ldarg.0
+    22 call System.Boolean DemoMode::get_Enabled()
+    23 brfalse.s IL_0051: ret
+    24 ldarg.0 
+    25 ldc.i4.1 
+    26 stfld System.Boolean GameCamera::m_mouseCapture
+    27 ret 
+--- IL GameCamera::LateUpdate ---
+     0 call System.Single UnityEngine.Time::get_deltaTime()
+     1 stloc.0 
+     2 ldarg.0 
+     3 call System.Void GameCamera::UpdateFOV()
+     4 call System.Boolean DemoMode::get_Disabled()
+     5 brfalse.s IL_003a: ldsfld Player Player::m_localPlayer
+     6 ldc.i4 292
+     7 ldc.i4.1 
+     8 call System.Boolean ZInput::GetKeyDown(UnityEngine.KeyCode,System.Boolean)
+     9 brtrue.s IL_0035: call System.Void GameCamera::ScreenShot()
+    10 ldarg.0 
+    11 ldfld System.Boolean GameCamera::m_freeFly
+    12 brfalse.s IL_003a: ldsfld Player Player::m_localPlayer
+    13 ldc.i4 324
+    14 ldc.i4.1 
+    15 call System.Boolean ZInput::GetKeyDown(UnityEngine.KeyCode,System.Boolean)
+    16 brfalse.s IL_003a: ldsfld Player Player::m_localPlayer
+    17 call System.Void GameCamera::ScreenShot()
+    18 ldsfld Player Player::m_localPlayer
+    19 stloc.1 
+    20 ldloc.1 
+    21 call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+    22 brfalse.s IL_0050: ldarg.0
+    23 ldarg.0 
+    24 ldloc.1 
+    25 ldloc.0 
+    26 call System.Void GameCamera::UpdateBaseOffset(Player,System.Single)
+    27 ldarg.0 
+    28 call System.Void GameCamera::UpdateMouseCapture()
+    29 ldarg.0 
+    30 call System.Single UnityEngine.Time::get_unscaledDeltaTime()
+    31 call System.Void GameCamera::UpdateCamera(System.Single)
+    32 ldarg.0 
+    33 call System.Void GameCamera::UpdateListner()
+    34 ret 
+######## LightLod ALL METHOD IL ########
+--- IL LightLod::Awake ---
+     0 ldarg.0 
+     1 ldarg.0 
+     2 call !!0 UnityEngine.Component::GetComponent<UnityEngine.Light>()
+     3 stfld UnityEngine.Light LightLod::m_light
+     4 ldarg.0 
+     5 ldarg.0 
+     6 ldfld UnityEngine.Light LightLod::m_light
+     7 callvirt System.Single UnityEngine.Light::get_range()
+     8 stfld System.Single LightLod::m_baseRange
+     9 ldarg.0 
+    10 ldarg.0 
+    11 ldfld UnityEngine.Light LightLod::m_light
+    12 callvirt System.Single UnityEngine.Light::get_shadowStrength()
+    13 stfld System.Single LightLod::m_baseShadowStrength
+    14 ldarg.0 
+    15 ldfld System.Boolean LightLod::m_shadowLod
+    16 brfalse.s IL_004a: ldarg.0
+    17 ldarg.0 
+    18 ldfld UnityEngine.Light LightLod::m_light
+    19 callvirt UnityEngine.LightShadows UnityEngine.Light::get_shadows()
+    20 brtrue.s IL_004a: ldarg.0
+    21 ldarg.0 
+    22 ldc.i4.0 
+    23 stfld System.Boolean LightLod::m_shadowLod
+    24 ldarg.0 
+    25 ldfld System.Boolean LightLod::m_lightLod
+    26 brfalse.s IL_006e: ldarg.0
+    27 ldarg.0 
+    28 ldfld UnityEngine.Light LightLod::m_light
+    29 ldc.r4 0
+    30 callvirt System.Void UnityEngine.Light::set_range(System.Single)
+    31 ldarg.0 
+    32 ldfld UnityEngine.Light LightLod::m_light
+    33 ldc.i4.0 
+    34 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+    35 ldarg.0 
+    36 ldfld System.Boolean LightLod::m_shadowLod
+    37 brfalse.s IL_0092: ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+    38 ldarg.0 
+    39 ldfld UnityEngine.Light LightLod::m_light
+    40 ldc.r4 0
+    41 callvirt System.Void UnityEngine.Light::set_shadowStrength(System.Single)
+    42 ldarg.0 
+    43 ldfld UnityEngine.Light LightLod::m_light
+    44 ldc.i4.0 
+    45 callvirt System.Void UnityEngine.Light::set_shadows(UnityEngine.LightShadows)
+    46 ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+    47 ldarg.0 
+    48 callvirt System.Boolean System.Collections.Generic.HashSet`1<LightLod>::Add(!0)
+    49 pop 
+    50 ret 
+--- IL LightLod::OnEnable ---
+     0 ldarg.0 
+     1 ldstr UpdateLoop
+     2 call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.String)
+     3 pop 
+     4 ret 
+--- IL LightLod::OnDisable ---
+     0 ldarg.0 
+     1 ldstr UpdateLoop
+     2 call System.Void UnityEngine.MonoBehaviour::StopCoroutine(System.String)
+     3 ret 
+--- IL LightLod::OnDestroy ---
+     0 ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+     1 ldarg.0 
+     2 callvirt System.Boolean System.Collections.Generic.HashSet`1<LightLod>::Remove(!0)
+     3 pop 
+     4 ret 
+--- IL LightLod::UpdateLoop ---
+     0 ldc.i4.0 
+     1 newobj System.Void LightLod/<UpdateLoop>d__4::.ctor(System.Int32)
+     2 dup 
+     3 ldarg.0 
+     4 stfld LightLod LightLod/<UpdateLoop>d__4::<>4__this
+     5 ret 
+--- IL LightLod::GetLightReferencePoint ---
+     0 call UnityEngine.Camera Utils::GetMainCamera()
+     1 stloc.0 
+     2 call System.Boolean GameCamera::InFreeFly()
+     3 brtrue.s IL_0014: ldloc.0
+     4 ldsfld Player Player::m_localPlayer
+     5 brtrue.s IL_0020: ldsfld Player Player::m_localPlayer
+     6 ldloc.0 
+     7 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+     8 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+     9 ret 
+    10 ldsfld Player Player::m_localPlayer
+    11 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    12 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    13 ret 
+--- IL LightLod::UpdateLights ---
+     0 ldsfld System.Int32 LightLod::m_lightLimit
+     1 ldc.i4.0 
+     2 bge.s IL_0011: ldsfld System.Single LightLod::m_updateTimer
+     3 ldsfld System.Int32 LightLod::m_shadowLimit
+     4 ldc.i4.0 
+     5 bge.s IL_0011: ldsfld System.Single LightLod::m_updateTimer
+     6 ret 
+     7 ldsfld System.Single LightLod::m_updateTimer
+     8 ldarg.0 
+     9 add 
+    10 stsfld System.Single LightLod::m_updateTimer
+    11 ldsfld System.Single LightLod::m_updateTimer
+    12 ldc.r4 1
+    13 bge.un.s IL_002a: ldc.r4 0
+    14 ret 
+    15 ldc.r4 0
+    16 stsfld System.Single LightLod::m_updateTimer
+    17 call UnityEngine.Camera Utils::GetMainCamera()
+    18 ldnull 
+    19 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+    20 brfalse.s IL_0042: call UnityEngine.Vector3 LightLod::GetLightReferencePoint()
+    21 ret 
+    22 call UnityEngine.Vector3 LightLod::GetLightReferencePoint()
+    23 stloc.0 
+    24 ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    25 callvirt System.Void System.Collections.Generic.List`1<LightLod>::Clear()
+    26 ldsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+    27 callvirt System.Collections.Generic.HashSet`1/Enumerator<!0> System.Collections.Generic.HashSet`1<LightLod>::GetEnumerator()
+    28 stloc.1 
+    29 br.s IL_00b9: ldloca.s V_1
+    30 ldloca.s V_1
+    31 call !0 System.Collections.Generic.HashSet`1/Enumerator<LightLod>::get_Current()
+    32 stloc.2 
+    33 ldloc.2 
+    34 callvirt System.Boolean UnityEngine.Behaviour::get_enabled()
+    35 brfalse.s IL_00b9: ldloca.s V_1
+    36 ldloc.2 
+    37 ldfld UnityEngine.Light LightLod::m_light
+    38 call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+    39 brfalse.s IL_00b9: ldloca.s V_1
+    40 ldloc.2 
+    41 ldfld UnityEngine.Light LightLod::m_light
+    42 callvirt UnityEngine.LightType UnityEngine.Light::get_type()
+    43 ldc.i4.2 
+    44 bne.un.s IL_00b9: ldloca.s V_1
+    45 ldloc.2 
+    46 ldloc.0 
+    47 ldloc.2 
+    48 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    49 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    50 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+    51 ldloc.2 
+    52 ldfld System.Single LightLod::m_lightDistance
+    53 ldc.r4 0.25
+    54 mul 
+    55 sub 
+    56 stfld System.Single LightLod::m_cameraDistanceOuter
+    57 ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    58 ldloc.2 
+    59 callvirt System.Void System.Collections.Generic.List`1<LightLod>::Add(!0)
+    60 ldloca.s V_1
+    61 call System.Boolean System.Collections.Generic.HashSet`1/Enumerator<LightLod>::MoveNext()
+    62 brtrue.s IL_005f: ldloca.s V_1
+    63 leave.s IL_00d2: ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    64 ldloca.s V_1
+    65 constrained. System.Collections.Generic.HashSet`1/Enumerator<LightLod>
+    66 callvirt System.Void System.IDisposable::Dispose()
+    67 endfinally 
+    68 ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    69 ldsfld System.Comparison`1<LightLod> LightLod/<>c::<>9__6_0
+    70 dup 
+    71 brtrue.s IL_00f6: callvirt System.Void System.Collections.Generic.List`1<LightLod>::Sort(System.Comparison`1<!0>)
+    72 pop 
+    73 ldsfld LightLod/<>c LightLod/<>c::<>9
+    74 ldftn System.Int32 LightLod/<>c::<UpdateLights>b__6_0(LightLod,LightLod)
+    75 newobj System.Void System.Comparison`1<LightLod>::.ctor(System.Object,System.IntPtr)
+    76 dup 
+    77 stsfld System.Comparison`1<LightLod> LightLod/<>c::<>9__6_0
+    78 callvirt System.Void System.Collections.Generic.List`1<LightLod>::Sort(System.Comparison`1<!0>)
+    79 ldc.i4.0 
+    80 stloc.3 
+    81 br.s IL_0114: ldloc.3
+    82 ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    83 ldloc.3 
+    84 callvirt !0 System.Collections.Generic.List`1<LightLod>::get_Item(System.Int32)
+    85 ldloc.3 
+    86 stfld System.Int32 LightLod::m_lightPrio
+    87 ldloc.3 
+    88 ldc.i4.1 
+    89 add 
+    90 stloc.3 
+    91 ldloc.3 
+    92 ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    93 callvirt System.Int32 System.Collections.Generic.List`1<LightLod>::get_Count()
+    94 blt.s IL_00ff: ldsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+    95 ret 
+--- IL LightLod::OnDrawGizmosSelected ---
+     0 ldarg.0 
+     1 ldfld System.Boolean LightLod::m_lightLod
+     2 brfalse.s IL_0028: ldarg.0
+     3 call UnityEngine.Color UnityEngine.Color::get_yellow()
+     4 call System.Void UnityEngine.Gizmos::set_color(UnityEngine.Color)
+     5 ldarg.0 
+     6 call UnityEngine.Transform UnityEngine.Component::get_transform()
+     7 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+     8 ldarg.0 
+     9 ldfld System.Single LightLod::m_lightDistance
+    10 call System.Void UnityEngine.Gizmos::DrawWireSphere(UnityEngine.Vector3,System.Single)
+    11 ldarg.0 
+    12 ldfld System.Boolean LightLod::m_shadowLod
+    13 brfalse.s IL_0050: ret
+    14 call UnityEngine.Color UnityEngine.Color::get_grey()
+    15 call System.Void UnityEngine.Gizmos::set_color(UnityEngine.Color)
+    16 ldarg.0 
+    17 call UnityEngine.Transform UnityEngine.Component::get_transform()
+    18 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    19 ldarg.0 
+    20 ldfld System.Single LightLod::m_shadowDistance
+    21 call System.Void UnityEngine.Gizmos::DrawWireSphere(UnityEngine.Vector3,System.Single)
+    22 ret 
+--- IL LightLod::.ctor ---
+     0 ldarg.0 
+     1 ldc.i4.1 
+     2 stfld System.Boolean LightLod::m_lightLod
+     3 ldarg.0 
+     4 ldc.r4 40
+     5 stfld System.Single LightLod::m_lightDistance
+     6 ldarg.0 
+     7 ldc.i4.1 
+     8 stfld System.Boolean LightLod::m_shadowLod
+     9 ldarg.0 
+    10 ldc.r4 20
+    11 stfld System.Single LightLod::m_shadowDistance
+    12 ldarg.0 
+    13 call System.Void UnityEngine.MonoBehaviour::.ctor()
+    14 ret 
+--- IL LightLod::.cctor ---
+     0 newobj System.Void System.Collections.Generic.HashSet`1<LightLod>::.ctor()
+     1 stsfld System.Collections.Generic.HashSet`1<LightLod> LightLod::m_lights
+     2 newobj System.Void System.Collections.Generic.List`1<LightLod>::.ctor()
+     3 stsfld System.Collections.Generic.List`1<LightLod> LightLod::m_sortedLights
+     4 ldc.i4.m1 
+     5 stsfld System.Int32 LightLod::m_lightLimit
+     6 ldc.i4.m1 
+     7 stsfld System.Int32 LightLod::m_shadowLimit
+     8 ldc.r4 0
+     9 stsfld System.Single LightLod::m_updateTimer
+    10 ldc.r4 1
+    11 newobj System.Void UnityEngine.WaitForSeconds::.ctor(System.Single)
+    12 stsfld UnityEngine.WaitForSeconds LightLod::s_waitFor1Sec
+    13 ret 
+######## CAMERA / RENDERTEXTURE / PARTICLE / LIGHT FIELDS ########
+FIELD Character::m_lodGroup : UnityEngine.LODGroup
+FIELD Character::m_lavaHeatParticles : System.Collections.Generic.Dictionary`2<UnityEngine.ParticleSystem,System.Single>
+FIELD Player::m_breathParticles : UnityEngine.ParticleSystem
+FIELD VisEquipment::m_lodGroup : UnityEngine.LODGroup
+FIELD AmplifyOcclusionEffect::ApplyMethod : AmplifyOcclusionEffect/ApplicationMethod
+FIELD AmplifyOcclusionEffect::SampleCount : AmplifyOcclusion.SampleCountLevel
+FIELD AmplifyOcclusionEffect::PerPixelNormals : AmplifyOcclusionEffect/PerPixelNormalSource
+FIELD AmplifyOcclusionEffect::m_prevPerPixelNormals : AmplifyOcclusionEffect/PerPixelNormalSource
+FIELD AmplifyOcclusionEffect::m_prevApplyMethod : AmplifyOcclusionEffect/ApplicationMethod
+FIELD AmplifyOcclusionEffect::m_prevSampleCount : AmplifyOcclusion.SampleCountLevel
+FIELD AmplifyOcclusionEffect::m_targetCamera : UnityEngine.Camera
+FIELD AmplifyOcclusionEffect::m_commandBuffer_Parameters : AmplifyOcclusionEffect/CmdBuffer
+FIELD AmplifyOcclusionEffect::m_commandBuffer_Occlusion : AmplifyOcclusionEffect/CmdBuffer
+FIELD AmplifyOcclusionEffect::m_commandBuffer_Apply : AmplifyOcclusionEffect/CmdBuffer
+FIELD AmplifyOcclusionEffect::m_occlusionRTFormat : UnityEngine.RenderTextureFormat
+FIELD AmplifyOcclusionEffect::m_accumTemporalRTFormat : UnityEngine.RenderTextureFormat
+FIELD AmplifyOcclusionEffect::m_temporaryEmissionRTFormat : UnityEngine.RenderTextureFormat
+FIELD AmplifyOcclusionEffect::m_motionIntensityRTFormat : UnityEngine.RenderTextureFormat
+FIELD AmplifyOcclusionEffect::m_occlusionDepthRT : UnityEngine.RenderTexture
+FIELD AmplifyOcclusionEffect::m_temporalAccumRT : UnityEngine.RenderTexture[]
+FIELD AmplifyOcclusionEffect::m_depthMipmap : UnityEngine.RenderTexture
+FIELD AmplifyOcclusionEffect::m_target : AmplifyOcclusion.TargetDesc
+FIELD AmplifyOcclusionEffect::m_viewProjMatrix : AmplifyOcclusion.AmplifyOcclusionViewProjMatrix
+FIELD CameraEffects::m_amplifyOcclusion : AmplifyOcclusionEffect
+FIELD DistantFogEmitter::m_psystems : UnityEngine.ParticleSystem[]
+FIELD EffectFade::m_particles : UnityEngine.ParticleSystem[]
+FIELD EffectFade::m_light : UnityEngine.Light
+FIELD EmitterRotation::m_ps : UnityEngine.ParticleSystem
+FIELD GlobalWind::m_ps : UnityEngine.ParticleSystem
+FIELD LightFlicker::m_light : UnityEngine.Light
+FIELD MistEmitter::m_psystem : UnityEngine.ParticleSystem
+FIELD OceanBubbleParticles::m_particleSystem : UnityEngine.ParticleSystem
+FIELD OceanBubbleParticles::m_particles : UnityEngine.ParticleSystem/Particle[]
+FIELD ParticleDecal::m_decalSystem : UnityEngine.ParticleSystem
+FIELD ParticleDecal::part : UnityEngine.ParticleSystem
+FIELD ParticleIntensityScaler::childLights : UnityEngine.Light[]
+FIELD ParticleIntensityScaler::systems : UnityEngine.ParticleSystem[]
+FIELD ParticleMist::m_ps : UnityEngine.ParticleSystem
+FIELD ShieldDomeImageEffect::m_cam : UnityEngine.Camera
+FIELD ShieldDomeParticleColor::m_particleSystems : UnityEngine.ParticleSystem[]
+FIELD Smoke::m_renderParticle : UnityEngine.ParticleSystem/Particle
+FIELD SmokeRenderer::_particleSystemPrefab : UnityEngine.ParticleSystem
+FIELD SmokeRenderer::m_chunkedParticleSystems : System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem>
+FIELD SmokeRenderer::m_chunkedParticles : System.Collections.Generic.Dictionary`2<UnityEngine.Vector3Int,UnityEngine.ParticleSystem/Particle[]>
+FIELD VortexParticles::ps : UnityEngine.ParticleSystem
+FIELD WrapParticles::m_ps : UnityEngine.ParticleSystem
+FIELD CinematicsManager::m_camera : UnityEngine.Camera
+FIELD CinematicsManager::m_mainCamera : UnityEngine.Camera
+FIELD DepthCamera::m_texture : UnityEngine.RenderTexture
+FIELD DepthCamera::m_camera : UnityEngine.Camera
+FIELD EnvMan::m_dirLight : UnityEngine.Light
+FIELD GameCamera::m_skyCamera : UnityEngine.Camera
+FIELD GameCamera::m_camera : UnityEngine.Camera
+FIELD PersistentEventSystemDirectionHelper::m_ps : UnityEngine.ParticleSystem
+FIELD PersistentEventSystemDirectionHelper::m_strengthByDistance : UnityEngine.ParticleSystem/MinMaxCurve
+FIELD StealthSystem::m_allLights : UnityEngine.Light[]
+FIELD UpscaledFrameBuffer::m_camera : UnityEngine.Camera
+FIELD UpscaledFrameBuffer::m_clearCamera : UnityEngine.Camera
+FIELD UpscaledFrameBuffer::m_renderTexture : UnityEngine.RenderTexture
+FIELD CookingStation::m_donePS : UnityEngine.ParticleSystem[]
+FIELD CookingStation::m_burntPS : UnityEngine.ParticleSystem[]
+FIELD CookingStation::m_ps : UnityEngine.ParticleSystem[]
+FIELD Demister::m_forceField : UnityEngine.ParticleSystemForceField
+FIELD Fish::m_lodGroup : UnityEngine.LODGroup
+FIELD LightLod::m_light : UnityEngine.Light
+FIELD LodFadeInOut::m_lodGroup : UnityEngine.LODGroup
+FIELD MenuScene::m_dirLight : UnityEngine.Light
+FIELD RandomFlyingBird::m_lodGroup : UnityEngine.LODGroup
+FIELD ShieldGenerator::m_energyParticles : UnityEngine.ParticleSystem[]
+FIELD ShieldGenerator::m_energyParticlesFlare : UnityEngine.ParticleSystem
+FIELD ShieldGenerator::m_coloredLights : UnityEngine.Light[]
+FIELD ShipEffects::m_wakeParticles : UnityEngine.ParticleSystem[]
+FIELD AmplifyOcclusion.SampleCountLevel::Low : AmplifyOcclusion.SampleCountLevel
+FIELD AmplifyOcclusion.SampleCountLevel::Medium : AmplifyOcclusion.SampleCountLevel
+FIELD AmplifyOcclusion.SampleCountLevel::High : AmplifyOcclusion.SampleCountLevel
+FIELD AmplifyOcclusion.SampleCountLevel::VeryHigh : AmplifyOcclusion.SampleCountLevel
+######## TYPE NAME SEARCH ########
+SE_Demister
+AmplifyOcclusionEffect
+CameraEffects
+LightFlicker
+MistEmitter
+OceanBubbleParticles
+ParticleDecal
+ParticleIntensityScaler
+ParticleMist
+ShieldDomeParticleColor
+SmokeRenderer
+VortexParticles
+WrapParticles
+WaterMark
+DepthCamera
+GameCamera
+InstanceRenderer
+ReflectionUpdate
+RenderGroupSubscriber
+RenderGroup
+RenderGroupSystem
+TerrainLod
+ClutterSystem
+Demister
+IWaterInteractable
+LightLod
+LodFadeInOut
+Mister
+Water
+WaterTrigger
+WaterVolume
+AmplifyOcclusion.AmplifyOcclusionCommon
+AmplifyOcclusion.AmplifyOcclusionViewProjMatrix
