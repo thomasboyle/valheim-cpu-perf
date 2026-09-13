@@ -1,0 +1,3 @@
+﻿D:\C++\120fpsvalheim\profile\managed_hotspots_20260913_122336.csv
+tag=periodic
+total_sampled_ms=152569.0

@@ -8,10 +8,10 @@
     <Nullable>disable</Nullable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <AssemblyName>ValheimCpuPerf</AssemblyName>
-    <RootNamespace>ValheimCpuPerf</RootNamespace>
+    <AssemblyName>ValheimCpuPerf.Profile</AssemblyName>
+    <RootNamespace>ValheimCpuPerf.Profile</RootNamespace>
     <Deterministic>true</Deterministic>
-    <Version>0.3.0</Version>
+    <Version>0.3.0-profile</Version>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BepInEx">
@@ -38,14 +38,5 @@
       <HintPath>$(ValheimManaged)\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(ValheimManaged)\UnityEngine.PhysicsModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
   </ItemGroup>
-  <Target Name="DeployToPlugins" AfterTargets="Build">
-    <MakeDir Directories="$(BepInExPlugins)" Condition="Exists('$(BepInExPath)')" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BepInExPlugins)" SkipUnchangedFiles="true" Condition="Exists('$(BepInExPlugins)')" />
-    <Message Importance="high" Text="Deployed $(TargetPath) -> $(BepInExPlugins)" Condition="Exists('$(BepInExPlugins)')" />
-  </Target>
 </Project>

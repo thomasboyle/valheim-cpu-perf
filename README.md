@@ -1,28 +1,29 @@
-# ValheimCpuPerf
+﻿# ValheimCpuPerf
 
 Open-source **performance** mod for Valheim (BepInEx 5 / HarmonyX).  
 **Not a cheat mod** — no godmode, damage, stamina, teleport, or item exploits.
 
 ## Approach
 
-1. **Profile externally** (WPR / WPA / sampling) while `valheim.exe` runs — see [`docs/EXTERNAL_PROFILE.md`](docs/EXTERNAL_PROFILE.md).
-2. **Bake fixes** into a thin always-on plugin that targets the top CPU bottleneck classes.
+1. **Profile** with a temporary in-process Harmony sampler (`ValheimCpuPerf.Profile`) and/or external WPR — see [`docs/MANAGED_HOTSPOTS.md`](docs/MANAGED_HOTSPOTS.md) and [`docs/EXTERNAL_PROFILE.md`](docs/EXTERNAL_PROFILE.md).
+2. **Bake only definitive fixes** for the measured top CPU bottlenecks into the shipping plugin.
 3. **Restart Valheim** after replacing `ValheimCpuPerf.dll` so BepInEx loads the new assembly.
 
-There is **no** in-game F8/F9 profiler overlay and **no** mitigation config toggles. The shipping DLL only applies core tweaks.
+There is **no** in-game F8/F9 profiler overlay in the shipping DLL and **no** mitigation config toggles.
 
 **Honest disclaimer:** this does **not** guarantee 120 FPS. GPU limits, sync, and uncapped vs VSync settings still apply.
 
-## Always-on core tweaks (v0.2)
+## Always-on core tweaks (v0.3.0)
 
-Derived from external ETW + Mono.Cecil + known Valheim offenders:
+From **live** managed sampling 2026-09-13 (steady-state in-world delta):
 
-| Bottleneck class | Baked behaviour |
-|------------------|-----------------|
-| ClutterSystem / grass | Scale `m_amountScale` ×0.65 and `m_distance` ×0.75 |
-| ParticleMist + Smoke | Update / `CustomUpdate` every other frame |
-| Distant BaseAI | Beyond 40 m from local player, run `UpdateAI` 1/3 of frames |
-| (support) Shadows | Cap `QualitySettings.shadowDistance` to 60 m once at startup |
+| Rank | Bottleneck | Baked behaviour | Confidence |
+|------|------------|-----------------|------------|
+| 1 | `ZSyncTransform.CustomFixedUpdate` (~31% sampled) | Skip when `ZNetView.IsOwner()` (ClientSync no-op anyway). Distant non-character/non-projectile (>64 m) sync 1/3 frames. | **Definitive** |
+| 2 | `ZNetScene.CreateDestroyObjects` (~9%) | *No shipped fix* — rate changes risk multiplayer pop-in. | Documented only |
+| 3 | `WaterVolume.UpdateFloaters` (~8%) | Skip when closest collider point is >48 m from local player. Visual water `StaticUpdate` unchanged. | **Definitive** |
+
+**Removed from v0.2** (not top-3 in live data): clutter scale, mist/smoke every-other-frame, distant BaseAI throttle, shadow distance soft-cap.
 
 ## Requirements
 
@@ -48,18 +49,14 @@ On success the DLL is copied to:
 
 Edit `Environment.props` if your Valheim path differs.
 
-## External profiling (for contributors)
-
-Example WPR capture (run elevated):
+## Temporary managed sampler (contributors)
 
 ```bat
-wpr -start CPU -filemode
-rem play in-world ~20-30 seconds
-wpr -stop D:\C++\120fpsvalheim\profile\capture.etl
+dotnet build ValheimCpuPerf.Profile\ValheimCpuPerf.Profile.csproj -c Release
+copy /Y ValheimCpuPerf.Profile\bin\Release\ValheimCpuPerf.Profile.dll "D:\Steam Library\steamapps\common\Valheim\BepInEx\plugins\"
+rem Disable shipping ValheimCpuPerf.dll while capturing, restart game, play in-world ~60-90s
+rem CSVs land in profile\managed_hotspots_*.csv — then delete the Profile DLL from plugins
 ```
-
-Then analyze with WPA or `xperf -i capture.etl -o cpu_detail.txt -a profile -detail`.  
-Mono managed frames often need Cecil / game knowledge in addition to ETW (JIT stacks rarely name `ClutterSystem` etc.).
 
 ## License
 

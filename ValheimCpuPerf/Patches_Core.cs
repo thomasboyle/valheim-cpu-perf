@@ -1,115 +1,112 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 
 namespace ValheimCpuPerf.Patches
 {
     /// <summary>
-    /// Always-on structural early-outs / rate limits for the top CPU bottleneck classes
-    /// identified by external profiling (docs/EXTERNAL_PROFILE.md).
-    /// Performance only — no damage/health/stamina/loot cheats.
+    /// Always-on structural early-outs for LIVE managed top bottlenecks
+    /// (docs/MANAGED_HOTSPOTS.md). Performance only — no gameplay cheats.
     /// </summary>
-    internal static class CoreTweaks
+    internal static class HotFields
     {
-        internal const float ClutterAmountScale = 0.65f;
-        internal const float ClutterDistanceScale = 0.75f;
-        internal const float DistantAiMeters = 40f;
-        // Skip 2 of every 3 UpdateAI ticks when distant (run 1/3).
-        internal const int DistantAiPeriod = 3;
+        internal static readonly AccessTools.FieldRef<ZSyncTransform, ZNetView> ZSyncNView =
+            AccessTools.FieldRefAccess<ZSyncTransform, ZNetView>("m_nview");
 
-        internal static bool ShouldSkipAlternatingFrame()
-        {
-            return (Time.frameCount & 1) != 0;
-        }
+        internal static readonly AccessTools.FieldRef<ZSyncTransform, Character> ZSyncCharacter =
+            AccessTools.FieldRefAccess<ZSyncTransform, Character>("m_character");
 
-        internal static bool ShouldThrottleDistantAi(BaseAI ai)
-        {
-            var player = Player.m_localPlayer;
-            if (player == null || ai == null)
-                return false;
-            var distSq = (player.transform.position - ai.transform.position).sqrMagnitude;
-            var limit = DistantAiMeters * DistantAiMeters;
-            if (distSq < limit)
-                return false;
-            var id = ai.GetInstanceID();
-            return ((Time.frameCount + id) % DistantAiPeriod) != 0;
-        }
+        internal static readonly AccessTools.FieldRef<ZSyncTransform, Projectile> ZSyncProjectile =
+            AccessTools.FieldRefAccess<ZSyncTransform, Projectile>("m_projectile");
+
+        internal static readonly AccessTools.FieldRef<WaterVolume, Collider> WaterCollider =
+            AccessTools.FieldRefAccess<WaterVolume, Collider>("m_collider");
+
+        /// <summary>Beyond this distance, non-character/projectile transforms sync 1/3 frames.</summary>
+        internal const float DistantSyncMeters = 64f;
+
+        /// <summary>Beyond this distance from water collider, skip floater liquid updates.</summary>
+        internal const float DistantWaterMeters = 48f;
+
+        internal const int DistantSyncPeriod = 3;
     }
 
-    [HarmonyPatch(typeof(ParticleMist), "Update")]
-    internal static class ParticleMist_RateLimit
+    /// <summary>
+    /// #1 bottleneck: ZSyncTransform.CustomFixedUpdate → ClientSync.
+    /// ClientSync already no-ops for owners; skipping the call is correctness-preserving.
+    /// Distant static (no Character/Projectile) objects do not need full-rate client sync.
+    /// Owner path remains on CustomLateUpdate → OwnerSync (untouched).
+    /// </summary>
+    [HarmonyPatch(typeof(ZSyncTransform), nameof(ZSyncTransform.CustomFixedUpdate))]
+    internal static class ZSyncTransform_ClientGate
     {
         [HarmonyPrefix]
         [HarmonyPriority(Priority.First)]
-        private static bool Prefix()
+        private static bool Prefix(ZSyncTransform __instance)
         {
-            // Every other frame — bottleneck class #2.
-            return !CoreTweaks.ShouldSkipAlternatingFrame();
+            if (__instance == null)
+                return true;
+
+            ZNetView nv = HotFields.ZSyncNView(__instance);
+            if (nv != null && nv.IsOwner())
+                return false; // ClientSync would return immediately
+
+            Character ch = HotFields.ZSyncCharacter(__instance);
+            Projectile proj = HotFields.ZSyncProjectile(__instance);
+            if (ch != null || proj != null)
+                return true; // keep full-rate for characters / projectiles
+
+            Player player = Player.m_localPlayer;
+            if (player == null)
+                return true;
+
+            Vector3 delta = player.transform.position - __instance.transform.position;
+            float limit = HotFields.DistantSyncMeters * HotFields.DistantSyncMeters;
+            if (delta.sqrMagnitude < limit)
+                return true;
+
+            int id = __instance.GetInstanceID();
+            return ((Time.frameCount + id) % HotFields.DistantSyncPeriod) == 0;
         }
     }
 
-    [HarmonyPatch(typeof(Smoke), "CustomUpdate")]
-    internal static class Smoke_RateLimit
+    /// <summary>
+    /// #3 bottleneck: WaterVolume.UpdateFloaters (GetWaterSurface/CalcWave per floater).
+    /// If the closest point on this volume's collider is far from the local player,
+    /// floater liquid-level updates cannot affect local gameplay — skip entirely.
+    /// Visual water time / wind still update via WaterVolume.StaticUpdate (unpatched).
+    /// </summary>
+    [HarmonyPatch(typeof(WaterVolume), nameof(WaterVolume.UpdateFloaters))]
+    internal static class WaterVolume_DistantGate
     {
         [HarmonyPrefix]
         [HarmonyPriority(Priority.First)]
-        private static bool Prefix()
+        private static bool Prefix(WaterVolume __instance)
         {
-            return !CoreTweaks.ShouldSkipAlternatingFrame();
-        }
-    }
+            if (__instance == null)
+                return true;
 
-    [HarmonyPatch(typeof(BaseAI), nameof(BaseAI.UpdateAI))]
-    internal static class BaseAI_DistantGate
-    {
-        [HarmonyPrefix]
-        [HarmonyPriority(Priority.First)]
-        private static bool Prefix(BaseAI __instance)
-        {
-            // Distant agents — bottleneck class #3.
-            return !CoreTweaks.ShouldThrottleDistantAi(__instance);
-        }
-    }
+            Player player = Player.m_localPlayer;
+            if (player == null)
+                return true;
 
-    [HarmonyPatch(typeof(ClutterSystem), "Awake")]
-    internal static class ClutterSystem_ScaleAwake
-    {
-        [HarmonyPostfix]
-        private static void Postfix(ClutterSystem __instance)
-        {
-            ApplyClutterScales(__instance, "Awake");
-        }
-
-        internal static void ApplyClutterScales(ClutterSystem instance, string reason)
-        {
-            if (instance == null)
-                return;
-            try
+            Vector3 playerPos = player.transform.position;
+            Collider col = HotFields.WaterCollider(__instance);
+            Vector3 closest;
+            if (col != null)
             {
-                instance.m_amountScale *= CoreTweaks.ClutterAmountScale;
-                instance.m_distance *= CoreTweaks.ClutterDistanceScale;
-                ValheimCpuPerfPlugin.Log.LogInfo(
-                    $"ClutterSystem scaled ({reason}): amount*={CoreTweaks.ClutterAmountScale}, distance*={CoreTweaks.ClutterDistanceScale} → amount={instance.m_amountScale}, distance={instance.m_distance}");
+                closest = col.ClosestPoint(playerPos);
             }
-            catch (System.Exception ex)
+            else
             {
-                ValheimCpuPerfPlugin.Log.LogWarning($"Clutter scale soft-fail: {ex.Message}");
+                closest = __instance.transform.position;
             }
+
+            float limit = HotFields.DistantWaterMeters * HotFields.DistantWaterMeters;
+            return (playerPos - closest).sqrMagnitude <= limit;
         }
     }
 
-    [HarmonyPatch(typeof(ClutterSystem), "UpdateGrass")]
-    internal static class ClutterSystem_ScaleLive
-    {
-        private static bool _applied;
-
-        [HarmonyPrefix]
-        private static void Prefix(ClutterSystem __instance)
-        {
-            if (_applied || __instance == null)
-                return;
-            // Re-apply once if Awake was missed (scene reload / late spawn).
-            ClutterSystem_ScaleAwake.ApplyClutterScales(__instance, "UpdateGrass");
-            _applied = true;
-        }
-    }
+    // ZNetScene.CreateDestroyObjects (#2): no safe definitive Harmony fix shipped —
+    // reducing create/destroy rate risks multiplayer pop-in / despawn lag.
+    // See docs/MANAGED_HOTSPOTS.md.
 }
